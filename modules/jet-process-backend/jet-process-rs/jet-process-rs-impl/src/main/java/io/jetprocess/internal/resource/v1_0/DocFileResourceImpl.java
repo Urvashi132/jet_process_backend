@@ -34,7 +34,6 @@ public class DocFileResourceImpl extends BaseDocFileResourceImpl {
 		
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Page<DocFile> getDocFileList() throws Exception {
 		Collection<?> docFileList = docFileLocalService.getDocFileList();
