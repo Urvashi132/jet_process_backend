@@ -4,7 +4,7 @@ import com.liferay.portal.vulcan.graphql.servlet.ServletData;
 
 import io.jetprocess.internal.graphql.mutation.v1_0.Mutation;
 import io.jetprocess.internal.graphql.query.v1_0.Query;
-import io.jetprocess.resource.v1_0.DocFileResource;
+import io.jetprocess.resource.v1_0.FileRsModelResource;
 
 import javax.annotation.Generated;
 
@@ -25,11 +25,11 @@ public class ServletDataImpl implements ServletData {
 
 	@Activate
 	public void activate(BundleContext bundleContext) {
-		Mutation.setDocFileResourceComponentServiceObjects(
-			_docFileResourceComponentServiceObjects);
+		Mutation.setFileRsModelResourceComponentServiceObjects(
+			_fileRsModelResourceComponentServiceObjects);
 
-		Query.setDocFileResourceComponentServiceObjects(
-			_docFileResourceComponentServiceObjects);
+		Query.setFileRsModelResourceComponentServiceObjects(
+			_fileRsModelResourceComponentServiceObjects);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ServletDataImpl implements ServletData {
 	}
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
-	private ComponentServiceObjects<DocFileResource>
-		_docFileResourceComponentServiceObjects;
+	private ComponentServiceObjects<FileRsModelResource>
+		_fileRsModelResourceComponentServiceObjects;
 
 }

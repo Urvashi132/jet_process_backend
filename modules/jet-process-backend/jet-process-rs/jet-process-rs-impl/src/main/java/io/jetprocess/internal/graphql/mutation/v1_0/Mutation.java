@@ -9,8 +9,8 @@ import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
-import io.jetprocess.dto.v1_0.DocFile;
-import io.jetprocess.resource.v1_0.DocFileResource;
+import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.resource.v1_0.FileRsModelResource;
 
 import java.util.function.BiFunction;
 
@@ -30,22 +30,24 @@ import org.osgi.service.component.ComponentServiceObjects;
 @Generated("")
 public class Mutation {
 
-	public static void setDocFileResourceComponentServiceObjects(
-		ComponentServiceObjects<DocFileResource>
-			docFileResourceComponentServiceObjects) {
+	public static void setFileRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<FileRsModelResource>
+			fileRsModelResourceComponentServiceObjects) {
 
-		_docFileResourceComponentServiceObjects =
-			docFileResourceComponentServiceObjects;
+		_fileRsModelResourceComponentServiceObjects =
+			fileRsModelResourceComponentServiceObjects;
 	}
 
 	@GraphQLField
-	public DocFile createDocFile(@GraphQLName("docFile") DocFile docFile)
+	public FileRsModel createDocFile(
+			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
-			_docFileResourceComponentServiceObjects,
+			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			docFileResource -> docFileResource.createDocFile(docFile));
+			fileRsModelResource -> fileRsModelResource.createDocFile(
+				fileRsModel));
 	}
 
 	@GraphQLField
@@ -53,24 +55,25 @@ public class Mutation {
 		throws Exception {
 
 		_applyVoidComponentServiceObjects(
-			_docFileResourceComponentServiceObjects,
+			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			docFileResource -> docFileResource.deleteDocFileById(docFileId));
+			fileRsModelResource -> fileRsModelResource.deleteDocFileById(
+				docFileId));
 
 		return true;
 	}
 
 	@GraphQLField
-	public DocFile updateDocFile(
+	public FileRsModel updateDocFile(
 			@GraphQLName("docFileId") Long docFileId,
-			@GraphQLName("docFile") DocFile docFile)
+			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
-			_docFileResourceComponentServiceObjects,
+			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			docFileResource -> docFileResource.updateDocFile(
-				docFileId, docFile));
+			fileRsModelResource -> fileRsModelResource.updateDocFile(
+				docFileId, fileRsModel));
 	}
 
 	private <T, R, E1 extends Throwable, E2 extends Throwable> R
@@ -111,21 +114,22 @@ public class Mutation {
 		}
 	}
 
-	private void _populateResourceContext(DocFileResource docFileResource)
+	private void _populateResourceContext(
+			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
-		docFileResource.setContextAcceptLanguage(_acceptLanguage);
-		docFileResource.setContextCompany(_company);
-		docFileResource.setContextHttpServletRequest(_httpServletRequest);
-		docFileResource.setContextHttpServletResponse(_httpServletResponse);
-		docFileResource.setContextUriInfo(_uriInfo);
-		docFileResource.setContextUser(_user);
-		docFileResource.setGroupLocalService(_groupLocalService);
-		docFileResource.setRoleLocalService(_roleLocalService);
+		fileRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		fileRsModelResource.setContextCompany(_company);
+		fileRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		fileRsModelResource.setContextHttpServletResponse(_httpServletResponse);
+		fileRsModelResource.setContextUriInfo(_uriInfo);
+		fileRsModelResource.setContextUser(_user);
+		fileRsModelResource.setGroupLocalService(_groupLocalService);
+		fileRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
-	private static ComponentServiceObjects<DocFileResource>
-		_docFileResourceComponentServiceObjects;
+	private static ComponentServiceObjects<FileRsModelResource>
+		_fileRsModelResourceComponentServiceObjects;
 
 	private AcceptLanguage _acceptLanguage;
 	private com.liferay.portal.kernel.model.Company _company;

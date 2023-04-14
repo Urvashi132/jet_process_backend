@@ -34,18 +34,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Generated("")
 @GraphQLName(
-	description = "Contains all the data for file creation.", value = "DocFile"
+	description = "Contains all the data for file creation.",
+	value = "FileRsModel"
 )
 @JsonFilter("Liferay.Vulcan")
-@XmlRootElement(name = "DocFile")
-public class DocFile implements Serializable {
+@XmlRootElement(name = "FileRsModel")
+public class FileRsModel implements Serializable {
 
-	public static DocFile toDTO(String json) {
-		return ObjectMapperUtil.readValue(DocFile.class, json);
+	public static FileRsModel toDTO(String json) {
+		return ObjectMapperUtil.readValue(FileRsModel.class, json);
 	}
 
-	public static DocFile unsafeToDTO(String json) {
-		return ObjectMapperUtil.unsafeReadValue(DocFile.class, json);
+	public static FileRsModel unsafeToDTO(String json) {
+		return ObjectMapperUtil.unsafeReadValue(FileRsModel.class, json);
 	}
 
 	@Schema
@@ -638,13 +639,13 @@ public class DocFile implements Serializable {
 			return true;
 		}
 
-		if (!(object instanceof DocFile)) {
+		if (!(object instanceof FileRsModel)) {
 			return false;
 		}
 
-		DocFile docFile = (DocFile)object;
+		FileRsModel fileRsModel = (FileRsModel)object;
 
-		return Objects.equals(toString(), docFile.toString());
+		return Objects.equals(toString(), fileRsModel.toString());
 	}
 
 	@Override
@@ -915,7 +916,8 @@ public class DocFile implements Serializable {
 
 	@Schema(
 		accessMode = Schema.AccessMode.READ_ONLY,
-		defaultValue = "io.jetprocess.dto.v1_0.DocFile", name = "x-class-name"
+		defaultValue = "io.jetprocess.dto.v1_0.FileRsModel",
+		name = "x-class-name"
 	)
 	public String xClassName;
 

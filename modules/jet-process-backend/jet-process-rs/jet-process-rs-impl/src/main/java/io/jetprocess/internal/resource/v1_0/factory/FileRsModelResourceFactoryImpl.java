@@ -20,7 +20,7 @@ import com.liferay.portal.odata.filter.ExpressionConvert;
 import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 
-import io.jetprocess.resource.v1_0.DocFileResource;
+import io.jetprocess.resource.v1_0.FileRsModelResource;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -45,23 +45,24 @@ import org.osgi.service.component.annotations.ReferenceScope;
  * @author Admin
  * @generated
  */
-@Component(immediate = true, service = DocFileResource.Factory.class)
+@Component(immediate = true, service = FileRsModelResource.Factory.class)
 @Generated("")
-public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
+public class FileRsModelResourceFactoryImpl
+	implements FileRsModelResource.Factory {
 
 	@Override
-	public DocFileResource.Builder create() {
-		return new DocFileResource.Builder() {
+	public FileRsModelResource.Builder create() {
+		return new FileRsModelResource.Builder() {
 
 			@Override
-			public DocFileResource build() {
+			public FileRsModelResource build() {
 				if (_user == null) {
 					throw new IllegalArgumentException("User is not set");
 				}
 
-				return (DocFileResource)ProxyUtil.newProxyInstance(
-					DocFileResource.class.getClassLoader(),
-					new Class<?>[] {DocFileResource.class},
+				return (FileRsModelResource)ProxyUtil.newProxyInstance(
+					FileRsModelResource.class.getClassLoader(),
+					new Class<?>[] {FileRsModelResource.class},
 					(proxy, method, arguments) -> _invoke(
 						method, arguments, _checkPermissions,
 						_httpServletRequest, _httpServletResponse,
@@ -69,7 +70,7 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 			}
 
 			@Override
-			public DocFileResource.Builder checkPermissions(
+			public FileRsModelResource.Builder checkPermissions(
 				boolean checkPermissions) {
 
 				_checkPermissions = checkPermissions;
@@ -78,7 +79,7 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 			}
 
 			@Override
-			public DocFileResource.Builder httpServletRequest(
+			public FileRsModelResource.Builder httpServletRequest(
 				HttpServletRequest httpServletRequest) {
 
 				_httpServletRequest = httpServletRequest;
@@ -87,7 +88,7 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 			}
 
 			@Override
-			public DocFileResource.Builder httpServletResponse(
+			public FileRsModelResource.Builder httpServletResponse(
 				HttpServletResponse httpServletResponse) {
 
 				_httpServletResponse = httpServletResponse;
@@ -96,7 +97,7 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 			}
 
 			@Override
-			public DocFileResource.Builder preferredLocale(
+			public FileRsModelResource.Builder preferredLocale(
 				Locale preferredLocale) {
 
 				_preferredLocale = preferredLocale;
@@ -105,7 +106,7 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 			}
 
 			@Override
-			public DocFileResource.Builder user(User user) {
+			public FileRsModelResource.Builder user(User user) {
 				_user = user;
 
 				return this;
@@ -122,12 +123,12 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 
 	@Activate
 	protected void activate() {
-		DocFileResource.FactoryHolder.factory = this;
+		FileRsModelResource.FactoryHolder.factory = this;
 	}
 
 	@Deactivate
 	protected void deactivate() {
-		DocFileResource.FactoryHolder.factory = null;
+		FileRsModelResource.FactoryHolder.factory = null;
 	}
 
 	private Object _invoke(
@@ -153,35 +154,36 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 				_liberalPermissionCheckerFactory.create(user));
 		}
 
-		DocFileResource docFileResource = _componentServiceObjects.getService();
+		FileRsModelResource fileRsModelResource =
+			_componentServiceObjects.getService();
 
-		docFileResource.setContextAcceptLanguage(
+		fileRsModelResource.setContextAcceptLanguage(
 			new AcceptLanguageImpl(httpServletRequest, preferredLocale, user));
 
 		Company company = _companyLocalService.getCompany(user.getCompanyId());
 
-		docFileResource.setContextCompany(company);
+		fileRsModelResource.setContextCompany(company);
 
-		docFileResource.setContextHttpServletRequest(httpServletRequest);
-		docFileResource.setContextHttpServletResponse(httpServletResponse);
-		docFileResource.setContextUser(user);
-		docFileResource.setExpressionConvert(_expressionConvert);
-		docFileResource.setFilterParserProvider(_filterParserProvider);
-		docFileResource.setGroupLocalService(_groupLocalService);
-		docFileResource.setResourceActionLocalService(
+		fileRsModelResource.setContextHttpServletRequest(httpServletRequest);
+		fileRsModelResource.setContextHttpServletResponse(httpServletResponse);
+		fileRsModelResource.setContextUser(user);
+		fileRsModelResource.setExpressionConvert(_expressionConvert);
+		fileRsModelResource.setFilterParserProvider(_filterParserProvider);
+		fileRsModelResource.setGroupLocalService(_groupLocalService);
+		fileRsModelResource.setResourceActionLocalService(
 			_resourceActionLocalService);
-		docFileResource.setResourcePermissionLocalService(
+		fileRsModelResource.setResourcePermissionLocalService(
 			_resourcePermissionLocalService);
-		docFileResource.setRoleLocalService(_roleLocalService);
+		fileRsModelResource.setRoleLocalService(_roleLocalService);
 
 		try {
-			return method.invoke(docFileResource, arguments);
+			return method.invoke(fileRsModelResource, arguments);
 		}
 		catch (InvocationTargetException invocationTargetException) {
 			throw invocationTargetException.getTargetException();
 		}
 		finally {
-			_componentServiceObjects.ungetService(docFileResource);
+			_componentServiceObjects.ungetService(fileRsModelResource);
 
 			PrincipalThreadLocal.setName(name);
 
@@ -193,7 +195,8 @@ public class DocFileResourceFactoryImpl implements DocFileResource.Factory {
 	private CompanyLocalService _companyLocalService;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
-	private ComponentServiceObjects<DocFileResource> _componentServiceObjects;
+	private ComponentServiceObjects<FileRsModelResource>
+		_componentServiceObjects;
 
 	@Reference
 	private PermissionCheckerFactory _defaultPermissionCheckerFactory;

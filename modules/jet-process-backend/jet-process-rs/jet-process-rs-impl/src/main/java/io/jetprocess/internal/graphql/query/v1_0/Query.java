@@ -11,8 +11,8 @@ import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 import com.liferay.portal.vulcan.pagination.Page;
 
-import io.jetprocess.dto.v1_0.DocFile;
-import io.jetprocess.resource.v1_0.DocFileResource;
+import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.resource.v1_0.FileRsModelResource;
 
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -33,12 +33,12 @@ import org.osgi.service.component.ComponentServiceObjects;
 @Generated("")
 public class Query {
 
-	public static void setDocFileResourceComponentServiceObjects(
-		ComponentServiceObjects<DocFileResource>
-			docFileResourceComponentServiceObjects) {
+	public static void setFileRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<FileRsModelResource>
+			fileRsModelResourceComponentServiceObjects) {
 
-		_docFileResourceComponentServiceObjects =
-			docFileResourceComponentServiceObjects;
+		_fileRsModelResourceComponentServiceObjects =
+			fileRsModelResourceComponentServiceObjects;
 	}
 
 	/**
@@ -47,48 +47,48 @@ public class Query {
 	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public DocFilePage docFileList() throws Exception {
+	public FileRsModelPage docFileList() throws Exception {
 		return _applyComponentServiceObjects(
-			_docFileResourceComponentServiceObjects,
+			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			docFileResource -> new DocFilePage(
-				docFileResource.getDocFileList()));
+			fileRsModelResource -> new FileRsModelPage(
+				fileRsModelResource.getDocFileList()));
 	}
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){docFileId, groupId, companyId, userId, userName, createDate, modifiedDate, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, currentUser, currentState, dealingOrganizationId}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public DocFilePage docFileById(@GraphQLName("docFileId") Long docFileId)
+	public FileRsModel docFileById(@GraphQLName("docFileId") Long docFileId)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
-			_docFileResourceComponentServiceObjects,
+			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			docFileResource -> new DocFilePage(
-				docFileResource.getDocFileById(docFileId)));
+			fileRsModelResource -> fileRsModelResource.getDocFileById(
+				docFileId));
 	}
 
-	@GraphQLName("DocFilePage")
-	public class DocFilePage {
+	@GraphQLName("FileRsModelPage")
+	public class FileRsModelPage {
 
-		public DocFilePage(Page docFilePage) {
-			actions = docFilePage.getActions();
+		public FileRsModelPage(Page fileRsModelPage) {
+			actions = fileRsModelPage.getActions();
 
-			items = docFilePage.getItems();
-			lastPage = docFilePage.getLastPage();
-			page = docFilePage.getPage();
-			pageSize = docFilePage.getPageSize();
-			totalCount = docFilePage.getTotalCount();
+			items = fileRsModelPage.getItems();
+			lastPage = fileRsModelPage.getLastPage();
+			page = fileRsModelPage.getPage();
+			pageSize = fileRsModelPage.getPageSize();
+			totalCount = fileRsModelPage.getTotalCount();
 		}
 
 		@GraphQLField
 		protected Map<String, Map> actions;
 
 		@GraphQLField
-		protected java.util.Collection<DocFile> items;
+		protected java.util.Collection<FileRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -123,21 +123,22 @@ public class Query {
 		}
 	}
 
-	private void _populateResourceContext(DocFileResource docFileResource)
+	private void _populateResourceContext(
+			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
-		docFileResource.setContextAcceptLanguage(_acceptLanguage);
-		docFileResource.setContextCompany(_company);
-		docFileResource.setContextHttpServletRequest(_httpServletRequest);
-		docFileResource.setContextHttpServletResponse(_httpServletResponse);
-		docFileResource.setContextUriInfo(_uriInfo);
-		docFileResource.setContextUser(_user);
-		docFileResource.setGroupLocalService(_groupLocalService);
-		docFileResource.setRoleLocalService(_roleLocalService);
+		fileRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		fileRsModelResource.setContextCompany(_company);
+		fileRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		fileRsModelResource.setContextHttpServletResponse(_httpServletResponse);
+		fileRsModelResource.setContextUriInfo(_uriInfo);
+		fileRsModelResource.setContextUser(_user);
+		fileRsModelResource.setGroupLocalService(_groupLocalService);
+		fileRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
-	private static ComponentServiceObjects<DocFileResource>
-		_docFileResourceComponentServiceObjects;
+	private static ComponentServiceObjects<FileRsModelResource>
+		_fileRsModelResourceComponentServiceObjects;
 
 	private AcceptLanguage _acceptLanguage;
 	private com.liferay.portal.kernel.model.Company _company;

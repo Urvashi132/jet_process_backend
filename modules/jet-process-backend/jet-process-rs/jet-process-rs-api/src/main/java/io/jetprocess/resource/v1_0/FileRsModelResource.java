@@ -10,7 +10,7 @@ import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.pagination.Page;
 
-import io.jetprocess.dto.v1_0.DocFile;
+import io.jetprocess.dto.v1_0.FileRsModel;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,21 +36,21 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @Generated("")
 @ProviderType
-public interface DocFileResource {
+public interface FileRsModelResource {
 
 	public static Builder builder() {
 		return FactoryHolder.factory.create();
 	}
 
-	public Page<DocFile> getDocFileList() throws Exception;
+	public Page<FileRsModel> getDocFileList() throws Exception;
 
-	public DocFile createDocFile(DocFile docFile) throws Exception;
+	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception;
 
 	public void deleteDocFileById(Long docFileId) throws Exception;
 
-	public Page<DocFile> getDocFileById(Long docFileId) throws Exception;
+	public FileRsModel getDocFileById(Long docFileId) throws Exception;
 
-	public DocFile updateDocFile(Long docFileId, DocFile docFile)
+	public FileRsModel updateDocFile(Long docFileId, FileRsModel fileRsModel)
 		throws Exception;
 
 	public default void setContextAcceptLanguage(
@@ -110,7 +110,7 @@ public interface DocFileResource {
 	@ProviderType
 	public interface Builder {
 
-		public DocFileResource build();
+		public FileRsModelResource build();
 
 		public Builder checkPermissions(boolean checkPermissions);
 

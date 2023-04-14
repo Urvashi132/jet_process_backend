@@ -8,7 +8,7 @@ info:
 openapi: 3.0.1
 components:
   schemas:
-    DocFile:
+    FileRsModel:
       description: Contains all the data for file creation.
       properties:
         docFileId:
@@ -76,21 +76,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DocFile"
+              $ref: "#/components/schemas/FileRsModel"
           application/xml:
             schema:
-              $ref: "#/components/schemas/DocFile"
+              $ref: "#/components/schemas/FileRsModel"
       responses:
         '200':
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
             application/xml:
               schema:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
           description: ''
-      tags: ["DocFile"]
+      tags: ["FileRsModel"]
     get:
       operationId: getDocFileList
       responses:
@@ -99,13 +99,13 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
             application/xml:
               schema:
                 items:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
           description: ''
-      tags: ["DocFile"]
+      tags: ["FileRsModel"]
   /DocFile/{docFileId}:
     get:
       operationId: getDocFileById
@@ -121,16 +121,12 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/DocFile'
-                type: array  
+                  $ref: '#/components/schemas/FileRsModel'
             application/xml:
               schema:
-                items:
-                  $ref: '#/components/schemas/DocFile'
-                type: array
+                  $ref: '#/components/schemas/FileRsModel'
           description: ''
-      tags: ["DocFile"]
+      tags: ["FileRsModel"]
     delete:
       operationId: deleteDocFileById
       parameters:
@@ -141,12 +137,12 @@ paths:
             format: int64
             type: integer
       responses:
-        '204':
+        '200':
           content:
             application/json: {}
             application/xml: {}
           description: ''
-      tags: ["DocFile"]
+      tags: ["FileRsModel"]
     put:
       operationId: updateDocFile
       parameters:
@@ -160,18 +156,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DocFile"
+              $ref: "#/components/schemas/FileRsModel"
           application/xml:
             schema:
-              $ref: "#/components/schemas/DocFile"
+              $ref: "#/components/schemas/FileRsModel"
       responses:
         '200':
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
             application/xml:
               schema:
-                  $ref: '#/components/schemas/DocFile'
+                  $ref: '#/components/schemas/FileRsModel'
           description: ''
-      tags: ["DocFile"]
+      tags: ["FileRsModel"]

@@ -24,8 +24,8 @@ import com.liferay.portal.vulcan.resource.EntityModelResource;
 import com.liferay.portal.vulcan.util.ActionUtil;
 import com.liferay.portal.vulcan.util.TransformUtil;
 
-import io.jetprocess.dto.v1_0.DocFile;
-import io.jetprocess.resource.v1_0.DocFileResource;
+import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.resource.v1_0.FileRsModelResource;
 
 import java.io.Serializable;
 
@@ -49,9 +49,9 @@ import javax.ws.rs.core.UriInfo;
  */
 @Generated("")
 @javax.ws.rs.Path("/v1.0")
-public abstract class BaseDocFileResourceImpl
-	implements DocFileResource, EntityModelResource,
-			   VulcanBatchEngineTaskItemDelegate<DocFile> {
+public abstract class BaseFileRsModelResourceImpl
+	implements EntityModelResource, FileRsModelResource,
+			   VulcanBatchEngineTaskItemDelegate<FileRsModel> {
 
 	/**
 	 * Invoke this method with the command line:
@@ -59,13 +59,13 @@ public abstract class BaseDocFileResourceImpl
 	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "DocFile")}
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.GET
 	@javax.ws.rs.Path("/DocFile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public Page<DocFile> getDocFileList() throws Exception {
+	public Page<FileRsModel> getDocFileList() throws Exception {
 		return Page.of(Collections.emptyList());
 	}
 
@@ -75,15 +75,15 @@ public abstract class BaseDocFileResourceImpl
 	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "companyId": ___, "createDate": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "modifiedDate": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userId": ___, "userName": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "DocFile")}
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
 	@javax.ws.rs.Path("/DocFile")
 	@javax.ws.rs.POST
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public DocFile createDocFile(DocFile docFile) throws Exception {
-		return new DocFile();
+	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
+		return new FileRsModel();
 	}
 
 	/**
@@ -100,7 +100,7 @@ public abstract class BaseDocFileResourceImpl
 		}
 	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "DocFile")}
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.DELETE
 	@javax.ws.rs.Path("/DocFile/{docFileId}")
@@ -128,20 +128,20 @@ public abstract class BaseDocFileResourceImpl
 		}
 	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "DocFile")}
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.GET
 	@javax.ws.rs.Path("/DocFile/{docFileId}")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public Page<DocFile> getDocFileById(
+	public FileRsModel getDocFileById(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
 			@javax.validation.constraints.NotNull
 			@javax.ws.rs.PathParam("docFileId")
 			Long docFileId)
 		throws Exception {
 
-		return Page.of(Collections.emptyList());
+		return new FileRsModel();
 	}
 
 	/**
@@ -158,35 +158,35 @@ public abstract class BaseDocFileResourceImpl
 		}
 	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "DocFile")}
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
 	@javax.ws.rs.Path("/DocFile/{docFileId}")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@javax.ws.rs.PUT
 	@Override
-	public DocFile updateDocFile(
+	public FileRsModel updateDocFile(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
 			@javax.validation.constraints.NotNull
 			@javax.ws.rs.PathParam("docFileId")
 			Long docFileId,
-			DocFile docFile)
+			FileRsModel fileRsModel)
 		throws Exception {
 
-		return new DocFile();
+		return new FileRsModel();
 	}
 
 	@Override
 	@SuppressWarnings("PMD.UnusedLocalVariable")
 	public void create(
-			java.util.Collection<DocFile> docFiles,
+			java.util.Collection<FileRsModel> fileRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
 
 	@Override
 	public void delete(
-			java.util.Collection<DocFile> docFiles,
+			java.util.Collection<FileRsModel> fileRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
@@ -207,7 +207,7 @@ public abstract class BaseDocFileResourceImpl
 	}
 
 	@Override
-	public Page<DocFile> read(
+	public Page<FileRsModel> read(
 			Filter filter, Pagination pagination, Sort[] sorts,
 			Map<String, Serializable> parameters, String search)
 		throws Exception {
@@ -239,7 +239,7 @@ public abstract class BaseDocFileResourceImpl
 
 	@Override
 	public void update(
-			java.util.Collection<DocFile> docFiles,
+			java.util.Collection<FileRsModel> fileRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
@@ -412,6 +412,6 @@ public abstract class BaseDocFileResourceImpl
 		vulcanBatchEngineImportTaskResource;
 
 	private static final com.liferay.portal.kernel.log.Log _log =
-		LogFactoryUtil.getLog(BaseDocFileResourceImpl.class);
+		LogFactoryUtil.getLog(BaseFileRsModelResourceImpl.class);
 
 }
