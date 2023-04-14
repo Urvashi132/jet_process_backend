@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="io.jetprocess.model.DocFile">
+		<field name="uuid" type="String" />
+		<field name="docFileId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nature" type="String" />
+		<field name="type" type="String" />
+		<field name="headId" type="long" />
+		<field name="fileCodeId" type="long" />
+		<field name="subject" type="String" />
+		<field name="fileNo" type="String" />
+		<field name="categoryId" type="long" />
+		<field name="remarks" type="String" />
+		<field name="reference" type="String" />
+		<field name="year" type="long" />
+		<field name="userPostId" type="long" />
+		<field name="currentUser" type="long" />
+		<field name="currentState" type="int" />
+		<field name="dealingOrganizationId" type="long" />
+	</model>
+</model-hints>

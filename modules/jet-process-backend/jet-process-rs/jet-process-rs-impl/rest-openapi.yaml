@@ -1,0 +1,177 @@
+info:
+    description: "JetProcessRs REST API"
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "JetProcessRs"
+    version: v1.0
+openapi: 3.0.1
+components:
+  schemas:
+    DocFile:
+      description: Contains all the data for file creation.
+      properties:
+        docFileId:
+          format: int64
+          type: integer
+        groupId:
+          format: int64
+          type: integer
+        companyId:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+        userName:
+          type: string
+        createDate:
+          format: date-time
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string 
+        nature:
+          type: string
+        type:
+          type: string 
+        headId:
+          format: int64
+          type: integer
+        fileCodeId:
+          format: int64
+          type: integer
+        subject:
+          type: string
+        fileNo:
+          type: string
+        categoryId:
+          format: int64
+          type: integer 
+        remarks:
+          type: string 
+        reference:
+          type: string 
+        year:
+          format: int64
+          type: integer
+        userPostId:
+          format: int64
+          type: integer   
+        currentUser:
+          format: int64
+          type: integer
+        currentState:
+          format: int32
+          type: integer
+        dealingOrganizationId:
+          format: int64
+          type: integer
+      type: object 
+paths:
+  /DocFile:
+    post:
+      operationId: createDocFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocFile"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DocFile"
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DocFile'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DocFile'
+          description: ''
+      tags: ["DocFile"]
+    get:
+      operationId: getDocFileList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DocFile'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DocFile'
+          description: ''
+      tags: ["DocFile"]
+  /DocFile/{docFileId}:
+    get:
+      operationId: getDocFileById
+      parameters:
+        - in: path
+          name: docFileId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DocFile'
+                type: array  
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DocFile'
+                type: array
+          description: ''
+      tags: ["DocFile"]
+    delete:
+      operationId: deleteDocFileById
+      parameters:
+        - in: path
+          name: docFileId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '204':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["DocFile"]
+    put:
+      operationId: updateDocFile
+      parameters:
+        - in: path
+          name: docFileId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocFile"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/DocFile"
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DocFile'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DocFile'
+          description: ''
+      tags: ["DocFile"]
