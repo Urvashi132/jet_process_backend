@@ -39,8 +39,20 @@ public class CategoryRsModelResourceImpl
 	
 	@Override
 	public Page<CategoryRsModel> getCategoryList() throws Exception {
-		return null;
-		
+		List<CategoryRsModel> categorytRsModelList = new ArrayList<>();
+		List<Category> categoryList = categoryLocalService.getCategories(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		categoryList.stream().forEach(category -> {
+			categorytRsModelList.add(GetCategoryModel(category));
+		});
+		System.out.println("executing-category-----");
+		return Page.of(categorytRsModelList);
+	}
+	
+	private CategoryRsModel GetCategoryModel(Category category) {
+		CategoryRsModel createdCategory = new CategoryRsModel();
+		createdCategory.setCategoryId(category.getCategoryId());
+		createdCategory.setCategoryValue(category.getCategoryValue());
+		return createdCategory;
 	}
 	
 	@Reference
