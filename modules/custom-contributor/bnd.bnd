@@ -1,0 +1,5 @@
+Bundle-Name: custom-contributor
+Bundle-SymbolicName: com.adjecti.customcontributor
+Bundle-Version: 1.0.0
+
+Import-Package: *;resolution:="optional"

@@ -1,0 +1,113 @@
+{
+    "publicPages": [
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/employee",
+            "pageName": "Employee",
+            "pageDescription": "employee",
+            "pageTitle": "employee",
+            "pageVisiblity": false
+        },
+       
+        {
+
+            "pageName": "Dashboard",
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/dashboard",
+            "description": "dashboard",
+            "pageTitle": "dashboard",
+            "pageVisiblity": false,
+            
+            "layouts": [
+                {
+                    "privateLayout": false,
+                    "pageType": "portlet",
+                    "pageUrl": "/dashboard-light",
+                    "pageName": "Dashboard-Light",
+                    "pageDescription": "dashboard",
+                    "pageTitle": "dashboard",
+                    "pageVisiblity": false
+                },
+                {
+                    "privateLayout": false,
+                    "pageType": "portlet",
+                    "pageUrl": "/dashboard-dark",
+                    "pageName": "Dashboard-Dark",
+                    "pageDescription": "dashboard",
+                    "pageTitle": "dashboard",
+                    "pageVisiblity": false
+                }
+            ]
+           
+        },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/corehr",
+            "pageName": "Core Hr",
+            "pageDescription": "corehr",
+            "pageTitle": "corehr",
+            "pageVisiblity": false
+        },
+          {
+
+            "pageName": "Tasks",
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/tasks",
+            "description": "tasks",
+            "pageTitle": "tasks",
+            "pageVisiblity": false,
+            
+            "layouts": [
+                {
+                    "privateLayout": false,
+                    "pageType": "portlet",
+                    "pageUrl": "/task",
+                    "pageName": "Task",
+                    "pageDescription": "task",
+                    "pageTitle": "task",
+                    "pageVisiblity": false
+                },
+                {
+                    "privateLayout": false,
+                    "pageType": "portlet",
+                    "pageUrl": "/task-summary",
+                    "pageName": "Task-Summary",
+                    "pageDescription": "task-summary",
+                    "pageTitle": "task-summary",
+                    "pageVisiblity": false
+                }
+            ]
+           
+        },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/finance",
+            "pageName": "Finance",
+            "pageDescription": "finance",
+            "pageTitle": "finance",
+            "pageVisiblity": false
+        },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/projetcs",
+            "pageName": "Projects",
+            "pageDescription": "projects",
+            "pageTitle": "projects",
+            "pageVisiblity": false
+        }
+        
+      
+    ]
+}

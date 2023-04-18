@@ -1,0 +1,5 @@
+Bundle-Name: app-navigation
+Bundle-SymbolicName: com.adjecti.appnavigation
+Bundle-Version: 1.0.0
+Export-Package: com.adjecti.appnavigation.constants
+

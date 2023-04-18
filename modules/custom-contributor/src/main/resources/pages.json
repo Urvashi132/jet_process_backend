@@ -1,0 +1,10 @@
+ {
+            "privateLayout": "false",
+            "parentLayoutId": "0",
+           	"pageType":"portlet",
+			"pageURL":"/testing",
+			"pageName":"testing",
+			"pageDescription":"The testing",
+			"pageTitle":"testing page",
+			"pageVisiblity":"false"
+ }

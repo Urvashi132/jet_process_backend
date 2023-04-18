@@ -1,0 +1,4 @@
+Bundle-Name: header-setting
+Bundle-SymbolicName: com.liferay.header.setting
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.header.setting.constants

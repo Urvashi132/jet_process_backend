@@ -1,0 +1,28 @@
+/* for top navigation */
+.nav-item .dropdown{
+	margin-right: -0.6rem !important;
+}
+
+.nav-item .dropdown-toggle.rounded-circle.btn.btn-unstyled::after {
+	display:none !important;	
+}
+
+.nav-item .sticker {
+	width: 1.875rem !important;
+    height: 1.875rem !important;
+}
+
+/* to hide asset title*/
+.portlet-title-text {
+	display: none;
+}
+/* .portlet-title-text .portlet-title-editable{
+	display: none;
+}
+ */
+.navbar-nav .portlet-topper {
+ 	margin-top: 5rem !important;
+ }
+.dropdown-menu-personal-menu{
+	left: 77rem !important;	
+}
