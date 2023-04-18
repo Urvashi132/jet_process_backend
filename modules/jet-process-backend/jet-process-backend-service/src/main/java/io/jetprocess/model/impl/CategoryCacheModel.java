@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import java.util.Date;
-
 /**
  * The cache model class for representing Category in entity cache.
  *
@@ -62,24 +60,10 @@ public class CategoryCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", categoryId=");
+		sb.append("{categoryId=");
 		sb.append(categoryId);
-		sb.append(", groupId=");
-		sb.append(groupId);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", userName=");
-		sb.append(userName);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", modifiedDate=");
-		sb.append(modifiedDate);
 		sb.append(", categoryValue=");
 		sb.append(categoryValue);
 		sb.append("}");
@@ -91,38 +75,7 @@ public class CategoryCacheModel
 	public Category toEntityModel() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		if (uuid == null) {
-			categoryImpl.setUuid("");
-		}
-		else {
-			categoryImpl.setUuid(uuid);
-		}
-
 		categoryImpl.setCategoryId(categoryId);
-		categoryImpl.setGroupId(groupId);
-		categoryImpl.setCompanyId(companyId);
-		categoryImpl.setUserId(userId);
-
-		if (userName == null) {
-			categoryImpl.setUserName("");
-		}
-		else {
-			categoryImpl.setUserName(userName);
-		}
-
-		if (createDate == Long.MIN_VALUE) {
-			categoryImpl.setCreateDate(null);
-		}
-		else {
-			categoryImpl.setCreateDate(new Date(createDate));
-		}
-
-		if (modifiedDate == Long.MIN_VALUE) {
-			categoryImpl.setModifiedDate(null);
-		}
-		else {
-			categoryImpl.setModifiedDate(new Date(modifiedDate));
-		}
 
 		if (categoryValue == null) {
 			categoryImpl.setCategoryValue("");
@@ -138,47 +91,13 @@ public class CategoryCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		categoryId = objectInput.readLong();
-
-		groupId = objectInput.readLong();
-
-		companyId = objectInput.readLong();
-
-		userId = objectInput.readLong();
-		userName = objectInput.readUTF();
-		createDate = objectInput.readLong();
-		modifiedDate = objectInput.readLong();
 		categoryValue = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
 		objectOutput.writeLong(categoryId);
-
-		objectOutput.writeLong(groupId);
-
-		objectOutput.writeLong(companyId);
-
-		objectOutput.writeLong(userId);
-
-		if (userName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(userName);
-		}
-
-		objectOutput.writeLong(createDate);
-		objectOutput.writeLong(modifiedDate);
 
 		if (categoryValue == null) {
 			objectOutput.writeUTF("");
@@ -188,14 +107,7 @@ public class CategoryCacheModel
 		}
 	}
 
-	public String uuid;
 	public long categoryId;
-	public long groupId;
-	public long companyId;
-	public long userId;
-	public String userName;
-	public long createDate;
-	public long modifiedDate;
 	public String categoryValue;
 
 }

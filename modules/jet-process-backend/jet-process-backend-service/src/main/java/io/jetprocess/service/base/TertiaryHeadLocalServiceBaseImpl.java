@@ -14,11 +14,6 @@
 
 package io.jetprocess.service.base;
 
-import com.liferay.exportimport.kernel.lar.ExportImportHelperUtil;
-import com.liferay.exportimport.kernel.lar.ManifestSummary;
-import com.liferay.exportimport.kernel.lar.PortletDataContext;
-import com.liferay.exportimport.kernel.lar.StagedModelDataHandlerUtil;
-import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.db.DB;
@@ -29,7 +24,6 @@ import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DefaultActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
-import com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -257,20 +251,6 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
-	 */
-	@Override
-	public TertiaryHead fetchTertiaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return tertiaryHeadPersistence.fetchByUUID_G(uuid, groupId);
-	}
-
-	/**
 	 * Returns the tertiary head with the primary key.
 	 *
 	 * @param tertiaryHeadId the primary key of the tertiary head
@@ -326,72 +306,6 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setPrimaryKeyPropertyName("tertiaryHeadId");
 	}
 
-	@Override
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		final PortletDataContext portletDataContext) {
-
-		final ExportActionableDynamicQuery exportActionableDynamicQuery =
-			new ExportActionableDynamicQuery() {
-
-				@Override
-				public long performCount() throws PortalException {
-					ManifestSummary manifestSummary =
-						portletDataContext.getManifestSummary();
-
-					StagedModelType stagedModelType = getStagedModelType();
-
-					long modelAdditionCount = super.performCount();
-
-					manifestSummary.addModelAdditionCount(
-						stagedModelType, modelAdditionCount);
-
-					long modelDeletionCount =
-						ExportImportHelperUtil.getModelDeletionCount(
-							portletDataContext, stagedModelType);
-
-					manifestSummary.addModelDeletionCount(
-						stagedModelType, modelDeletionCount);
-
-					return modelAdditionCount;
-				}
-
-			};
-
-		initActionableDynamicQuery(exportActionableDynamicQuery);
-
-		exportActionableDynamicQuery.setAddCriteriaMethod(
-			new ActionableDynamicQuery.AddCriteriaMethod() {
-
-				@Override
-				public void addCriteria(DynamicQuery dynamicQuery) {
-					portletDataContext.addDateRangeCriteria(
-						dynamicQuery, "modifiedDate");
-				}
-
-			});
-
-		exportActionableDynamicQuery.setCompanyId(
-			portletDataContext.getCompanyId());
-
-		exportActionableDynamicQuery.setPerformActionMethod(
-			new ActionableDynamicQuery.PerformActionMethod<TertiaryHead>() {
-
-				@Override
-				public void performAction(TertiaryHead tertiaryHead)
-					throws PortalException {
-
-					StagedModelDataHandlerUtil.exportStagedModel(
-						portletDataContext, tertiaryHead);
-				}
-
-			});
-		exportActionableDynamicQuery.setStagedModelType(
-			new StagedModelType(
-				PortalUtil.getClassNameId(TertiaryHead.class.getName())));
-
-		return exportActionableDynamicQuery;
-	}
-
 	/**
 	 * @throws PortalException
 	 */
@@ -427,55 +341,6 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 		throws PortalException {
 
 		return tertiaryHeadPersistence.findByPrimaryKey(primaryKeyObj);
-	}
-
-	/**
-	 * Returns all the tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId) {
-
-		return tertiaryHeadPersistence.findByUuid_C(uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of tertiary heads
-	 * @param end the upper bound of the range of tertiary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<TertiaryHead> orderByComparator) {
-
-		return tertiaryHeadPersistence.findByUuid_C(
-			uuid, companyId, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head
-	 * @throws PortalException if a matching tertiary head could not be found
-	 */
-	@Override
-	public TertiaryHead getTertiaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws PortalException {
-
-		return tertiaryHeadPersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

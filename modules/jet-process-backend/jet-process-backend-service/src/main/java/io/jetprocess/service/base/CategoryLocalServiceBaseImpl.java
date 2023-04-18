@@ -14,11 +14,6 @@
 
 package io.jetprocess.service.base;
 
-import com.liferay.exportimport.kernel.lar.ExportImportHelperUtil;
-import com.liferay.exportimport.kernel.lar.ManifestSummary;
-import com.liferay.exportimport.kernel.lar.PortletDataContext;
-import com.liferay.exportimport.kernel.lar.StagedModelDataHandlerUtil;
-import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.db.DB;
@@ -29,7 +24,6 @@ import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DefaultActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
-import com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -255,18 +249,6 @@ public abstract class CategoryLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category, or <code>null</code> if a matching category could not be found
-	 */
-	@Override
-	public Category fetchCategoryByUuidAndGroupId(String uuid, long groupId) {
-		return categoryPersistence.fetchByUUID_G(uuid, groupId);
-	}
-
-	/**
 	 * Returns the category with the primary key.
 	 *
 	 * @param categoryId the primary key of the category
@@ -319,72 +301,6 @@ public abstract class CategoryLocalServiceBaseImpl
 		actionableDynamicQuery.setPrimaryKeyPropertyName("categoryId");
 	}
 
-	@Override
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		final PortletDataContext portletDataContext) {
-
-		final ExportActionableDynamicQuery exportActionableDynamicQuery =
-			new ExportActionableDynamicQuery() {
-
-				@Override
-				public long performCount() throws PortalException {
-					ManifestSummary manifestSummary =
-						portletDataContext.getManifestSummary();
-
-					StagedModelType stagedModelType = getStagedModelType();
-
-					long modelAdditionCount = super.performCount();
-
-					manifestSummary.addModelAdditionCount(
-						stagedModelType, modelAdditionCount);
-
-					long modelDeletionCount =
-						ExportImportHelperUtil.getModelDeletionCount(
-							portletDataContext, stagedModelType);
-
-					manifestSummary.addModelDeletionCount(
-						stagedModelType, modelDeletionCount);
-
-					return modelAdditionCount;
-				}
-
-			};
-
-		initActionableDynamicQuery(exportActionableDynamicQuery);
-
-		exportActionableDynamicQuery.setAddCriteriaMethod(
-			new ActionableDynamicQuery.AddCriteriaMethod() {
-
-				@Override
-				public void addCriteria(DynamicQuery dynamicQuery) {
-					portletDataContext.addDateRangeCriteria(
-						dynamicQuery, "modifiedDate");
-				}
-
-			});
-
-		exportActionableDynamicQuery.setCompanyId(
-			portletDataContext.getCompanyId());
-
-		exportActionableDynamicQuery.setPerformActionMethod(
-			new ActionableDynamicQuery.PerformActionMethod<Category>() {
-
-				@Override
-				public void performAction(Category category)
-					throws PortalException {
-
-					StagedModelDataHandlerUtil.exportStagedModel(
-						portletDataContext, category);
-				}
-
-			});
-		exportActionableDynamicQuery.setStagedModelType(
-			new StagedModelType(
-				PortalUtil.getClassNameId(Category.class.getName())));
-
-		return exportActionableDynamicQuery;
-	}
-
 	/**
 	 * @throws PortalException
 	 */
@@ -418,54 +334,6 @@ public abstract class CategoryLocalServiceBaseImpl
 		throws PortalException {
 
 		return categoryPersistence.findByPrimaryKey(primaryKeyObj);
-	}
-
-	/**
-	 * Returns all the categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @return the matching categories, or an empty list if no matches were found
-	 */
-	@Override
-	public List<Category> getCategoriesByUuidAndCompanyId(
-		String uuid, long companyId) {
-
-		return categoryPersistence.findByUuid_C(uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of categories
-	 * @param end the upper bound of the range of categories (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching categories, or an empty list if no matches were found
-	 */
-	@Override
-	public List<Category> getCategoriesByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<Category> orderByComparator) {
-
-		return categoryPersistence.findByUuid_C(
-			uuid, companyId, start, end, orderByComparator);
-	}
-
-	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category
-	 * @throws PortalException if a matching category could not be found
-	 */
-	@Override
-	public Category getCategoryByUuidAndGroupId(String uuid, long groupId)
-		throws PortalException {
-
-		return categoryPersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import java.util.Date;
-
 /**
  * The cache model class for representing BasicHead in entity cache.
  *
@@ -62,24 +60,10 @@ public class BasicHeadCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(7);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", basicHeadId=");
+		sb.append("{basicHeadId=");
 		sb.append(basicHeadId);
-		sb.append(", groupId=");
-		sb.append(groupId);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", userName=");
-		sb.append(userName);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", modifiedDate=");
-		sb.append(modifiedDate);
 		sb.append(", basicHeadValue=");
 		sb.append(basicHeadValue);
 		sb.append(", basicHeadCode=");
@@ -93,38 +77,7 @@ public class BasicHeadCacheModel
 	public BasicHead toEntityModel() {
 		BasicHeadImpl basicHeadImpl = new BasicHeadImpl();
 
-		if (uuid == null) {
-			basicHeadImpl.setUuid("");
-		}
-		else {
-			basicHeadImpl.setUuid(uuid);
-		}
-
 		basicHeadImpl.setBasicHeadId(basicHeadId);
-		basicHeadImpl.setGroupId(groupId);
-		basicHeadImpl.setCompanyId(companyId);
-		basicHeadImpl.setUserId(userId);
-
-		if (userName == null) {
-			basicHeadImpl.setUserName("");
-		}
-		else {
-			basicHeadImpl.setUserName(userName);
-		}
-
-		if (createDate == Long.MIN_VALUE) {
-			basicHeadImpl.setCreateDate(null);
-		}
-		else {
-			basicHeadImpl.setCreateDate(new Date(createDate));
-		}
-
-		if (modifiedDate == Long.MIN_VALUE) {
-			basicHeadImpl.setModifiedDate(null);
-		}
-		else {
-			basicHeadImpl.setModifiedDate(new Date(modifiedDate));
-		}
 
 		if (basicHeadValue == null) {
 			basicHeadImpl.setBasicHeadValue("");
@@ -142,18 +95,7 @@ public class BasicHeadCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		basicHeadId = objectInput.readLong();
-
-		groupId = objectInput.readLong();
-
-		companyId = objectInput.readLong();
-
-		userId = objectInput.readLong();
-		userName = objectInput.readUTF();
-		createDate = objectInput.readLong();
-		modifiedDate = objectInput.readLong();
 		basicHeadValue = objectInput.readUTF();
 
 		basicHeadCode = objectInput.readLong();
@@ -161,30 +103,7 @@ public class BasicHeadCacheModel
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
 		objectOutput.writeLong(basicHeadId);
-
-		objectOutput.writeLong(groupId);
-
-		objectOutput.writeLong(companyId);
-
-		objectOutput.writeLong(userId);
-
-		if (userName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(userName);
-		}
-
-		objectOutput.writeLong(createDate);
-		objectOutput.writeLong(modifiedDate);
 
 		if (basicHeadValue == null) {
 			objectOutput.writeUTF("");
@@ -196,14 +115,7 @@ public class BasicHeadCacheModel
 		objectOutput.writeLong(basicHeadCode);
 	}
 
-	public String uuid;
 	public long basicHeadId;
-	public long groupId;
-	public long companyId;
-	public long userId;
-	public String userName;
-	public long createDate;
-	public long modifiedDate;
 	public String basicHeadValue;
 	public long basicHeadCode;
 

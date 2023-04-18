@@ -14,11 +14,9 @@
 
 package io.jetprocess.service;
 
-import com.liferay.exportimport.kernel.lar.PortletDataContext;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
-import com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -203,23 +201,8 @@ public interface TertiaryHeadLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public TertiaryHead fetchTertiaryHead(long tertiaryHeadId);
 
-	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public TertiaryHead fetchTertiaryHeadByUuidAndGroupId(
-		String uuid, long groupId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		PortletDataContext portletDataContext);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
@@ -255,19 +238,6 @@ public interface TertiaryHeadLocalService
 		throws PortalException;
 
 	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head
-	 * @throws PortalException if a matching tertiary head could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public TertiaryHead getTertiaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws PortalException;
-
-	/**
 	 * Returns a range of all the tertiary heads.
 	 *
 	 * <p>
@@ -280,32 +250,6 @@ public interface TertiaryHeadLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<TertiaryHead> getTertiaryHeads(int start, int end);
-
-	/**
-	 * Returns all the tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId);
-
-	/**
-	 * Returns a range of tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of tertiary heads
-	 * @param end the upper bound of the range of tertiary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<TertiaryHead> orderByComparator);
 
 	/**
 	 * Returns the number of tertiary heads.

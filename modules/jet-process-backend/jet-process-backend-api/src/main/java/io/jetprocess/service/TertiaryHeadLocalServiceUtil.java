@@ -210,31 +210,10 @@ public class TertiaryHeadLocalServiceUtil {
 		return getService().fetchTertiaryHead(tertiaryHeadId);
 	}
 
-	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
-	 */
-	public static TertiaryHead fetchTertiaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return getService().fetchTertiaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return getService().getExportActionableDynamicQuery(portletDataContext);
 	}
 
 	public static
@@ -282,21 +261,6 @@ public class TertiaryHeadLocalServiceUtil {
 	}
 
 	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head
-	 * @throws PortalException if a matching tertiary head could not be found
-	 */
-	public static TertiaryHead getTertiaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws PortalException {
-
-		return getService().getTertiaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the tertiary heads.
 	 *
 	 * <p>
@@ -309,37 +273,6 @@ public class TertiaryHeadLocalServiceUtil {
 	 */
 	public static List<TertiaryHead> getTertiaryHeads(int start, int end) {
 		return getService().getTertiaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching tertiary heads, or an empty list if no matches were found
-	 */
-	public static List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId) {
-
-		return getService().getTertiaryHeadsByUuidAndCompanyId(uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of tertiary heads
-	 * @param end the upper bound of the range of tertiary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching tertiary heads, or an empty list if no matches were found
-	 */
-	public static List<TertiaryHead> getTertiaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<TertiaryHead> orderByComparator) {
-
-		return getService().getTertiaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

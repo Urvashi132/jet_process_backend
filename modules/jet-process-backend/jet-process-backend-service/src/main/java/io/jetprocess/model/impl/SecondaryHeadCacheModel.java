@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import java.util.Date;
-
 /**
  * The cache model class for representing SecondaryHead in entity cache.
  *
@@ -63,24 +61,10 @@ public class SecondaryHeadCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(7);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", secondaryHeadId=");
+		sb.append("{secondaryHeadId=");
 		sb.append(secondaryHeadId);
-		sb.append(", groupId=");
-		sb.append(groupId);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", userName=");
-		sb.append(userName);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", modifiedDate=");
-		sb.append(modifiedDate);
 		sb.append(", secondaryHeadValue=");
 		sb.append(secondaryHeadValue);
 		sb.append(", primaryHeadId=");
@@ -94,38 +78,7 @@ public class SecondaryHeadCacheModel
 	public SecondaryHead toEntityModel() {
 		SecondaryHeadImpl secondaryHeadImpl = new SecondaryHeadImpl();
 
-		if (uuid == null) {
-			secondaryHeadImpl.setUuid("");
-		}
-		else {
-			secondaryHeadImpl.setUuid(uuid);
-		}
-
 		secondaryHeadImpl.setSecondaryHeadId(secondaryHeadId);
-		secondaryHeadImpl.setGroupId(groupId);
-		secondaryHeadImpl.setCompanyId(companyId);
-		secondaryHeadImpl.setUserId(userId);
-
-		if (userName == null) {
-			secondaryHeadImpl.setUserName("");
-		}
-		else {
-			secondaryHeadImpl.setUserName(userName);
-		}
-
-		if (createDate == Long.MIN_VALUE) {
-			secondaryHeadImpl.setCreateDate(null);
-		}
-		else {
-			secondaryHeadImpl.setCreateDate(new Date(createDate));
-		}
-
-		if (modifiedDate == Long.MIN_VALUE) {
-			secondaryHeadImpl.setModifiedDate(null);
-		}
-		else {
-			secondaryHeadImpl.setModifiedDate(new Date(modifiedDate));
-		}
 
 		if (secondaryHeadValue == null) {
 			secondaryHeadImpl.setSecondaryHeadValue("");
@@ -143,18 +96,7 @@ public class SecondaryHeadCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		secondaryHeadId = objectInput.readLong();
-
-		groupId = objectInput.readLong();
-
-		companyId = objectInput.readLong();
-
-		userId = objectInput.readLong();
-		userName = objectInput.readUTF();
-		createDate = objectInput.readLong();
-		modifiedDate = objectInput.readLong();
 		secondaryHeadValue = objectInput.readUTF();
 
 		primaryHeadId = objectInput.readLong();
@@ -162,30 +104,7 @@ public class SecondaryHeadCacheModel
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
 		objectOutput.writeLong(secondaryHeadId);
-
-		objectOutput.writeLong(groupId);
-
-		objectOutput.writeLong(companyId);
-
-		objectOutput.writeLong(userId);
-
-		if (userName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(userName);
-		}
-
-		objectOutput.writeLong(createDate);
-		objectOutput.writeLong(modifiedDate);
 
 		if (secondaryHeadValue == null) {
 			objectOutput.writeUTF("");
@@ -197,14 +116,7 @@ public class SecondaryHeadCacheModel
 		objectOutput.writeLong(primaryHeadId);
 	}
 
-	public String uuid;
 	public long secondaryHeadId;
-	public long groupId;
-	public long companyId;
-	public long userId;
-	public String userName;
-	public long createDate;
-	public long modifiedDate;
 	public String secondaryHeadValue;
 	public long primaryHeadId;
 

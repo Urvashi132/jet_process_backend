@@ -16,11 +16,6 @@ package io.jetprocess.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.model.BaseModel;
-import com.liferay.portal.kernel.model.GroupedModel;
-import com.liferay.portal.kernel.model.ShardedModel;
-import com.liferay.portal.kernel.model.StagedAuditedModel;
-
-import java.util.Date;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -36,9 +31,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface CategoryModel
-	extends BaseModel<Category>, GroupedModel, ShardedModel,
-			StagedAuditedModel {
+public interface CategoryModel extends BaseModel<Category> {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -61,23 +54,6 @@ public interface CategoryModel
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this category.
-	 *
-	 * @return the uuid of this category
-	 */
-	@AutoEscape
-	@Override
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this category.
-	 *
-	 * @param uuid the uuid of this category
-	 */
-	@Override
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the category ID of this category.
 	 *
 	 * @return the category ID of this category
@@ -90,119 +66,6 @@ public interface CategoryModel
 	 * @param categoryId the category ID of this category
 	 */
 	public void setCategoryId(long categoryId);
-
-	/**
-	 * Returns the group ID of this category.
-	 *
-	 * @return the group ID of this category
-	 */
-	@Override
-	public long getGroupId();
-
-	/**
-	 * Sets the group ID of this category.
-	 *
-	 * @param groupId the group ID of this category
-	 */
-	@Override
-	public void setGroupId(long groupId);
-
-	/**
-	 * Returns the company ID of this category.
-	 *
-	 * @return the company ID of this category
-	 */
-	@Override
-	public long getCompanyId();
-
-	/**
-	 * Sets the company ID of this category.
-	 *
-	 * @param companyId the company ID of this category
-	 */
-	@Override
-	public void setCompanyId(long companyId);
-
-	/**
-	 * Returns the user ID of this category.
-	 *
-	 * @return the user ID of this category
-	 */
-	@Override
-	public long getUserId();
-
-	/**
-	 * Sets the user ID of this category.
-	 *
-	 * @param userId the user ID of this category
-	 */
-	@Override
-	public void setUserId(long userId);
-
-	/**
-	 * Returns the user uuid of this category.
-	 *
-	 * @return the user uuid of this category
-	 */
-	@Override
-	public String getUserUuid();
-
-	/**
-	 * Sets the user uuid of this category.
-	 *
-	 * @param userUuid the user uuid of this category
-	 */
-	@Override
-	public void setUserUuid(String userUuid);
-
-	/**
-	 * Returns the user name of this category.
-	 *
-	 * @return the user name of this category
-	 */
-	@AutoEscape
-	@Override
-	public String getUserName();
-
-	/**
-	 * Sets the user name of this category.
-	 *
-	 * @param userName the user name of this category
-	 */
-	@Override
-	public void setUserName(String userName);
-
-	/**
-	 * Returns the create date of this category.
-	 *
-	 * @return the create date of this category
-	 */
-	@Override
-	public Date getCreateDate();
-
-	/**
-	 * Sets the create date of this category.
-	 *
-	 * @param createDate the create date of this category
-	 */
-	@Override
-	public void setCreateDate(Date createDate);
-
-	/**
-	 * Returns the modified date of this category.
-	 *
-	 * @return the modified date of this category
-	 */
-	@Override
-	public Date getModifiedDate();
-
-	/**
-	 * Sets the modified date of this category.
-	 *
-	 * @param modifiedDate the modified date of this category
-	 */
-	@Override
-	public void setModifiedDate(Date modifiedDate);
 
 	/**
 	 * Returns the category value of this category.

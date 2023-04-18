@@ -229,36 +229,11 @@ public class PrimaryHeadLocalServiceWrapper
 		return _primaryHeadLocalService.fetchPrimaryHead(primaryHeadId);
 	}
 
-	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head, or <code>null</code> if a matching primary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.PrimaryHead fetchPrimaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return _primaryHeadLocalService.fetchPrimaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return _primaryHeadLocalService.getActionableDynamicQuery();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return _primaryHeadLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
 	}
 
 	@Override
@@ -311,23 +286,6 @@ public class PrimaryHeadLocalServiceWrapper
 	}
 
 	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head
-	 * @throws PortalException if a matching primary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.PrimaryHead getPrimaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _primaryHeadLocalService.getPrimaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the primary heads.
 	 *
 	 * <p>
@@ -343,42 +301,6 @@ public class PrimaryHeadLocalServiceWrapper
 		int start, int end) {
 
 		return _primaryHeadLocalService.getPrimaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching primary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.PrimaryHead>
-		getPrimaryHeadsByUuidAndCompanyId(String uuid, long companyId) {
-
-		return _primaryHeadLocalService.getPrimaryHeadsByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of primary heads
-	 * @param end the upper bound of the range of primary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching primary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.PrimaryHead>
-		getPrimaryHeadsByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<io.jetprocess.model.PrimaryHead> orderByComparator) {
-
-		return _primaryHeadLocalService.getPrimaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

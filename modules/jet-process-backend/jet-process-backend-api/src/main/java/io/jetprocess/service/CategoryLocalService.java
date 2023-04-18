@@ -14,11 +14,9 @@
 
 package io.jetprocess.service;
 
-import com.liferay.exportimport.kernel.lar.PortletDataContext;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
-import com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -202,16 +200,6 @@ public interface CategoryLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Category fetchCategory(long categoryId);
 
-	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category, or <code>null</code> if a matching category could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Category fetchCategoryByUuidAndGroupId(String uuid, long groupId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -230,32 +218,6 @@ public interface CategoryLocalService
 	public List<Category> getCategories(int start, int end);
 
 	/**
-	 * Returns all the categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @return the matching categories, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Category> getCategoriesByUuidAndCompanyId(
-		String uuid, long companyId);
-
-	/**
-	 * Returns a range of categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of categories
-	 * @param end the upper bound of the range of categories (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching categories, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Category> getCategoriesByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<Category> orderByComparator);
-
-	/**
 	 * Returns the number of categories.
 	 *
 	 * @return the number of categories
@@ -272,22 +234,6 @@ public interface CategoryLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Category getCategory(long categoryId) throws PortalException;
-
-	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category
-	 * @throws PortalException if a matching category could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Category getCategoryByUuidAndGroupId(String uuid, long groupId)
-		throws PortalException;
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		PortletDataContext portletDataContext);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();

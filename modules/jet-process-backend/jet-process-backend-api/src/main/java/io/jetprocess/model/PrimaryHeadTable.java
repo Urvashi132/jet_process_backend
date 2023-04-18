@@ -19,8 +19,6 @@ import com.liferay.petra.sql.dsl.base.BaseTable;
 
 import java.sql.Types;
 
-import java.util.Date;
-
 /**
  * The table class for the &quot;JP_PrimaryHead&quot; database table.
  *
@@ -32,22 +30,8 @@ public class PrimaryHeadTable extends BaseTable<PrimaryHeadTable> {
 
 	public static final PrimaryHeadTable INSTANCE = new PrimaryHeadTable();
 
-	public final Column<PrimaryHeadTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<PrimaryHeadTable, Long> primaryHeadId = createColumn(
 		"primaryHeadId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<PrimaryHeadTable, Long> groupId = createColumn(
-		"groupId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<PrimaryHeadTable, Long> companyId = createColumn(
-		"companyId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<PrimaryHeadTable, Long> userId = createColumn(
-		"userId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<PrimaryHeadTable, String> userName = createColumn(
-		"userName", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<PrimaryHeadTable, Date> createDate = createColumn(
-		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<PrimaryHeadTable, Date> modifiedDate = createColumn(
-		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<PrimaryHeadTable, String> primaryHeadValue =
 		createColumn(
 			"primaryHeadValue", String.class, Types.VARCHAR,

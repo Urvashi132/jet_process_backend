@@ -212,31 +212,10 @@ public class SecondaryHeadLocalServiceUtil {
 		return getService().fetchSecondaryHead(secondaryHeadId);
 	}
 
-	/**
-	 * Returns the secondary head matching the UUID and group.
-	 *
-	 * @param uuid the secondary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching secondary head, or <code>null</code> if a matching secondary head could not be found
-	 */
-	public static SecondaryHead fetchSecondaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return getService().fetchSecondaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return getService().getExportActionableDynamicQuery(portletDataContext);
 	}
 
 	public static
@@ -284,21 +263,6 @@ public class SecondaryHeadLocalServiceUtil {
 	}
 
 	/**
-	 * Returns the secondary head matching the UUID and group.
-	 *
-	 * @param uuid the secondary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching secondary head
-	 * @throws PortalException if a matching secondary head could not be found
-	 */
-	public static SecondaryHead getSecondaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws PortalException {
-
-		return getService().getSecondaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the secondary heads.
 	 *
 	 * <p>
@@ -311,38 +275,6 @@ public class SecondaryHeadLocalServiceUtil {
 	 */
 	public static List<SecondaryHead> getSecondaryHeads(int start, int end) {
 		return getService().getSecondaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the secondary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the secondary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching secondary heads, or an empty list if no matches were found
-	 */
-	public static List<SecondaryHead> getSecondaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId) {
-
-		return getService().getSecondaryHeadsByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of secondary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the secondary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of secondary heads
-	 * @param end the upper bound of the range of secondary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching secondary heads, or an empty list if no matches were found
-	 */
-	public static List<SecondaryHead> getSecondaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<SecondaryHead> orderByComparator) {
-
-		return getService().getSecondaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

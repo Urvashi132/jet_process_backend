@@ -19,8 +19,6 @@ import com.liferay.petra.sql.dsl.base.BaseTable;
 
 import java.sql.Types;
 
-import java.util.Date;
-
 /**
  * The table class for the &quot;JP_Category&quot; database table.
  *
@@ -32,22 +30,8 @@ public class CategoryTable extends BaseTable<CategoryTable> {
 
 	public static final CategoryTable INSTANCE = new CategoryTable();
 
-	public final Column<CategoryTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<CategoryTable, Long> categoryId = createColumn(
 		"categoryId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<CategoryTable, Long> groupId = createColumn(
-		"groupId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<CategoryTable, Long> companyId = createColumn(
-		"companyId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<CategoryTable, Long> userId = createColumn(
-		"userId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<CategoryTable, String> userName = createColumn(
-		"userName", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<CategoryTable, Date> createDate = createColumn(
-		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<CategoryTable, Date> modifiedDate = createColumn(
-		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<CategoryTable, String> categoryValue = createColumn(
 		"categoryValue", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 

@@ -16,19 +16,14 @@ package io.jetprocess.model.impl;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.expando.kernel.util.ExpandoBridgeFactoryUtil;
-import com.liferay.exportimport.kernel.lar.StagedModelType;
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
-import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 
@@ -78,31 +73,21 @@ public class TertiaryHeadModelImpl
 	public static final String TABLE_NAME = "JP_TertiaryHead";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"tertiaryHeadId", Types.BIGINT},
-		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
-		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
-		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
-		{"tertiaryHeadvalue", Types.VARCHAR}, {"secondaryHeadId", Types.BIGINT}
+		{"tertiaryHeadId", Types.BIGINT}, {"tertiaryHeadvalue", Types.VARCHAR},
+		{"secondaryHeadId", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("tertiaryHeadId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("groupId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("userId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("tertiaryHeadvalue", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("secondaryHeadId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_TertiaryHead (uuid_ VARCHAR(75) null,tertiaryHeadId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,tertiaryHeadvalue VARCHAR(75) null,secondaryHeadId LONG)";
+		"create table JP_TertiaryHead (tertiaryHeadId LONG not null primary key,tertiaryHeadvalue VARCHAR(75) null,secondaryHeadId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_TertiaryHead";
 
@@ -122,32 +107,14 @@ public class TertiaryHeadModelImpl
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long COMPANYID_COLUMN_BITMASK = 1L;
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
-	 */
-	@Deprecated
-	public static final long GROUPID_COLUMN_BITMASK = 2L;
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
-	 */
-	@Deprecated
-	public static final long SECONDARYHEADID_COLUMN_BITMASK = 4L;
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
-	 */
-	@Deprecated
-	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long SECONDARYHEADID_COLUMN_BITMASK = 1L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long TERTIARYHEADID_COLUMN_BITMASK = 16L;
+	public static final long TERTIARYHEADID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -178,14 +145,7 @@ public class TertiaryHeadModelImpl
 
 		TertiaryHead model = new TertiaryHeadImpl();
 
-		model.setUuid(soapModel.getUuid());
 		model.setTertiaryHeadId(soapModel.getTertiaryHeadId());
-		model.setGroupId(soapModel.getGroupId());
-		model.setCompanyId(soapModel.getCompanyId());
-		model.setUserId(soapModel.getUserId());
-		model.setUserName(soapModel.getUserName());
-		model.setCreateDate(soapModel.getCreateDate());
-		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setTertiaryHeadvalue(soapModel.getTertiaryHeadvalue());
 		model.setSecondaryHeadId(soapModel.getSecondaryHeadId());
 
@@ -339,38 +299,11 @@ public class TertiaryHeadModelImpl
 		Map<String, BiConsumer<TertiaryHead, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<TertiaryHead, ?>>();
 
-		attributeGetterFunctions.put("uuid", TertiaryHead::getUuid);
-		attributeSetterBiConsumers.put(
-			"uuid", (BiConsumer<TertiaryHead, String>)TertiaryHead::setUuid);
 		attributeGetterFunctions.put(
 			"tertiaryHeadId", TertiaryHead::getTertiaryHeadId);
 		attributeSetterBiConsumers.put(
 			"tertiaryHeadId",
 			(BiConsumer<TertiaryHead, Long>)TertiaryHead::setTertiaryHeadId);
-		attributeGetterFunctions.put("groupId", TertiaryHead::getGroupId);
-		attributeSetterBiConsumers.put(
-			"groupId",
-			(BiConsumer<TertiaryHead, Long>)TertiaryHead::setGroupId);
-		attributeGetterFunctions.put("companyId", TertiaryHead::getCompanyId);
-		attributeSetterBiConsumers.put(
-			"companyId",
-			(BiConsumer<TertiaryHead, Long>)TertiaryHead::setCompanyId);
-		attributeGetterFunctions.put("userId", TertiaryHead::getUserId);
-		attributeSetterBiConsumers.put(
-			"userId", (BiConsumer<TertiaryHead, Long>)TertiaryHead::setUserId);
-		attributeGetterFunctions.put("userName", TertiaryHead::getUserName);
-		attributeSetterBiConsumers.put(
-			"userName",
-			(BiConsumer<TertiaryHead, String>)TertiaryHead::setUserName);
-		attributeGetterFunctions.put("createDate", TertiaryHead::getCreateDate);
-		attributeSetterBiConsumers.put(
-			"createDate",
-			(BiConsumer<TertiaryHead, Date>)TertiaryHead::setCreateDate);
-		attributeGetterFunctions.put(
-			"modifiedDate", TertiaryHead::getModifiedDate);
-		attributeSetterBiConsumers.put(
-			"modifiedDate",
-			(BiConsumer<TertiaryHead, Date>)TertiaryHead::setModifiedDate);
 		attributeGetterFunctions.put(
 			"tertiaryHeadvalue", TertiaryHead::getTertiaryHeadvalue);
 		attributeSetterBiConsumers.put(
@@ -391,35 +324,6 @@ public class TertiaryHeadModelImpl
 
 	@JSON
 	@Override
-	public String getUuid() {
-		if (_uuid == null) {
-			return "";
-		}
-		else {
-			return _uuid;
-		}
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_uuid = uuid;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public String getOriginalUuid() {
-		return getColumnOriginalValue("uuid_");
-	}
-
-	@JSON
-	@Override
 	public long getTertiaryHeadId() {
 		return _tertiaryHeadId;
 	}
@@ -431,142 +335,6 @@ public class TertiaryHeadModelImpl
 		}
 
 		_tertiaryHeadId = tertiaryHeadId;
-	}
-
-	@JSON
-	@Override
-	public long getGroupId() {
-		return _groupId;
-	}
-
-	@Override
-	public void setGroupId(long groupId) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_groupId = groupId;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public long getOriginalGroupId() {
-		return GetterUtil.getLong(this.<Long>getColumnOriginalValue("groupId"));
-	}
-
-	@JSON
-	@Override
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	@Override
-	public void setCompanyId(long companyId) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_companyId = companyId;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public long getOriginalCompanyId() {
-		return GetterUtil.getLong(
-			this.<Long>getColumnOriginalValue("companyId"));
-	}
-
-	@JSON
-	@Override
-	public long getUserId() {
-		return _userId;
-	}
-
-	@Override
-	public void setUserId(long userId) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_userId = userId;
-	}
-
-	@Override
-	public String getUserUuid() {
-		try {
-			User user = UserLocalServiceUtil.getUserById(getUserId());
-
-			return user.getUuid();
-		}
-		catch (PortalException portalException) {
-			return "";
-		}
-	}
-
-	@Override
-	public void setUserUuid(String userUuid) {
-	}
-
-	@JSON
-	@Override
-	public String getUserName() {
-		if (_userName == null) {
-			return "";
-		}
-		else {
-			return _userName;
-		}
-	}
-
-	@Override
-	public void setUserName(String userName) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_userName = userName;
-	}
-
-	@JSON
-	@Override
-	public Date getCreateDate() {
-		return _createDate;
-	}
-
-	@Override
-	public void setCreateDate(Date createDate) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_createDate = createDate;
-	}
-
-	@JSON
-	@Override
-	public Date getModifiedDate() {
-		return _modifiedDate;
-	}
-
-	public boolean hasSetModifiedDate() {
-		return _setModifiedDate;
-	}
-
-	@Override
-	public void setModifiedDate(Date modifiedDate) {
-		_setModifiedDate = true;
-
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_modifiedDate = modifiedDate;
 	}
 
 	@JSON
@@ -614,12 +382,6 @@ public class TertiaryHeadModelImpl
 			this.<Long>getColumnOriginalValue("secondaryHeadId"));
 	}
 
-	@Override
-	public StagedModelType getStagedModelType() {
-		return new StagedModelType(
-			PortalUtil.getClassNameId(TertiaryHead.class.getName()));
-	}
-
 	public long getColumnBitmask() {
 		if (_columnBitmask > 0) {
 			return _columnBitmask;
@@ -647,7 +409,7 @@ public class TertiaryHeadModelImpl
 	@Override
 	public ExpandoBridge getExpandoBridge() {
 		return ExpandoBridgeFactoryUtil.getExpandoBridge(
-			getCompanyId(), TertiaryHead.class.getName(), getPrimaryKey());
+			0, TertiaryHead.class.getName(), getPrimaryKey());
 	}
 
 	@Override
@@ -676,14 +438,7 @@ public class TertiaryHeadModelImpl
 	public Object clone() {
 		TertiaryHeadImpl tertiaryHeadImpl = new TertiaryHeadImpl();
 
-		tertiaryHeadImpl.setUuid(getUuid());
 		tertiaryHeadImpl.setTertiaryHeadId(getTertiaryHeadId());
-		tertiaryHeadImpl.setGroupId(getGroupId());
-		tertiaryHeadImpl.setCompanyId(getCompanyId());
-		tertiaryHeadImpl.setUserId(getUserId());
-		tertiaryHeadImpl.setUserName(getUserName());
-		tertiaryHeadImpl.setCreateDate(getCreateDate());
-		tertiaryHeadImpl.setModifiedDate(getModifiedDate());
 		tertiaryHeadImpl.setTertiaryHeadvalue(getTertiaryHeadvalue());
 		tertiaryHeadImpl.setSecondaryHeadId(getSecondaryHeadId());
 
@@ -696,20 +451,8 @@ public class TertiaryHeadModelImpl
 	public TertiaryHead cloneWithOriginalValues() {
 		TertiaryHeadImpl tertiaryHeadImpl = new TertiaryHeadImpl();
 
-		tertiaryHeadImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
 		tertiaryHeadImpl.setTertiaryHeadId(
 			this.<Long>getColumnOriginalValue("tertiaryHeadId"));
-		tertiaryHeadImpl.setGroupId(
-			this.<Long>getColumnOriginalValue("groupId"));
-		tertiaryHeadImpl.setCompanyId(
-			this.<Long>getColumnOriginalValue("companyId"));
-		tertiaryHeadImpl.setUserId(this.<Long>getColumnOriginalValue("userId"));
-		tertiaryHeadImpl.setUserName(
-			this.<String>getColumnOriginalValue("userName"));
-		tertiaryHeadImpl.setCreateDate(
-			this.<Date>getColumnOriginalValue("createDate"));
-		tertiaryHeadImpl.setModifiedDate(
-			this.<Date>getColumnOriginalValue("modifiedDate"));
 		tertiaryHeadImpl.setTertiaryHeadvalue(
 			this.<String>getColumnOriginalValue("tertiaryHeadvalue"));
 		tertiaryHeadImpl.setSecondaryHeadId(
@@ -788,8 +531,6 @@ public class TertiaryHeadModelImpl
 	public void resetOriginalValues() {
 		_columnOriginalValues = Collections.emptyMap();
 
-		_setModifiedDate = false;
-
 		_columnBitmask = 0;
 	}
 
@@ -798,47 +539,7 @@ public class TertiaryHeadModelImpl
 		TertiaryHeadCacheModel tertiaryHeadCacheModel =
 			new TertiaryHeadCacheModel();
 
-		tertiaryHeadCacheModel.uuid = getUuid();
-
-		String uuid = tertiaryHeadCacheModel.uuid;
-
-		if ((uuid != null) && (uuid.length() == 0)) {
-			tertiaryHeadCacheModel.uuid = null;
-		}
-
 		tertiaryHeadCacheModel.tertiaryHeadId = getTertiaryHeadId();
-
-		tertiaryHeadCacheModel.groupId = getGroupId();
-
-		tertiaryHeadCacheModel.companyId = getCompanyId();
-
-		tertiaryHeadCacheModel.userId = getUserId();
-
-		tertiaryHeadCacheModel.userName = getUserName();
-
-		String userName = tertiaryHeadCacheModel.userName;
-
-		if ((userName != null) && (userName.length() == 0)) {
-			tertiaryHeadCacheModel.userName = null;
-		}
-
-		Date createDate = getCreateDate();
-
-		if (createDate != null) {
-			tertiaryHeadCacheModel.createDate = createDate.getTime();
-		}
-		else {
-			tertiaryHeadCacheModel.createDate = Long.MIN_VALUE;
-		}
-
-		Date modifiedDate = getModifiedDate();
-
-		if (modifiedDate != null) {
-			tertiaryHeadCacheModel.modifiedDate = modifiedDate.getTime();
-		}
-		else {
-			tertiaryHeadCacheModel.modifiedDate = Long.MIN_VALUE;
-		}
 
 		tertiaryHeadCacheModel.tertiaryHeadvalue = getTertiaryHeadvalue();
 
@@ -940,21 +641,11 @@ public class TertiaryHeadModelImpl
 
 	}
 
-	private String _uuid;
 	private long _tertiaryHeadId;
-	private long _groupId;
-	private long _companyId;
-	private long _userId;
-	private String _userName;
-	private Date _createDate;
-	private Date _modifiedDate;
-	private boolean _setModifiedDate;
 	private String _tertiaryHeadvalue;
 	private long _secondaryHeadId;
 
 	public <T> T getColumnValue(String columnName) {
-		columnName = _attributeNames.getOrDefault(columnName, columnName);
-
 		Function<TertiaryHead, Object> function = _attributeGetterFunctions.get(
 			columnName);
 
@@ -981,26 +672,9 @@ public class TertiaryHeadModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("uuid_", _uuid);
 		_columnOriginalValues.put("tertiaryHeadId", _tertiaryHeadId);
-		_columnOriginalValues.put("groupId", _groupId);
-		_columnOriginalValues.put("companyId", _companyId);
-		_columnOriginalValues.put("userId", _userId);
-		_columnOriginalValues.put("userName", _userName);
-		_columnOriginalValues.put("createDate", _createDate);
-		_columnOriginalValues.put("modifiedDate", _modifiedDate);
 		_columnOriginalValues.put("tertiaryHeadvalue", _tertiaryHeadvalue);
 		_columnOriginalValues.put("secondaryHeadId", _secondaryHeadId);
-	}
-
-	private static final Map<String, String> _attributeNames;
-
-	static {
-		Map<String, String> attributeNames = new HashMap<>();
-
-		attributeNames.put("uuid_", "uuid");
-
-		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
 
 	private transient Map<String, Object> _columnOriginalValues;
@@ -1014,25 +688,11 @@ public class TertiaryHeadModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("uuid_", 1L);
+		columnBitmasks.put("tertiaryHeadId", 1L);
 
-		columnBitmasks.put("tertiaryHeadId", 2L);
+		columnBitmasks.put("tertiaryHeadvalue", 2L);
 
-		columnBitmasks.put("groupId", 4L);
-
-		columnBitmasks.put("companyId", 8L);
-
-		columnBitmasks.put("userId", 16L);
-
-		columnBitmasks.put("userName", 32L);
-
-		columnBitmasks.put("createDate", 64L);
-
-		columnBitmasks.put("modifiedDate", 128L);
-
-		columnBitmasks.put("tertiaryHeadvalue", 256L);
-
-		columnBitmasks.put("secondaryHeadId", 512L);
+		columnBitmasks.put("secondaryHeadId", 4L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

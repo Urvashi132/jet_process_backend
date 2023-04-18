@@ -48,20 +48,14 @@
 			package-path="com.liferay.portlet.asset" />
 	</entity>
 	<entity local-service="true" name="TertiaryHead"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 
 		<!-- PK fields -->
 		<column name="tertiaryHeadId" primary="true" type="long" />
 
-		<!-- Group instance -->
-		<column name="groupId" type="long" />
+		
 
-		<!-- Audit fields -->
-		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
+	
 
 		<!-- Other fields -->
 		<column name="tertiaryHeadvalue" type="String" />
@@ -84,20 +78,14 @@
 			package-path="com.liferay.portlet.asset" />
 	</entity>
 	<entity local-service="true" name="SecondaryHead"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 
 		<!-- PK fields -->
 		<column name="secondaryHeadId" primary="true" type="long" />
 
-		<!-- Group instance -->
-		<column name="groupId" type="long" />
+		
 
-		<!-- Audit fields -->
-		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
+	
 
 		<!-- Other fields -->
 		<column name="secondaryHeadValue" type="String" />
@@ -120,20 +108,14 @@
 			package-path="com.liferay.portlet.asset" />
 	</entity>
 	<entity local-service="true" name="PrimaryHead"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 
 		<!-- PK fields -->
 		<column name="primaryHeadId" primary="true" type="long" />
 
-		<!-- Group instance -->
-		<column name="groupId" type="long" />
+		
 
-		<!-- Audit fields -->
-		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
+	
 
 		<!-- Other fields -->
 		<column name="primaryHeadValue" type="String" />
@@ -158,20 +140,14 @@
 			
 	</entity>
 	<entity local-service="true" name="BasicHead"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 
 		<!-- PK fields -->
 		<column name="basicHeadId" primary="true" type="long" />
 
-		<!-- Group instance -->
-		<column name="groupId" type="long" />
+		
 
-		<!-- Audit fields -->
-		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
+	
 
 		<!-- Other fields -->
 		<column name="basicHeadValue" type="String" />
@@ -190,20 +166,14 @@
 			package-path="com.liferay.portlet.asset" />
 	</entity>
 	<entity local-service="true" name="Category"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 
 		<!-- PK fields -->
 		<column name="categoryId" primary="true" type="long" />
 
-		<!-- Group instance -->
-		<column name="groupId" type="long" />
+		
 
-		<!-- Audit fields -->
-		<column name="companyId" type="long" />
-		<column name="userId" type="long" />
-		<column name="userName" type="String" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
+	
 
 		<!-- Other fields -->
 		<column name="categoryValue" type="String" />

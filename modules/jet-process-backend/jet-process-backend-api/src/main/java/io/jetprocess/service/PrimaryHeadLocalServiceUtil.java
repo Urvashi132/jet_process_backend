@@ -210,31 +210,10 @@ public class PrimaryHeadLocalServiceUtil {
 		return getService().fetchPrimaryHead(primaryHeadId);
 	}
 
-	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head, or <code>null</code> if a matching primary head could not be found
-	 */
-	public static PrimaryHead fetchPrimaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return getService().fetchPrimaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return getService().getActionableDynamicQuery();
-	}
-
-	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return getService().getExportActionableDynamicQuery(portletDataContext);
 	}
 
 	public static
@@ -282,21 +261,6 @@ public class PrimaryHeadLocalServiceUtil {
 	}
 
 	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head
-	 * @throws PortalException if a matching primary head could not be found
-	 */
-	public static PrimaryHead getPrimaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws PortalException {
-
-		return getService().getPrimaryHeadByUuidAndGroupId(uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the primary heads.
 	 *
 	 * <p>
@@ -309,37 +273,6 @@ public class PrimaryHeadLocalServiceUtil {
 	 */
 	public static List<PrimaryHead> getPrimaryHeads(int start, int end) {
 		return getService().getPrimaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching primary heads, or an empty list if no matches were found
-	 */
-	public static List<PrimaryHead> getPrimaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId) {
-
-		return getService().getPrimaryHeadsByUuidAndCompanyId(uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of primary heads
-	 * @param end the upper bound of the range of primary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching primary heads, or an empty list if no matches were found
-	 */
-	public static List<PrimaryHead> getPrimaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<PrimaryHead> orderByComparator) {
-
-		return getService().getPrimaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

@@ -17,7 +17,6 @@ package io.jetprocess.model;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,14 +32,7 @@ public class CategorySoap implements Serializable {
 	public static CategorySoap toSoapModel(Category model) {
 		CategorySoap soapModel = new CategorySoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setCategoryId(model.getCategoryId());
-		soapModel.setGroupId(model.getGroupId());
-		soapModel.setCompanyId(model.getCompanyId());
-		soapModel.setUserId(model.getUserId());
-		soapModel.setUserName(model.getUserName());
-		soapModel.setCreateDate(model.getCreateDate());
-		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setCategoryValue(model.getCategoryValue());
 
 		return soapModel;
@@ -95,68 +87,12 @@ public class CategorySoap implements Serializable {
 		setCategoryId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getCategoryId() {
 		return _categoryId;
 	}
 
 	public void setCategoryId(long categoryId) {
 		_categoryId = categoryId;
-	}
-
-	public long getGroupId() {
-		return _groupId;
-	}
-
-	public void setGroupId(long groupId) {
-		_groupId = groupId;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-	}
-
-	public long getUserId() {
-		return _userId;
-	}
-
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
-	public String getUserName() {
-		return _userName;
-	}
-
-	public void setUserName(String userName) {
-		_userName = userName;
-	}
-
-	public Date getCreateDate() {
-		return _createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		_createDate = createDate;
-	}
-
-	public Date getModifiedDate() {
-		return _modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		_modifiedDate = modifiedDate;
 	}
 
 	public String getCategoryValue() {
@@ -167,14 +103,7 @@ public class CategorySoap implements Serializable {
 		_categoryValue = categoryValue;
 	}
 
-	private String _uuid;
 	private long _categoryId;
-	private long _groupId;
-	private long _companyId;
-	private long _userId;
-	private String _userName;
-	private Date _createDate;
-	private Date _modifiedDate;
 	private String _categoryValue;
 
 }

@@ -230,36 +230,11 @@ public class TertiaryHeadLocalServiceWrapper
 		return _tertiaryHeadLocalService.fetchTertiaryHead(tertiaryHeadId);
 	}
 
-	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.TertiaryHead fetchTertiaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return _tertiaryHeadLocalService.fetchTertiaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return _tertiaryHeadLocalService.getActionableDynamicQuery();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return _tertiaryHeadLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
 	}
 
 	@Override
@@ -313,23 +288,6 @@ public class TertiaryHeadLocalServiceWrapper
 	}
 
 	/**
-	 * Returns the tertiary head matching the UUID and group.
-	 *
-	 * @param uuid the tertiary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching tertiary head
-	 * @throws PortalException if a matching tertiary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.TertiaryHead getTertiaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _tertiaryHeadLocalService.getTertiaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the tertiary heads.
 	 *
 	 * <p>
@@ -345,42 +303,6 @@ public class TertiaryHeadLocalServiceWrapper
 		int start, int end) {
 
 		return _tertiaryHeadLocalService.getTertiaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.TertiaryHead>
-		getTertiaryHeadsByUuidAndCompanyId(String uuid, long companyId) {
-
-		return _tertiaryHeadLocalService.getTertiaryHeadsByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of tertiary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the tertiary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of tertiary heads
-	 * @param end the upper bound of the range of tertiary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching tertiary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.TertiaryHead>
-		getTertiaryHeadsByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<io.jetprocess.model.TertiaryHead> orderByComparator) {
-
-		return _tertiaryHeadLocalService.getTertiaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

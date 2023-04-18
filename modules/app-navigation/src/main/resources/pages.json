@@ -98,7 +98,7 @@
             "pageVisiblity": false
         },
          {
-            "privateLayout": false,
+             "privateLayout": false,
             "parentLayoutId": 0,
             "pageType": "portlet",
             "pageUrl": "/projetcs",

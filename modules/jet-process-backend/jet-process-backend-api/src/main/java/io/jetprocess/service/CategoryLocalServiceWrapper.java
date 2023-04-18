@@ -224,21 +224,6 @@ public class CategoryLocalServiceWrapper
 		return _categoryLocalService.fetchCategory(categoryId);
 	}
 
-	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category, or <code>null</code> if a matching category could not be found
-	 */
-	@Override
-	public io.jetprocess.model.Category fetchCategoryByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return _categoryLocalService.fetchCategoryByUuidAndGroupId(
-			uuid, groupId);
-	}
-
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
@@ -265,42 +250,6 @@ public class CategoryLocalServiceWrapper
 	}
 
 	/**
-	 * Returns all the categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @return the matching categories, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.Category>
-		getCategoriesByUuidAndCompanyId(String uuid, long companyId) {
-
-		return _categoryLocalService.getCategoriesByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of categories matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the categories
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of categories
-	 * @param end the upper bound of the range of categories (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching categories, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.Category>
-		getCategoriesByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<io.jetprocess.model.Category> orderByComparator) {
-
-		return _categoryLocalService.getCategoriesByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
-	}
-
-	/**
 	 * Returns the number of categories.
 	 *
 	 * @return the number of categories
@@ -322,32 +271,6 @@ public class CategoryLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _categoryLocalService.getCategory(categoryId);
-	}
-
-	/**
-	 * Returns the category matching the UUID and group.
-	 *
-	 * @param uuid the category's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching category
-	 * @throws PortalException if a matching category could not be found
-	 */
-	@Override
-	public io.jetprocess.model.Category getCategoryByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _categoryLocalService.getCategoryByUuidAndGroupId(uuid, groupId);
-	}
-
-	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return _categoryLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
 	}
 
 	@Override

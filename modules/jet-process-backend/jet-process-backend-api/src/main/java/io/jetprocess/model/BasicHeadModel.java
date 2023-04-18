@@ -16,11 +16,6 @@ package io.jetprocess.model;
 
 import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.model.BaseModel;
-import com.liferay.portal.kernel.model.GroupedModel;
-import com.liferay.portal.kernel.model.ShardedModel;
-import com.liferay.portal.kernel.model.StagedAuditedModel;
-
-import java.util.Date;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -36,9 +31,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface BasicHeadModel
-	extends BaseModel<BasicHead>, GroupedModel, ShardedModel,
-			StagedAuditedModel {
+public interface BasicHeadModel extends BaseModel<BasicHead> {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -61,23 +54,6 @@ public interface BasicHeadModel
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this basic head.
-	 *
-	 * @return the uuid of this basic head
-	 */
-	@AutoEscape
-	@Override
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this basic head.
-	 *
-	 * @param uuid the uuid of this basic head
-	 */
-	@Override
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the basic head ID of this basic head.
 	 *
 	 * @return the basic head ID of this basic head
@@ -90,119 +66,6 @@ public interface BasicHeadModel
 	 * @param basicHeadId the basic head ID of this basic head
 	 */
 	public void setBasicHeadId(long basicHeadId);
-
-	/**
-	 * Returns the group ID of this basic head.
-	 *
-	 * @return the group ID of this basic head
-	 */
-	@Override
-	public long getGroupId();
-
-	/**
-	 * Sets the group ID of this basic head.
-	 *
-	 * @param groupId the group ID of this basic head
-	 */
-	@Override
-	public void setGroupId(long groupId);
-
-	/**
-	 * Returns the company ID of this basic head.
-	 *
-	 * @return the company ID of this basic head
-	 */
-	@Override
-	public long getCompanyId();
-
-	/**
-	 * Sets the company ID of this basic head.
-	 *
-	 * @param companyId the company ID of this basic head
-	 */
-	@Override
-	public void setCompanyId(long companyId);
-
-	/**
-	 * Returns the user ID of this basic head.
-	 *
-	 * @return the user ID of this basic head
-	 */
-	@Override
-	public long getUserId();
-
-	/**
-	 * Sets the user ID of this basic head.
-	 *
-	 * @param userId the user ID of this basic head
-	 */
-	@Override
-	public void setUserId(long userId);
-
-	/**
-	 * Returns the user uuid of this basic head.
-	 *
-	 * @return the user uuid of this basic head
-	 */
-	@Override
-	public String getUserUuid();
-
-	/**
-	 * Sets the user uuid of this basic head.
-	 *
-	 * @param userUuid the user uuid of this basic head
-	 */
-	@Override
-	public void setUserUuid(String userUuid);
-
-	/**
-	 * Returns the user name of this basic head.
-	 *
-	 * @return the user name of this basic head
-	 */
-	@AutoEscape
-	@Override
-	public String getUserName();
-
-	/**
-	 * Sets the user name of this basic head.
-	 *
-	 * @param userName the user name of this basic head
-	 */
-	@Override
-	public void setUserName(String userName);
-
-	/**
-	 * Returns the create date of this basic head.
-	 *
-	 * @return the create date of this basic head
-	 */
-	@Override
-	public Date getCreateDate();
-
-	/**
-	 * Sets the create date of this basic head.
-	 *
-	 * @param createDate the create date of this basic head
-	 */
-	@Override
-	public void setCreateDate(Date createDate);
-
-	/**
-	 * Returns the modified date of this basic head.
-	 *
-	 * @return the modified date of this basic head
-	 */
-	@Override
-	public Date getModifiedDate();
-
-	/**
-	 * Sets the modified date of this basic head.
-	 *
-	 * @param modifiedDate the modified date of this basic head
-	 */
-	@Override
-	public void setModifiedDate(Date modifiedDate);
 
 	/**
 	 * Returns the basic head value of this basic head.

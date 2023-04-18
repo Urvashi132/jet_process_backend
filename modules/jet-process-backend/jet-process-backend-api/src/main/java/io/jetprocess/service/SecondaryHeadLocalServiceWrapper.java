@@ -231,36 +231,11 @@ public class SecondaryHeadLocalServiceWrapper
 		return _secondaryHeadLocalService.fetchSecondaryHead(secondaryHeadId);
 	}
 
-	/**
-	 * Returns the secondary head matching the UUID and group.
-	 *
-	 * @param uuid the secondary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching secondary head, or <code>null</code> if a matching secondary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.SecondaryHead fetchSecondaryHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return _secondaryHeadLocalService.fetchSecondaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
 		return _secondaryHeadLocalService.getActionableDynamicQuery();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return _secondaryHeadLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
 	}
 
 	@Override
@@ -315,23 +290,6 @@ public class SecondaryHeadLocalServiceWrapper
 	}
 
 	/**
-	 * Returns the secondary head matching the UUID and group.
-	 *
-	 * @param uuid the secondary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching secondary head
-	 * @throws PortalException if a matching secondary head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.SecondaryHead getSecondaryHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _secondaryHeadLocalService.getSecondaryHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the secondary heads.
 	 *
 	 * <p>
@@ -347,42 +305,6 @@ public class SecondaryHeadLocalServiceWrapper
 		int start, int end) {
 
 		return _secondaryHeadLocalService.getSecondaryHeads(start, end);
-	}
-
-	/**
-	 * Returns all the secondary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the secondary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching secondary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.SecondaryHead>
-		getSecondaryHeadsByUuidAndCompanyId(String uuid, long companyId) {
-
-		return _secondaryHeadLocalService.getSecondaryHeadsByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of secondary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the secondary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of secondary heads
-	 * @param end the upper bound of the range of secondary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching secondary heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.SecondaryHead>
-		getSecondaryHeadsByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<io.jetprocess.model.SecondaryHead> orderByComparator) {
-
-		return _secondaryHeadLocalService.getSecondaryHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**

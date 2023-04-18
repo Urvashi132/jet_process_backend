@@ -224,21 +224,6 @@ public class BasicHeadLocalServiceWrapper
 		return _basicHeadLocalService.fetchBasicHead(basicHeadId);
 	}
 
-	/**
-	 * Returns the basic head matching the UUID and group.
-	 *
-	 * @param uuid the basic head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching basic head, or <code>null</code> if a matching basic head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.BasicHead fetchBasicHeadByUuidAndGroupId(
-		String uuid, long groupId) {
-
-		return _basicHeadLocalService.fetchBasicHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
 	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
@@ -261,23 +246,6 @@ public class BasicHeadLocalServiceWrapper
 	}
 
 	/**
-	 * Returns the basic head matching the UUID and group.
-	 *
-	 * @param uuid the basic head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching basic head
-	 * @throws PortalException if a matching basic head could not be found
-	 */
-	@Override
-	public io.jetprocess.model.BasicHead getBasicHeadByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _basicHeadLocalService.getBasicHeadByUuidAndGroupId(
-			uuid, groupId);
-	}
-
-	/**
 	 * Returns a range of all the basic heads.
 	 *
 	 * <p>
@@ -296,42 +264,6 @@ public class BasicHeadLocalServiceWrapper
 	}
 
 	/**
-	 * Returns all the basic heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the basic heads
-	 * @param companyId the primary key of the company
-	 * @return the matching basic heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.BasicHead>
-		getBasicHeadsByUuidAndCompanyId(String uuid, long companyId) {
-
-		return _basicHeadLocalService.getBasicHeadsByUuidAndCompanyId(
-			uuid, companyId);
-	}
-
-	/**
-	 * Returns a range of basic heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the basic heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of basic heads
-	 * @param end the upper bound of the range of basic heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching basic heads, or an empty list if no matches were found
-	 */
-	@Override
-	public java.util.List<io.jetprocess.model.BasicHead>
-		getBasicHeadsByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<io.jetprocess.model.BasicHead> orderByComparator) {
-
-		return _basicHeadLocalService.getBasicHeadsByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
-	}
-
-	/**
 	 * Returns the number of basic heads.
 	 *
 	 * @return the number of basic heads
@@ -339,16 +271,6 @@ public class BasicHeadLocalServiceWrapper
 	@Override
 	public int getBasicHeadsCount() {
 		return _basicHeadLocalService.getBasicHeadsCount();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
-
-		return _basicHeadLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
 	}
 
 	@Override

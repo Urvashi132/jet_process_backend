@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import java.util.Date;
-
 /**
  * The cache model class for representing TertiaryHead in entity cache.
  *
@@ -63,24 +61,10 @@ public class TertiaryHeadCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(7);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", tertiaryHeadId=");
+		sb.append("{tertiaryHeadId=");
 		sb.append(tertiaryHeadId);
-		sb.append(", groupId=");
-		sb.append(groupId);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", userName=");
-		sb.append(userName);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", modifiedDate=");
-		sb.append(modifiedDate);
 		sb.append(", tertiaryHeadvalue=");
 		sb.append(tertiaryHeadvalue);
 		sb.append(", secondaryHeadId=");
@@ -94,38 +78,7 @@ public class TertiaryHeadCacheModel
 	public TertiaryHead toEntityModel() {
 		TertiaryHeadImpl tertiaryHeadImpl = new TertiaryHeadImpl();
 
-		if (uuid == null) {
-			tertiaryHeadImpl.setUuid("");
-		}
-		else {
-			tertiaryHeadImpl.setUuid(uuid);
-		}
-
 		tertiaryHeadImpl.setTertiaryHeadId(tertiaryHeadId);
-		tertiaryHeadImpl.setGroupId(groupId);
-		tertiaryHeadImpl.setCompanyId(companyId);
-		tertiaryHeadImpl.setUserId(userId);
-
-		if (userName == null) {
-			tertiaryHeadImpl.setUserName("");
-		}
-		else {
-			tertiaryHeadImpl.setUserName(userName);
-		}
-
-		if (createDate == Long.MIN_VALUE) {
-			tertiaryHeadImpl.setCreateDate(null);
-		}
-		else {
-			tertiaryHeadImpl.setCreateDate(new Date(createDate));
-		}
-
-		if (modifiedDate == Long.MIN_VALUE) {
-			tertiaryHeadImpl.setModifiedDate(null);
-		}
-		else {
-			tertiaryHeadImpl.setModifiedDate(new Date(modifiedDate));
-		}
 
 		if (tertiaryHeadvalue == null) {
 			tertiaryHeadImpl.setTertiaryHeadvalue("");
@@ -143,18 +96,7 @@ public class TertiaryHeadCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		tertiaryHeadId = objectInput.readLong();
-
-		groupId = objectInput.readLong();
-
-		companyId = objectInput.readLong();
-
-		userId = objectInput.readLong();
-		userName = objectInput.readUTF();
-		createDate = objectInput.readLong();
-		modifiedDate = objectInput.readLong();
 		tertiaryHeadvalue = objectInput.readUTF();
 
 		secondaryHeadId = objectInput.readLong();
@@ -162,30 +104,7 @@ public class TertiaryHeadCacheModel
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
 		objectOutput.writeLong(tertiaryHeadId);
-
-		objectOutput.writeLong(groupId);
-
-		objectOutput.writeLong(companyId);
-
-		objectOutput.writeLong(userId);
-
-		if (userName == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(userName);
-		}
-
-		objectOutput.writeLong(createDate);
-		objectOutput.writeLong(modifiedDate);
 
 		if (tertiaryHeadvalue == null) {
 			objectOutput.writeUTF("");
@@ -197,14 +116,7 @@ public class TertiaryHeadCacheModel
 		objectOutput.writeLong(secondaryHeadId);
 	}
 
-	public String uuid;
 	public long tertiaryHeadId;
-	public long groupId;
-	public long companyId;
-	public long userId;
-	public String userName;
-	public long createDate;
-	public long modifiedDate;
 	public String tertiaryHeadvalue;
 	public long secondaryHeadId;
 

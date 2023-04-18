@@ -17,7 +17,6 @@ package io.jetprocess.model;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,14 +32,7 @@ public class SecondaryHeadSoap implements Serializable {
 	public static SecondaryHeadSoap toSoapModel(SecondaryHead model) {
 		SecondaryHeadSoap soapModel = new SecondaryHeadSoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setSecondaryHeadId(model.getSecondaryHeadId());
-		soapModel.setGroupId(model.getGroupId());
-		soapModel.setCompanyId(model.getCompanyId());
-		soapModel.setUserId(model.getUserId());
-		soapModel.setUserName(model.getUserName());
-		soapModel.setCreateDate(model.getCreateDate());
-		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setSecondaryHeadValue(model.getSecondaryHeadValue());
 		soapModel.setPrimaryHeadId(model.getPrimaryHeadId());
 
@@ -96,68 +88,12 @@ public class SecondaryHeadSoap implements Serializable {
 		setSecondaryHeadId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getSecondaryHeadId() {
 		return _secondaryHeadId;
 	}
 
 	public void setSecondaryHeadId(long secondaryHeadId) {
 		_secondaryHeadId = secondaryHeadId;
-	}
-
-	public long getGroupId() {
-		return _groupId;
-	}
-
-	public void setGroupId(long groupId) {
-		_groupId = groupId;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-	}
-
-	public long getUserId() {
-		return _userId;
-	}
-
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
-	public String getUserName() {
-		return _userName;
-	}
-
-	public void setUserName(String userName) {
-		_userName = userName;
-	}
-
-	public Date getCreateDate() {
-		return _createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		_createDate = createDate;
-	}
-
-	public Date getModifiedDate() {
-		return _modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		_modifiedDate = modifiedDate;
 	}
 
 	public String getSecondaryHeadValue() {
@@ -176,14 +112,7 @@ public class SecondaryHeadSoap implements Serializable {
 		_primaryHeadId = primaryHeadId;
 	}
 
-	private String _uuid;
 	private long _secondaryHeadId;
-	private long _groupId;
-	private long _companyId;
-	private long _userId;
-	private String _userName;
-	private Date _createDate;
-	private Date _modifiedDate;
 	private String _secondaryHeadValue;
 	private long _primaryHeadId;
 

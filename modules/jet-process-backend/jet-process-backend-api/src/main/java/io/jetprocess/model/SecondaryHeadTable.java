@@ -19,8 +19,6 @@ import com.liferay.petra.sql.dsl.base.BaseTable;
 
 import java.sql.Types;
 
-import java.util.Date;
-
 /**
  * The table class for the &quot;JP_SecondaryHead&quot; database table.
  *
@@ -32,23 +30,9 @@ public class SecondaryHeadTable extends BaseTable<SecondaryHeadTable> {
 
 	public static final SecondaryHeadTable INSTANCE = new SecondaryHeadTable();
 
-	public final Column<SecondaryHeadTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<SecondaryHeadTable, Long> secondaryHeadId =
 		createColumn(
 			"secondaryHeadId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<SecondaryHeadTable, Long> groupId = createColumn(
-		"groupId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<SecondaryHeadTable, Long> companyId = createColumn(
-		"companyId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<SecondaryHeadTable, Long> userId = createColumn(
-		"userId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<SecondaryHeadTable, String> userName = createColumn(
-		"userName", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<SecondaryHeadTable, Date> createDate = createColumn(
-		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<SecondaryHeadTable, Date> modifiedDate = createColumn(
-		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<SecondaryHeadTable, String> secondaryHeadValue =
 		createColumn(
 			"secondaryHeadValue", String.class, Types.VARCHAR,

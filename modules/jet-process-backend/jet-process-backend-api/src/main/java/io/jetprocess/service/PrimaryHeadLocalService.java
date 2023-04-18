@@ -14,11 +14,9 @@
 
 package io.jetprocess.service;
 
-import com.liferay.exportimport.kernel.lar.PortletDataContext;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
-import com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -203,23 +201,8 @@ public interface PrimaryHeadLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PrimaryHead fetchPrimaryHead(long primaryHeadId);
 
-	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head, or <code>null</code> if a matching primary head could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public PrimaryHead fetchPrimaryHeadByUuidAndGroupId(
-		String uuid, long groupId);
-
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
-		PortletDataContext portletDataContext);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
@@ -254,18 +237,6 @@ public interface PrimaryHeadLocalService
 	public List<PrimaryHead> getPrimaryHeadByBasicHead(long basicHeadId);
 
 	/**
-	 * Returns the primary head matching the UUID and group.
-	 *
-	 * @param uuid the primary head's UUID
-	 * @param groupId the primary key of the group
-	 * @return the matching primary head
-	 * @throws PortalException if a matching primary head could not be found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public PrimaryHead getPrimaryHeadByUuidAndGroupId(String uuid, long groupId)
-		throws PortalException;
-
-	/**
 	 * Returns a range of all the primary heads.
 	 *
 	 * <p>
@@ -278,32 +249,6 @@ public interface PrimaryHeadLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<PrimaryHead> getPrimaryHeads(int start, int end);
-
-	/**
-	 * Returns all the primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @return the matching primary heads, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<PrimaryHead> getPrimaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId);
-
-	/**
-	 * Returns a range of primary heads matching the UUID and company.
-	 *
-	 * @param uuid the UUID of the primary heads
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of primary heads
-	 * @param end the upper bound of the range of primary heads (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching primary heads, or an empty list if no matches were found
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<PrimaryHead> getPrimaryHeadsByUuidAndCompanyId(
-		String uuid, long companyId, int start, int end,
-		OrderByComparator<PrimaryHead> orderByComparator);
 
 	/**
 	 * Returns the number of primary heads.

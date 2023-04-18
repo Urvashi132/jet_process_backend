@@ -2,26 +2,12 @@
 
 <model-hints>
 	<model name="io.jetprocess.model.BasicHead">
-		<field name="uuid" type="String" />
 		<field name="basicHeadId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
-		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="basicHeadValue" type="String" />
 		<field name="basicHeadCode" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Category">
-		<field name="uuid" type="String" />
 		<field name="categoryId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
-		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="categoryValue" type="String" />
 	</model>
 	<model name="io.jetprocess.model.DocFile">
@@ -49,38 +35,17 @@
 		<field name="dealingOrganizationId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.PrimaryHead">
-		<field name="uuid" type="String" />
 		<field name="primaryHeadId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
-		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="primaryHeadValue" type="String" />
 		<field name="basicHeadId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.SecondaryHead">
-		<field name="uuid" type="String" />
 		<field name="secondaryHeadId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
-		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="secondaryHeadValue" type="String" />
 		<field name="primaryHeadId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.TertiaryHead">
-		<field name="uuid" type="String" />
 		<field name="tertiaryHeadId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="userId" type="long" />
-		<field name="userName" type="String" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="tertiaryHeadvalue" type="String" />
 		<field name="secondaryHeadId" type="long" />
 	</model>

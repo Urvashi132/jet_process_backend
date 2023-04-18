@@ -17,7 +17,6 @@ package io.jetprocess.model;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,14 +32,7 @@ public class BasicHeadSoap implements Serializable {
 	public static BasicHeadSoap toSoapModel(BasicHead model) {
 		BasicHeadSoap soapModel = new BasicHeadSoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setBasicHeadId(model.getBasicHeadId());
-		soapModel.setGroupId(model.getGroupId());
-		soapModel.setCompanyId(model.getCompanyId());
-		soapModel.setUserId(model.getUserId());
-		soapModel.setUserName(model.getUserName());
-		soapModel.setCreateDate(model.getCreateDate());
-		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setBasicHeadValue(model.getBasicHeadValue());
 		soapModel.setBasicHeadCode(model.getBasicHeadCode());
 
@@ -96,68 +88,12 @@ public class BasicHeadSoap implements Serializable {
 		setBasicHeadId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getBasicHeadId() {
 		return _basicHeadId;
 	}
 
 	public void setBasicHeadId(long basicHeadId) {
 		_basicHeadId = basicHeadId;
-	}
-
-	public long getGroupId() {
-		return _groupId;
-	}
-
-	public void setGroupId(long groupId) {
-		_groupId = groupId;
-	}
-
-	public long getCompanyId() {
-		return _companyId;
-	}
-
-	public void setCompanyId(long companyId) {
-		_companyId = companyId;
-	}
-
-	public long getUserId() {
-		return _userId;
-	}
-
-	public void setUserId(long userId) {
-		_userId = userId;
-	}
-
-	public String getUserName() {
-		return _userName;
-	}
-
-	public void setUserName(String userName) {
-		_userName = userName;
-	}
-
-	public Date getCreateDate() {
-		return _createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		_createDate = createDate;
-	}
-
-	public Date getModifiedDate() {
-		return _modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		_modifiedDate = modifiedDate;
 	}
 
 	public String getBasicHeadValue() {
@@ -176,14 +112,7 @@ public class BasicHeadSoap implements Serializable {
 		_basicHeadCode = basicHeadCode;
 	}
 
-	private String _uuid;
 	private long _basicHeadId;
-	private long _groupId;
-	private long _companyId;
-	private long _userId;
-	private String _userName;
-	private Date _createDate;
-	private Date _modifiedDate;
 	private String _basicHeadValue;
 	private long _basicHeadCode;
 
