@@ -66,7 +66,17 @@ public class OpenAPIResourceImpl {
 
 	private final Set<Class<?>> _resourceClasses = new HashSet<Class<?>>() {
 		{
+			add(BasicHeadRsModelResourceImpl.class);
+
+			add(CategoryRsModelResourceImpl.class);
+
 			add(FileRsModelResourceImpl.class);
+
+			add(PrimaryHeadRsModelResourceImpl.class);
+
+			add(SecondaryHeadRsModelResourceImpl.class);
+
+			add(TertiaryHeadRsModelResourceImpl.class);
 
 			add(OpenAPIResourceImpl.class);
 		}

@@ -108,10 +108,7 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 		return super.getDocFile(docFileId);
 	}
 	
-	public List<DocFile> getDocFileList() {
-		List<DocFile> docFiles = super.getDocFiles(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
-		return docFiles;
-	}
+
 	
 	public String generateFileNo(long docFileId) {
 		String number = String.valueOf(docFileId);

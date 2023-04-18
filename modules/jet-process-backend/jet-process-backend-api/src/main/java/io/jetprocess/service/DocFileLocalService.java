@@ -251,9 +251,6 @@ public interface DocFileLocalService
 	public DocFile getDocFileByUuidAndGroupId(String uuid, long groupId)
 		throws PortalException;
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<DocFile> getDocFileList();
-
 	/**
 	 * Returns a range of all the doc files.
 	 *

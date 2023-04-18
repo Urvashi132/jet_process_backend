@@ -47,4 +47,177 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
+	<entity local-service="true" name="TertiaryHead"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="tertiaryHeadId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="tertiaryHeadvalue" type="String" />
+		<column name="secondaryHeadId" type="long" />
+		
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="tertiaryHeadId" />
+		</order>
+		
+		 <finder name="TertiaryHeadBySecondaryHeadId" return-type="Collection">
+			<finder-column name="secondaryHeadId"></finder-column>
+		</finder>
+
+		<!-- References -->
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset" />
+	</entity>
+	<entity local-service="true" name="SecondaryHead"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="secondaryHeadId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="secondaryHeadValue" type="String" />
+		<column name="primaryHeadId" type="long" />
+		
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="secondaryHeadId" />
+		</order>
+		
+		 <finder name="SecondaryHeadByPrimaryHeadId" return-type="Collection">
+			<finder-column name="primaryHeadId"></finder-column>
+		</finder>
+
+		<!-- References -->
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset" />
+	</entity>
+	<entity local-service="true" name="PrimaryHead"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="primaryHeadId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="primaryHeadValue" type="String" />
+		<column name="basicHeadId" type="long" />
+		
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="primaryHeadId" />
+		</order>
+
+        <finder name="PrimaryHeadByBasicHeadId" return-type="Collection">
+			<finder-column name="basicHeadId"></finder-column>
+		</finder>
+
+		<!-- References -->
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset" />
+			
+			
+	</entity>
+	<entity local-service="true" name="BasicHead"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="basicHeadId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="basicHeadValue" type="String" />
+		<column name="basicHeadCode" type="long" />
+		
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="basicHeadId" />
+		</order>
+
+		<!-- References -->
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset" />
+	</entity>
+	<entity local-service="true" name="Category"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="categoryId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="categoryValue" type="String" />
+		
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="categoryId" />
+		</order>
+
+		<!-- References -->
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset" />
+	</entity>
 </service-builder>

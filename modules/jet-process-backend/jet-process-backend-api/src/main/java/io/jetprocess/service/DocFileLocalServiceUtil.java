@@ -281,10 +281,6 @@ public class DocFileLocalServiceUtil {
 		return getService().getDocFileByUuidAndGroupId(uuid, groupId);
 	}
 
-	public static List<DocFile> getDocFileList() {
-		return getService().getDocFileList();
-	}
-
 	/**
 	 * Returns a range of all the doc files.
 	 *

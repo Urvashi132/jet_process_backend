@@ -1,0 +1,656 @@
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package io.jetprocess.service.persistence;
+
+import com.liferay.portal.kernel.service.persistence.BasePersistence;
+
+import io.jetprocess.exception.NoSuchTertiaryHeadException;
+import io.jetprocess.model.TertiaryHead;
+
+import org.osgi.annotation.versioning.ProviderType;
+
+/**
+ * The persistence interface for the tertiary head service.
+ *
+ * <p>
+ * Caching information and settings can be found in <code>portal.properties</code>
+ * </p>
+ *
+ * @author Brian Wing Shun Chan
+ * @see TertiaryHeadUtil
+ * @generated
+ */
+@ProviderType
+public interface TertiaryHeadPersistence extends BasePersistence<TertiaryHead> {
+
+	/*
+	 * NOTE FOR DEVELOPERS:
+	 *
+	 * Never modify or reference this interface directly. Always use {@link TertiaryHeadUtil} to access the tertiary head persistence. Modify <code>service.xml</code> and rerun ServiceBuilder to regenerate this interface.
+	 */
+
+	/**
+	 * Returns all the tertiary heads where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @return the matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid(String uuid);
+
+	/**
+	 * Returns a range of all the tertiary heads where uuid = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @return the range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid(
+		String uuid, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where uuid = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid(
+		String uuid, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where uuid = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid(
+		String uuid, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first tertiary head in the ordered set where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByUuid_First(
+			String uuid,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the first tertiary head in the ordered set where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUuid_First(
+		String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the last tertiary head in the ordered set where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByUuid_Last(
+			String uuid,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the last tertiary head in the ordered set where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUuid_Last(
+		String uuid,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where uuid = &#63;.
+	 *
+	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param uuid the uuid
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next tertiary head
+	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead[] findByUuid_PrevAndNext(
+			long tertiaryHeadId, String uuid,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Removes all the tertiary heads where uuid = &#63; from the database.
+	 *
+	 * @param uuid the uuid
+	 */
+	public void removeByUuid(String uuid);
+
+	/**
+	 * Returns the number of tertiary heads where uuid = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @return the number of matching tertiary heads
+	 */
+	public int countByUuid(String uuid);
+
+	/**
+	 * Returns the tertiary head where uuid = &#63; and groupId = &#63; or throws a <code>NoSuchTertiaryHeadException</code> if it could not be found.
+	 *
+	 * @param uuid the uuid
+	 * @param groupId the group ID
+	 * @return the matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByUUID_G(String uuid, long groupId)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the tertiary head where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param uuid the uuid
+	 * @param groupId the group ID
+	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUUID_G(String uuid, long groupId);
+
+	/**
+	 * Returns the tertiary head where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param uuid the uuid
+	 * @param groupId the group ID
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUUID_G(
+		String uuid, long groupId, boolean useFinderCache);
+
+	/**
+	 * Removes the tertiary head where uuid = &#63; and groupId = &#63; from the database.
+	 *
+	 * @param uuid the uuid
+	 * @param groupId the group ID
+	 * @return the tertiary head that was removed
+	 */
+	public TertiaryHead removeByUUID_G(String uuid, long groupId)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the number of tertiary heads where uuid = &#63; and groupId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param groupId the group ID
+	 * @return the number of matching tertiary heads
+	 */
+	public int countByUUID_G(String uuid, long groupId);
+
+	/**
+	 * Returns all the tertiary heads where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @return the matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid_C(
+		String uuid, long companyId);
+
+	/**
+	 * Returns a range of all the tertiary heads where uuid = &#63; and companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @return the range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid_C(
+		String uuid, long companyId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where uuid = &#63; and companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid_C(
+		String uuid, long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where uuid = &#63; and companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByUuid_C(
+		String uuid, long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first tertiary head in the ordered set where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByUuid_C_First(
+			String uuid, long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the first tertiary head in the ordered set where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUuid_C_First(
+		String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the last tertiary head in the ordered set where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByUuid_C_Last(
+			String uuid, long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the last tertiary head in the ordered set where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByUuid_C_Last(
+		String uuid, long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next tertiary head
+	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead[] findByUuid_C_PrevAndNext(
+			long tertiaryHeadId, String uuid, long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Removes all the tertiary heads where uuid = &#63; and companyId = &#63; from the database.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 */
+	public void removeByUuid_C(String uuid, long companyId);
+
+	/**
+	 * Returns the number of tertiary heads where uuid = &#63; and companyId = &#63;.
+	 *
+	 * @param uuid the uuid
+	 * @param companyId the company ID
+	 * @return the number of matching tertiary heads
+	 */
+	public int countByUuid_C(String uuid, long companyId);
+
+	/**
+	 * Returns all the tertiary heads where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @return the matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByTertiaryHeadBySecondaryHeadId(
+		long secondaryHeadId);
+
+	/**
+	 * Returns a range of all the tertiary heads where secondaryHeadId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @return the range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByTertiaryHeadBySecondaryHeadId(
+		long secondaryHeadId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where secondaryHeadId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByTertiaryHeadBySecondaryHeadId(
+		long secondaryHeadId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads where secondaryHeadId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findByTertiaryHeadBySecondaryHeadId(
+		long secondaryHeadId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first tertiary head in the ordered set where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByTertiaryHeadBySecondaryHeadId_First(
+			long secondaryHeadId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the first tertiary head in the ordered set where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByTertiaryHeadBySecondaryHeadId_First(
+		long secondaryHeadId,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the last tertiary head in the ordered set where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head
+	 * @throws NoSuchTertiaryHeadException if a matching tertiary head could not be found
+	 */
+	public TertiaryHead findByTertiaryHeadBySecondaryHeadId_Last(
+			long secondaryHeadId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the last tertiary head in the ordered set where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching tertiary head, or <code>null</code> if a matching tertiary head could not be found
+	 */
+	public TertiaryHead fetchByTertiaryHeadBySecondaryHeadId_Last(
+		long secondaryHeadId,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where secondaryHeadId = &#63;.
+	 *
+	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param secondaryHeadId the secondary head ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next tertiary head
+	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead[] findByTertiaryHeadBySecondaryHeadId_PrevAndNext(
+			long tertiaryHeadId, long secondaryHeadId,
+			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+				orderByComparator)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Removes all the tertiary heads where secondaryHeadId = &#63; from the database.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 */
+	public void removeByTertiaryHeadBySecondaryHeadId(long secondaryHeadId);
+
+	/**
+	 * Returns the number of tertiary heads where secondaryHeadId = &#63;.
+	 *
+	 * @param secondaryHeadId the secondary head ID
+	 * @return the number of matching tertiary heads
+	 */
+	public int countByTertiaryHeadBySecondaryHeadId(long secondaryHeadId);
+
+	/**
+	 * Caches the tertiary head in the entity cache if it is enabled.
+	 *
+	 * @param tertiaryHead the tertiary head
+	 */
+	public void cacheResult(TertiaryHead tertiaryHead);
+
+	/**
+	 * Caches the tertiary heads in the entity cache if it is enabled.
+	 *
+	 * @param tertiaryHeads the tertiary heads
+	 */
+	public void cacheResult(java.util.List<TertiaryHead> tertiaryHeads);
+
+	/**
+	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
+	 *
+	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @return the new tertiary head
+	 */
+	public TertiaryHead create(long tertiaryHeadId);
+
+	/**
+	 * Removes the tertiary head with the primary key from the database. Also notifies the appropriate model listeners.
+	 *
+	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @return the tertiary head that was removed
+	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead remove(long tertiaryHeadId)
+		throws NoSuchTertiaryHeadException;
+
+	public TertiaryHead updateImpl(TertiaryHead tertiaryHead);
+
+	/**
+	 * Returns the tertiary head with the primary key or throws a <code>NoSuchTertiaryHeadException</code> if it could not be found.
+	 *
+	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @return the tertiary head
+	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead findByPrimaryKey(long tertiaryHeadId)
+		throws NoSuchTertiaryHeadException;
+
+	/**
+	 * Returns the tertiary head with the primary key or returns <code>null</code> if it could not be found.
+	 *
+	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @return the tertiary head, or <code>null</code> if a tertiary head with the primary key could not be found
+	 */
+	public TertiaryHead fetchByPrimaryKey(long tertiaryHeadId);
+
+	/**
+	 * Returns all the tertiary heads.
+	 *
+	 * @return the tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findAll();
+
+	/**
+	 * Returns a range of all the tertiary heads.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @return the range of tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findAll(int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findAll(
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tertiary heads.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TertiaryHeadModelImpl</code>.
+	 * </p>
+	 *
+	 * @param start the lower bound of the range of tertiary heads
+	 * @param end the upper bound of the range of tertiary heads (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of tertiary heads
+	 */
+	public java.util.List<TertiaryHead> findAll(
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Removes all the tertiary heads from the database.
+	 */
+	public void removeAll();
+
+	/**
+	 * Returns the number of tertiary heads.
+	 *
+	 * @return the number of tertiary heads
+	 */
+	public int countAll();
+
+}

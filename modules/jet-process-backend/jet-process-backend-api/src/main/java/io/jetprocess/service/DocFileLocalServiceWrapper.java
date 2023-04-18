@@ -305,11 +305,6 @@ public class DocFileLocalServiceWrapper
 		return _docFileLocalService.getDocFileByUuidAndGroupId(uuid, groupId);
 	}
 
-	@Override
-	public java.util.List<io.jetprocess.model.DocFile> getDocFileList() {
-		return _docFileLocalService.getDocFileList();
-	}
-
 	/**
 	 * Returns a range of all the doc files.
 	 *

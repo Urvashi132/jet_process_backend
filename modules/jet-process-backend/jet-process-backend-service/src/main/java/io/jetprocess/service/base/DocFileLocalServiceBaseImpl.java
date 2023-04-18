@@ -48,7 +48,12 @@ import com.liferay.portal.kernel.util.PortalUtil;
 import io.jetprocess.model.DocFile;
 import io.jetprocess.service.DocFileLocalService;
 import io.jetprocess.service.DocFileLocalServiceUtil;
+import io.jetprocess.service.persistence.BasicHeadPersistence;
+import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.PrimaryHeadPersistence;
+import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 
 import java.io.Serializable;
 
@@ -583,10 +588,25 @@ public abstract class DocFileLocalServiceBaseImpl
 		}
 	}
 
+	@Reference
+	protected BasicHeadPersistence basicHeadPersistence;
+
+	@Reference
+	protected CategoryPersistence categoryPersistence;
+
 	protected DocFileLocalService docFileLocalService;
 
 	@Reference
 	protected DocFilePersistence docFilePersistence;
+
+	@Reference
+	protected PrimaryHeadPersistence primaryHeadPersistence;
+
+	@Reference
+	protected SecondaryHeadPersistence secondaryHeadPersistence;
+
+	@Reference
+	protected TertiaryHeadPersistence tertiaryHeadPersistence;
 
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService

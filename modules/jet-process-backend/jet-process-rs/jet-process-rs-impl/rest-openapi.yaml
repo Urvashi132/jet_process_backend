@@ -68,6 +68,65 @@ components:
           format: int64
           type: integer
       type: object 
+      
+    BasicHeadRsModel:
+      properties:
+        basicHeadId:
+          format: int64
+          type: integer
+        basicHeadValue:
+          type: string
+        basicHeadCode:
+          type: string       
+      type: object
+      
+    PrimaryHeadRsModel:
+      properties:
+        primaryHeadId:
+          format: int64
+          type: integer
+        primaryHeadValue:
+          type: string
+        basicHeadId:
+          format: int64
+          type: integer     
+      type: object
+    
+    SecondaryHeadRsModel:
+      properties:
+        secondaryHeadId:
+          format: int64
+          type: integer
+        secondaryHeadValue:
+          type: string
+        primaryHeadId:
+          format: int64
+          type: integer     
+      type: object
+      
+    TertiaryHeadRsModel:
+      properties:
+        tertiaryHeadId:
+          format: int64
+          type: integer
+        tertiaryHeadValue:
+          type: string
+        secondaryHeadId:
+          format: int64
+          type: integer     
+      type: object
+      
+    CategoryRsModel:
+      properties:
+        categoryId:
+          format: int64
+          type: integer
+        categoryValue:
+          type: string
+      type: object  
+    
+      
+      
 paths:
   /DocFile:
     post:
@@ -171,3 +230,114 @@ paths:
                   $ref: '#/components/schemas/FileRsModel'
           description: ''
       tags: ["FileRsModel"]
+      
+  /primaryHead/{basicHeadId}:
+    get:
+      operationId: getPrimaryHeadByBasicHeadId
+      parameters:
+        - in: path
+          name: basicHeadId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrimaryHeadRsModel'
+                type: array  
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrimaryHeadRsModel'
+                type: array
+          description: ''
+      tags: ["PrimaryHeadRsModel"]
+      
+  /SecondaryHead/{primaryHeadId}:
+    get:
+      operationId: getSeondaryHeadByPrimaryHeadId
+      parameters:
+        - in: path
+          name: primaryHeadId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SecondaryHeadRsModel'
+                type: array  
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SecondaryHeadRsModel'
+                type: array
+          description: ''
+      tags: ["SecondaryHeadRsModel"]    
+      
+  /TertiaryHead/{secondaryHeadId}:
+    get:
+      operationId: getTertiaryHeadBySecondaryHeadId
+      parameters:
+        - in: path
+          name: secondaryHeadId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TertiaryHeadRsModel'
+                type: array  
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TertiaryHeadRsModel'
+                type: array
+          description: ''
+      tags: ["TertiaryHeadRsModel"] 
+  /BasicHead:
+    get:
+      operationId: getBasicHeadList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BasicHeadRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BasicHeadRsModel'
+          description: ''
+      tags: ["BasicHeadRsModel"]  
+  /Category:
+    get:
+      operationId: getCategoryList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CategoryRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CategoryRsModel'
+          description: ''
+      tags: ["CategoryRsModel"]     
+      
