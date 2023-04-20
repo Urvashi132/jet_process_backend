@@ -23,9 +23,10 @@
 			}
 		}
 	} catch (Exception e) {
+		System.out.println(e);
 	}
 
-	/* if folder is exist */
+	/* if folder is not exist */
 	if (documentFolderId == 0) {
 %>
 <div class="container mt-3">
@@ -216,7 +217,8 @@
 %>
 
 <aui:script>
-if(('#<portlet:namespace />title1' == '') || ('#<portlet:namespace />title1' == null)){
+var req = $('#<portlet:namespace/>title1').val();
+if((req == '') || (req == null)){
  var requiredFields = ['#<portlet:namespace />title1' , '#<portlet:namespace />icon1','#<portlet:namespace />dataProviderURL1' ];
 	$(requiredFields.join()).attr("required","true");
 }
