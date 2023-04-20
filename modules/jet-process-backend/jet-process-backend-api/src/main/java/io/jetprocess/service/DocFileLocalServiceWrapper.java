@@ -305,6 +305,13 @@ public class DocFileLocalServiceWrapper
 		return _docFileLocalService.getDocFileByUuidAndGroupId(uuid, groupId);
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.DocFile> getDocFiles()
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _docFileLocalService.getDocFiles();
+	}
+
 	/**
 	 * Returns a range of all the doc files.
 	 *

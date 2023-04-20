@@ -190,4 +190,7 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
+	<exceptions>
+	<exception>FileValidation</exception>
+	</exceptions>
 </service-builder>

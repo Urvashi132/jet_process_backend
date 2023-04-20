@@ -1,5 +1,5 @@
 {
-    "publicPages": [
+    "publicPages": [      
          {
             "privateLayout": false,
             "parentLayoutId": 0,
@@ -8,9 +8,9 @@
             "pageName": "Employee",
             "pageDescription": "employee",
             "pageTitle": "employee",
-            "pageVisiblity": false
+            "pageVisiblity": false,
+            "pageIcon": "employee.png"
         },
-       
         {
 
             "pageName": "Dashboard",
@@ -21,6 +21,7 @@
             "description": "dashboard",
             "pageTitle": "dashboard",
             "pageVisiblity": false,
+            "pageIcon": "dashboard.png",
             
             "layouts": [
                 {
@@ -52,8 +53,20 @@
             "pageName": "Core Hr",
             "pageDescription": "corehr",
             "pageTitle": "corehr",
-            "pageVisiblity": false
+            "pageVisiblity": false,
+            "pageIcon": "corehr.png"
         },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/finance",
+            "pageName": "Finance",
+            "pageDescription": "finance",
+            "pageTitle": "finance",
+            "pageVisiblity": false,
+            "pageIcon": "finance.png"
+        },	
           {
 
             "pageName": "Tasks",
@@ -64,6 +77,7 @@
             "description": "tasks",
             "pageTitle": "tasks",
             "pageVisiblity": false,
+            "pageIcon": "task.png",
             
             "layouts": [
                 {
@@ -87,26 +101,53 @@
             ]
            
         },
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/finance",
-            "pageName": "Finance",
-            "pageDescription": "finance",
-            "pageTitle": "finance",
-            "pageVisiblity": false
-        },
+        
          {
              "privateLayout": false,
             "parentLayoutId": 0,
             "pageType": "portlet",
-            "pageUrl": "/projetcs",
+            "pageUrl": "/performance",
+            "pageName": "Performance",
+            "pageDescription": "performance",
+            "pageTitle": "performance",
+            "pageVisiblity": false,
+            "pageIcon": "performance.png"
+        },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/projects",
             "pageName": "Projects",
             "pageDescription": "projects",
             "pageTitle": "projects",
-            "pageVisiblity": false
+            "pageVisiblity": false,
+            "pageIcon": "projects.png"
+        },
+         {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/reports",
+            "pageName": "Reports",
+            "pageDescription": "reports",
+            "pageTitle": "reports",
+            "pageVisiblity": false,
+            "pageIcon": "reports.png"
+        },
+        {
+            "privateLayout": false,
+            "parentLayoutId": 0,
+            "pageType": "portlet",
+            "pageUrl": "/manageclients",
+            "pageName": "Manage Clients",
+            "pageDescription": "manageclients",
+            "pageTitle": "manageclients",
+            "pageVisiblity": false,
+            "pageIcon": "manageclients.png"
         }
+       
+       
         
-    ]
+   ]
 }

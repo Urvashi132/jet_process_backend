@@ -35,12 +35,13 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
-		DocFile docFile = docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(),
-				fileRsModel.getType(), fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
-				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
-				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserId(),
-				fileRsModel.getCurrentUser(), fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
-		return GetFileRsModel(docFile);
+		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
+				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
+				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
+				fileRsModel.getYear(), fileRsModel.getUserId(), fileRsModel.getCurrentUser(),
+				fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
+	
+		return fileRsModel;
 	}
 
 	@Override
@@ -64,6 +65,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	}
 
 	@Override
+	
 	public void deleteDocFileById(@NotNull Long docFileId) throws Exception {
 		docFileLocalService.deleteDocFileById(docFileId);
 	}

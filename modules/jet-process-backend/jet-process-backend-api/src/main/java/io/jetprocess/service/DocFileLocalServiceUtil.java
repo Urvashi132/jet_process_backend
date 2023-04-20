@@ -281,6 +281,10 @@ public class DocFileLocalServiceUtil {
 		return getService().getDocFileByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<DocFile> getDocFiles() throws PortalException {
+		return getService().getDocFiles();
+	}
+
 	/**
 	 * Returns a range of all the doc files.
 	 *
