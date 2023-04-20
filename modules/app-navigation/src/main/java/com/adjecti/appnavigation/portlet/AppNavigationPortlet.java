@@ -6,6 +6,7 @@ import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.Layout;
+import com.liferay.portal.kernel.model.LayoutConstants;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.LayoutLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
@@ -56,7 +57,7 @@ public class AppNavigationPortlet extends MVCPortlet {
 		JSONArray jsonArray = null;
 		try {
 			String jsonData = new String(Files.readAllBytes(Paths.get(
-					"C:\\Users\\Admin\\Desktop\\liferay-theme-workspace\\liferay-theme-workspace\\modules\\app-navigation\\src\\main\\resources\\pages.json")));
+					"C:\\Users\\Admin\\Desktop\\liferayrestapi\\jet_process_backend\\modules\\app-navigation\\src\\main\\resources\\pages.json")));
 
 			if (Validator.isNotNull(jsonData)) {
 				JSONObject jsonObject = JSONFactoryUtil.createJSONObject(jsonData);
@@ -71,21 +72,22 @@ public class AppNavigationPortlet extends MVCPortlet {
 		return jsonArray;
 	}
 
+	
 	public List<Layout> createPage(RenderRequest renderRequest) {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		long userId = themeDisplay.getUserId();
 		long groupId = themeDisplay.getSiteGroupId();
 		Locale locale = themeDisplay.getLocale();
-
+	
 		List<Layout> allLayoutList = null;
 		JSONArray jsonArray = getJson();
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			boolean isPageExist = false;
 			JSONObject page = jsonArray.getJSONObject(i);
-
-			String[] layouts = { "url", "portlet" };
+			
+			String[] layouts = { "url", "portlet" , "content" };
 			try {
 				allLayoutList = layoutLocalService.getLayouts(groupId, false, layouts).stream()
 						.filter(c -> c.getParentLayoutId() == 0).sorted().collect(Collectors.toList());
@@ -106,11 +108,15 @@ public class AppNavigationPortlet extends MVCPortlet {
 				Layout createPageLayout = null;
 
 				try {
+					
 
+					
 					createPageLayout = layoutLocalService.addLayout(userId, groupId, page.getBoolean("privateLayout"),
 							page.getLong("parentLayoutId"), page.getString("pageName"), page.getString("pageTitle"),
 							page.getString("pageDescription"), page.getString("pageType"),
 							page.getBoolean("pageVisiblity"), page.getString("pageUrl"), new ServiceContext());
+					
+					String pageIcon = page.getString("pageIcon");
 					
 					
 					String url = page.getString("pageType");
@@ -119,13 +125,21 @@ public class AppNavigationPortlet extends MVCPortlet {
 						layoutLocalService.updateLayout(groupId, false, createPageLayout.getLayoutId(),
 								"layout-template-id=2_columns_ii" + 
 								"layoutUpdateable=true" + 
-								"url="+page.getString("pageTypeSetting"));
-						
-						
-						
+								"url="+page.getString("pageTypeSetting")+
+								pageIcon);
 
 					}
-
+					if (!(page.getString("pageIcon") == null)){
+						layoutLocalService.updateLayout(groupId, false, createPageLayout.getLayoutId(),
+								"layout-template-id=2_columns_ii" + 
+								"layoutUpdateable=true" + 
+								"url="+page.getString("pageTypeSetting")+
+							pageIcon);
+						
+					}
+					
+						
+					
 				}
 
 				catch (PortalException e) {
@@ -185,8 +199,10 @@ public class AppNavigationPortlet extends MVCPortlet {
 		}
 
 	}
+	
+	
 
-
+	
 	@Reference
 	private LayoutLocalService layoutLocalService;
 

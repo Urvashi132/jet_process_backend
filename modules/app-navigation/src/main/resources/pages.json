@@ -3,7 +3,7 @@
          {
             "privateLayout": false,
             "parentLayoutId": 0,
-            "pageType": "portlet",
+            "pageType": "content",
             "pageUrl": "/employee",
             "pageName": "Employee",
             "pageDescription": "employee",
@@ -12,6 +12,7 @@
             "pageIcon": "employee.png"
         },
         {
+
 
             "pageName": "Dashboard",
             "privateLayout": false,
