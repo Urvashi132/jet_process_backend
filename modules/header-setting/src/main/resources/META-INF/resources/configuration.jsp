@@ -216,6 +216,9 @@
 	}
 %>
 
+
+
+
 <aui:script>
 var req = $('#<portlet:namespace/>title1').val();
 if((req == '') || (req == null)){
