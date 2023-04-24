@@ -1,6 +1,8 @@
 package com.adjecti.appnavigation.portlet;
 
 import com.adjecti.appnavigation.constants.AppNavigationPortletKeys;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
@@ -15,6 +17,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -46,6 +49,7 @@ public class AppNavigationPortlet extends MVCPortlet {
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 
+		
 		List<Layout> layoutList = createPage(renderRequest);
 		
 		renderRequest.setAttribute("layoutList", layoutList);
@@ -56,9 +60,15 @@ public class AppNavigationPortlet extends MVCPortlet {
 	public JSONArray getJson() {
 		JSONArray jsonArray = null;
 		try {
-			String jsonData = new String(Files.readAllBytes(Paths.get(
-					"C:\\Users\\Admin\\Desktop\\liferayrestapi\\jet_process_backend\\modules\\app-navigation\\src\\main\\resources\\pages.json")));
-
+			InputStream in=Thread.currentThread().getContextClassLoader().getResourceAsStream("pages.json");
+				    ObjectMapper mapper = new ObjectMapper();
+				    JsonNode jsonNode = mapper.readValue(in, JsonNode.class);
+				    String jsonData = mapper.writeValueAsString(jsonNode);
+				  
+				
+			
+			
+			
 			if (Validator.isNotNull(jsonData)) {
 				JSONObject jsonObject = JSONFactoryUtil.createJSONObject(jsonData);
 
