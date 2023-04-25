@@ -1,0 +1,56 @@
+{
+    "publicPages": [ 
+     {
+
+            "pageName": "JetProcess",
+            "privateLayout": false,
+            "pageType": "portlet",
+            "pageUrl": "/jetprocess",
+            "description": "jetprocess",
+            "pageTitle": "jetprocess",
+            "pageVisiblity": false,
+            
+            "layouts": [
+                {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/dashboard",
+                    "pageName": "Dashboard",
+                    "pageDescription": "dashboard",
+                    "pageTitle": "dashboard",
+                    "pageVisiblity": false
+                },
+                {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/file",
+                    "pageName": "File",
+                    "pageDescription": "file",
+                    "pageTitle": "file",
+                    "pageVisiblity": false
+                },
+                {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/receipt",
+                    "pageName": "Receipt",
+                    "pageDescription": "receipt",
+                    "pageTitle": "receipt",
+                    "pageVisiblity": false
+                },
+                {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/note",
+                    "pageName": "Note",
+                    "pageDescription": "note",
+                    "pageTitle": "note",
+                    "pageVisiblity": false
+                }
+                
+            ]
+           
+        }
+  
+   ]
+}
