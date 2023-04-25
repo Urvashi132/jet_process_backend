@@ -1,14 +1,10 @@
-<%@ include file="/init.jsp" %>
 
-<p>
-	<b><liferay-ui:message key="jetprocess.caption"/></b>
-</p>
-Hello Amit
 <!DOCTYPE html>
 <html>
 <head>
 <title>Registration Form</title>
-<%@include file="/cdns.jsp"%>
+<%@ include file="init.jsp" %>
+
 <!-- style  -->
 <link rel="stylesheet" href="/css/style.css">
 
@@ -31,7 +27,7 @@ Hello Amit
 						<%@include file="left-nav.jsp"%>
 					</div>
 
-					<div class="col-md-9"></div>
+					<div class="col-md-9">ssd</div>
 				</div>
 			</div>
 		</div>

@@ -35303,15 +35303,10 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 /* right navigation*/
 .newSideBarRight {
-	height: 100vh;
+	height: 7vh;
 	width: 35px;
-	right: 12px;
-	top: -35px;
-	background: linear-gradient(to top, #00c5fb 0%, #0253cc 100%);
-	z-index: 999;
+	background-color: #0D99FF;
 }
-
-
 
 .profile.list-unstyled a {
 	padding: 0;
@@ -35320,15 +35315,3 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 	font-size: 28px;
 	cursor: pointer;
 }
-
-
-.list-item {
-	border-bottom: 1px solid #eaeaea;
-	padding: 10px;
-	position: relative;
-}
-
-
-
-
-

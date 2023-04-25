@@ -136,5 +136,6 @@ public class DashboardWidgetPortlet extends MVCPortlet {
 		}
 		super.serveResource(resourceRequest, resourceResponse);
 	}
+	
 
 }

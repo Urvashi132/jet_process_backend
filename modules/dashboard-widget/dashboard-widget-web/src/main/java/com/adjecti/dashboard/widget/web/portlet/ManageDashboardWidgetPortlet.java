@@ -53,10 +53,8 @@ public class ManageDashboardWidgetPortlet extends MVCPortlet {
 		ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		long addFolderId = 0;
 		try {
-			if(Validator.isNull(addFolderId)) {
-				addFolderId = addFolder(themeDisplay.getScopeGroupId(), renderRequest, renderResponse);
-				renderRequest.setAttribute("addFolderId", addFolderId);
-			}
+			addFolderId = addFolder(themeDisplay.getScopeGroupId(), renderRequest, renderResponse);
+			renderRequest.setAttribute("addFolderId", addFolderId);
 		} catch (PortalException e) {
 			e.printStackTrace();
 		}
@@ -80,13 +78,13 @@ public class ManageDashboardWidgetPortlet extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(DLFolder.class.getName(), renderRequest);
 		List<Folder> mainFolders = DLAppServiceUtil.getFolders(groupId, parentFolderId);
 		Folder dashboardWidgetFolder = null;
-		boolean mainFolderExists = false;
-		for (Folder folder : mainFolders) {
-			if (folder.getName().equalsIgnoreCase("Dashboard_Widget")) {
-				dashboardWidgetFolder = folder;
-				mainFolderExists = true;
-			}else if (!mainFolderExists){
-				dashboardWidgetFolder = _dlAppService.addFolder(groupId, parentFolderId, name, description, serviceContext);
+		if (mainFolders.isEmpty()) {
+			dashboardWidgetFolder = _dlAppService.addFolder(groupId, parentFolderId, name, description, serviceContext);
+		} else {
+			for (Folder folder : mainFolders) {
+				if (folder.getName().equalsIgnoreCase("Dashboard_Widget")) {
+					dashboardWidgetFolder = folder;
+				}
 			}
 		}
 		return dashboardWidgetFolder.getFolderId();
