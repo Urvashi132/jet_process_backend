@@ -44,6 +44,58 @@ public class TertiaryHeadRsModel implements Serializable {
 	}
 
 	@Schema
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@JsonIgnore
+	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
+		try {
+			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Long id;
+
+	@Schema
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@JsonIgnore
+	public void setName(UnsafeSupplier<String, Exception> nameUnsafeSupplier) {
+		try {
+			name = nameUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String name;
+
+	@Schema
 	public Long getSecondaryHeadId() {
 		return secondaryHeadId;
 	}
@@ -70,62 +122,6 @@ public class TertiaryHeadRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long secondaryHeadId;
-
-	@Schema
-	public Long getTertiaryHeadId() {
-		return tertiaryHeadId;
-	}
-
-	public void setTertiaryHeadId(Long tertiaryHeadId) {
-		this.tertiaryHeadId = tertiaryHeadId;
-	}
-
-	@JsonIgnore
-	public void setTertiaryHeadId(
-		UnsafeSupplier<Long, Exception> tertiaryHeadIdUnsafeSupplier) {
-
-		try {
-			tertiaryHeadId = tertiaryHeadIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long tertiaryHeadId;
-
-	@Schema
-	public String getTertiaryHeadValue() {
-		return tertiaryHeadValue;
-	}
-
-	public void setTertiaryHeadValue(String tertiaryHeadValue) {
-		this.tertiaryHeadValue = tertiaryHeadValue;
-	}
-
-	@JsonIgnore
-	public void setTertiaryHeadValue(
-		UnsafeSupplier<String, Exception> tertiaryHeadValueUnsafeSupplier) {
-
-		try {
-			tertiaryHeadValue = tertiaryHeadValueUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected String tertiaryHeadValue;
 
 	@Override
 	public boolean equals(Object object) {
@@ -154,6 +150,30 @@ public class TertiaryHeadRsModel implements Serializable {
 
 		sb.append("{");
 
+		if (id != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"id\": ");
+
+			sb.append(id);
+		}
+
+		if (name != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"name\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(name));
+
+			sb.append("\"");
+		}
+
 		if (secondaryHeadId != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -162,30 +182,6 @@ public class TertiaryHeadRsModel implements Serializable {
 			sb.append("\"secondaryHeadId\": ");
 
 			sb.append(secondaryHeadId);
-		}
-
-		if (tertiaryHeadId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"tertiaryHeadId\": ");
-
-			sb.append(tertiaryHeadId);
-		}
-
-		if (tertiaryHeadValue != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"tertiaryHeadValue\": ");
-
-			sb.append("\"");
-
-			sb.append(_escape(tertiaryHeadValue));
-
-			sb.append("\"");
 		}
 
 		sb.append("}");

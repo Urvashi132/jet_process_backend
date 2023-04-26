@@ -71,20 +71,18 @@ public class PrimaryHeadRsModel implements Serializable {
 	protected Long basicHeadId;
 
 	@Schema
-	public Long getPrimaryHeadId() {
-		return primaryHeadId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPrimaryHeadId(Long primaryHeadId) {
-		this.primaryHeadId = primaryHeadId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@JsonIgnore
-	public void setPrimaryHeadId(
-		UnsafeSupplier<Long, Exception> primaryHeadIdUnsafeSupplier) {
-
+	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
-			primaryHeadId = primaryHeadIdUnsafeSupplier.get();
+			id = idUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -96,23 +94,21 @@ public class PrimaryHeadRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long primaryHeadId;
+	protected Long id;
 
 	@Schema
-	public String getPrimaryHeadValue() {
-		return primaryHeadValue;
+	public String getName() {
+		return name;
 	}
 
-	public void setPrimaryHeadValue(String primaryHeadValue) {
-		this.primaryHeadValue = primaryHeadValue;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@JsonIgnore
-	public void setPrimaryHeadValue(
-		UnsafeSupplier<String, Exception> primaryHeadValueUnsafeSupplier) {
-
+	public void setName(UnsafeSupplier<String, Exception> nameUnsafeSupplier) {
 		try {
-			primaryHeadValue = primaryHeadValueUnsafeSupplier.get();
+			name = nameUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -124,7 +120,7 @@ public class PrimaryHeadRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected String primaryHeadValue;
+	protected String name;
 
 	@Override
 	public boolean equals(Object object) {
@@ -163,26 +159,26 @@ public class PrimaryHeadRsModel implements Serializable {
 			sb.append(basicHeadId);
 		}
 
-		if (primaryHeadId != null) {
+		if (id != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"primaryHeadId\": ");
+			sb.append("\"id\": ");
 
-			sb.append(primaryHeadId);
+			sb.append(id);
 		}
 
-		if (primaryHeadValue != null) {
+		if (name != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"primaryHeadValue\": ");
+			sb.append("\"name\": ");
 
 			sb.append("\"");
 
-			sb.append(_escape(primaryHeadValue));
+			sb.append(_escape(name));
 
 			sb.append("\"");
 		}

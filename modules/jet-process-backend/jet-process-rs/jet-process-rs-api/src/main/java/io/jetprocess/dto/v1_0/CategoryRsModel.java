@@ -43,20 +43,18 @@ public class CategoryRsModel implements Serializable {
 	}
 
 	@Schema
-	public Long getCategoryId() {
-		return categoryId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@JsonIgnore
-	public void setCategoryId(
-		UnsafeSupplier<Long, Exception> categoryIdUnsafeSupplier) {
-
+	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
 		try {
-			categoryId = categoryIdUnsafeSupplier.get();
+			id = idUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -68,23 +66,21 @@ public class CategoryRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long categoryId;
+	protected Long id;
 
 	@Schema
-	public String getCategoryValue() {
-		return categoryValue;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategoryValue(String categoryValue) {
-		this.categoryValue = categoryValue;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@JsonIgnore
-	public void setCategoryValue(
-		UnsafeSupplier<String, Exception> categoryValueUnsafeSupplier) {
-
+	public void setName(UnsafeSupplier<String, Exception> nameUnsafeSupplier) {
 		try {
-			categoryValue = categoryValueUnsafeSupplier.get();
+			name = nameUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -96,7 +92,7 @@ public class CategoryRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected String categoryValue;
+	protected String name;
 
 	@Override
 	public boolean equals(Object object) {
@@ -125,26 +121,26 @@ public class CategoryRsModel implements Serializable {
 
 		sb.append("{");
 
-		if (categoryId != null) {
+		if (id != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"categoryId\": ");
+			sb.append("\"id\": ");
 
-			sb.append(categoryId);
+			sb.append(id);
 		}
 
-		if (categoryValue != null) {
+		if (name != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"categoryValue\": ");
+			sb.append("\"name\": ");
 
 			sb.append("\"");
 
-			sb.append(_escape(categoryValue));
+			sb.append(_escape(name));
 
 			sb.append("\"");
 		}

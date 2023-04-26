@@ -46,8 +46,8 @@ public class SecondaryHeadRsModelResourceImpl extends BaseSecondaryHeadRsModelRe
 
 	private SecondaryHeadRsModel GetSecondaryHeadModel(SecondaryHead secondaryHead) {
 		SecondaryHeadRsModel createdSecondaryHead = new SecondaryHeadRsModel();
-		createdSecondaryHead.setSecondaryHeadId(secondaryHead.getSecondaryHeadId());
-		createdSecondaryHead.setSecondaryHeadValue(secondaryHead.getSecondaryHeadValue());
+		createdSecondaryHead.setId(secondaryHead.getSecondaryHeadId());
+		createdSecondaryHead.setName(secondaryHead.getSecondaryHeadValue());
 		return createdSecondaryHead;
 	}
 

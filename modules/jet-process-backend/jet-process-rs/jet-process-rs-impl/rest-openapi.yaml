@@ -71,10 +71,10 @@ components:
       
     BasicHeadRsModel:
       properties:
-        basicHeadId:
+        id:
           format: int64
           type: integer
-        basicHeadValue:
+        name:
           type: string
         basicHeadCode:
           type: string       
@@ -82,10 +82,10 @@ components:
       
     PrimaryHeadRsModel:
       properties:
-        primaryHeadId:
+        id:
           format: int64
           type: integer
-        primaryHeadValue:
+        name:
           type: string
         basicHeadId:
           format: int64
@@ -94,10 +94,10 @@ components:
     
     SecondaryHeadRsModel:
       properties:
-        secondaryHeadId:
+        id:
           format: int64
           type: integer
-        secondaryHeadValue:
+        name:
           type: string
         primaryHeadId:
           format: int64
@@ -106,10 +106,10 @@ components:
       
     TertiaryHeadRsModel:
       properties:
-        tertiaryHeadId:
+        id:
           format: int64
           type: integer
-        tertiaryHeadValue:
+        name:
           type: string
         secondaryHeadId:
           format: int64
@@ -118,10 +118,10 @@ components:
       
     CategoryRsModel:
       properties:
-        categoryId:
+        id:
           format: int64
           type: integer
-        categoryValue:
+        name:
           type: string
       type: object  
     

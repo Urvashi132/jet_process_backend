@@ -50,8 +50,8 @@ public class CategoryRsModelResourceImpl
 	
 	private CategoryRsModel GetCategoryModel(Category category) {
 		CategoryRsModel createdCategory = new CategoryRsModel();
-		createdCategory.setCategoryId(category.getCategoryId());
-		createdCategory.setCategoryValue(category.getCategoryValue());
+		createdCategory.setId(category.getCategoryId());
+		createdCategory.setName(category.getCategoryValue());
 		return createdCategory;
 	}
 	

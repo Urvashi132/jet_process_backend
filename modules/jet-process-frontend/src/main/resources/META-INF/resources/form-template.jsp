@@ -114,18 +114,29 @@
 </script>
 
 <script id="jf-button-template" type="text/x-handlebars-template">
-  <button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="submitForm(event)">{{label}}</button>
+	{{#if_eq handler ""}}
+  		<button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="{{name}}OnClick(event)">{{label}}</button>
+	{{/if_eq}}
+	
+	{{#if_ne handler ""}}
+		{{#if_eq handler.type "javascript"}}
+	  		<button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="{{handler.func}}">{{label}}</button>
+		{{/if_eq}}
+	{{/if_ne}}
+
 </script>
 
 <script id="jf-link-template" type="text/x-handlebars-template">
-  <a name="{{name}}" id="{{name}}" onclick="submitForm(event)"><i class="fa {{label}}" aria-hidden="true"></i></a>
+	{{#if_eq handler.type "javascript"}}
+  		<a name="{{name}}" id="{{name}}" onclick="{{handler.func}}"><i class="fa {{label}}" aria-hidden="true"></i></a>
+	{{/if_eq}}
 </script>
 
 
 <script id="jf-list-template" type="text/x-handlebars-template">
 	<div class="form-group">
 		<label for="{{name}}" class="form-label">{{label}}</label>
-		<table class="table table-bordered">
+		<table class="table table-bordered" id="{{name}}">
 			<thead>
 				<tr>
 					{{#each fields}}
@@ -134,7 +145,7 @@
 					<td>Actions</td>
 				</tr>
 			</thead>
-			<tbody id="{{name}}">
+			<tbody>
 				
 			</tbody>
 		</table>
@@ -291,26 +302,11 @@ function renderFormGroups(){
 function renderFormLists(){
     form.fields.forEach(field => {
         if (field.type == "list") {
-        	var html="<tr>";
-            field.fields.forEach(subfield => {
-                const template = $(templates["list_"+subfield.type]).html();
-                const compiledTemplate = Handlebars.compile(template);
-                html+= "<td>" + compiledTemplate(subfield) + "</td>";
-                
-            });
-            
-            if(field.actions.length>0){
-            	html+= "<td>";
-            	field.actions.forEach(action => {
-        	    	const template = $(templates[action.type]).html();
-        	    	const compiledTemplate = Handlebars.compile(template);
-        	    	html+= compiledTemplate(action);
-            	});
-        	    html+= "</td>";
-            }
-            
-            html+= "</tr>";
-            $('#' + field.name).append(html);
+        	addListRow(field);
+        	
+			var td=$('#'+field.name).find('tr').find('td').last();
+			$(td).children('a[name="deleteRow"]').hide();
+            //$('#' + field.name).append(html);
         }
     });
 }
@@ -341,7 +337,7 @@ function fillOptions() {
                 	var checkbox=(field.type == "checkbox");
                 	var radio=(field.type == "radio");
                     var i=0;
-                    $.each(data, function(key, value) {
+                    $.each(data.items, function(key, value) {
                     	if(select){
                     		$("#" + field.name).append(new Option(value.name, value.id));
                     	}else{
@@ -465,5 +461,90 @@ function saveOnClick(event){
 function cancelOnClick(event){
 	 event.preventDefault();
 	 location.href="<%=request.getParameter("cancelPage")%>";
+}
+
+function addRow(event){
+	var target = $( event.target);
+	var table=$(target).parents('table');
+
+	var field=findFieldByNameAndType($(table).attr('id'), "list");
+	
+	var elementType = $(target).prop('nodeName');
+	if(elementType=='a' || elementType=='button'){
+		$(target).hide();
+		$(target).siblings().show();
+	}else{
+		$(target).parent().hide();
+		$(target).parent().siblings().show();
+	}
+	
+	addListRow(field);
+}
+
+function deleteRow(event){
+	var target = $( event.target);
+	if(confirm('Are you sure to delete the row?')){
+		var tbody=$(target).parents('tbody');
+		if($(tbody).find('tr').length>1){
+			$(target).closest('tr').remove();
+
+			if($(tbody).find('tr').length==1){
+				var td=$(tbody).find('tr').find('td').last();
+				$(td).children('a[name="deleteRow"]').hide();
+				$(td).children('a[name="addRow"]').show();
+			}else{
+				var td=$(tbody).find('tr').last().find('td').last();
+				$(td).children('a[name="deleteRow"]').show();
+				$(td).children('a[name="addRow"]').show();
+			}
+		}
+		
+		//var lastAdd=$(target).parents('tbody').find('tr').last().find('td').last().;
+		
+	}
+	//var tr=$(target).parents('tr');
+	//var tbody=$(target).parents('tbody');
+	
+	//deleteListRow(event);
+}
+
+function addListRow(field){
+   	var tr=$('<tr />');
+	//var html="<tr>";
+    field.fields.forEach(subfield => {
+        const template = $(templates["list_"+subfield.type]).html();
+        const compiledTemplate = Handlebars.compile(template);
+        var html=compiledTemplate(subfield)
+        $('<td />').append(html).appendTo(tr);
+        //var td=$('<td />');
+        //td.append(html).appendTo(tr);
+        //html+= "<td>" + compiledTemplate(subfield) + "</td>";
+        
+    });
+    
+    if(field.actions.length>0){
+    	//var html= "";
+    	var td=$('<td />');
+    	field.actions.forEach(action => {
+	    	const template = $(templates[action.type]).html();
+	    	const compiledTemplate = Handlebars.compile(template);
+	    	//html+= compiledTemplate(action);
+	    	$(td).append(compiledTemplate(action));
+    	});
+    	//$('<td />', html+= "</td>";
+    }
+    $(td).appendTo(tr);
+   // html+= "</tr>";
+   $(tr).appendTo($('#' + field.name).find('tbody'));
+}
+
+function findFieldByNameAndType(name, type){
+	var field;
+	form.fields.forEach(f => {
+		if(f.name==name && f.type==type){
+			field=f;
+		}
+	});
+	return field;
 }
 </script>

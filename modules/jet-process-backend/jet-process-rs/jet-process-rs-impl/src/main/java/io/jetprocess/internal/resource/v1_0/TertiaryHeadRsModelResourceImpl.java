@@ -46,8 +46,8 @@ public class TertiaryHeadRsModelResourceImpl extends BaseTertiaryHeadRsModelReso
 
 	private TertiaryHeadRsModel GetTertiaryHeadModel(TertiaryHead tertiaryHead) {
 		TertiaryHeadRsModel createdTertiaryHead = new TertiaryHeadRsModel();
-		createdTertiaryHead.setTertiaryHeadId(tertiaryHead.getTertiaryHeadId());
-		createdTertiaryHead.setTertiaryHeadValue(tertiaryHead.getTertiaryHeadvalue());
+		createdTertiaryHead.setId(tertiaryHead.getTertiaryHeadId());
+		createdTertiaryHead.setName(tertiaryHead.getTertiaryHeadvalue());
 		return createdTertiaryHead;
 	}
 

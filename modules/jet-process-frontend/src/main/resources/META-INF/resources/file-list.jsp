@@ -1,16 +1,18 @@
 <%@include file="init.jsp"%>
 <link rel="stylesheet" href="/css/style.css">
 
-<portlet:renderURL var="list">
-	<portlet:param name="mvcPath" value="/file-list.jsp" />
+<portlet:renderURL var="fileForm">
+	<portlet:param name="mvcPath" value="/file-form.jsp"/>
 </portlet:renderURL>
 
+
 <div class="container">
-	<div id="userFormContainer"></div>
+	<div id="fileList"></div>
 </div>
 
+
 <script>
-var form = {
+	var form = {
 		"id" : "fileForm",
 		"title" : "File Creation",
 		"subtitle" : "New File Creation",
@@ -52,7 +54,7 @@ var form = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/BasicHead?p_auth="+ Liferay.authToken,
+						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/BasicHead?p_auth='+ Liferay.authToken",
 						"value" : "basicHeadId",
 						"label" : "basicHeadValue"
 					}
@@ -64,7 +66,7 @@ var form = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/primaryHead/?p_auth="+ Liferay.authToken,
+						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/primaryHead/?p_auth='+ Liferay.authToken",
 						"value" : "primaryHeadId",
 						"label" : "primaryHeadValue",
 						"params" : [ {
@@ -83,9 +85,9 @@ var form = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead/?p_auth="+ Liferay.authToken,
-						"value" : "id",
-						"label" : "name",
+						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead/?p_auth='+ Liferay.authToken",
+						"value" : "secondaryHeadId",
+						"label" : "secondaryHeadValue",
 						"params" : [ {
 							"name" : "primaryHeadId",
 							"value" : "#primaryHead"
@@ -101,9 +103,9 @@ var form = {
 					"label" : "TertiaryHead",
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/TertiaryHead/?p_auth="+ Liferay.authToken,
-						"value" : "id",
-						"label" : "name",
+						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/TertiaryHead/?p_auth='+ Liferay.authToken",
+						"value" : "tertiaryHeadId",
+						"label" : "tertiaryHeadValue",
 						"params" : [ {
 							"name" : "secondaryHeadId",
 							"value" : "#secondaryHead"
@@ -136,7 +138,7 @@ var form = {
 					"label" : "Category",
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Category?p_auth="+ Liferay.authToken,
+						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/Category?p_auth='+ Liferay.authToken",
 						"value" : "categoryId",
 						"label" : "categoryValue"
 					}
@@ -197,34 +199,9 @@ var form = {
 	};
 </script>
 
-
-<liferay-util:include page="/form-template.jsp"
+<liferay-util:include page="/list-template.jsp"
 	servletContext="<%=application%>">
-	<liferay-util:param name="formContainerId" value="userFormContainer" />
-	<liferay-util:param name="formId" value="userForm" />
-	<liferay-util:param name="cancelPage" value="<%=list%>" />
-	<liferay-util:param name="successPage" value="<%=list%>" />
+	<liferay-util:param name="listContainerId" value="fileList" />
+	<liferay-util:param name="listId" value="userDataTable" />
+	<liferay-util:param name="addPage" value="<%=fileForm %>" />
 </liferay-util:include>
-
-<script>
-$(document).ready(() => {
-	form.fields.forEach(field => {
-		if(field.provider){
-			$.each(field.provider.params, function(key, val) {
-				if(key == 0){
-					$.each(val, function(key, value) {
-						$(value).on('change', function(){
-							var selectedValue = $(value).val(); 
-							var arr = field.provider.url.split('?');
-							var newURL = arr[0]+ selectedValue +'?' + arr[1];
-							field.provider.url =newURL;
-							fillOptions();
-						});
-					});
-				}
-			});
-		}
-	});
-});
-
-</script>

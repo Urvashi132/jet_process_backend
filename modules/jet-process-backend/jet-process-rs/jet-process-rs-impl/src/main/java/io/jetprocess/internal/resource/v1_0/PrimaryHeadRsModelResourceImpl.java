@@ -44,8 +44,8 @@ public class PrimaryHeadRsModelResourceImpl extends BasePrimaryHeadRsModelResour
 
 	private PrimaryHeadRsModel GetPrimaryHeadModel(PrimaryHead primaryHead) {
 		PrimaryHeadRsModel createdPrimaryHead = new PrimaryHeadRsModel();
-		createdPrimaryHead.setPrimaryHeadId(primaryHead.getPrimaryHeadId());
-		createdPrimaryHead.setPrimaryHeadValue(primaryHead.getPrimaryHeadValue());
+		createdPrimaryHead.setId(primaryHead.getPrimaryHeadId());
+		createdPrimaryHead.setName(primaryHead.getPrimaryHeadValue());
 		;
 		return createdPrimaryHead;
 	}
