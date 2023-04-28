@@ -1,154 +1,60 @@
 {
-    "publicPages": [      
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "content",
-            "pageUrl": "/employee",
-            "pageName": "Employee",
-            "pageDescription": "employee",
-            "pageTitle": "employee",
-            "pageVisiblity": false,
-            "pageIcon": "employee.png"
-        },
-        {
+    "publicPages": [ 
+     {
 
-
-            "pageName": "Dashboard",
+            "pageName": "JetProcess",
             "privateLayout": false,
-            "parentLayoutId": 0,
             "pageType": "portlet",
-            "pageUrl": "/dashboard",
-            "description": "dashboard",
-            "pageTitle": "dashboard",
+            "pageUrl": "/jetprocess",
+            "description": "jetprocess",
+            "pageTitle": "jetprocess",
             "pageVisiblity": false,
-            "pageIcon": "dashboard.png",
             
             "layouts": [
                 {
                     "privateLayout": false,
-                    "pageType": "portlet",
-                    "pageUrl": "/dashboard-light",
-                    "pageName": "Dashboard-Light",
+                    "pageType": "url",
+                    "pageUrl": "/dashboard",
+                    "pageName": "Dashboard",
                     "pageDescription": "dashboard",
                     "pageTitle": "dashboard",
-                    "pageVisiblity": false
+                    "pageVisiblity": false,
+                    "pageTypeSetting":"http://localhost:8080/web/jetcrm/jetprocess?view=dashboard"                   
+               },
+                {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/file",
+                    "pageName": "File",
+                    "pageDescription": "file",
+                    "pageTitle": "file",
+                    "pageVisiblity": false,
+                     "pageTypeSetting":"http://localhost:8080/web/jetcrm/jetprocess?view=file"                   
                 },
                 {
                     "privateLayout": false,
-                    "pageType": "portlet",
-                    "pageUrl": "/dashboard-dark",
-                    "pageName": "Dashboard-Dark",
-                    "pageDescription": "dashboard",
-                    "pageTitle": "dashboard",
-                    "pageVisiblity": false
+                    "pageType": "url",
+                    "pageUrl": "/receipt",
+                    "pageName": "Receipt",
+                    "pageDescription": "receipt",
+                    "pageTitle": "receipt",
+                    "pageVisiblity": false,
+                    "pageTypeSetting":"http://localhost:8080/web/jetcrm/jetprocess?view=receipt" 
+                 },
+               {
+                    "privateLayout": false,
+                    "pageType": "url",
+                    "pageUrl": "/note",
+                    "pageName": "Note",
+                    "pageDescription": "note",
+                    "pageTitle": "note",
+                    "pageVisiblity": false,
+                    "pageTypeSetting":"http://localhost:8080/web/jetcrm/jetprocess?view=note"                    
                 }
+                
             ]
            
-        },
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/corehr",
-            "pageName": "Core Hr",
-            "pageDescription": "corehr",
-            "pageTitle": "corehr",
-            "pageVisiblity": false,
-            "pageIcon": "corehr.png"
-        },
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/finance",
-            "pageName": "Finance",
-            "pageDescription": "finance",
-            "pageTitle": "finance",
-            "pageVisiblity": false,
-            "pageIcon": "finance.png"
-        },	
-          {
-
-            "pageName": "Tasks",
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/tasks",
-            "description": "tasks",
-            "pageTitle": "tasks",
-            "pageVisiblity": false,
-            "pageIcon": "task.png",
-            
-            "layouts": [
-                {
-                    "privateLayout": false,
-                    "pageType": "portlet",
-                    "pageUrl": "/task",
-                    "pageName": "Task",
-                    "pageDescription": "task",
-                    "pageTitle": "task",
-                    "pageVisiblity": false
-                },
-                {
-                    "privateLayout": false,
-                    "pageType": "portlet",
-                    "pageUrl": "/task-summary",
-                    "pageName": "Task-Summary",
-                    "pageDescription": "task-summary",
-                    "pageTitle": "task-summary",
-                    "pageVisiblity": false
-                }
-            ]
-           
-        },
-        
-         {
-             "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/performance",
-            "pageName": "Performance",
-            "pageDescription": "performance",
-            "pageTitle": "performance",
-            "pageVisiblity": false,
-            "pageIcon": "performance.png"
-        },
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/projects",
-            "pageName": "Projects",
-            "pageDescription": "projects",
-            "pageTitle": "projects",
-            "pageVisiblity": false,
-            "pageIcon": "projects.png"
-        },
-         {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/reports",
-            "pageName": "Reports",
-            "pageDescription": "reports",
-            "pageTitle": "reports",
-            "pageVisiblity": false,
-            "pageIcon": "reports.png"
-        },
-        {
-            "privateLayout": false,
-            "parentLayoutId": 0,
-            "pageType": "portlet",
-            "pageUrl": "/manageclients",
-            "pageName": "Manage Clients",
-            "pageDescription": "manageclients",
-            "pageTitle": "manageclients",
-            "pageVisiblity": false,
-            "pageIcon": "manageclients.png"
         }
-       
-       
-        
+  
    ]
 }

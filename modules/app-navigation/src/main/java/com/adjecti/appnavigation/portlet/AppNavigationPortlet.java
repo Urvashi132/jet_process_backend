@@ -1,14 +1,11 @@
 package com.adjecti.appnavigation.portlet;
 
 import com.adjecti.appnavigation.constants.AppNavigationPortletKeys;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.Layout;
-import com.liferay.portal.kernel.model.LayoutConstants;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.LayoutLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
@@ -17,7 +14,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -49,7 +45,6 @@ public class AppNavigationPortlet extends MVCPortlet {
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
 
-		
 		List<Layout> layoutList = createPage(renderRequest);
 		
 		renderRequest.setAttribute("layoutList", layoutList);
@@ -60,15 +55,9 @@ public class AppNavigationPortlet extends MVCPortlet {
 	public JSONArray getJson() {
 		JSONArray jsonArray = null;
 		try {
-			InputStream in=Thread.currentThread().getContextClassLoader().getResourceAsStream("pages.json");
-				    ObjectMapper mapper = new ObjectMapper();
-				    JsonNode jsonNode = mapper.readValue(in, JsonNode.class);
-				    String jsonData = mapper.writeValueAsString(jsonNode);
-				  
-				
-			
-			
-			
+			String jsonData = new String(Files.readAllBytes(Paths.get(
+					"C:\\Users\\Admin\\Desktop\\liferayrestapi\\jet_process_backend\\modules\\app-navigation\\src\\main\\resources\\pages.json")));
+
 			if (Validator.isNotNull(jsonData)) {
 				JSONObject jsonObject = JSONFactoryUtil.createJSONObject(jsonData);
 
@@ -126,7 +115,7 @@ public class AppNavigationPortlet extends MVCPortlet {
 							page.getString("pageDescription"), page.getString("pageType"),
 							page.getBoolean("pageVisiblity"), page.getString("pageUrl"), new ServiceContext());
 					
-					String pageIcon = page.getString("pageIcon");
+					//String pageIcon = page.getString("pageIcon");
 					
 					
 					String url = page.getString("pageType");
@@ -135,18 +124,19 @@ public class AppNavigationPortlet extends MVCPortlet {
 						layoutLocalService.updateLayout(groupId, false, createPageLayout.getLayoutId(),
 								"layout-template-id=2_columns_ii" + 
 								"layoutUpdateable=true" + 
-								"url="+page.getString("pageTypeSetting")+
-								pageIcon);
+								"url="+page.getString("pageTypeSetting")
+								);
 
 					}
-					if (!(page.getString("pageIcon") == null)){
-						layoutLocalService.updateLayout(groupId, false, createPageLayout.getLayoutId(),
-								"layout-template-id=2_columns_ii" + 
-								"layoutUpdateable=true" + 
-								"url="+page.getString("pageTypeSetting")+
-							pageIcon);
-						
-					}
+					/*
+					 * if (!(page.getString("pageIcon") == null)){
+					 * layoutLocalService.updateLayout(groupId, false,
+					 * createPageLayout.getLayoutId(), "layout-template-id=2_columns_ii" +
+					 * "layoutUpdateable=true" + "url="+page.getString("pageTypeSetting")+
+					 * pageIcon);
+					 * 
+					 * }
+					 */
 					
 						
 					
@@ -199,8 +189,15 @@ public class AppNavigationPortlet extends MVCPortlet {
 						childLayoutJsonObject.getString("pageDescription"), childLayoutJsonObject.getString("pageType"),
 						childLayoutJsonObject.getBoolean("pageVisiblity"), childLayoutJsonObject.getString("pageUrl"),
 						new ServiceContext());
-				layoutLocalService.updateLayout(childLayout);
-			}
+				System.out.println("test----"+childLayoutJsonObject.getString("pageTypeSetting"));
+					layoutLocalService.updateLayout(groupId, false, childLayout.getLayoutId(),
+							 
+							"layoutUpdateable=true" + 
+							"url="+childLayoutJsonObject.getString("pageTypeSetting")
+							);
+				}
+			
+			
 			return true;
 
 		} catch (Exception e) {

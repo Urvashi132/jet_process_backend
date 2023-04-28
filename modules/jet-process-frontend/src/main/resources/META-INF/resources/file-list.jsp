@@ -199,7 +199,7 @@
 	};
 </script>
 
-<liferay-util:include page="/list-template.jsp"
+<liferay-ut il:include page="/list-template.jsp"
 	servletContext="<%=application%>">
 	<liferay-util:param name="listContainerId" value="fileList" />
 	<liferay-util:param name="listId" value="userDataTable" />
