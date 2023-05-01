@@ -13,16 +13,26 @@ import com.liferay.portal.vulcan.pagination.Page;
 
 import io.jetprocess.dto.v1_0.BasicHeadRsModel;
 import io.jetprocess.dto.v1_0.CategoryRsModel;
+import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.OrganizationRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
+import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.dto.v1_0.SecondaryHeadRsModel;
+import io.jetprocess.dto.v1_0.StateRsModel;
 import io.jetprocess.dto.v1_0.TertiaryHeadRsModel;
+import io.jetprocess.dto.v1_0.TypeRsModel;
 import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
+import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.StateRsModelResource;
 import io.jetprocess.resource.v1_0.TertiaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.TypeRsModelResource;
 
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -59,12 +69,28 @@ public class Query {
 			categoryRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setDeliveryModeRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DeliveryModeRsModelResource>
+			deliveryModeRsModelResourceComponentServiceObjects) {
+
+		_deliveryModeRsModelResourceComponentServiceObjects =
+			deliveryModeRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setFileRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<FileRsModelResource>
 			fileRsModelResourceComponentServiceObjects) {
 
 		_fileRsModelResourceComponentServiceObjects =
 			fileRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setOrganizationRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<OrganizationRsModelResource>
+			organizationRsModelResourceComponentServiceObjects) {
+
+		_organizationRsModelResourceComponentServiceObjects =
+			organizationRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setPrimaryHeadRsModelResourceComponentServiceObjects(
@@ -75,6 +101,14 @@ public class Query {
 			primaryHeadRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setReceiptRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<ReceiptRsModelResource>
+			receiptRsModelResourceComponentServiceObjects) {
+
+		_receiptRsModelResourceComponentServiceObjects =
+			receiptRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setSecondaryHeadRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<SecondaryHeadRsModelResource>
 			secondaryHeadRsModelResourceComponentServiceObjects) {
@@ -83,12 +117,28 @@ public class Query {
 			secondaryHeadRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setStateRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<StateRsModelResource>
+			stateRsModelResourceComponentServiceObjects) {
+
+		_stateRsModelResourceComponentServiceObjects =
+			stateRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setTertiaryHeadRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<TertiaryHeadRsModelResource>
 			tertiaryHeadRsModelResourceComponentServiceObjects) {
 
 		_tertiaryHeadRsModelResourceComponentServiceObjects =
 			tertiaryHeadRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setTypeRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<TypeRsModelResource>
+			typeRsModelResourceComponentServiceObjects) {
+
+		_typeRsModelResourceComponentServiceObjects =
+			typeRsModelResourceComponentServiceObjects;
 	}
 
 	/**
@@ -117,6 +167,20 @@ public class Query {
 			this::_populateResourceContext,
 			categoryRsModelResource -> new CategoryRsModelPage(
 				categoryRsModelResource.getCategoryList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {deliveryModeist{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DeliveryModeRsModelPage deliveryModeist() throws Exception {
+		return _applyComponentServiceObjects(
+			_deliveryModeRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			deliveryModeRsModelResource -> new DeliveryModeRsModelPage(
+				deliveryModeRsModelResource.getDeliveryModeist()));
 	}
 
 	/**
@@ -152,6 +216,20 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {organizationList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public OrganizationRsModelPage organizationList() throws Exception {
+		return _applyComponentServiceObjects(
+			_organizationRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			organizationRsModelResource -> new OrganizationRsModelPage(
+				organizationRsModelResource.getOrganizationList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {primaryHeadByBasicHeadId(basicHeadId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
@@ -165,6 +243,36 @@ public class Query {
 			primaryHeadRsModelResource -> new PrimaryHeadRsModelPage(
 				primaryHeadRsModelResource.getPrimaryHeadByBasicHeadId(
 					basicHeadId)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, receiptNo, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public ReceiptRsModel receiptById(@GraphQLName("receiptId") Long receiptId)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptRsModelResource -> receiptRsModelResource.getReceiptById(
+				receiptId));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public ReceiptRsModelPage receiptList() throws Exception {
+		return _applyComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptRsModelResource -> new ReceiptRsModelPage(
+				receiptRsModelResource.getReceiptList()));
 	}
 
 	/**
@@ -188,6 +296,20 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {stateList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public StateRsModelPage stateList() throws Exception {
+		return _applyComponentServiceObjects(
+			_stateRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			stateRsModelResource -> new StateRsModelPage(
+				stateRsModelResource.getStateList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {tertiaryHeadBySecondaryHeadId(secondaryHeadId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
@@ -201,6 +323,20 @@ public class Query {
 			tertiaryHeadRsModelResource -> new TertiaryHeadRsModelPage(
 				tertiaryHeadRsModelResource.getTertiaryHeadBySecondaryHeadId(
 					secondaryHeadId)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {typeList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public TypeRsModelPage typeList() throws Exception {
+		return _applyComponentServiceObjects(
+			_typeRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			typeRsModelResource -> new TypeRsModelPage(
+				typeRsModelResource.getTypeList()));
 	}
 
 	@GraphQLName("BasicHeadRsModelPage")
@@ -269,6 +405,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("DeliveryModeRsModelPage")
+	public class DeliveryModeRsModelPage {
+
+		public DeliveryModeRsModelPage(Page deliveryModeRsModelPage) {
+			actions = deliveryModeRsModelPage.getActions();
+
+			items = deliveryModeRsModelPage.getItems();
+			lastPage = deliveryModeRsModelPage.getLastPage();
+			page = deliveryModeRsModelPage.getPage();
+			pageSize = deliveryModeRsModelPage.getPageSize();
+			totalCount = deliveryModeRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<DeliveryModeRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("FileRsModelPage")
 	public class FileRsModelPage {
 
@@ -287,6 +456,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<FileRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("OrganizationRsModelPage")
+	public class OrganizationRsModelPage {
+
+		public OrganizationRsModelPage(Page organizationRsModelPage) {
+			actions = organizationRsModelPage.getActions();
+
+			items = organizationRsModelPage.getItems();
+			lastPage = organizationRsModelPage.getLastPage();
+			page = organizationRsModelPage.getPage();
+			pageSize = organizationRsModelPage.getPageSize();
+			totalCount = organizationRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<OrganizationRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -335,6 +537,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("ReceiptRsModelPage")
+	public class ReceiptRsModelPage {
+
+		public ReceiptRsModelPage(Page receiptRsModelPage) {
+			actions = receiptRsModelPage.getActions();
+
+			items = receiptRsModelPage.getItems();
+			lastPage = receiptRsModelPage.getLastPage();
+			page = receiptRsModelPage.getPage();
+			pageSize = receiptRsModelPage.getPageSize();
+			totalCount = receiptRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<ReceiptRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("SecondaryHeadRsModelPage")
 	public class SecondaryHeadRsModelPage {
 
@@ -368,6 +603,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("StateRsModelPage")
+	public class StateRsModelPage {
+
+		public StateRsModelPage(Page stateRsModelPage) {
+			actions = stateRsModelPage.getActions();
+
+			items = stateRsModelPage.getItems();
+			lastPage = stateRsModelPage.getLastPage();
+			page = stateRsModelPage.getPage();
+			pageSize = stateRsModelPage.getPageSize();
+			totalCount = stateRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<StateRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("TertiaryHeadRsModelPage")
 	public class TertiaryHeadRsModelPage {
 
@@ -386,6 +654,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<TertiaryHeadRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("TypeRsModelPage")
+	public class TypeRsModelPage {
+
+		public TypeRsModelPage(Page typeRsModelPage) {
+			actions = typeRsModelPage.getActions();
+
+			items = typeRsModelPage.getItems();
+			lastPage = typeRsModelPage.getLastPage();
+			page = typeRsModelPage.getPage();
+			pageSize = typeRsModelPage.getPageSize();
+			totalCount = typeRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<TypeRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -453,6 +754,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			DeliveryModeRsModelResource deliveryModeRsModelResource)
+		throws Exception {
+
+		deliveryModeRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		deliveryModeRsModelResource.setContextCompany(_company);
+		deliveryModeRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		deliveryModeRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		deliveryModeRsModelResource.setContextUriInfo(_uriInfo);
+		deliveryModeRsModelResource.setContextUser(_user);
+		deliveryModeRsModelResource.setGroupLocalService(_groupLocalService);
+		deliveryModeRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
@@ -464,6 +781,22 @@ public class Query {
 		fileRsModelResource.setContextUser(_user);
 		fileRsModelResource.setGroupLocalService(_groupLocalService);
 		fileRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			OrganizationRsModelResource organizationRsModelResource)
+		throws Exception {
+
+		organizationRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		organizationRsModelResource.setContextCompany(_company);
+		organizationRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		organizationRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		organizationRsModelResource.setContextUriInfo(_uriInfo);
+		organizationRsModelResource.setContextUser(_user);
+		organizationRsModelResource.setGroupLocalService(_groupLocalService);
+		organizationRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -483,6 +816,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			ReceiptRsModelResource receiptRsModelResource)
+		throws Exception {
+
+		receiptRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		receiptRsModelResource.setContextCompany(_company);
+		receiptRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		receiptRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		receiptRsModelResource.setContextUriInfo(_uriInfo);
+		receiptRsModelResource.setContextUser(_user);
+		receiptRsModelResource.setGroupLocalService(_groupLocalService);
+		receiptRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			SecondaryHeadRsModelResource secondaryHeadRsModelResource)
 		throws Exception {
 
@@ -496,6 +845,21 @@ public class Query {
 		secondaryHeadRsModelResource.setContextUser(_user);
 		secondaryHeadRsModelResource.setGroupLocalService(_groupLocalService);
 		secondaryHeadRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			StateRsModelResource stateRsModelResource)
+		throws Exception {
+
+		stateRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		stateRsModelResource.setContextCompany(_company);
+		stateRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		stateRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		stateRsModelResource.setContextUriInfo(_uriInfo);
+		stateRsModelResource.setContextUser(_user);
+		stateRsModelResource.setGroupLocalService(_groupLocalService);
+		stateRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -514,18 +878,42 @@ public class Query {
 		tertiaryHeadRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
+	private void _populateResourceContext(
+			TypeRsModelResource typeRsModelResource)
+		throws Exception {
+
+		typeRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		typeRsModelResource.setContextCompany(_company);
+		typeRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		typeRsModelResource.setContextHttpServletResponse(_httpServletResponse);
+		typeRsModelResource.setContextUriInfo(_uriInfo);
+		typeRsModelResource.setContextUser(_user);
+		typeRsModelResource.setGroupLocalService(_groupLocalService);
+		typeRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
 	private static ComponentServiceObjects<BasicHeadRsModelResource>
 		_basicHeadRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<CategoryRsModelResource>
 		_categoryRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<DeliveryModeRsModelResource>
+		_deliveryModeRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<OrganizationRsModelResource>
+		_organizationRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<PrimaryHeadRsModelResource>
 		_primaryHeadRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<ReceiptRsModelResource>
+		_receiptRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<SecondaryHeadRsModelResource>
 		_secondaryHeadRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<StateRsModelResource>
+		_stateRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<TertiaryHeadRsModelResource>
 		_tertiaryHeadRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<TypeRsModelResource>
+		_typeRsModelResourceComponentServiceObjects;
 
 	private AcceptLanguage _acceptLanguage;
 	private com.liferay.portal.kernel.model.Company _company;

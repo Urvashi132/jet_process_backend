@@ -10,7 +10,9 @@ import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 
 import java.util.function.BiFunction;
 
@@ -36,6 +38,14 @@ public class Mutation {
 
 		_fileRsModelResourceComponentServiceObjects =
 			fileRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setReceiptRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<ReceiptRsModelResource>
+			receiptRsModelResourceComponentServiceObjects) {
+
+		_receiptRsModelResourceComponentServiceObjects =
+			receiptRsModelResourceComponentServiceObjects;
 	}
 
 	@GraphQLField
@@ -74,6 +84,44 @@ public class Mutation {
 			this::_populateResourceContext,
 			fileRsModelResource -> fileRsModelResource.updateDocFile(
 				docFileId, fileRsModel));
+	}
+
+	@GraphQLField
+	public boolean deleteReceiptById(@GraphQLName("receiptId") Long receiptId)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptRsModelResource -> receiptRsModelResource.deleteReceiptById(
+				receiptId));
+
+		return true;
+	}
+
+	@GraphQLField
+	public ReceiptRsModel createReceipt(
+			@GraphQLName("receiptRsModel") ReceiptRsModel receiptRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptRsModelResource -> receiptRsModelResource.createReceipt(
+				receiptRsModel));
+	}
+
+	@GraphQLField
+	public ReceiptRsModel updateReceipt(
+			@GraphQLName("receiptId") Long receiptId,
+			@GraphQLName("receiptRsModel") ReceiptRsModel receiptRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptRsModelResource -> receiptRsModelResource.updateReceipt(
+				receiptId, receiptRsModel));
 	}
 
 	private <T, R, E1 extends Throwable, E2 extends Throwable> R
@@ -128,8 +176,26 @@ public class Mutation {
 		fileRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
+	private void _populateResourceContext(
+			ReceiptRsModelResource receiptRsModelResource)
+		throws Exception {
+
+		receiptRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		receiptRsModelResource.setContextCompany(_company);
+		receiptRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		receiptRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		receiptRsModelResource.setContextUriInfo(_uriInfo);
+		receiptRsModelResource.setContextUser(_user);
+		receiptRsModelResource.setGroupLocalService(_groupLocalService);
+		receiptRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<ReceiptRsModelResource>
+		_receiptRsModelResourceComponentServiceObjects;
 
 	private AcceptLanguage _acceptLanguage;
 	private com.liferay.portal.kernel.model.Company _company;

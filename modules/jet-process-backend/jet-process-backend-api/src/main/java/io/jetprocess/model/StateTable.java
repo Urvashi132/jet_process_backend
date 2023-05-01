@@ -30,8 +30,6 @@ public class StateTable extends BaseTable<StateTable> {
 
 	public static final StateTable INSTANCE = new StateTable();
 
-	public final Column<StateTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<StateTable, Long> id = createColumn(
 		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<StateTable, String> name = createColumn(

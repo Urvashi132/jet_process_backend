@@ -32,7 +32,6 @@ public class DeliveryModeSoap implements Serializable {
 	public static DeliveryModeSoap toSoapModel(DeliveryMode model) {
 		DeliveryModeSoap soapModel = new DeliveryModeSoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setId(model.getId());
 		soapModel.setName(model.getName());
 
@@ -88,14 +87,6 @@ public class DeliveryModeSoap implements Serializable {
 		setId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getId() {
 		return _id;
 	}
@@ -112,7 +103,6 @@ public class DeliveryModeSoap implements Serializable {
 		_name = name;
 	}
 
-	private String _uuid;
 	private long _id;
 	private String _name;
 

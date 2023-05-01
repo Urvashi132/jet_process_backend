@@ -32,7 +32,6 @@ public class StateSoap implements Serializable {
 	public static StateSoap toSoapModel(State model) {
 		StateSoap soapModel = new StateSoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setId(model.getId());
 		soapModel.setName(model.getName());
 		soapModel.setCountryId(model.getCountryId());
@@ -88,14 +87,6 @@ public class StateSoap implements Serializable {
 		setId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getId() {
 		return _id;
 	}
@@ -120,7 +111,6 @@ public class StateSoap implements Serializable {
 		_countryId = countryId;
 	}
 
-	private String _uuid;
 	private long _id;
 	private String _name;
 	private long _countryId;

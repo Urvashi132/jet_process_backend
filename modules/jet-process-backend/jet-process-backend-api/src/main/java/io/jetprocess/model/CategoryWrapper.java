@@ -41,7 +41,6 @@ public class CategoryWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("uuid", getUuid());
 		attributes.put("id", getId());
 		attributes.put("name", getName());
 
@@ -50,12 +49,6 @@ public class CategoryWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		String uuid = (String)attributes.get("uuid");
-
-		if (uuid != null) {
-			setUuid(uuid);
-		}
-
 		Long id = (Long)attributes.get("id");
 
 		if (id != null) {
@@ -104,16 +97,6 @@ public class CategoryWrapper
 		return model.getPrimaryKey();
 	}
 
-	/**
-	 * Returns the uuid of this category.
-	 *
-	 * @return the uuid of this category
-	 */
-	@Override
-	public String getUuid() {
-		return model.getUuid();
-	}
-
 	@Override
 	public void persist() {
 		model.persist();
@@ -147,16 +130,6 @@ public class CategoryWrapper
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		model.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	 * Sets the uuid of this category.
-	 *
-	 * @param uuid the uuid of this category
-	 */
-	@Override
-	public void setUuid(String uuid) {
-		model.setUuid(uuid);
 	}
 
 	@Override

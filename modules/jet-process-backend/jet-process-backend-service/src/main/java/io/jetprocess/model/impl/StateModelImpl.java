@@ -71,22 +71,21 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	public static final String TABLE_NAME = "JP_State";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"id_", Types.BIGINT},
-		{"name", Types.VARCHAR}, {"countryId", Types.BIGINT}
+		{"id_", Types.BIGINT}, {"name", Types.VARCHAR},
+		{"countryId", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("countryId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_State (uuid_ VARCHAR(75) null,id_ LONG not null primary key,name VARCHAR(75) null,countryId LONG)";
+		"create table JP_State (id_ LONG not null primary key,name VARCHAR(75) null,countryId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_State";
 
@@ -101,17 +100,11 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
-	 */
-	@Deprecated
-	public static final long UUID_COLUMN_BITMASK = 1L;
-
-	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long ID_COLUMN_BITMASK = 2L;
+	public static final long ID_COLUMN_BITMASK = 1L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -142,7 +135,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 
 		State model = new StateImpl();
 
-		model.setUuid(soapModel.getUuid());
 		model.setId(soapModel.getId());
 		model.setName(soapModel.getName());
 		model.setCountryId(soapModel.getCountryId());
@@ -290,9 +282,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 		Map<String, BiConsumer<State, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<State, ?>>();
 
-		attributeGetterFunctions.put("uuid", State::getUuid);
-		attributeSetterBiConsumers.put(
-			"uuid", (BiConsumer<State, String>)State::setUuid);
 		attributeGetterFunctions.put("id", State::getId);
 		attributeSetterBiConsumers.put(
 			"id", (BiConsumer<State, Long>)State::setId);
@@ -307,35 +296,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 			attributeGetterFunctions);
 		_attributeSetterBiConsumers = Collections.unmodifiableMap(
 			(Map)attributeSetterBiConsumers);
-	}
-
-	@JSON
-	@Override
-	public String getUuid() {
-		if (_uuid == null) {
-			return "";
-		}
-		else {
-			return _uuid;
-		}
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_uuid = uuid;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public String getOriginalUuid() {
-		return getColumnOriginalValue("uuid_");
 	}
 
 	@JSON
@@ -444,7 +404,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	public Object clone() {
 		StateImpl stateImpl = new StateImpl();
 
-		stateImpl.setUuid(getUuid());
 		stateImpl.setId(getId());
 		stateImpl.setName(getName());
 		stateImpl.setCountryId(getCountryId());
@@ -458,7 +417,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	public State cloneWithOriginalValues() {
 		StateImpl stateImpl = new StateImpl();
 
-		stateImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
 		stateImpl.setId(this.<Long>getColumnOriginalValue("id_"));
 		stateImpl.setName(this.<String>getColumnOriginalValue("name"));
 		stateImpl.setCountryId(this.<Long>getColumnOriginalValue("countryId"));
@@ -536,14 +494,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	@Override
 	public CacheModel<State> toCacheModel() {
 		StateCacheModel stateCacheModel = new StateCacheModel();
-
-		stateCacheModel.uuid = getUuid();
-
-		String uuid = stateCacheModel.uuid;
-
-		if ((uuid != null) && (uuid.length() == 0)) {
-			stateCacheModel.uuid = null;
-		}
 
 		stateCacheModel.id = getId();
 
@@ -645,7 +595,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 
 	}
 
-	private String _uuid;
 	private long _id;
 	private String _name;
 	private long _countryId;
@@ -679,7 +628,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("uuid_", _uuid);
 		_columnOriginalValues.put("id_", _id);
 		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("countryId", _countryId);
@@ -690,7 +638,6 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	static {
 		Map<String, String> attributeNames = new HashMap<>();
 
-		attributeNames.put("uuid_", "uuid");
 		attributeNames.put("id_", "id");
 
 		_attributeNames = Collections.unmodifiableMap(attributeNames);
@@ -707,13 +654,11 @@ public class StateModelImpl extends BaseModelImpl<State> implements StateModel {
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("uuid_", 1L);
+		columnBitmasks.put("id_", 1L);
 
-		columnBitmasks.put("id_", 2L);
+		columnBitmasks.put("name", 2L);
 
-		columnBitmasks.put("name", 4L);
-
-		columnBitmasks.put("countryId", 8L);
+		columnBitmasks.put("countryId", 4L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

@@ -54,21 +54,6 @@ public interface CategoryModel extends BaseModel<Category> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this category.
-	 *
-	 * @return the uuid of this category
-	 */
-	@AutoEscape
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this category.
-	 *
-	 * @param uuid the uuid of this category
-	 */
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the ID of this category.
 	 *
 	 * @return the ID of this category

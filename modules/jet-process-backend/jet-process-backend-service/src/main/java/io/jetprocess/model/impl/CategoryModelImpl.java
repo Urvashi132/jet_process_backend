@@ -72,20 +72,19 @@ public class CategoryModelImpl
 	public static final String TABLE_NAME = "JP_Category";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"id_", Types.BIGINT}, {"name", Types.VARCHAR}
+		{"id_", Types.BIGINT}, {"name", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Category (uuid_ VARCHAR(75) null,id_ LONG not null primary key,name VARCHAR(75) null)";
+		"create table JP_Category (id_ LONG not null primary key,name VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Category";
 
@@ -100,17 +99,11 @@ public class CategoryModelImpl
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
-	 */
-	@Deprecated
-	public static final long UUID_COLUMN_BITMASK = 1L;
-
-	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long ID_COLUMN_BITMASK = 2L;
+	public static final long ID_COLUMN_BITMASK = 1L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -141,7 +134,6 @@ public class CategoryModelImpl
 
 		Category model = new CategoryImpl();
 
-		model.setUuid(soapModel.getUuid());
 		model.setId(soapModel.getId());
 		model.setName(soapModel.getName());
 
@@ -293,9 +285,6 @@ public class CategoryModelImpl
 		Map<String, BiConsumer<Category, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Category, ?>>();
 
-		attributeGetterFunctions.put("uuid", Category::getUuid);
-		attributeSetterBiConsumers.put(
-			"uuid", (BiConsumer<Category, String>)Category::setUuid);
 		attributeGetterFunctions.put("id", Category::getId);
 		attributeSetterBiConsumers.put(
 			"id", (BiConsumer<Category, Long>)Category::setId);
@@ -307,35 +296,6 @@ public class CategoryModelImpl
 			attributeGetterFunctions);
 		_attributeSetterBiConsumers = Collections.unmodifiableMap(
 			(Map)attributeSetterBiConsumers);
-	}
-
-	@JSON
-	@Override
-	public String getUuid() {
-		if (_uuid == null) {
-			return "";
-		}
-		else {
-			return _uuid;
-		}
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_uuid = uuid;
-	}
-
-	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *             #getColumnOriginalValue(String)}
-	 */
-	@Deprecated
-	public String getOriginalUuid() {
-		return getColumnOriginalValue("uuid_");
 	}
 
 	@JSON
@@ -429,7 +389,6 @@ public class CategoryModelImpl
 	public Object clone() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		categoryImpl.setUuid(getUuid());
 		categoryImpl.setId(getId());
 		categoryImpl.setName(getName());
 
@@ -442,7 +401,6 @@ public class CategoryModelImpl
 	public Category cloneWithOriginalValues() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		categoryImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
 		categoryImpl.setId(this.<Long>getColumnOriginalValue("id_"));
 		categoryImpl.setName(this.<String>getColumnOriginalValue("name"));
 
@@ -519,14 +477,6 @@ public class CategoryModelImpl
 	@Override
 	public CacheModel<Category> toCacheModel() {
 		CategoryCacheModel categoryCacheModel = new CategoryCacheModel();
-
-		categoryCacheModel.uuid = getUuid();
-
-		String uuid = categoryCacheModel.uuid;
-
-		if ((uuid != null) && (uuid.length() == 0)) {
-			categoryCacheModel.uuid = null;
-		}
 
 		categoryCacheModel.id = getId();
 
@@ -628,7 +578,6 @@ public class CategoryModelImpl
 
 	}
 
-	private String _uuid;
 	private long _id;
 	private String _name;
 
@@ -661,7 +610,6 @@ public class CategoryModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("uuid_", _uuid);
 		_columnOriginalValues.put("id_", _id);
 		_columnOriginalValues.put("name", _name);
 	}
@@ -671,7 +619,6 @@ public class CategoryModelImpl
 	static {
 		Map<String, String> attributeNames = new HashMap<>();
 
-		attributeNames.put("uuid_", "uuid");
 		attributeNames.put("id_", "id");
 
 		_attributeNames = Collections.unmodifiableMap(attributeNames);
@@ -688,11 +635,9 @@ public class CategoryModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("uuid_", 1L);
+		columnBitmasks.put("id_", 1L);
 
-		columnBitmasks.put("id_", 2L);
-
-		columnBitmasks.put("name", 4L);
+		columnBitmasks.put("name", 2L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

@@ -30,8 +30,6 @@ public class DeliveryModeTable extends BaseTable<DeliveryModeTable> {
 
 	public static final DeliveryModeTable INSTANCE = new DeliveryModeTable();
 
-	public final Column<DeliveryModeTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<DeliveryModeTable, Long> id = createColumn(
 		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<DeliveryModeTable, String> name = createColumn(

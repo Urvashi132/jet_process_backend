@@ -55,6 +55,117 @@ components:
           type: integer
       type: object 
       
+    ReceiptRsModel:
+      description: Contains all the data for receipt creation.
+      properties:
+        receiptId:
+          format: int64
+          type: integer
+        groupId:
+          format: int64
+          type: integer
+        typeId :
+          format: int64
+          type: integer
+        deliveryModeId :
+          format: int64
+          type: integer 
+        receivedOn :
+          type: string 
+        letterDate :
+          type: string   
+        referenceNo :
+          type: string 
+        modeNo :
+          type: string 
+        categoryId:  
+          format: int64
+          type: integer 
+        subject:
+         type: string
+        remarks:
+         type: string
+        name:
+         type: string 
+        designation:
+         type: string
+        mobile:
+         type: string
+        email:
+         type: string
+        address:
+         type: string
+        stateId:
+         format: int64
+         type: integer
+        pincode:
+         type: string
+        receiptNo:
+         type: string
+        organization:
+         format: int64
+         type: integer
+        city:
+         type: string
+        userPostId:
+         format: int64
+         type: integer
+        viewPdfUrl:
+         type: string
+        docfileId:
+         format: int64
+         type: integer
+        nature:
+         type: string
+        currentlyWith:
+         format: int64
+         type: integer
+        attachStatus:
+         type: string
+        currentState:
+         format: int64
+         type: integer 
+      type: object 
+    
+    DeliveryModeRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+      
+    OrganizationRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+      
+    StateRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        countryId:
+          format: int64
+          type: integer  
+      type: object
+    
+    TypeRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object  
+       
     BasicHeadRsModel:
       properties:
         id:
@@ -109,9 +220,7 @@ components:
           type: integer
         name:
           type: string
-      type: object  
-    
-      
+      type: object
       
 paths:
   /DocFile:
@@ -121,10 +230,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/FileRsModel"
+              $ref: '#/components/schemas/FileRsModel'
           application/xml:
             schema:
-              $ref: "#/components/schemas/FileRsModel"
+              $ref: '#/components/schemas/FileRsModel'
       responses:
         '200':
           content:
@@ -185,10 +294,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/FileRsModel"
+              $ref: '#/components/schemas/FileRsModel'
           application/xml:
             schema:
-              $ref: "#/components/schemas/FileRsModel"
+              $ref: '#/components/schemas/FileRsModel'
       responses:
         '200':
           content:
@@ -200,6 +309,7 @@ paths:
                   $ref: '#/components/schemas/FileRsModel'
           description: ''
       tags: ["FileRsModel"]
+  
   /DocFiles:
     get:
       operationId: getDocFileList
@@ -216,6 +326,7 @@ paths:
                   $ref: '#/components/schemas/FileRsModel'
           description: ''
       tags: ["FileRsModel"]
+  
   /primaryHead:
     get:
       operationId: getPrimaryHeadByBasicHeadId
@@ -324,5 +435,172 @@ paths:
                 items:
                   $ref: '#/components/schemas/CategoryRsModel'
           description: ''
-      tags: ["CategoryRsModel"]     
-      
+      tags: ["CategoryRsModel"]
+  /Type:
+    get:
+      operationId: getTypeList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TypeRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TypeRsModel'
+          description: ''
+      tags: ["TypeRsModel"]
+  /DeliveryMode:
+    get:
+      operationId: getDeliveryModeist
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DeliveryModeRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DeliveryModeRsModel'
+          description: ''
+      tags: ["DeliveryModeRsModel"]
+  /Organization:
+    get:
+      operationId: getOrganizationList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrganizationRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrganizationRsModel'
+          description: ''
+      tags: ["OrganizationRsModel"]
+  /State:
+    get:
+      operationId: getStateList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StateRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StateRsModel'
+          description: ''
+      tags: ["StateRsModel"]
+  /Receipt:
+    post:
+      operationId: createReceipt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptRsModel"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ReceiptRsModel"
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+          description: ''
+      tags: ["ReceiptRsModel"]
+    get:
+      operationId: getReceiptById
+      parameters:
+        - in: "query"
+          name: receiptId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+          description: ''
+      tags: ["ReceiptRsModel"]
+    delete:
+      operationId: deleteReceiptById
+      parameters:
+        - in: "query"
+          name: receiptId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["ReceiptRsModel"]
+    put:
+      operationId: updateReceipt
+      parameters:
+        - in: "query"
+          name: receiptId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptRsModel"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ReceiptRsModel"
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+          description: ''
+      tags: ["ReceiptRsModel"]
+  /Receipts:
+    get:
+      operationId: getReceiptList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReceiptRsModel'
+          description: ''
+      tags: ["ReceiptRsModel"]
+    
+    

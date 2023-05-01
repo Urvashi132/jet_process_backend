@@ -7,12 +7,10 @@
 		<field name="basicHeadCode" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Category">
-		<field name="uuid" type="String" />
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>
 	<model name="io.jetprocess.model.DeliveryMode">
-		<field name="uuid" type="String" />
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>
@@ -41,7 +39,6 @@
 		<field name="dealingOrganizationId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Organization">
-		<field name="uuid" type="String" />
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>
@@ -92,7 +89,6 @@
 		<field name="primaryHeadId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.State">
-		<field name="uuid" type="String" />
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 		<field name="countryId" type="long" />

@@ -21,16 +21,19 @@ import io.jetprocess.service.BasicHeadLocalService;
 /**
  * @author Admin
  */
-@Component(properties = "OSGI-INF/liferay/rest/v1_0/basic-head-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = BasicHeadRsModelResource.class)
-public class BasicHeadRsModelResourceImpl extends BaseBasicHeadRsModelResourceImpl {
+@Component(
+	properties = "OSGI-INF/liferay/rest/v1_0/basic-head-rs-model.properties",
+	scope = ServiceScope.PROTOTYPE, service = BasicHeadRsModelResource.class
+)
+public class BasicHeadRsModelResourceImpl
+	extends BaseBasicHeadRsModelResourceImpl {
 
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<BasicHeadRsModel>, UnsafeConsumer<BasicHeadRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 	@Override
 	public Page<BasicHeadRsModel> getBasicHeadList() throws Exception {
 		List<BasicHeadRsModel> basicHeadRsModelList = new ArrayList<>();

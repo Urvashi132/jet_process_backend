@@ -30,8 +30,6 @@ public class OrganizationTable extends BaseTable<OrganizationTable> {
 
 	public static final OrganizationTable INSTANCE = new OrganizationTable();
 
-	public final Column<OrganizationTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<OrganizationTable, Long> id = createColumn(
 		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<OrganizationTable, String> name = createColumn(

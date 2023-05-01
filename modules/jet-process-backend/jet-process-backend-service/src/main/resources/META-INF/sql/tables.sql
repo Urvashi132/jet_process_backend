@@ -5,13 +5,11 @@ create table JP_BasicHead (
 );
 
 create table JP_Category (
-	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );
 
 create table JP_DeliveryMode (
-	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );
@@ -42,7 +40,6 @@ create table JP_DocFile (
 );
 
 create table JP_Organization (
-	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );
@@ -97,7 +94,6 @@ create table JP_SecondaryHead (
 );
 
 create table JP_State (
-	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
 	name VARCHAR(75) null,
 	countryId LONG

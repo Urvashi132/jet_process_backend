@@ -54,21 +54,6 @@ public interface StateModel extends BaseModel<State> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this state.
-	 *
-	 * @return the uuid of this state
-	 */
-	@AutoEscape
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this state.
-	 *
-	 * @param uuid the uuid of this state
-	 */
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the ID of this state.
 	 *
 	 * @return the ID of this state

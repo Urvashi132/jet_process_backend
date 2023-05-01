@@ -54,21 +54,6 @@ public interface OrganizationModel extends BaseModel<Organization> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this organization.
-	 *
-	 * @return the uuid of this organization
-	 */
-	@AutoEscape
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this organization.
-	 *
-	 * @param uuid the uuid of this organization
-	 */
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the ID of this organization.
 	 *
 	 * @return the ID of this organization

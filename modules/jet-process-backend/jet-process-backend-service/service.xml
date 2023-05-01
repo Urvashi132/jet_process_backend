@@ -240,20 +240,20 @@
 		
 	</entity>
 	<entity name="DeliveryMode" local-service="true"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 		
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />	
 	</entity>
 		<entity name="Organization" local-service="true"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 		
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />	
 	</entity>
 	
 	<entity name="State" local-service="true"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 		
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />
@@ -261,7 +261,7 @@
 	  		
 	</entity>
 	<entity name="Category" local-service="true"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 		
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />	  			

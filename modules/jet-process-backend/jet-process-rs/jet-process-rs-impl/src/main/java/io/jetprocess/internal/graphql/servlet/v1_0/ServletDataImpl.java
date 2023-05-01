@@ -6,10 +6,15 @@ import io.jetprocess.internal.graphql.mutation.v1_0.Mutation;
 import io.jetprocess.internal.graphql.query.v1_0.Query;
 import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
+import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.StateRsModelResource;
 import io.jetprocess.resource.v1_0.TertiaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.TypeRsModelResource;
 
 import javax.annotation.Generated;
 
@@ -32,19 +37,31 @@ public class ServletDataImpl implements ServletData {
 	public void activate(BundleContext bundleContext) {
 		Mutation.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Mutation.setReceiptRsModelResourceComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects);
 
 		Query.setBasicHeadRsModelResourceComponentServiceObjects(
 			_basicHeadRsModelResourceComponentServiceObjects);
 		Query.setCategoryRsModelResourceComponentServiceObjects(
 			_categoryRsModelResourceComponentServiceObjects);
+		Query.setDeliveryModeRsModelResourceComponentServiceObjects(
+			_deliveryModeRsModelResourceComponentServiceObjects);
 		Query.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Query.setOrganizationRsModelResourceComponentServiceObjects(
+			_organizationRsModelResourceComponentServiceObjects);
 		Query.setPrimaryHeadRsModelResourceComponentServiceObjects(
 			_primaryHeadRsModelResourceComponentServiceObjects);
+		Query.setReceiptRsModelResourceComponentServiceObjects(
+			_receiptRsModelResourceComponentServiceObjects);
 		Query.setSecondaryHeadRsModelResourceComponentServiceObjects(
 			_secondaryHeadRsModelResourceComponentServiceObjects);
+		Query.setStateRsModelResourceComponentServiceObjects(
+			_stateRsModelResourceComponentServiceObjects);
 		Query.setTertiaryHeadRsModelResourceComponentServiceObjects(
 			_tertiaryHeadRsModelResourceComponentServiceObjects);
+		Query.setTypeRsModelResourceComponentServiceObjects(
+			_typeRsModelResourceComponentServiceObjects);
 	}
 
 	@Override
@@ -67,12 +84,24 @@ public class ServletDataImpl implements ServletData {
 		_fileRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<ReceiptRsModelResource>
+		_receiptRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<BasicHeadRsModelResource>
 		_basicHeadRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<CategoryRsModelResource>
 		_categoryRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<DeliveryModeRsModelResource>
+		_deliveryModeRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<OrganizationRsModelResource>
+		_organizationRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<PrimaryHeadRsModelResource>
@@ -83,7 +112,15 @@ public class ServletDataImpl implements ServletData {
 		_secondaryHeadRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<StateRsModelResource>
+		_stateRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<TertiaryHeadRsModelResource>
 		_tertiaryHeadRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<TypeRsModelResource>
+		_typeRsModelResourceComponentServiceObjects;
 
 }

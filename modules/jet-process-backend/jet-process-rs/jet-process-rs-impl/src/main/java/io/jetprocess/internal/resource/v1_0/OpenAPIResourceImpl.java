@@ -70,13 +70,23 @@ public class OpenAPIResourceImpl {
 
 			add(CategoryRsModelResourceImpl.class);
 
+			add(DeliveryModeRsModelResourceImpl.class);
+
 			add(FileRsModelResourceImpl.class);
+
+			add(OrganizationRsModelResourceImpl.class);
 
 			add(PrimaryHeadRsModelResourceImpl.class);
 
+			add(ReceiptRsModelResourceImpl.class);
+
 			add(SecondaryHeadRsModelResourceImpl.class);
 
+			add(StateRsModelResourceImpl.class);
+
 			add(TertiaryHeadRsModelResourceImpl.class);
+
+			add(TypeRsModelResourceImpl.class);
 
 			add(OpenAPIResourceImpl.class);
 		}

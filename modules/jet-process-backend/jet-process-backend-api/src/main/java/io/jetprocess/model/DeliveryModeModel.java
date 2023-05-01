@@ -54,21 +54,6 @@ public interface DeliveryModeModel extends BaseModel<DeliveryMode> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this delivery mode.
-	 *
-	 * @return the uuid of this delivery mode
-	 */
-	@AutoEscape
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this delivery mode.
-	 *
-	 * @param uuid the uuid of this delivery mode
-	 */
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the ID of this delivery mode.
 	 *
 	 * @return the ID of this delivery mode

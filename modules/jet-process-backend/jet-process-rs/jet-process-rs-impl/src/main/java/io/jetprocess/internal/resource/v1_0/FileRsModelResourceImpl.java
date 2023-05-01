@@ -23,16 +23,19 @@ import io.jetprocess.service.DocFileLocalService;
 /**
  * @author Admin
  */
-@Component(properties = "OSGI-INF/liferay/rest/v1_0/file-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = FileRsModelResource.class)
+@Component(
+	properties = "OSGI-INF/liferay/rest/v1_0/file-rs-model.properties",
+	scope = ServiceScope.PROTOTYPE, service = FileRsModelResource.class
+)
 public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<FileRsModel>, UnsafeConsumer<FileRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
 		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
@@ -51,7 +54,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
 				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserPostId(),
 				fileRsModel.getCurrentUser(), fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
-		return GetFileRsModel(docFile);
+		return getFileRsModel(docFile);
 	}
 
 	@Override
@@ -59,7 +62,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		List<FileRsModel> fileRsModelList = new ArrayList<>();
 		List<DocFile> docFileList = docFileLocalService.getDocFiles(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 		docFileList.stream().forEach(docFile -> {
-			fileRsModelList.add(GetFileRsModel(docFile));
+			fileRsModelList.add(getFileRsModel(docFile));
 		});
 		return Page.of(fileRsModelList);
 	}
@@ -73,10 +76,10 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel getDocFileById(@NotNull Long docFileId) throws Exception {
 		DocFile docFile = docFileLocalService.getDocFileById(docFileId);
-		return GetFileRsModel(docFile);
+		return getFileRsModel(docFile);
 	}
 
-	private FileRsModel GetFileRsModel(DocFile docFile) {
+	private FileRsModel getFileRsModel(DocFile docFile) {
 		FileRsModel createdDocFile = new FileRsModel();
 		createdDocFile.setDocFileId(docFile.getDocFileId());
 		createdDocFile.setGroupId(docFile.getGroupId());
@@ -99,5 +102,4 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 
 	@Reference
 	private DocFileLocalService docFileLocalService;
-
-};
+}
