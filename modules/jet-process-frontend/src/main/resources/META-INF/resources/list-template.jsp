@@ -128,6 +128,20 @@
 	</div>
 </script>
 
+<script id="jf-row-actions-template" type="text/x-handlebars-template">
+	{{#each []}}
+		{{#if_eq applyTo "row"}}
+			{{#if_eq handler.type "javascript"}}
+				<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{handler.func}}">{{label}}</button>
+			{{/if_eq}}
+	
+			{{#if_ne handler.type "javascript"}}
+				<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</button>
+			{{/if_ne}}
+		{{/if_eq}}
+	{{/each}}
+</script>
+
 <script id="jf-button-template" type="text/x-handlebars-template">
   <button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="submitForm(event)">{{label}}</button>
 </script>
@@ -280,7 +294,43 @@ function renderList() {
     const compiledTemplate = Handlebars.compile(template);
     const html = compiledTemplate(form.fields);
     $('#'+dataTableContainerId).append(html);
-    var table= $('#'+dataTableId).DataTable();
+    $.ajax({
+        url: form.dataProvider.collection.url,
+        type: "GET",
+        contentType: 'application/json',
+        success: function(response) {
+        	console.log(response);
+        	var columns=[];
+        	var ctr=0;
+        	form.fields.forEach(field => {
+        		if(field.type!='hidden'){
+        			columns[ctr++]= { "data": field.name, "title":field.label};
+        		}
+        	});
+        
+        	console.log(columns);
+        	
+        	var table= $('#'+dataTableId).DataTable({ 
+        		responsive: true,
+        		data: response,
+        		columns: columns,
+        		'columnDefs': [{
+        		     'targets': columns.length,
+        		     'searchable': false,
+        		     'orderable': false,
+        		     'className': 'dt-body-center dt-body-nowrap',
+        		     'render': function (data, type, full, meta){
+        		        return '<button type="button" class="btn btn-primary btn-sm"> Edit</button><button type="button" class="btn btn-danger btn-sm">Delete</button>';
+        		    }
+        		}]
+        	
+        	});
+        },
+        error: function(error) {
+            alert('Error in fetching data');
+        
+        }
+    });
 }
 
 function renderForm() {
@@ -499,5 +549,4 @@ function addOnClick(event){
 	 event.preventDefault();
 	 location.href="<%=request.getParameter("addPage")%>";
 }
-
 </script>

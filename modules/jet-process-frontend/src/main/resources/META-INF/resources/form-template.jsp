@@ -1,4 +1,21 @@
-
+<!-- Modal -->
+<div class="modal fade" id="<%=request.getParameter("formId")%>Modal" tabindex="-1" aria-labelledby="<%=request.getParameter("formId")%>ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="<%=request.getParameter("formId")%>ModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- templates  -->
 <script id="jf-form-template" type="text/x-handlebars-template">          
   <form id="{{id}}" name="{{name}}" enctype="{{enctype}}">
@@ -18,28 +35,46 @@
 <script id="jf-date-template" type="text/x-handlebars-template">
   <div class="form-group">
     <label for="{{name}}" class="form-label">{{label}}</label>
-    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}">
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}" {{#if required}}required{{/if}}>
+  </div>
+</script>
+
+<script id="jf-time-template" type="text/x-handlebars-template">
+  <div class="form-group">
+    <label for="{{name}}" class="form-label">{{label}}</label>
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" step = "{{step}}" value="{{value}}"{{#if required}} required{{/if}}>
+  </div>
+</script>
+
+<script id="jf-hidden-template" type="text/x-handlebars-template">
+  <input type="{{type}}" name="{{name}}" value="{{value}}" id="{{name}}">
+</script>
+
+<script id="jf-textarea-template" type="text/x-handlebars-template">
+  <div class="form-group">
+    <label for="{{name}}" class="form-label">{{label}}</label>
+    <textarea class="form-control" name="{{name}}" placeholder="{{placeHolder}}" id="{{name}}" rows="{{rows}}" cols="{{cols}}" {{#if required}}required{{/if}}>{{value}}</textarea>
   </div>
 </script>
 
 <script id="jf-email-template" type="text/x-handlebars-template">
   <div class="form-group">
     <label for="{{name}}" class="form-label">{{label}}</label>
-    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}">
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}" {{#if required}}required{{/if}}>
   </div>
 </script>
 
 <script id="jf-password-template" type="text/x-handlebars-template">
   <div class="form-group">
     <label for="{{name}}" class="form-label">{{label}}</label>
-    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}"  minlength="{{minLength}}">
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}"  {{#if required}}required{{/if}} minlength="{{minLength}}">
   </div>
 </script>
 
 <script id="jf-number-template" type="text/x-handlebars-template">
   <div class="form-group">
     <label for="{{name}}" class="form-label">{{label}}</label>
-    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}" maxlength="{{maxlength}}">
+    <input type="{{type}}" class="form-control" name="{{name}}" id="{{name}}" value="{{value}}" {{#if required}}required{{/if}} maxlength="{{maxlength}}">
   </div>
 </script>
 
@@ -49,7 +84,7 @@
     <label class="form-label">{{label}}</label>
 	{{#each options}}
     	<div class="form-check">
-      		<input type="radio" name="{{../name}}" value="{{value}}" checked="checked"> <label class="form-check-label" for="{{../name}}">{{label}}</label>
+      		<input type="radio" name="{{../name}}" value="{{value}}" checked="checked"><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
     	</div>
 	 {{/each}}
   </div>
@@ -60,7 +95,7 @@
     <label for="{{name}}" class="form-label">{{label}}</label>
 	{{#each options}}
     	<div class="form-check">
-      		<input type="checkbox" name="{{../name}}" value="{{value}}" checked="checked"> <label class="form-check-label" for="{{../name}}">{{label}}</label>
+      		<input type="checkbox" name="{{../name}}" value="{{value}}" checked="checked"><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
     	</div>
 	 {{/each}}
   </div>
@@ -123,7 +158,6 @@
 	  		<button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="{{handler.func}}">{{label}}</button>
 		{{/if_eq}}
 	{{/if_ne}}
-
 </script>
 
 <script id="jf-link-template" type="text/x-handlebars-template">
@@ -210,7 +244,8 @@
 	<input type="file" id="{{name}}" name="{{name}}" class="form-control" accept="{{accept}}"/>
 </script>
 
- <!-- script  -->
+
+<!----------- script  ------------>
 <script>
 var formContainerId='<%=request.getParameter("formContainerId")%>';
 var formId='<%=request.getParameter("formId")%>';
@@ -226,6 +261,7 @@ const templates = {            //object for mapping object to id
     radio: '#jf-radio-template',
     checkbox : '#jf-checkbox-template',
     file : '#jf-file-template',
+    textarea : '#jf-textarea-template',
     list : '#jf-list-template',
     form : '#jf-form-template',
     list_text: '#list-text-template',
@@ -246,10 +282,14 @@ const templates = {            //object for mapping object to id
 $(document).ready(() => {
 	renderForm();
 	fillOptions();
+	bindEvents();
+	bindValidations();
 });
 
 function renderForm() {
-	renderFormObject()
+	if($('#'+form.id).length==0){
+		renderFormObject()
+	}
 	renderFormFields();
     renderFormGroups();
     renderFormLists();
@@ -280,8 +320,7 @@ function renderFormFields(){
         if (field.group && field.group != '') {
             const template = $(templates[field.type]).html();
             const compiledTemplate = Handlebars.compile(template);
-            const html = "<div class=\"col\">" + compiledTemplate(field) + "</div>";
-            $('#' + field.group).append(html);
+            $('<div />', {class:'col'}).append(compiledTemplate(field)).appendTo($('#' + field.group));
         }
     });
 
@@ -292,8 +331,7 @@ function renderFormGroups(){
             field.fields.forEach(subfield => {
                 const template = $(templates[subfield.type]).html();
                 const compiledTemplate = Handlebars.compile(template);
-                const html = "<div class=\"col\">" + compiledTemplate(subfield) + "</div>";
-                $('#' + field.name).append(html);
+                $('<div />', {class:'col'}).append(compiledTemplate(subfield)).appendTo($('#' + field.name));
             });
         }
     });
@@ -302,11 +340,17 @@ function renderFormGroups(){
 function renderFormLists(){
     form.fields.forEach(field => {
         if (field.type == "list") {
-        	addListRow(field);
-        	
-			var td=$('#'+field.name).find('tr').find('td').last();
-			$(td).children('a[name="deleteRow"]').hide();
-            //$('#' + field.name).append(html);
+       		if(field.editMode == "inline"){
+       			addListRow(field);
+       			var td=$('#'+field.name).find('tr').find('td').last();
+       			$(td).children('a[name="deleteRow"]').hide();
+
+       		}else if(field.editMode == 'dialog'){
+       			initListTable(field, true);
+       		}
+/*        	}else if(field.editable != '' && !field.editable){
+        		initListTable(field, false);
+        	}*/
         }
     });
 }
@@ -321,59 +365,110 @@ function renderFormActions(){
 }
 
 function fillOptions() {
-	console.log("populateSelectCheckboxRadio");
     form.fields.forEach(field => {
-        if (field.provider && field.provider.url) {
-            var provider = field.provider;
-            if (provider.url.length !== 0) {
-                $.ajax({
-                    type: "GET",
-                    url: provider.url,
-                    dataType: "json",
-                    contentType: "application/json"
-                })
-                .done(function(data) {
-                	var select=(field.type == "select");
-                	var checkbox=(field.type == "checkbox");
-                	var radio=(field.type == "radio");
-                    var i=0;
-                    $.each(data.items, function(key, value) {
-                    	if(select){
-                    		$("#" + field.name).append(new Option(value.name, value.id));
-                    	}else{
-                    		var div=$('<div>', {
-							    class: 'form-check'
-							});
-							
-                        	$('<input />', { 
-                        		type: field.type, 
-                        		id: field.name+(i++), 
-                        		name: field.name,
-                        		value: key }).appendTo(div);
-                        	
-							$('<label />', {
-								class:'form-check-label ml-1',
-								for:field.name,
-								text: value }).appendTo(div);
-
-							$("#" + field.name+"-form-group").append(div);
-							//$("#" + field.name+"-form-group").append("<div class=\"form-check\"><input type=\"checkbox\" name=\""+field.name+"\" value=\""+key+"\"> <label class=\"form-check-label\" for=\""+field.name+"\">"+value+"</label>");
-							//$("#" + field.name+"-form-group").append("<div class=\"form-check\"><input type=\"radio\" name=\""+field.name+"\" value=\""+key+"\"> <label class=\"form-check-label\" for=\""+field.name+"\">"+value+"</label>");
-                    	}
-                    });
-                })
-                .fail(function(data) {
-                    console.log(data);
-                });
-            }
-        }
+    	if(field.type!='group'){
+    		if (field.provider && field.provider.url) {
+    			fillFieldOptions(field);
+    		}
+    	}else{
+    		field.fields.forEach(grpfield => {
+    			if (grpfield.provider && grpfield.provider.url) {
+        			fillFieldOptions(grpfield);
+        		}
+    		});
+    	}
     });
+}
+
+function fillFieldOptions(field) {
+	var provider = field.provider;
+    if (provider!=undefined && provider.url!=undefined && provider.url.length>0) {
+    	$('#'+field.name).empty();
+    	$("#" + field.name).append(new Option("Select "+field.label, "-1"));
+    	var apiParams={};
+        var params=provider.params;
+        if(params != undefined){
+        	//var keys=Object.keys(params);
+        	params.forEach(param => {
+        		var value=param.value;
+        		
+        		//console.log ("type of value: "+(typeof value)+" -- "+value);
+        		//console.log(value);
+        		
+        		if(value.startsWith('.') || value.startsWith('#')){
+        			value=$(value).val();
+        			apiParams[param.name]=value;
+        		}
+        	});
+        }
+         $.ajax({
+             type: "GET",
+             url: provider.url,
+             dataType: "json",
+             data: apiParams,
+             contentType: "application/json"
+         })
+         .done(function(data) {
+         	var select=(field.type == "select");
+         	var checkbox=(field.type == "checkbox");
+         	var radio=(field.type == "radio");
+             var i=0;
+             
+             var dataNode;
+             
+             if(provider.dataNode == undefined){
+             	dataNode=data;
+             }else{
+             	dataNode=data[provider.dataNode];
+             }
+             
+             //console.log(dataNode);
+             $.each(dataNode, function(key, item) {
+             	//console.log(key);
+	             	
+             	var value;
+             	var label;
+             	
+             	if(provider.value!=undefined && provider.value!='' && provider.label!=undefined && provider.label!=''){
+             		value=item[provider.value];
+             		label=item[provider.label];
+             	}else{
+             		value=key;
+             		label=item;
+             	}
+             	
+             	if(select){
+             		$("#" + field.name).append(new Option(label, value));
+             	}else{
+             		var div=$('<div>', {
+    					class: 'form-check'
+					});
+
+                 	$('<input />', { 
+                 		type: field.type, 
+                 		id: field.name+(i++), 
+                 		name: field.name,
+                 		value: value }).appendTo(div);
+                 	
+					$('<label />', {
+						class:'form-check-label ms-1',
+						for:field.name,
+						text: label }).appendTo(div);
+
+					$("#" + field.name+"-form-group").append(div);
+             	}
+             });
+         })
+         .fail(function(data) {
+             console.log(data);
+         });
+    }
 }
 
 function actionOnClick(event){
 	 event.preventDefault();
 	 var action=findAction(event);
-	 callUrl(action);
+	 invokeUrl(action);
 }
 
 function findAction(event){
@@ -381,21 +476,21 @@ function findAction(event){
 	 var actionName=$(target).attr("name");
 	 var actionType=$(target).attr("type");
 	 var applyTo=$(target).attr("applyto");
-	 console.log(actionName+" - "+actionType+" - "+applyTo);
+	 //console.log(actionName+" - "+actionType+" - "+applyTo);
 	 var action;
 	 form.actions.forEach(a => {
 		 if(a.name==actionName && a.type==actionType && a.applyTo==applyTo){
 			 action=a;
 		 }
 	 });
-	 console.log(action);
+	 //console.log(action);
 	 return action;
 }
 
-function callUrl(action){
+function invokeUrl(action){
 	
 	var handler=action.handler;
-	console.log(handler);
+	//console.log(handler);
     $.ajax({
         url: handler.url,
         type: handler.method,
@@ -416,11 +511,11 @@ function submitForm(event) {
     var action=findAction(event);
     
     var handler=action.handler;
-    console.log(handler);
+    //console.log(handler);
     
-    var formData = $('#'+form.id).serializeArray();
+    var formData = $('#'+form.id).toJSON();
     
-    console.log(formData);
+    //console.log(formData);
     
     // make AJAX request
     $.ajax({
@@ -433,10 +528,29 @@ function submitForm(event) {
         },
         error: function(error) {
             alert('Error: data not saved');
-            location.href="<%=request.getParameter("cancelPage")%>";
+            //location.href="<%=request.getParameter("cancelPage")%>";
         }
     });
 }
+
+(function ($) {
+    $.fn.toJSON = function () {
+
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
 
 Handlebars.registerHelper('if_eq', function(a, b, opts) {
     if(a === b) // Or === depending on your needs
@@ -454,8 +568,8 @@ Handlebars.registerHelper('if_ne', function(a, b, opts) {
 Handlebars.registerPartial('textField', Handlebars.compile('#jf-text-template'));
 
 function saveOnClick(event){
-	 event.preventDefault();
-	 submitForm(event);
+	 //event.preventDefault();
+	 //submitForm(event);
 }
 
 function cancelOnClick(event){
@@ -464,21 +578,46 @@ function cancelOnClick(event){
 }
 
 function addRow(event){
-	var target = $( event.target);
-	var table=$(target).parents('table');
-
-	var field=findFieldByNameAndType($(table).attr('id'), "list");
+	//event.preventDefault();
+	var target = $(event.target);
 	
-	var elementType = $(target).prop('nodeName');
-	if(elementType=='a' || elementType=='button'){
-		$(target).hide();
-		$(target).siblings().show();
-	}else{
-		$(target).parent().hide();
-		$(target).parent().siblings().show();
+	var nodeName = $(target).prop('nodeName');
+	
+	if(nodeName!='a' && nodeName!='button'){
+		target=$(target).parent();
 	}
 	
-	addListRow(field);
+	var field;
+	var table;
+
+	if($(target).parents('table').length>0){
+		table=$(target).parents('table');
+	}
+	
+	if (table != undefined){
+		field=findFieldByNameAndType($(table).attr('id'), "list");
+	}else{
+		wrapper=$(target).siblings('.dataTables_wrapper');
+		table=$(wrapper).find('.dataTable');
+		field=findFieldByNameAndType($(table).attr('id'), "list");
+	}	
+	
+	if(field.editMode == "inline"){
+		$(target).hide();
+		$(target).siblings().show();
+		
+		/*if(elementType=='a' || elementType=='button'){
+			$(target).hide();
+			$(target).siblings().show();
+		}else{
+			$(target).parent().hide();
+			$(target).parent().siblings().show();
+		}*/
+		
+		addListRow(field);
+	}else if(field.editMode == "dialog"){
+		$('#'+formId+'Modal').modal('show').find('.modal-body').load('http://localhost:8081/jetform-renderer/form-template.jsp');
+	}
 }
 
 function deleteRow(event){
@@ -498,44 +637,49 @@ function deleteRow(event){
 				$(td).children('a[name="addRow"]').show();
 			}
 		}
-		
-		//var lastAdd=$(target).parents('tbody').find('tr').last().find('td').last().;
-		
 	}
-	//var tr=$(target).parents('tr');
-	//var tbody=$(target).parents('tbody');
-	
-	//deleteListRow(event);
 }
 
 function addListRow(field){
    	var tr=$('<tr />');
-	//var html="<tr>";
     field.fields.forEach(subfield => {
         const template = $(templates["list_"+subfield.type]).html();
         const compiledTemplate = Handlebars.compile(template);
         var html=compiledTemplate(subfield)
         $('<td />').append(html).appendTo(tr);
-        //var td=$('<td />');
-        //td.append(html).appendTo(tr);
-        //html+= "<td>" + compiledTemplate(subfield) + "</td>";
-        
     });
     
     if(field.actions.length>0){
-    	//var html= "";
     	var td=$('<td />');
     	field.actions.forEach(action => {
 	    	const template = $(templates[action.type]).html();
 	    	const compiledTemplate = Handlebars.compile(template);
-	    	//html+= compiledTemplate(action);
 	    	$(td).append(compiledTemplate(action));
     	});
-    	//$('<td />', html+= "</td>";
     }
+    
     $(td).appendTo(tr);
-   // html+= "</tr>";
-   $(tr).appendTo($('#' + field.name).find('tbody'));
+   	$(tr).appendTo($('#' + field.name).find('tbody'));
+}
+
+function initListTable(field, editable){
+	var table= $('#'+field.name).DataTable({
+		filter: false,
+		paging: false,
+        ordering: false,
+        info: false,
+        responsive: true
+	});
+	
+	var tableWrapper=$('#'+field.name).parents('#'+field.name+'_wrapper');
+	field.actions.forEach(action => {
+		if(action.applyTo=='list'){
+	    	const template = $(templates[action.type]).html();
+	    	const compiledTemplate = Handlebars.compile(template);
+	    	var html=compiledTemplate(action)
+	    	$(html).addClass('float-end list-action').insertBefore(tableWrapper);
+		}
+	});
 }
 
 function findFieldByNameAndType(name, type){
@@ -545,6 +689,116 @@ function findFieldByNameAndType(name, type){
 			field=f;
 		}
 	});
+	
+	if(field==undefined){
+		form.fields.forEach(f => {
+			if(f.type==group){
+				f.fields.forEach(f1 => {
+					if(f1.name==name && f1.type==type){
+						field=f1;
+					}
+				})
+			}
+		});
+	}
+	
 	return field;
 }
+
+function findFieldByName(name){
+	var field;
+	form.fields.forEach(f => {
+		if(f.name==name){
+			field=f;
+		}
+	});
+	if(field==undefined){
+		form.fields.forEach(f => {
+			if(f.type=="group"){
+				f.fields.forEach(f1 => {
+					if(f1.name==name){
+						field=f1;
+					}
+				})
+			}
+		});
+	}
+	return field;
+}
+
+function bindEvents(){
+	form.fields.forEach(field => {
+		var events=field.events;
+		if(events!=undefined){
+			var keys=Object.keys(events);
+			$.each(field.events, function(key, receivers) {
+				$('#'+field.name).bind(key, function(){
+					bindEventReceivers(field, receivers);
+				});
+			});
+		}
+	});
+}
+
+function bindEventReceivers(eventSource, receivers){
+	receivers.forEach(receiver => {
+		if(receiver.type="field"){
+			if(receiver.trigger=="refill"){
+				
+				refillField(receiver.receiver);
+			}else if(receiver.trigger=="hide"){
+				$('#'+receiver.receiver).closest("div").hide();
+			}else if(receiver.trigger=="show"){
+				$('#'+receiver.receiver).closest("div").show();
+			}else if(receiver.trigger=="enable"){
+				$('#'+receiver.receiver).prop("disabled", false);
+			}else if(receiver.trigger=="disable"){
+				$('#'+receiver.receiver).prop("disabled", true );
+			}
+		}else if(receiver.type="javascript"){
+			executeFunctionByName(receiver.name, window, eventSource);
+		}
+	});
+}
+
+function refillField(fieldName){
+	var field=findFieldByName(fieldName);
+	fillFieldOptions(field);
+}
+
+function executeFunctionByName(functionName, context /*, args */) {
+    var args = Array.prototype.slice.call(arguments, 2);
+    var namespaces = functionName.split(".");
+    var func = namespaces.pop();
+    for (var i = 0; i < namespaces.length; i++) {
+        context = context[namespaces[i]];
+    }
+    return context[func].apply(context, args);
+}
+
+function bindValidations(){
+	if(form.validations!=undefined){
+		$("#"+form.id).validate(form.validations);
+	}else{
+		var rules={};
+		var messages={};
+		form.fields.forEach(field => {
+			if(field.type!="group"){
+				if(field.validations!=undefined){
+					rules[field.name]=field.validations.rules;
+					messages[field.name]=field.validations.messages;
+				}
+			}else{
+				field.fields.forEach(f => {
+					if(f.validations!=undefined){
+						rules[f.name]=f.validations.rules;
+						messages[f.name]=f.validations.messages;
+					}
+				});
+			}
+		});
+		$("#"+form.id).validate({"rules":rules, "messages":messages});
+	}
+}
+
 </script>

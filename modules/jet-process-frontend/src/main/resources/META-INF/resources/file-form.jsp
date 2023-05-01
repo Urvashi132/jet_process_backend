@@ -74,7 +74,7 @@ var form = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/primaryHead/?p_auth="+ Liferay.authToken,
+						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/primaryHead?p_auth="+ Liferay.authToken,
 						"value" : "primaryHeadId",
 						"label" : "primaryHeadValue",
 						"dataNode" : "items",
@@ -94,7 +94,7 @@ var form = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead/?p_auth="+ Liferay.authToken,
+						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead?p_auth="+ Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
 						"dataNode" : "items", 
@@ -113,7 +113,7 @@ var form = {
 					"label" : "TertiaryHead",
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/TertiaryHead/?p_auth="+ Liferay.authToken,
+						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/TertiaryHead?p_auth="+ Liferay.authToken,
 						"value" : "id",
 						"label" : "value",
 						"dataNode" : "items", 
@@ -156,7 +156,7 @@ var form = {
 				"label": "name",
 				"cols": 2,
 				"fields": [{
-					"type" : "text",
+					"type" : "textarea",
 					"name" : "subject",
 					"label" : "Subject",
 					"required" : true,
@@ -248,24 +248,33 @@ var form = {
 </liferay-util:include>
 
 <script>
-/* $(document).ready(() => {
-	form.fields.forEach(field => {
+$(document).ready(() => {
+	form.fields.forEach(group => {
+		group.fields.forEach(field => {
 			if(field.provider){
 				$.each(field.provider.params, function(key, val) {
 					if(key == 0){
+						console.log("1");
+						console.log(key);
+						console.log(val);
 						$.each(val, function(key, value) {
 							$(value).on('change', function(){
+								console.log("2");
+								console.log(key);
+								console.log(value);
 								var selectedValue = $(value).val(); 
-								var arr = field.provider.url.split('?');
-								var newURL = arr[0]+ selectedValue +'?' + arr[1];
-								field.provider.url =newURL;
-								fillOptions();
+								/* var arr = field.provider.url.split('?');
+								var newURL = arr[0]+ selectedValue +'?' + arr[1]; */
+								console.log(field.provider.params.value);
+								field.provider.params.value =selectedValue;
+								console.log(field);
+								fillOptions(); 
 							});
 						});
 					}
 				});
 			}
-		
+		});
 	});
-});  */
+});  
 </script>
