@@ -220,7 +220,7 @@ paths:
     get:
       operationId: getPrimaryHeadByBasicHeadId
       parameters:
-        - in: path
+        - in: query
           name: basicHeadId
           required: true
           schema:
@@ -246,7 +246,7 @@ paths:
     get:
       operationId: getSeondaryHeadByPrimaryHeadId
       parameters:
-        - in: path
+        - in: query
           name: primaryHeadId
           required: true
           schema:
@@ -272,7 +272,7 @@ paths:
     get:
       operationId: getTertiaryHeadBySecondaryHeadId
       parameters:
-        - in: path
+        - in: query
           name: secondaryHeadId
           required: true
           schema:
