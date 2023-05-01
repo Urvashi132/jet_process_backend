@@ -38,7 +38,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
 				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
-				fileRsModel.getYear(), fileRsModel.getUserId(), fileRsModel.getCurrentUser(),
+				fileRsModel.getYear(), fileRsModel.getUserPostId(), fileRsModel.getCurrentUser(),
 				fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
 	
 		return fileRsModel;
@@ -49,7 +49,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getDocFileId(), fileRsModel.getNature(),
 				fileRsModel.getType(), fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
 				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
-				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserId(),
+				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserPostId(),
 				fileRsModel.getCurrentUser(), fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
 		return GetFileRsModel(docFile);
 	}
@@ -80,11 +80,6 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		FileRsModel createdDocFile = new FileRsModel();
 		createdDocFile.setDocFileId(docFile.getDocFileId());
 		createdDocFile.setGroupId(docFile.getGroupId());
-		createdDocFile.setCompanyId(docFile.getCompanyId());
-		createdDocFile.setUserId(docFile.getUserId());
-		createdDocFile.setUserName(docFile.getUserName());
-		createdDocFile.setCreateDate(docFile.getCreateDate());
-		createdDocFile.setModifiedDate(docFile.getModifiedDate());
 		createdDocFile.setNature(docFile.getNature());
 		createdDocFile.setType(docFile.getType());
 		createdDocFile.setHeadId(docFile.getHeadId());

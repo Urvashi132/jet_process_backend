@@ -56,8 +56,44 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.Parameters(
+		value = {
+			@io.swagger.v3.oas.annotations.Parameter(
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
+				name = "docFileId"
+			)
+		}
+	)
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
+	)
+	@javax.ws.rs.DELETE
+	@javax.ws.rs.Path("/DocFile")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public void deleteDocFileById(
+			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
+			@javax.validation.constraints.NotNull
+			@javax.ws.rs.QueryParam("docFileId")
+			Long docFileId)
+		throws Exception {
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile'  -u 'test@liferay.com:test'
 	 */
+	@io.swagger.v3.oas.annotations.Parameters(
+		value = {
+			@io.swagger.v3.oas.annotations.Parameter(
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
+				name = "docFileId"
+			)
+		}
+	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
@@ -65,14 +101,20 @@ public abstract class BaseFileRsModelResourceImpl
 	@javax.ws.rs.Path("/DocFile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public Page<FileRsModel> getDocFileList() throws Exception {
-		return Page.of(Collections.emptyList());
+	public FileRsModel getDocFileById(
+			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
+			@javax.validation.constraints.NotNull
+			@javax.ws.rs.QueryParam("docFileId")
+			Long docFileId)
+		throws Exception {
+
+		return new FileRsModel();
 	}
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "companyId": ___, "createDate": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "modifiedDate": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userId": ___, "userName": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
@@ -89,70 +131,12 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile/{docFileId}'  -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
-				in = io.swagger.v3.oas.annotations.enums.ParameterIn.PATH,
-				name = "docFileId"
-			)
-		}
-	)
-	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
-	)
-	@javax.ws.rs.DELETE
-	@javax.ws.rs.Path("/DocFile/{docFileId}")
-	@javax.ws.rs.Produces({"application/json", "application/xml"})
-	@Override
-	public void deleteDocFileById(
-			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.PathParam("docFileId")
-			Long docFileId)
-		throws Exception {
-	}
-
-	/**
-	 * Invoke this method with the command line:
-	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile/{docFileId}'  -u 'test@liferay.com:test'
-	 */
-	@io.swagger.v3.oas.annotations.Parameters(
-		value = {
-			@io.swagger.v3.oas.annotations.Parameter(
-				in = io.swagger.v3.oas.annotations.enums.ParameterIn.PATH,
-				name = "docFileId"
-			)
-		}
-	)
-	@io.swagger.v3.oas.annotations.tags.Tags(
-		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
-	)
-	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/DocFile/{docFileId}")
-	@javax.ws.rs.Produces({"application/json", "application/xml"})
-	@Override
-	public FileRsModel getDocFileById(
-			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.PathParam("docFileId")
-			Long docFileId)
-		throws Exception {
-
-		return new FileRsModel();
-	}
-
-	/**
-	 * Invoke this method with the command line:
-	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile/{docFileId}' -d $'{"categoryId": ___, "companyId": ___, "createDate": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "modifiedDate": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userId": ___, "userName": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
-	 */
-	@io.swagger.v3.oas.annotations.Parameters(
-		value = {
-			@io.swagger.v3.oas.annotations.Parameter(
-				in = io.swagger.v3.oas.annotations.enums.ParameterIn.PATH,
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
 				name = "docFileId"
 			)
 		}
@@ -161,19 +145,35 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/DocFile/{docFileId}")
+	@javax.ws.rs.Path("/DocFile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@javax.ws.rs.PUT
 	@Override
 	public FileRsModel updateDocFile(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
 			@javax.validation.constraints.NotNull
-			@javax.ws.rs.PathParam("docFileId")
+			@javax.ws.rs.QueryParam("docFileId")
 			Long docFileId,
 			FileRsModel fileRsModel)
 		throws Exception {
 
 		return new FileRsModel();
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFiles'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
+	)
+	@javax.ws.rs.GET
+	@javax.ws.rs.Path("/DocFiles")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public Page<FileRsModel> getDocFileList() throws Exception {
+		return Page.of(Collections.emptyList());
 	}
 
 	@Override

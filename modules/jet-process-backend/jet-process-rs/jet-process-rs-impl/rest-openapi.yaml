@@ -17,20 +17,6 @@ components:
         groupId:
           format: int64
           type: integer
-        companyId:
-          format: int64
-          type: integer
-        userId:
-          format: int64
-          type: integer
-        userName:
-          type: string
-        createDate:
-          format: date-time
-          type: string
-        modifiedDate:
-          format: date-time
-          type: string 
         nature:
           type: string
         type:
@@ -151,25 +137,9 @@ paths:
           description: ''
       tags: ["FileRsModel"]
     get:
-      operationId: getDocFileList
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/FileRsModel'
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/FileRsModel'
-          description: ''
-      tags: ["FileRsModel"]
-  /DocFile/{docFileId}:
-    get:
       operationId: getDocFileById
       parameters:
-        - in: path
+        - in: "query"
           name: docFileId
           required: true
           schema:
@@ -189,7 +159,7 @@ paths:
     delete:
       operationId: deleteDocFileById
       parameters:
-        - in: path
+        - in: "query"
           name: docFileId
           required: true
           schema:
@@ -205,7 +175,7 @@ paths:
     put:
       operationId: updateDocFile
       parameters:
-        - in: path
+        - in: "query"
           name: docFileId
           required: true
           schema:
@@ -230,7 +200,22 @@ paths:
                   $ref: '#/components/schemas/FileRsModel'
           description: ''
       tags: ["FileRsModel"]
-      
+  /DocFiles:
+    get:
+      operationId: getDocFileList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/FileRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/FileRsModel'
+          description: ''
+      tags: ["FileRsModel"]
   /primaryHead/{basicHeadId}:
     get:
       operationId: getPrimaryHeadByBasicHeadId

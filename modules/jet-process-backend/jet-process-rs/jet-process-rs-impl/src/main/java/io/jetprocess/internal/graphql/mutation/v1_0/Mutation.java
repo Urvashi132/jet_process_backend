@@ -39,18 +39,6 @@ public class Mutation {
 	}
 
 	@GraphQLField
-	public FileRsModel createDocFile(
-			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
-		throws Exception {
-
-		return _applyComponentServiceObjects(
-			_fileRsModelResourceComponentServiceObjects,
-			this::_populateResourceContext,
-			fileRsModelResource -> fileRsModelResource.createDocFile(
-				fileRsModel));
-	}
-
-	@GraphQLField
 	public boolean deleteDocFileById(@GraphQLName("docFileId") Long docFileId)
 		throws Exception {
 
@@ -61,6 +49,18 @@ public class Mutation {
 				docFileId));
 
 		return true;
+	}
+
+	@GraphQLField
+	public FileRsModel createDocFile(
+			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_fileRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			fileRsModelResource -> fileRsModelResource.createDocFile(
+				fileRsModel));
 	}
 
 	@GraphQLField
