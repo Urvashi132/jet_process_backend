@@ -52,12 +52,12 @@ public class CategoryLocalServiceWrapper
 	/**
 	 * Creates a new category with the primary key. Does not add the category to the database.
 	 *
-	 * @param categoryId the primary key for the new category
+	 * @param id the primary key for the new category
 	 * @return the new category
 	 */
 	@Override
-	public io.jetprocess.model.Category createCategory(long categoryId) {
-		return _categoryLocalService.createCategory(categoryId);
+	public io.jetprocess.model.Category createCategory(long id) {
+		return _categoryLocalService.createCategory(id);
 	}
 
 	/**
@@ -95,15 +95,15 @@ public class CategoryLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect CategoryLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category that was removed
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.Category deleteCategory(long categoryId)
+	public io.jetprocess.model.Category deleteCategory(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _categoryLocalService.deleteCategory(categoryId);
+		return _categoryLocalService.deleteCategory(id);
 	}
 
 	/**
@@ -220,8 +220,8 @@ public class CategoryLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.Category fetchCategory(long categoryId) {
-		return _categoryLocalService.fetchCategory(categoryId);
+	public io.jetprocess.model.Category fetchCategory(long id) {
+		return _categoryLocalService.fetchCategory(id);
 	}
 
 	@Override
@@ -262,15 +262,15 @@ public class CategoryLocalServiceWrapper
 	/**
 	 * Returns the category with the primary key.
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.Category getCategory(long categoryId)
+	public io.jetprocess.model.Category getCategory(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _categoryLocalService.getCategory(categoryId);
+		return _categoryLocalService.getCategory(id);
 	}
 
 	@Override

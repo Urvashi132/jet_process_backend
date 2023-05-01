@@ -36,12 +36,12 @@ public interface Category extends CategoryModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.CategoryImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Category, Long> CATEGORY_ID_ACCESSOR =
+	public static final Accessor<Category, Long> ID_ACCESSOR =
 		new Accessor<Category, Long>() {
 
 			@Override
 			public Long get(Category category) {
-				return category.getCategoryId();
+				return category.getId();
 			}
 
 			@Override

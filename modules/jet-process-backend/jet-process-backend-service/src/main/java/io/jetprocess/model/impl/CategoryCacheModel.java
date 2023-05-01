@@ -46,7 +46,7 @@ public class CategoryCacheModel
 
 		CategoryCacheModel categoryCacheModel = (CategoryCacheModel)object;
 
-		if (categoryId == categoryCacheModel.categoryId) {
+		if (id == categoryCacheModel.id) {
 			return true;
 		}
 
@@ -55,17 +55,19 @@ public class CategoryCacheModel
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, categoryId);
+		return HashUtil.hash(0, id);
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(5);
+		StringBundler sb = new StringBundler(7);
 
-		sb.append("{categoryId=");
-		sb.append(categoryId);
-		sb.append(", categoryValue=");
-		sb.append(categoryValue);
+		sb.append("{uuid=");
+		sb.append(uuid);
+		sb.append(", id=");
+		sb.append(id);
+		sb.append(", name=");
+		sb.append(name);
 		sb.append("}");
 
 		return sb.toString();
@@ -75,13 +77,20 @@ public class CategoryCacheModel
 	public Category toEntityModel() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		categoryImpl.setCategoryId(categoryId);
-
-		if (categoryValue == null) {
-			categoryImpl.setCategoryValue("");
+		if (uuid == null) {
+			categoryImpl.setUuid("");
 		}
 		else {
-			categoryImpl.setCategoryValue(categoryValue);
+			categoryImpl.setUuid(uuid);
+		}
+
+		categoryImpl.setId(id);
+
+		if (name == null) {
+			categoryImpl.setName("");
+		}
+		else {
+			categoryImpl.setName(name);
 		}
 
 		categoryImpl.resetOriginalValues();
@@ -91,23 +100,33 @@ public class CategoryCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		categoryId = objectInput.readLong();
-		categoryValue = objectInput.readUTF();
+		uuid = objectInput.readUTF();
+
+		id = objectInput.readLong();
+		name = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		objectOutput.writeLong(categoryId);
-
-		if (categoryValue == null) {
+		if (uuid == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(categoryValue);
+			objectOutput.writeUTF(uuid);
+		}
+
+		objectOutput.writeLong(id);
+
+		if (name == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(name);
 		}
 	}
 
-	public long categoryId;
-	public String categoryValue;
+	public String uuid;
+	public long id;
+	public String name;
 
 }

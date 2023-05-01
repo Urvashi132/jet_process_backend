@@ -63,11 +63,11 @@ public class CategoryLocalServiceUtil {
 	/**
 	 * Creates a new category with the primary key. Does not add the category to the database.
 	 *
-	 * @param categoryId the primary key for the new category
+	 * @param id the primary key for the new category
 	 * @return the new category
 	 */
-	public static Category createCategory(long categoryId) {
-		return getService().createCategory(categoryId);
+	public static Category createCategory(long id) {
+		return getService().createCategory(id);
 	}
 
 	/**
@@ -101,14 +101,12 @@ public class CategoryLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect CategoryLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category that was removed
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
-	public static Category deleteCategory(long categoryId)
-		throws PortalException {
-
-		return getService().deleteCategory(categoryId);
+	public static Category deleteCategory(long id) throws PortalException {
+		return getService().deleteCategory(id);
 	}
 
 	/**
@@ -206,8 +204,8 @@ public class CategoryLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static Category fetchCategory(long categoryId) {
-		return getService().fetchCategory(categoryId);
+	public static Category fetchCategory(long id) {
+		return getService().fetchCategory(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -243,12 +241,12 @@ public class CategoryLocalServiceUtil {
 	/**
 	 * Returns the category with the primary key.
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
-	public static Category getCategory(long categoryId) throws PortalException {
-		return getService().getCategory(categoryId);
+	public static Category getCategory(long id) throws PortalException {
+		return getService().getCategory(id);
 	}
 
 	public static

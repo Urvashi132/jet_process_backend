@@ -79,11 +79,11 @@ public interface CategoryLocalService
 	/**
 	 * Creates a new category with the primary key. Does not add the category to the database.
 	 *
-	 * @param categoryId the primary key for the new category
+	 * @param id the primary key for the new category
 	 * @return the new category
 	 */
 	@Transactional(enabled = false)
-	public Category createCategory(long categoryId);
+	public Category createCategory(long id);
 
 	/**
 	 * @throws PortalException
@@ -111,12 +111,12 @@ public interface CategoryLocalService
 	 * <strong>Important:</strong> Inspect CategoryLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category that was removed
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public Category deleteCategory(long categoryId) throws PortalException;
+	public Category deleteCategory(long id) throws PortalException;
 
 	/**
 	 * @throws PortalException
@@ -198,7 +198,7 @@ public interface CategoryLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Category fetchCategory(long categoryId);
+	public Category fetchCategory(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -228,12 +228,12 @@ public interface CategoryLocalService
 	/**
 	 * Returns the category with the primary key.
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Category getCategory(long categoryId) throws PortalException;
+	public Category getCategory(long id) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();

@@ -56,12 +56,12 @@ public abstract class BaseSecondaryHeadRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead/{primaryHeadId}'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
-				in = io.swagger.v3.oas.annotations.enums.ParameterIn.PATH,
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
 				name = "primaryHeadId"
 			)
 		}
@@ -74,13 +74,13 @@ public abstract class BaseSecondaryHeadRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/SecondaryHead/{primaryHeadId}")
+	@javax.ws.rs.Path("/SecondaryHead")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public Page<SecondaryHeadRsModel> getSeondaryHeadByPrimaryHeadId(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
 			@javax.validation.constraints.NotNull
-			@javax.ws.rs.PathParam("primaryHeadId")
+			@javax.ws.rs.QueryParam("primaryHeadId")
 			Long primaryHeadId)
 		throws Exception {
 

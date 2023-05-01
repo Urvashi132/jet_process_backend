@@ -216,11 +216,11 @@ paths:
                   $ref: '#/components/schemas/FileRsModel'
           description: ''
       tags: ["FileRsModel"]
-  /primaryHead/{basicHeadId}:
+  /primaryHead:
     get:
       operationId: getPrimaryHeadByBasicHeadId
       parameters:
-        - in: query
+        - in: "query"
           name: basicHeadId
           required: true
           schema:
@@ -242,11 +242,11 @@ paths:
           description: ''
       tags: ["PrimaryHeadRsModel"]
       
-  /SecondaryHead/{primaryHeadId}:
+  /SecondaryHead:
     get:
       operationId: getSeondaryHeadByPrimaryHeadId
       parameters:
-        - in: query
+        - in: "query"
           name: primaryHeadId
           required: true
           schema:
@@ -268,11 +268,11 @@ paths:
           description: ''
       tags: ["SecondaryHeadRsModel"]    
       
-  /TertiaryHead/{secondaryHeadId}:
+  /TertiaryHead:
     get:
       operationId: getTertiaryHeadBySecondaryHeadId
       parameters:
-        - in: query
+        - in: "query"
           name: secondaryHeadId
           required: true
           schema:

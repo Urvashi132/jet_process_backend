@@ -44,10 +44,15 @@ import io.jetprocess.service.CategoryLocalService;
 import io.jetprocess.service.CategoryLocalServiceUtil;
 import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
+import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
+import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
+import io.jetprocess.service.persistence.TypePersistence;
 
 import java.io.Serializable;
 
@@ -102,13 +107,13 @@ public abstract class CategoryLocalServiceBaseImpl
 	/**
 	 * Creates a new category with the primary key. Does not add the category to the database.
 	 *
-	 * @param categoryId the primary key for the new category
+	 * @param id the primary key for the new category
 	 * @return the new category
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public Category createCategory(long categoryId) {
-		return categoryPersistence.create(categoryId);
+	public Category createCategory(long id) {
+		return categoryPersistence.create(id);
 	}
 
 	/**
@@ -118,14 +123,14 @@ public abstract class CategoryLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect CategoryLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category that was removed
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public Category deleteCategory(long categoryId) throws PortalException {
-		return categoryPersistence.remove(categoryId);
+	public Category deleteCategory(long id) throws PortalException {
+		return categoryPersistence.remove(id);
 	}
 
 	/**
@@ -244,20 +249,20 @@ public abstract class CategoryLocalServiceBaseImpl
 	}
 
 	@Override
-	public Category fetchCategory(long categoryId) {
-		return categoryPersistence.fetchByPrimaryKey(categoryId);
+	public Category fetchCategory(long id) {
+		return categoryPersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the category with the primary key.
 	 *
-	 * @param categoryId the primary key of the category
+	 * @param id the primary key of the category
 	 * @return the category
 	 * @throws PortalException if a category with the primary key could not be found
 	 */
 	@Override
-	public Category getCategory(long categoryId) throws PortalException {
-		return categoryPersistence.findByPrimaryKey(categoryId);
+	public Category getCategory(long id) throws PortalException {
+		return categoryPersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -269,7 +274,7 @@ public abstract class CategoryLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Category.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("categoryId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -286,7 +291,7 @@ public abstract class CategoryLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(Category.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("categoryId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -298,7 +303,7 @@ public abstract class CategoryLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Category.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("categoryId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	/**
@@ -465,16 +470,31 @@ public abstract class CategoryLocalServiceBaseImpl
 	protected CategoryPersistence categoryPersistence;
 
 	@Reference
+	protected DeliveryModePersistence deliveryModePersistence;
+
+	@Reference
 	protected DocFilePersistence docFilePersistence;
+
+	@Reference
+	protected OrganizationPersistence organizationPersistence;
 
 	@Reference
 	protected PrimaryHeadPersistence primaryHeadPersistence;
 
 	@Reference
+	protected ReceiptPersistence receiptPersistence;
+
+	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
 
 	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;
+
+	@Reference
+	protected TypePersistence typePersistence;
 
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService
@@ -491,13 +511,5 @@ public abstract class CategoryLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetEntryLocalService
-		assetEntryLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetTagLocalService
-		assetTagLocalService;
 
 }

@@ -32,8 +32,9 @@ public class CategorySoap implements Serializable {
 	public static CategorySoap toSoapModel(Category model) {
 		CategorySoap soapModel = new CategorySoap();
 
-		soapModel.setCategoryId(model.getCategoryId());
-		soapModel.setCategoryValue(model.getCategoryValue());
+		soapModel.setUuid(model.getUuid());
+		soapModel.setId(model.getId());
+		soapModel.setName(model.getName());
 
 		return soapModel;
 	}
@@ -80,30 +81,39 @@ public class CategorySoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _categoryId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setCategoryId(pk);
+		setId(pk);
 	}
 
-	public long getCategoryId() {
-		return _categoryId;
+	public String getUuid() {
+		return _uuid;
 	}
 
-	public void setCategoryId(long categoryId) {
-		_categoryId = categoryId;
+	public void setUuid(String uuid) {
+		_uuid = uuid;
 	}
 
-	public String getCategoryValue() {
-		return _categoryValue;
+	public long getId() {
+		return _id;
 	}
 
-	public void setCategoryValue(String categoryValue) {
-		_categoryValue = categoryValue;
+	public void setId(long id) {
+		_id = id;
 	}
 
-	private long _categoryId;
-	private String _categoryValue;
+	public String getName() {
+		return _name;
+	}
+
+	public void setName(String name) {
+		_name = name;
+	}
+
+	private String _uuid;
+	private long _id;
+	private String _name;
 
 }

@@ -5,8 +5,15 @@ create table JP_BasicHead (
 );
 
 create table JP_Category (
-	categoryId LONG not null primary key,
-	categoryValue VARCHAR(75) null
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	name VARCHAR(75) null
+);
+
+create table JP_DeliveryMode (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	name VARCHAR(75) null
 );
 
 create table JP_DocFile (
@@ -34,10 +41,53 @@ create table JP_DocFile (
 	dealingOrganizationId LONG
 );
 
+create table JP_Organization (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	name VARCHAR(75) null
+);
+
 create table JP_PrimaryHead (
 	primaryHeadId LONG not null primary key,
 	primaryHeadValue VARCHAR(75) null,
 	basicHeadId LONG
+);
+
+create table JP_Receipt (
+	uuid_ VARCHAR(75) null,
+	receiptId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	typeId LONG,
+	deliveryModeId LONG,
+	receivedOn VARCHAR(75) null,
+	letterDate VARCHAR(75) null,
+	referenceNo VARCHAR(75) null,
+	modeNo VARCHAR(75) null,
+	CategoryId LONG,
+	subject VARCHAR(75) null,
+	remarks VARCHAR(75) null,
+	name VARCHAR(75) null,
+	designation VARCHAR(75) null,
+	mobile VARCHAR(75) null,
+	email VARCHAR(75) null,
+	address VARCHAR(75) null,
+	stateId LONG,
+	pinCode VARCHAR(75) null,
+	receiptNo VARCHAR(75) null,
+	organizationId LONG,
+	city VARCHAR(75) null,
+	userPostId LONG,
+	viewPdfUrl VARCHAR(75) null,
+	docFileId LONG,
+	nature VARCHAR(75) null,
+	currentlyWith LONG,
+	currentState INTEGER,
+	attachStatus VARCHAR(75) null
 );
 
 create table JP_SecondaryHead (
@@ -46,8 +96,21 @@ create table JP_SecondaryHead (
 	primaryHeadId LONG
 );
 
+create table JP_State (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	name VARCHAR(75) null,
+	countryId LONG
+);
+
 create table JP_TertiaryHead (
 	tertiaryHeadId LONG not null primary key,
 	tertiaryHeadvalue VARCHAR(75) null,
 	secondaryHeadId LONG
+);
+
+create table JP_Type (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	name VARCHAR(75) null
 );

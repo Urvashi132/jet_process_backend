@@ -54,33 +54,48 @@ public interface CategoryModel extends BaseModel<Category> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the category ID of this category.
+	 * Returns the uuid of this category.
 	 *
-	 * @return the category ID of this category
-	 */
-	public long getCategoryId();
-
-	/**
-	 * Sets the category ID of this category.
-	 *
-	 * @param categoryId the category ID of this category
-	 */
-	public void setCategoryId(long categoryId);
-
-	/**
-	 * Returns the category value of this category.
-	 *
-	 * @return the category value of this category
+	 * @return the uuid of this category
 	 */
 	@AutoEscape
-	public String getCategoryValue();
+	public String getUuid();
 
 	/**
-	 * Sets the category value of this category.
+	 * Sets the uuid of this category.
 	 *
-	 * @param categoryValue the category value of this category
+	 * @param uuid the uuid of this category
 	 */
-	public void setCategoryValue(String categoryValue);
+	public void setUuid(String uuid);
+
+	/**
+	 * Returns the ID of this category.
+	 *
+	 * @return the ID of this category
+	 */
+	public long getId();
+
+	/**
+	 * Sets the ID of this category.
+	 *
+	 * @param id the ID of this category
+	 */
+	public void setId(long id);
+
+	/**
+	 * Returns the name of this category.
+	 *
+	 * @return the name of this category
+	 */
+	@AutoEscape
+	public String getName();
+
+	/**
+	 * Sets the name of this category.
+	 *
+	 * @param name the name of this category
+	 */
+	public void setName(String name);
 
 	@Override
 	public Category cloneWithOriginalValues();

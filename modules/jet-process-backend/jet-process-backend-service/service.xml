@@ -190,6 +190,92 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
+	
+	<entity name="Receipt" local-service="true"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="receiptId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="typeId" type="long" />
+		<column name="deliveryModeId" type="long" />
+		<column name="receivedOn" type="String" />
+		<column name="letterDate" type="String" />
+		<column name="referenceNo" type="String" />
+		<column name="modeNo" type="String" />
+		<column name="CategoryId" type="long" />
+		<column name="subject" type="String" />
+		<column name="remarks" type="String" />
+		<column name="name" type="String" />
+		<column name="designation" type="String" />
+		<column name="mobile" type="String" />
+		<column name="email" type="String" />
+		<column name="address" type="String" />
+		<column name="stateId" type="long" />
+		<column name="pinCode" type="String" />
+		<column name="receiptNo" type="String" />
+		<column name="organizationId" type="long" />
+		<column name="city" type="String" />
+		<column name="userPostId" type="long" />
+		<column name="viewPdfUrl" type="String" />
+		<column name="docFileId" type="long" ></column>
+		<column name="nature" type="String" />
+		<column name="currentlyWith" type="long" />
+		<column name="currentState" type="int" />
+		<column name="attachStatus" type="String" />
+		
+	
+		
+	</entity>
+	<entity name="DeliveryMode" local-service="true"
+		remote-service="true" uuid="true">
+		
+			<column name="id" primary="true" type="long" />	
+	  		<column name="name" type="String" />	
+	</entity>
+		<entity name="Organization" local-service="true"
+		remote-service="true" uuid="true">
+		
+			<column name="id" primary="true" type="long" />	
+	  		<column name="name" type="String" />	
+	</entity>
+	
+	<entity name="State" local-service="true"
+		remote-service="true" uuid="true">
+		
+			<column name="id" primary="true" type="long" />	
+	  		<column name="name" type="String" />
+	  		<column name="countryId" type="long" />	
+	  		
+	</entity>
+	<entity name="Category" local-service="true"
+		remote-service="true" uuid="true">
+		
+			<column name="id" primary="true" type="long" />	
+	  		<column name="name" type="String" />	  			
+	  		
+	</entity>
+	<entity name="Type" local-service="true"
+		remote-service="true" uuid="true">
+		
+			<column name="id" primary="true" type="long" />	
+	  		<column name="name" type="String" />	  			
+	  		
+	</entity>
+
+	
 	<exceptions>
 	<exception>FileValidation</exception>
 	</exceptions>

@@ -29,10 +29,15 @@ import io.jetprocess.service.SecondaryHeadService;
 import io.jetprocess.service.SecondaryHeadServiceUtil;
 import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
+import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
+import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
+import io.jetprocess.service.persistence.TypePersistence;
 
 import java.lang.reflect.Field;
 
@@ -145,10 +150,19 @@ public abstract class SecondaryHeadServiceBaseImpl
 	protected CategoryPersistence categoryPersistence;
 
 	@Reference
+	protected DeliveryModePersistence deliveryModePersistence;
+
+	@Reference
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
+	protected OrganizationPersistence organizationPersistence;
+
+	@Reference
 	protected PrimaryHeadPersistence primaryHeadPersistence;
+
+	@Reference
+	protected ReceiptPersistence receiptPersistence;
 
 	@Reference
 	protected io.jetprocess.service.SecondaryHeadLocalService
@@ -160,7 +174,13 @@ public abstract class SecondaryHeadServiceBaseImpl
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
 
 	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;
+
+	@Reference
+	protected TypePersistence typePersistence;
 
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService

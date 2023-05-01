@@ -16,9 +16,9 @@ package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
 
-import io.jetprocess.service.base.DocFileServiceBaseImpl;
-
 import org.osgi.service.component.annotations.Component;
+
+import io.jetprocess.service.base.DocFileServiceBaseImpl;
 
 /**
  * @author Brian Wing Shun Chan
@@ -31,4 +31,8 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class DocFileServiceImpl extends DocFileServiceBaseImpl {
+	
+	
+	
+	
 }

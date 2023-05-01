@@ -30,10 +30,12 @@ public class CategoryTable extends BaseTable<CategoryTable> {
 
 	public static final CategoryTable INSTANCE = new CategoryTable();
 
-	public final Column<CategoryTable, Long> categoryId = createColumn(
-		"categoryId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<CategoryTable, String> categoryValue = createColumn(
-		"categoryValue", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<CategoryTable, String> uuid = createColumn(
+		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<CategoryTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<CategoryTable, String> name = createColumn(
+		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 
 	private CategoryTable() {
 		super("JP_Category", CategoryTable::new);

@@ -7,8 +7,14 @@
 		<field name="basicHeadCode" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Category">
-		<field name="categoryId" type="long" />
-		<field name="categoryValue" type="String" />
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+	</model>
+	<model name="io.jetprocess.model.DeliveryMode">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
 	</model>
 	<model name="io.jetprocess.model.DocFile">
 		<field name="uuid" type="String" />
@@ -34,19 +40,71 @@
 		<field name="currentState" type="int" />
 		<field name="dealingOrganizationId" type="long" />
 	</model>
+	<model name="io.jetprocess.model.Organization">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+	</model>
 	<model name="io.jetprocess.model.PrimaryHead">
 		<field name="primaryHeadId" type="long" />
 		<field name="primaryHeadValue" type="String" />
 		<field name="basicHeadId" type="long" />
+	</model>
+	<model name="io.jetprocess.model.Receipt">
+		<field name="uuid" type="String" />
+		<field name="receiptId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="typeId" type="long" />
+		<field name="deliveryModeId" type="long" />
+		<field name="receivedOn" type="String" />
+		<field name="letterDate" type="String" />
+		<field name="referenceNo" type="String" />
+		<field name="modeNo" type="String" />
+		<field name="CategoryId" type="long" />
+		<field name="subject" type="String" />
+		<field name="remarks" type="String" />
+		<field name="name" type="String" />
+		<field name="designation" type="String" />
+		<field name="mobile" type="String" />
+		<field name="email" type="String" />
+		<field name="address" type="String" />
+		<field name="stateId" type="long" />
+		<field name="pinCode" type="String" />
+		<field name="receiptNo" type="String" />
+		<field name="organizationId" type="long" />
+		<field name="city" type="String" />
+		<field name="userPostId" type="long" />
+		<field name="viewPdfUrl" type="String" />
+		<field name="docFileId" type="long" />
+		<field name="nature" type="String" />
+		<field name="currentlyWith" type="long" />
+		<field name="currentState" type="int" />
+		<field name="attachStatus" type="String" />
 	</model>
 	<model name="io.jetprocess.model.SecondaryHead">
 		<field name="secondaryHeadId" type="long" />
 		<field name="secondaryHeadValue" type="String" />
 		<field name="primaryHeadId" type="long" />
 	</model>
+	<model name="io.jetprocess.model.State">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="countryId" type="long" />
+	</model>
 	<model name="io.jetprocess.model.TertiaryHead">
 		<field name="tertiaryHeadId" type="long" />
 		<field name="tertiaryHeadvalue" type="String" />
 		<field name="secondaryHeadId" type="long" />
+	</model>
+	<model name="io.jetprocess.model.Type">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
 	</model>
 </model-hints>

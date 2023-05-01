@@ -41,24 +41,31 @@ public class CategoryWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("categoryId", getCategoryId());
-		attributes.put("categoryValue", getCategoryValue());
+		attributes.put("uuid", getUuid());
+		attributes.put("id", getId());
+		attributes.put("name", getName());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long categoryId = (Long)attributes.get("categoryId");
+		String uuid = (String)attributes.get("uuid");
 
-		if (categoryId != null) {
-			setCategoryId(categoryId);
+		if (uuid != null) {
+			setUuid(uuid);
 		}
 
-		String categoryValue = (String)attributes.get("categoryValue");
+		Long id = (Long)attributes.get("id");
 
-		if (categoryValue != null) {
-			setCategoryValue(categoryValue);
+		if (id != null) {
+			setId(id);
+		}
+
+		String name = (String)attributes.get("name");
+
+		if (name != null) {
+			setName(name);
 		}
 	}
 
@@ -68,23 +75,23 @@ public class CategoryWrapper
 	}
 
 	/**
-	 * Returns the category ID of this category.
+	 * Returns the ID of this category.
 	 *
-	 * @return the category ID of this category
+	 * @return the ID of this category
 	 */
 	@Override
-	public long getCategoryId() {
-		return model.getCategoryId();
+	public long getId() {
+		return model.getId();
 	}
 
 	/**
-	 * Returns the category value of this category.
+	 * Returns the name of this category.
 	 *
-	 * @return the category value of this category
+	 * @return the name of this category
 	 */
 	@Override
-	public String getCategoryValue() {
-		return model.getCategoryValue();
+	public String getName() {
+		return model.getName();
 	}
 
 	/**
@@ -97,29 +104,39 @@ public class CategoryWrapper
 		return model.getPrimaryKey();
 	}
 
+	/**
+	 * Returns the uuid of this category.
+	 *
+	 * @return the uuid of this category
+	 */
+	@Override
+	public String getUuid() {
+		return model.getUuid();
+	}
+
 	@Override
 	public void persist() {
 		model.persist();
 	}
 
 	/**
-	 * Sets the category ID of this category.
+	 * Sets the ID of this category.
 	 *
-	 * @param categoryId the category ID of this category
+	 * @param id the ID of this category
 	 */
 	@Override
-	public void setCategoryId(long categoryId) {
-		model.setCategoryId(categoryId);
+	public void setId(long id) {
+		model.setId(id);
 	}
 
 	/**
-	 * Sets the category value of this category.
+	 * Sets the name of this category.
 	 *
-	 * @param categoryValue the category value of this category
+	 * @param name the name of this category
 	 */
 	@Override
-	public void setCategoryValue(String categoryValue) {
-		model.setCategoryValue(categoryValue);
+	public void setName(String name) {
+		model.setName(name);
 	}
 
 	/**
@@ -130,6 +147,16 @@ public class CategoryWrapper
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		model.setPrimaryKey(primaryKey);
+	}
+
+	/**
+	 * Sets the uuid of this category.
+	 *
+	 * @param uuid the uuid of this category
+	 */
+	@Override
+	public void setUuid(String uuid) {
+		model.setUuid(uuid);
 	}
 
 	@Override

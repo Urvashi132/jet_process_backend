@@ -72,27 +72,26 @@ public class CategoryModelImpl
 	public static final String TABLE_NAME = "JP_Category";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"categoryId", Types.BIGINT}, {"categoryValue", Types.VARCHAR}
+		{"uuid_", Types.VARCHAR}, {"id_", Types.BIGINT}, {"name", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("categoryId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("categoryValue", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Category (categoryId LONG not null primary key,categoryValue VARCHAR(75) null)";
+		"create table JP_Category (uuid_ VARCHAR(75) null,id_ LONG not null primary key,name VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Category";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY category.categoryId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY category.id ASC";
 
-	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_Category.categoryId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY JP_Category.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -101,11 +100,17 @@ public class CategoryModelImpl
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
+	 */
+	@Deprecated
+	public static final long UUID_COLUMN_BITMASK = 1L;
+
+	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long CATEGORYID_COLUMN_BITMASK = 1L;
+	public static final long ID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -136,8 +141,9 @@ public class CategoryModelImpl
 
 		Category model = new CategoryImpl();
 
-		model.setCategoryId(soapModel.getCategoryId());
-		model.setCategoryValue(soapModel.getCategoryValue());
+		model.setUuid(soapModel.getUuid());
+		model.setId(soapModel.getId());
+		model.setName(soapModel.getName());
 
 		return model;
 	}
@@ -169,17 +175,17 @@ public class CategoryModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _categoryId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setCategoryId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _categoryId;
+		return _id;
 	}
 
 	@Override
@@ -287,14 +293,15 @@ public class CategoryModelImpl
 		Map<String, BiConsumer<Category, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<Category, ?>>();
 
-		attributeGetterFunctions.put("categoryId", Category::getCategoryId);
+		attributeGetterFunctions.put("uuid", Category::getUuid);
 		attributeSetterBiConsumers.put(
-			"categoryId", (BiConsumer<Category, Long>)Category::setCategoryId);
-		attributeGetterFunctions.put(
-			"categoryValue", Category::getCategoryValue);
+			"uuid", (BiConsumer<Category, String>)Category::setUuid);
+		attributeGetterFunctions.put("id", Category::getId);
 		attributeSetterBiConsumers.put(
-			"categoryValue",
-			(BiConsumer<Category, String>)Category::setCategoryValue);
+			"id", (BiConsumer<Category, Long>)Category::setId);
+		attributeGetterFunctions.put("name", Category::getName);
+		attributeSetterBiConsumers.put(
+			"name", (BiConsumer<Category, String>)Category::setName);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -304,37 +311,66 @@ public class CategoryModelImpl
 
 	@JSON
 	@Override
-	public long getCategoryId() {
-		return _categoryId;
+	public String getUuid() {
+		if (_uuid == null) {
+			return "";
+		}
+		else {
+			return _uuid;
+		}
 	}
 
 	@Override
-	public void setCategoryId(long categoryId) {
+	public void setUuid(String uuid) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_categoryId = categoryId;
+		_uuid = uuid;
+	}
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 *             #getColumnOriginalValue(String)}
+	 */
+	@Deprecated
+	public String getOriginalUuid() {
+		return getColumnOriginalValue("uuid_");
 	}
 
 	@JSON
 	@Override
-	public String getCategoryValue() {
-		if (_categoryValue == null) {
-			return "";
-		}
-		else {
-			return _categoryValue;
-		}
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setCategoryValue(String categoryValue) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_categoryValue = categoryValue;
+		_id = id;
+	}
+
+	@JSON
+	@Override
+	public String getName() {
+		if (_name == null) {
+			return "";
+		}
+		else {
+			return _name;
+		}
+	}
+
+	@Override
+	public void setName(String name) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_name = name;
 	}
 
 	public long getColumnBitmask() {
@@ -393,8 +429,9 @@ public class CategoryModelImpl
 	public Object clone() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		categoryImpl.setCategoryId(getCategoryId());
-		categoryImpl.setCategoryValue(getCategoryValue());
+		categoryImpl.setUuid(getUuid());
+		categoryImpl.setId(getId());
+		categoryImpl.setName(getName());
 
 		categoryImpl.resetOriginalValues();
 
@@ -405,33 +442,26 @@ public class CategoryModelImpl
 	public Category cloneWithOriginalValues() {
 		CategoryImpl categoryImpl = new CategoryImpl();
 
-		categoryImpl.setCategoryId(
-			this.<Long>getColumnOriginalValue("categoryId"));
-		categoryImpl.setCategoryValue(
-			this.<String>getColumnOriginalValue("categoryValue"));
+		categoryImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
+		categoryImpl.setId(this.<Long>getColumnOriginalValue("id_"));
+		categoryImpl.setName(this.<String>getColumnOriginalValue("name"));
 
 		return categoryImpl;
 	}
 
 	@Override
 	public int compareTo(Category category) {
-		int value = 0;
+		long primaryKey = category.getPrimaryKey();
 
-		if (getCategoryId() < category.getCategoryId()) {
-			value = -1;
+		if (getPrimaryKey() < primaryKey) {
+			return -1;
 		}
-		else if (getCategoryId() > category.getCategoryId()) {
-			value = 1;
+		else if (getPrimaryKey() > primaryKey) {
+			return 1;
 		}
 		else {
-			value = 0;
+			return 0;
 		}
-
-		if (value != 0) {
-			return value;
-		}
-
-		return 0;
 	}
 
 	@Override
@@ -490,14 +520,22 @@ public class CategoryModelImpl
 	public CacheModel<Category> toCacheModel() {
 		CategoryCacheModel categoryCacheModel = new CategoryCacheModel();
 
-		categoryCacheModel.categoryId = getCategoryId();
+		categoryCacheModel.uuid = getUuid();
 
-		categoryCacheModel.categoryValue = getCategoryValue();
+		String uuid = categoryCacheModel.uuid;
 
-		String categoryValue = categoryCacheModel.categoryValue;
+		if ((uuid != null) && (uuid.length() == 0)) {
+			categoryCacheModel.uuid = null;
+		}
 
-		if ((categoryValue != null) && (categoryValue.length() == 0)) {
-			categoryCacheModel.categoryValue = null;
+		categoryCacheModel.id = getId();
+
+		categoryCacheModel.name = getName();
+
+		String name = categoryCacheModel.name;
+
+		if ((name != null) && (name.length() == 0)) {
+			categoryCacheModel.name = null;
 		}
 
 		return categoryCacheModel;
@@ -590,10 +628,13 @@ public class CategoryModelImpl
 
 	}
 
-	private long _categoryId;
-	private String _categoryValue;
+	private String _uuid;
+	private long _id;
+	private String _name;
 
 	public <T> T getColumnValue(String columnName) {
+		columnName = _attributeNames.getOrDefault(columnName, columnName);
+
 		Function<Category, Object> function = _attributeGetterFunctions.get(
 			columnName);
 
@@ -620,8 +661,20 @@ public class CategoryModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("categoryId", _categoryId);
-		_columnOriginalValues.put("categoryValue", _categoryValue);
+		_columnOriginalValues.put("uuid_", _uuid);
+		_columnOriginalValues.put("id_", _id);
+		_columnOriginalValues.put("name", _name);
+	}
+
+	private static final Map<String, String> _attributeNames;
+
+	static {
+		Map<String, String> attributeNames = new HashMap<>();
+
+		attributeNames.put("uuid_", "uuid");
+		attributeNames.put("id_", "id");
+
+		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
 
 	private transient Map<String, Object> _columnOriginalValues;
@@ -635,9 +688,11 @@ public class CategoryModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("categoryId", 1L);
+		columnBitmasks.put("uuid_", 1L);
 
-		columnBitmasks.put("categoryValue", 2L);
+		columnBitmasks.put("id_", 2L);
+
+		columnBitmasks.put("name", 4L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}
