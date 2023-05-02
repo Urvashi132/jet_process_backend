@@ -42,7 +42,8 @@ public interface StateRsModelResource {
 		return FactoryHolder.factory.create();
 	}
 
-	public Page<StateRsModel> getStateList() throws Exception;
+	public Page<StateRsModel> getStateByCountryId(Long countryId)
+		throws Exception;
 
 	public default void setContextAcceptLanguage(
 		AcceptLanguage contextAcceptLanguage) {

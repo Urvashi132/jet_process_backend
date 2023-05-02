@@ -80,7 +80,7 @@
 		<field name="docFileId" type="long" />
 		<field name="nature" type="String" />
 		<field name="currentlyWith" type="long" />
-		<field name="currentState" type="int" />
+		<field name="currentState" type="long" />
 		<field name="attachStatus" type="String" />
 	</model>
 	<model name="io.jetprocess.model.SecondaryHead">

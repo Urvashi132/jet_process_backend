@@ -486,7 +486,14 @@ paths:
       tags: ["OrganizationRsModel"]
   /State:
     get:
-      operationId: getStateList
+      operationId: getStateByCountryId
+      parameters:
+        - in: "query"
+          name: countryId
+          required: true
+          schema:
+            format: int64
+            type: integer
       responses:
         '200':
           content:
@@ -494,10 +501,12 @@ paths:
               schema:
                 items:
                   $ref: '#/components/schemas/StateRsModel'
+                type: array  
             application/xml:
               schema:
                 items:
                   $ref: '#/components/schemas/StateRsModel'
+                type: array
           description: ''
       tags: ["StateRsModel"]
   /Receipt:

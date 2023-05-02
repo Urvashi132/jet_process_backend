@@ -50,7 +50,7 @@ public class PrimaryHeadRsModelResourceImpl
 		PrimaryHeadRsModel createdPrimaryHead = new PrimaryHeadRsModel();
 		createdPrimaryHead.setId(primaryHead.getPrimaryHeadId());
 		createdPrimaryHead.setName(primaryHead.getPrimaryHeadValue());
-		;
+		
 		return createdPrimaryHead;
 	}
 

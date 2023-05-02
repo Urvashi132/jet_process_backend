@@ -376,11 +376,11 @@ public class ReceiptSoap implements Serializable {
 		_currentlyWith = currentlyWith;
 	}
 
-	public int getCurrentState() {
+	public long getCurrentState() {
 		return _currentState;
 	}
 
-	public void setCurrentState(int currentState) {
+	public void setCurrentState(long currentState) {
 		_currentState = currentState;
 	}
 
@@ -424,7 +424,7 @@ public class ReceiptSoap implements Serializable {
 	private long _docFileId;
 	private String _nature;
 	private long _currentlyWith;
-	private int _currentState;
+	private long _currentState;
 	private String _attachStatus;
 
 }

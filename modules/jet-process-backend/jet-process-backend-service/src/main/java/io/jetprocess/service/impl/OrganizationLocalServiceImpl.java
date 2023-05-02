@@ -15,7 +15,11 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 
+import java.util.List;
+
+import io.jetprocess.model.Organization;
 import io.jetprocess.service.base.OrganizationLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
@@ -29,4 +33,12 @@ import org.osgi.service.component.annotations.Component;
 )
 public class OrganizationLocalServiceImpl
 	extends OrganizationLocalServiceBaseImpl {
+	
+	
+	public List<Organization> getOrgnization(){
+		System.out.println("data------"+getOrganizations(QueryUtil.ALL_POS, QueryUtil.ALL_POS));
+		return getOrganizations(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	}
+	
+	
 }

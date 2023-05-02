@@ -83,7 +83,7 @@ create table JP_Receipt (
 	docFileId LONG,
 	nature VARCHAR(75) null,
 	currentlyWith LONG,
-	currentState INTEGER,
+	currentState LONG,
 	attachStatus VARCHAR(75) null
 );
 

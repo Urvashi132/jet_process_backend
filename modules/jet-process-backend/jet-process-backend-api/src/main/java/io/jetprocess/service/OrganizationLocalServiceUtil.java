@@ -258,6 +258,10 @@ public class OrganizationLocalServiceUtil {
 		return getService().getOrganizationsCount();
 	}
 
+	public static List<Organization> getOrgnization() {
+		return getService().getOrgnization();
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

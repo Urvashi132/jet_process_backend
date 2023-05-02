@@ -360,7 +360,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 
 		currentlyWith = objectInput.readLong();
 
-		currentState = objectInput.readInt();
+		currentState = objectInput.readLong();
 		attachStatus = objectInput.readUTF();
 	}
 
@@ -519,7 +519,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 
 		objectOutput.writeLong(currentlyWith);
 
-		objectOutput.writeInt(currentState);
+		objectOutput.writeLong(currentState);
 
 		if (attachStatus == null) {
 			objectOutput.writeUTF("");
@@ -561,7 +561,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 	public long docFileId;
 	public String nature;
 	public long currentlyWith;
-	public int currentState;
+	public long currentState;
 	public String attachStatus;
 
 }

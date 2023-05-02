@@ -296,15 +296,18 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {stateList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {stateByCountryId(countryId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public StateRsModelPage stateList() throws Exception {
+	public StateRsModelPage stateByCountryId(
+			@GraphQLName("countryId") Long countryId)
+		throws Exception {
+
 		return _applyComponentServiceObjects(
 			_stateRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			stateRsModelResource -> new StateRsModelPage(
-				stateRsModelResource.getStateList()));
+				stateRsModelResource.getStateByCountryId(countryId)));
 	}
 
 	/**

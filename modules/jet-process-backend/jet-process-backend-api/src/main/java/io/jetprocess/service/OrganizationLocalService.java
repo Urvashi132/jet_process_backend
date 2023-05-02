@@ -238,6 +238,9 @@ public interface OrganizationLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getOrganizationsCount();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Organization> getOrgnization();
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

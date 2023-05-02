@@ -281,6 +281,11 @@ public class OrganizationLocalServiceWrapper
 		return _organizationLocalService.getOrganizationsCount();
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.Organization> getOrgnization() {
+		return _organizationLocalService.getOrgnization();
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

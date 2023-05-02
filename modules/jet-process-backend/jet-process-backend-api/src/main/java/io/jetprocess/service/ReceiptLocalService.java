@@ -93,6 +93,17 @@ public interface ReceiptLocalService
 	@Transactional(enabled = false)
 	public Receipt createReceipt(long receiptId);
 
+	public Receipt createReceipt(
+			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			String letterDate, String referenceNo, String modeNo,
+			long categoryId, String subject, String remark, String name,
+			String designation, String mobile, String email, String address,
+			long stateId, String pinCode, long organizationId, String city,
+			long userPostId, String viewPdfUrl, long docfileId, String nature,
+			long currentlyWith, long currentState, String attachStatus,
+			String receiptNo)
+		throws PortalException;
+
 	/**
 	 * @throws PortalException
 	 */
@@ -212,6 +223,8 @@ public interface ReceiptLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Receipt fetchReceiptByUuidAndGroupId(String uuid, long groupId);
 
+	public String generateReceiptNumber(long receiptId);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -306,6 +319,17 @@ public interface ReceiptLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getReceiptsCount();
+
+	public Receipt updateReceipt(
+			long receiptId, long groupId, long typeId, long deliveryModeId,
+			String receivedOn, String letterDate, String referenceNo,
+			String modeNo, long categoryId, String subject, String remark,
+			String name, String designation, String mobile, String email,
+			String address, long stateId, String pinCode, long organizationId,
+			String city, long userPostId, String viewPdfUrl, long docfileId,
+			String nature, long currentlyWith, long currentState,
+			String attachStatus, String receiptNo)
+		throws PortalException;
 
 	/**
 	 * Updates the receipt in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

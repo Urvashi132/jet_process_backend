@@ -560,14 +560,14 @@ public interface ReceiptModel
 	 *
 	 * @return the current state of this receipt
 	 */
-	public int getCurrentState();
+	public long getCurrentState();
 
 	/**
 	 * Sets the current state of this receipt.
 	 *
 	 * @param currentState the current state of this receipt
 	 */
-	public void setCurrentState(int currentState);
+	public void setCurrentState(long currentState);
 
 	/**
 	 * Returns the attach status of this receipt.

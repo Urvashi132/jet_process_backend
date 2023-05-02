@@ -233,7 +233,7 @@
 		<column name="docFileId" type="long" ></column>
 		<column name="nature" type="String" />
 		<column name="currentlyWith" type="long" />
-		<column name="currentState" type="int" />
+		<column name="currentState" type="long" />
 		<column name="attachStatus" type="String" />
 		
 	

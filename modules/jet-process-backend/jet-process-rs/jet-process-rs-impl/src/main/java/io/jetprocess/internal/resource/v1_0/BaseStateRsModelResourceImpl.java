@@ -58,6 +58,14 @@ public abstract class BaseStateRsModelResourceImpl
 	 *
 	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/State'  -u 'test@liferay.com:test'
 	 */
+	@io.swagger.v3.oas.annotations.Parameters(
+		value = {
+			@io.swagger.v3.oas.annotations.Parameter(
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
+				name = "countryId"
+			)
+		}
+	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "StateRsModel")}
 	)
@@ -65,7 +73,13 @@ public abstract class BaseStateRsModelResourceImpl
 	@javax.ws.rs.Path("/State")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public Page<StateRsModel> getStateList() throws Exception {
+	public Page<StateRsModel> getStateByCountryId(
+			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
+			@javax.validation.constraints.NotNull
+			@javax.ws.rs.QueryParam("countryId")
+			Long countryId)
+		throws Exception {
+
 		return Page.of(Collections.emptyList());
 	}
 

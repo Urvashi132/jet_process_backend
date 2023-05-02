@@ -69,6 +69,26 @@ public class ReceiptLocalServiceWrapper
 		return _receiptLocalService.createReceipt(receiptId);
 	}
 
+	@Override
+	public io.jetprocess.model.Receipt createReceipt(
+			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			String letterDate, String referenceNo, String modeNo,
+			long categoryId, String subject, String remark, String name,
+			String designation, String mobile, String email, String address,
+			long stateId, String pinCode, long organizationId, String city,
+			long userPostId, String viewPdfUrl, long docfileId, String nature,
+			long currentlyWith, long currentState, String attachStatus,
+			String receiptNo)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _receiptLocalService.createReceipt(
+			groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			referenceNo, modeNo, categoryId, subject, remark, name, designation,
+			mobile, email, address, stateId, pinCode, organizationId, city,
+			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
+			currentState, attachStatus, receiptNo);
+	}
+
 	/**
 	 * @throws PortalException
 	 */
@@ -236,6 +256,11 @@ public class ReceiptLocalServiceWrapper
 	}
 
 	@Override
+	public String generateReceiptNumber(long receiptId) {
+		return _receiptLocalService.generateReceiptNumber(receiptId);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -372,6 +397,26 @@ public class ReceiptLocalServiceWrapper
 	@Override
 	public int getReceiptsCount() {
 		return _receiptLocalService.getReceiptsCount();
+	}
+
+	@Override
+	public io.jetprocess.model.Receipt updateReceipt(
+			long receiptId, long groupId, long typeId, long deliveryModeId,
+			String receivedOn, String letterDate, String referenceNo,
+			String modeNo, long categoryId, String subject, String remark,
+			String name, String designation, String mobile, String email,
+			String address, long stateId, String pinCode, long organizationId,
+			String city, long userPostId, String viewPdfUrl, long docfileId,
+			String nature, long currentlyWith, long currentState,
+			String attachStatus, String receiptNo)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _receiptLocalService.updateReceipt(
+			receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			referenceNo, modeNo, categoryId, subject, remark, name, designation,
+			mobile, email, address, stateId, pinCode, organizationId, city,
+			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
+			currentState, attachStatus, receiptNo);
 	}
 
 	/**

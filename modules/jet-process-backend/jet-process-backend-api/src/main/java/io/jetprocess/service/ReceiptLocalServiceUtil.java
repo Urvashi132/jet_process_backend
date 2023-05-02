@@ -80,6 +80,25 @@ public class ReceiptLocalServiceUtil {
 		return getService().createReceipt(receiptId);
 	}
 
+	public static Receipt createReceipt(
+			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			String letterDate, String referenceNo, String modeNo,
+			long categoryId, String subject, String remark, String name,
+			String designation, String mobile, String email, String address,
+			long stateId, String pinCode, long organizationId, String city,
+			long userPostId, String viewPdfUrl, long docfileId, String nature,
+			long currentlyWith, long currentState, String attachStatus,
+			String receiptNo)
+		throws PortalException {
+
+		return getService().createReceipt(
+			groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			referenceNo, modeNo, categoryId, subject, remark, name, designation,
+			mobile, email, address, stateId, pinCode, organizationId, city,
+			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
+			currentState, attachStatus, receiptNo);
+	}
+
 	/**
 	 * @throws PortalException
 	 */
@@ -221,6 +240,10 @@ public class ReceiptLocalServiceUtil {
 		return getService().fetchReceiptByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static String generateReceiptNumber(long receiptId) {
+		return getService().generateReceiptNumber(receiptId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -338,6 +361,25 @@ public class ReceiptLocalServiceUtil {
 	 */
 	public static int getReceiptsCount() {
 		return getService().getReceiptsCount();
+	}
+
+	public static Receipt updateReceipt(
+			long receiptId, long groupId, long typeId, long deliveryModeId,
+			String receivedOn, String letterDate, String referenceNo,
+			String modeNo, long categoryId, String subject, String remark,
+			String name, String designation, String mobile, String email,
+			String address, long stateId, String pinCode, long organizationId,
+			String city, long userPostId, String viewPdfUrl, long docfileId,
+			String nature, long currentlyWith, long currentState,
+			String attachStatus, String receiptNo)
+		throws PortalException {
+
+		return getService().updateReceipt(
+			receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			referenceNo, modeNo, categoryId, subject, remark, name, designation,
+			mobile, email, address, stateId, pinCode, organizationId, city,
+			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
+			currentState, attachStatus, receiptNo);
 	}
 
 	/**

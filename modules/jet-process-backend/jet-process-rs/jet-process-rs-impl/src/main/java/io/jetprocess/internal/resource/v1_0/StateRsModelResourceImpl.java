@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -35,7 +37,7 @@ public class StateRsModelResourceImpl extends BaseStateRsModelResourceImpl {
 	}
 	
 	@Override
-	public Page<StateRsModel> getStateList() throws Exception {
+	public Page<StateRsModel> getStateByCountryId(@NotNull Long countryId) throws Exception {
 		List<StateRsModel> stateRsModelList = new ArrayList<>();
 		List<State> stateList = stateLocalService.getStates(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 		
