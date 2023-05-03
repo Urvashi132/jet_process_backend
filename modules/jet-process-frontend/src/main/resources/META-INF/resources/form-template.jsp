@@ -1,20 +1,24 @@
 <!-- Modal -->
-<div class="modal fade" id="<%=request.getParameter("formId")%>Modal" tabindex="-1" aria-labelledby="<%=request.getParameter("formId")%>ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="<%=request.getParameter("formId")%>ModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="<%=request.getParameter("formId")%>Modal"
+	tabindex="-1"
+	aria-labelledby="<%=request.getParameter("formId")%>ModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"
+					id="<%=request.getParameter("formId")%>ModalLabel">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">...</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- templates  -->
 <script id="jf-form-template" type="text/x-handlebars-template">          
@@ -276,7 +280,8 @@ const templates = {            //object for mapping object to id
     group : '#jf-field-group-template',
     button : '#jf-button-template',
     form_actions : '#jf-form-actions-template',
-    link : '#jf-link-template'
+    link : '#jf-link-template',
+    hidden : '#jf-hidden-template'
 };
 
 $(document).ready(() => {
@@ -383,18 +388,19 @@ function fillOptions() {
 function fillFieldOptions(field) {
 	var provider = field.provider;
     if (provider!=undefined && provider.url!=undefined && provider.url.length>0) {
-    	$('#'+field.name).empty();
-    	$("#" + field.name).append(new Option("Select "+field.label, "-1"));
+    	
     	var apiParams={};
         var params=provider.params;
         if(params != undefined){
+        	$('#'+field.name).empty();
+        	$("#" + field.name).append(new Option("Select "+field.label, "-1"));
         	//var keys=Object.keys(params);
         	params.forEach(param => {
         		var value=param.value;
         		
         		//console.log ("type of value: "+(typeof value)+" -- "+value);
-        		//console.log(value);
-        		
+        		console.log(value);
+        		 
         		if(value.startsWith('.') || value.startsWith('#')){
         			value=$(value).val();
         			apiParams[param.name]=value;
@@ -514,10 +520,10 @@ function submitForm(event) {
     //console.log(handler);
     
     var formData = $('#'+form.id).toJSON();
-    
-    //console.log(formData);
-    
+ 
     // make AJAX request
+    console.log(formData);
+    console.log(JSON.stringify(formData)); 
     $.ajax({
         url: handler.url,
         type: handler.method,
@@ -525,10 +531,11 @@ function submitForm(event) {
         contentType: 'application/json',
         success: function(response) {
             alert('Data saved in API URL');
+           <%-- //location.href="<%=request.getParameter("successPage")%>"; --%>
         },
         error: function(error) {
             alert('Error: data not saved');
-            //location.href="<%=request.getParameter("cancelPage")%>";
+            location.href="<%=request.getParameter("cancelPage")%>";
         }
     });
 }
@@ -727,7 +734,8 @@ function findFieldByName(name){
 }
 
 function bindEvents(){
-	form.fields.forEach(field => {
+	form.fields.forEach(g => {
+		g.fields.forEach(field => {
 		var events=field.events;
 		if(events!=undefined){
 			var keys=Object.keys(events);
@@ -737,14 +745,14 @@ function bindEvents(){
 				});
 			});
 		}
+	}); 
 	});
 }
 
 function bindEventReceivers(eventSource, receivers){
 	receivers.forEach(receiver => {
-		if(receiver.type="field"){
+		if(receiver.type == "field"){
 			if(receiver.trigger=="refill"){
-				
 				refillField(receiver.receiver);
 			}else if(receiver.trigger=="hide"){
 				$('#'+receiver.receiver).closest("div").hide();
@@ -755,8 +763,8 @@ function bindEventReceivers(eventSource, receivers){
 			}else if(receiver.trigger=="disable"){
 				$('#'+receiver.receiver).prop("disabled", true );
 			}
-		}else if(receiver.type="javascript"){
-			executeFunctionByName(receiver.name, window, eventSource);
+		}else if(receiver.type == "javascript"){
+			executeFunctionByName(receiver.receiver, window, eventSource);
 		}
 	});
 }
@@ -766,8 +774,10 @@ function refillField(fieldName){
 	fillFieldOptions(field);
 }
 
-function executeFunctionByName(functionName, context /*, args */) {
-    var args = Array.prototype.slice.call(arguments, 2);
+function executeFunctionByName(functionName, context  ,args) {
+	console.log(args);
+	var argds = Array.prototype.slice.call(arguments, 2);
+	console.log(argds);
     var namespaces = functionName.split(".");
     var func = namespaces.pop();
     for (var i = 0; i < namespaces.length; i++) {
@@ -787,7 +797,6 @@ function bindValidations(){
 				if(field.validations!=undefined){
 					rules[field.name]=field.validations.rules;
 					messages[field.name]=field.validations.messages;
-				}
 			}else{
 				field.fields.forEach(f => {
 					if(f.validations!=undefined){
@@ -796,8 +805,9 @@ function bindValidations(){
 					}
 				});
 			}
-		});
+		}
 		$("#"+form.id).validate({"rules":rules, "messages":messages});
+	});
 	}
 }
 
