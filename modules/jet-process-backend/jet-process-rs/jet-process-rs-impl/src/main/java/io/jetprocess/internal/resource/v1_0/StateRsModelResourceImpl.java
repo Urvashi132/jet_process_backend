@@ -33,7 +33,7 @@ public class StateRsModelResourceImpl extends BaseStateRsModelResourceImpl {
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<StateRsModel>, UnsafeConsumer<StateRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-		
+		 
 	}
 	
 	@Override

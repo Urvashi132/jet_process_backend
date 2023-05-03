@@ -56,7 +56,7 @@ public abstract class BaseCategoryRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/Category'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/category'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
@@ -64,7 +64,7 @@ public abstract class BaseCategoryRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/Category")
+	@javax.ws.rs.Path("/category")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public Page<CategoryRsModel> getCategoryList() throws Exception {

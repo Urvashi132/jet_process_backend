@@ -21,7 +21,7 @@ components:
           type: string
         type:
           type: string 
-        headId:
+        tertiaryHeadId:
           format: int64
           type: integer
         fileCodeId:
@@ -51,6 +51,15 @@ components:
           format: int32
           type: integer
         dealingOrganizationId:
+          format: int64
+          type: integer
+        basicHeadId:
+          format: int64
+          type: integer   
+        primaryHeadId:
+          format: int64
+          type: integer
+        secondaryHeadId:
           format: int64
           type: integer
       type: object 
@@ -223,7 +232,7 @@ components:
       type: object
       
 paths:
-  /DocFile:
+  /docfile:
     post:
       operationId: createDocFile
       requestBody:
@@ -310,7 +319,7 @@ paths:
           description: ''
       tags: ["FileRsModel"]
   
-  /DocFiles:
+  /docfiles:
     get:
       operationId: getDocFileList
       responses:
@@ -327,7 +336,7 @@ paths:
           description: ''
       tags: ["FileRsModel"]
   
-  /primaryHead:
+  /primaryhead:
     get:
       operationId: getPrimaryHeadByBasicHeadId
       parameters:
@@ -353,7 +362,7 @@ paths:
           description: ''
       tags: ["PrimaryHeadRsModel"]
       
-  /SecondaryHead:
+  /secondaryhead:
     get:
       operationId: getSeondaryHeadByPrimaryHeadId
       parameters:
@@ -379,7 +388,7 @@ paths:
           description: ''
       tags: ["SecondaryHeadRsModel"]    
       
-  /TertiaryHead:
+  /tertiaryhead:
     get:
       operationId: getTertiaryHeadBySecondaryHeadId
       parameters:
@@ -404,7 +413,7 @@ paths:
                 type: array
           description: ''
       tags: ["TertiaryHeadRsModel"] 
-  /BasicHead:
+  /basichead:
     get:
       operationId: getBasicHeadList
       responses:
@@ -420,7 +429,7 @@ paths:
                   $ref: '#/components/schemas/BasicHeadRsModel'
           description: ''
       tags: ["BasicHeadRsModel"]  
-  /Category:
+  /category:
     get:
       operationId: getCategoryList
       responses:
@@ -611,5 +620,3 @@ paths:
                   $ref: '#/components/schemas/ReceiptRsModel'
           description: ''
       tags: ["ReceiptRsModel"]
-    
-    

@@ -56,7 +56,7 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile'  -u 'test@liferay.com:test'
+	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -70,7 +70,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.DELETE
-	@javax.ws.rs.Path("/DocFile")
+	@javax.ws.rs.Path("/docfile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public void deleteDocFileById(
@@ -84,7 +84,7 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -98,7 +98,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/DocFile")
+	@javax.ws.rs.Path("/docfile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public FileRsModel getDocFileById(
@@ -114,13 +114,13 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"basicHeadId": ___, "categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "nature": ___, "primaryHeadId": ___, "reference": ___, "remarks": ___, "secondaryHeadId": ___, "subject": ___, "tertiaryHeadId": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/DocFile")
+	@javax.ws.rs.Path("/docfile")
 	@javax.ws.rs.POST
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
@@ -131,7 +131,7 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"basicHeadId": ___, "categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "nature": ___, "primaryHeadId": ___, "reference": ___, "remarks": ___, "secondaryHeadId": ___, "subject": ___, "tertiaryHeadId": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -145,7 +145,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/DocFile")
+	@javax.ws.rs.Path("/docfile")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@javax.ws.rs.PUT
 	@Override
@@ -163,13 +163,13 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/DocFiles'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/docfiles'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/DocFiles")
+	@javax.ws.rs.Path("/docfiles")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public Page<FileRsModel> getDocFileList() throws Exception {

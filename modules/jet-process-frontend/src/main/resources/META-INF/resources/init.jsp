@@ -11,4 +11,4 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <portlet:defineObjects />
 
-<%@include file="cdns.jsp"%>
+<%@include file="/cdns.jsp"%>

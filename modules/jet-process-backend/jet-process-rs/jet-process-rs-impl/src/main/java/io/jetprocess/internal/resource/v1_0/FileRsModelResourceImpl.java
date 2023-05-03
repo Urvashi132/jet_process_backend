@@ -39,7 +39,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
 		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
-				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
+				fileRsModel.getTertiaryHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
 				fileRsModel.getYear(), fileRsModel.getUserPostId(), fileRsModel.getCurrentUser(),
 				fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
@@ -50,7 +50,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel updateDocFile(@NotNull Long docFileId, FileRsModel fileRsModel) throws Exception {
 		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getDocFileId(), fileRsModel.getNature(),
-				fileRsModel.getType(), fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
+				fileRsModel.getType(), fileRsModel.getTertiaryHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
 				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
 				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserPostId(),
 				fileRsModel.getCurrentUser(), fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
@@ -85,7 +85,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		createdDocFile.setGroupId(docFile.getGroupId());
 		createdDocFile.setNature(docFile.getNature());
 		createdDocFile.setType(docFile.getType());
-		createdDocFile.setHeadId(docFile.getHeadId());
+		createdDocFile.setTertiaryHeadId(docFile.getHeadId());
 		createdDocFile.setFileCodeId(docFile.getFileCodeId());
 		createdDocFile.setSubject(docFile.getSubject());
 		createdDocFile.setFileNo(docFile.getFileNo());

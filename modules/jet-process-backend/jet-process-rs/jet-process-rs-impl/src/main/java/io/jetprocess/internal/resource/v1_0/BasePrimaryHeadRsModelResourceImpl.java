@@ -56,7 +56,7 @@ public abstract class BasePrimaryHeadRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/primaryHead'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/primaryhead'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -72,7 +72,7 @@ public abstract class BasePrimaryHeadRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/primaryHead")
+	@javax.ws.rs.Path("/primaryhead")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public Page<PrimaryHeadRsModel> getPrimaryHeadByBasicHeadId(
