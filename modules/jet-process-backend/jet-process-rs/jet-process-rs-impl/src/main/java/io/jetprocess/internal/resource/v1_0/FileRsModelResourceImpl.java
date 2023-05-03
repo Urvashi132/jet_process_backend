@@ -2,7 +2,6 @@ package io.jetprocess.internal.resource.v1_0;
 
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
-import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public Page<FileRsModel> getDocFileList() throws Exception {
 		List<FileRsModel> fileRsModelList = new ArrayList<>();
-		List<DocFile> docFileList = docFileLocalService.getDocFiles(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		List<DocFile> docFileList = docFileLocalService.getDocFiles();
 		docFileList.stream().forEach(docFile -> {
 			fileRsModelList.add(getFileRsModel(docFile));
 		});
