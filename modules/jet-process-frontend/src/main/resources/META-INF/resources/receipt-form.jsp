@@ -28,7 +28,7 @@ var form ={
 				"cols": 2,
 				"fields": [
 					{
-						"type" : "date",
+						"type" : "text",
 						"name" : "date",
 						"label" : "CreatedOn",
 						"required" : false,
@@ -145,27 +145,39 @@ var form ={
 				},
 				{
 					"type" : "select",
-					"name" : "country",
+					"name" : "countryId",
 					"label" : "Country",
 					"required" : true,
+					"listable" : false,
 					"provider" : {
 						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Country?p_auth="+ Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
 						"dataNode" : "items" 
+						},
+					"events":{
+						"change":[{"receiver":"stateId", "type":"field", "trigger":"refill"}]
 					}
 				},
 				{
 					"type" : "select",
-					"name" : "state",
+					"name" : "stateId",
 					"label" : "State",
 					"required" : true,
+					"listable" : false,
 					"provider" : {
-						"url" : "?p_auth="+ Liferay.authToken,
+						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/State?p_auth="+ Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
-						"dataNode" : "items" 
-					}
+						"dataNode" : "items",
+						"params" : [{
+							"name" : "countryId",
+							"value" : "#countryId"
+							},{
+							"name" : "deleted",
+							"value" : "0"
+							}]
+						},
 				},
 				{
 					"type" : "text",
@@ -189,7 +201,7 @@ var form ={
 					"label" : "Category",
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Category?p_auth="+ Liferay.authToken,
+						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/category?p_auth="+ Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
 						"dataNode" : "items" 
@@ -263,3 +275,11 @@ var form ={
 	<liferay-util:param name="cancelPage" value="<%=list%>" />
 	<liferay-util:param name="successPage" value="<%=list%>" />
 </liferay-util:include>
+
+
+<script>
+$(document).ready(() => {
+	$('#date').val(new Date().toISOString().split('T')[0]);
+});
+
+</script>
