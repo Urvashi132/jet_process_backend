@@ -17,6 +17,7 @@ package io.jetprocess.service.impl;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.service.GroupLocalService;
+import com.liferay.portal.kernel.service.RegionLocalService;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -129,16 +130,5 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 		return receiptNumber;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }

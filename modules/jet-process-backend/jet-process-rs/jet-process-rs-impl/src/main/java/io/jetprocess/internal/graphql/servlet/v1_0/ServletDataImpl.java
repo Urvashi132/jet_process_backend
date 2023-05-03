@@ -6,6 +6,7 @@ import io.jetprocess.internal.graphql.mutation.v1_0.Mutation;
 import io.jetprocess.internal.graphql.query.v1_0.Query;
 import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
+import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
@@ -44,6 +45,8 @@ public class ServletDataImpl implements ServletData {
 			_basicHeadRsModelResourceComponentServiceObjects);
 		Query.setCategoryRsModelResourceComponentServiceObjects(
 			_categoryRsModelResourceComponentServiceObjects);
+		Query.setCountryRsModelResourceComponentServiceObjects(
+			_countryRsModelResourceComponentServiceObjects);
 		Query.setDeliveryModeRsModelResourceComponentServiceObjects(
 			_deliveryModeRsModelResourceComponentServiceObjects);
 		Query.setFileRsModelResourceComponentServiceObjects(
@@ -94,6 +97,10 @@ public class ServletDataImpl implements ServletData {
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<CategoryRsModelResource>
 		_categoryRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<CountryRsModelResource>
+		_countryRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<DeliveryModeRsModelResource>

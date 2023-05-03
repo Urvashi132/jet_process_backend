@@ -3,6 +3,8 @@ package io.jetprocess.internal.resource.v1_0;
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.model.Country;
+import com.liferay.portal.kernel.service.CountryLocalService;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class CategoryRsModelResourceImpl
 	public Page<CategoryRsModel> getCategoryList() throws Exception {
 		List<CategoryRsModel> categorytRsModelList = new ArrayList<>();
 		List<Category> categoryList = categoryLocalService.getCategories(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		
 		categoryList.stream().forEach(category -> {
 			categorytRsModelList.add(GetCategoryModel(category));
 		});
@@ -56,5 +59,6 @@ public class CategoryRsModelResourceImpl
 	
 	@Reference
 	private CategoryLocalService categoryLocalService;
+	
 	
 }

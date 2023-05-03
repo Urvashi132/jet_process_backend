@@ -2,7 +2,8 @@ package io.jetprocess.internal.resource.v1_0;
 
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
-import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.model.Region;
+import com.liferay.portal.kernel.service.RegionService;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -16,9 +17,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 
 import io.jetprocess.dto.v1_0.StateRsModel;
-import io.jetprocess.model.State;
 import io.jetprocess.resource.v1_0.StateRsModelResource;
-import io.jetprocess.service.StateLocalService;
 
 /**
  * @author Admin
@@ -33,13 +32,13 @@ public class StateRsModelResourceImpl extends BaseStateRsModelResourceImpl {
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<StateRsModel>, UnsafeConsumer<StateRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-		 
+		
 	}
 	
 	@Override
 	public Page<StateRsModel> getStateByCountryId(@NotNull Long countryId) throws Exception {
 		List<StateRsModel> stateRsModelList = new ArrayList<>();
-		List<State> stateList = stateLocalService.getStates(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		List<Region> stateList = regionService.getRegions(countryId);
 		
 		stateList.stream().forEach(state -> {
 			stateRsModelList.add(getStateModel(state));
@@ -47,13 +46,15 @@ public class StateRsModelResourceImpl extends BaseStateRsModelResourceImpl {
 		return Page.of(stateRsModelList);
 	}
 
-	private StateRsModel getStateModel(State state) {
+	private StateRsModel getStateModel(Region region) {
 		StateRsModel stateRsModel = new StateRsModel();
-		stateRsModel.setId(state.getId());
-		stateRsModel.setName(state.getName());
+		stateRsModel.setId(region.getRegionId());
+		stateRsModel.setName(region.getName());
+		
 		return stateRsModel;
 	}
 
+	
 	@Reference
-	private StateLocalService stateLocalService;
+	private RegionService regionService;
 }

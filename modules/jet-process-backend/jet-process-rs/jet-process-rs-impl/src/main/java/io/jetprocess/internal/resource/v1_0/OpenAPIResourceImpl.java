@@ -70,6 +70,8 @@ public class OpenAPIResourceImpl {
 
 			add(CategoryRsModelResourceImpl.class);
 
+			add(CountryRsModelResourceImpl.class);
+
 			add(DeliveryModeRsModelResourceImpl.class);
 
 			add(FileRsModelResourceImpl.class);

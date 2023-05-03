@@ -165,6 +165,15 @@ components:
           format: int64
           type: integer  
       type: object
+      
+    CountryRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object  
     
     TypeRsModel:
       properties:
@@ -620,3 +629,21 @@ paths:
                   $ref: '#/components/schemas/ReceiptRsModel'
           description: ''
       tags: ["ReceiptRsModel"]
+    
+  /Country:
+    get:
+      operationId: getCountryList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CountryRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CountryRsModel'
+          description: ''
+      tags: ["CountryRsModel"]      
+      
