@@ -16,7 +16,23 @@ var form = {
 		"subtitle" : "New File Creation",
 		"namespace" : "",
 		"enctype" : "multipart/form-data",
-		"fields" : [{
+		"fields" : [
+			/* {
+				"type": "email",
+				"name": "emailAddress",
+				"label": "Email",
+				//"required": true,
+				"validations":{
+					"rules": {
+	                    "required": true,
+	                    "email": true
+	                },
+	                "messages":{
+						"required": " Please enter a username",
+                        "email": " Please enter a valid email address"
+					}
+				}
+			}, */{
 			"type": "group",
 			"name": "fileGroup1",
 			"label": "name",
@@ -167,9 +183,8 @@ var form = {
 			},
 			{
 				"type" : "text",
-				"name" : "docFileId",
-				"label" : "FileId",
-				"value" : 0,
+				"name" : "fileNo",
+				"label" : "File No",
 				"required" : true,
 				"listable" : false,
 			},
@@ -233,8 +248,8 @@ var form = {
 			},
 			{
 				"type" : "hidden",
-				"name" : "fileNo",
-				"value" : "",
+				"name" : "docFileId",
+				"value" : 0,
 				"listable" : false,
 			},
 			{
@@ -304,20 +319,18 @@ var form = {
 
 <script>
 $(document).ready(() => {
-	$('#docFileId').closest("div").hide();
+	$('#fileNo').closest("div").hide();
 	$('#groupId').val(Liferay.ThemeDisplay.getScopeGroupId());
 	$('#year').val(new Date().getFullYear());
 });
 function setFileDocIdFieldForSFS(){
 	var type = $('#type').val();
 	if(type == "SFS"){
-		$('#docFileId').closest("div").show();
-		$('#docFileId').val("");
+		$('#fileNo').closest("div").show();
 		$('#fileGroup2').css("display","none");
 	}else{
 		$('#fileGroup2').css("display","");
-		$('#docFileId').val(0);
-		$('#docFileId').closest("div").hide();
+		$('#fileNo').closest("div").hide();
 	}
  }
 </script>
