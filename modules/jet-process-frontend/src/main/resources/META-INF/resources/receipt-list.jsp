@@ -1,19 +1,30 @@
-<%@include file="init.jsp"%>
-<link rel="stylesheet" href="/css/style.css">
+<!DOCTYPE html>
+<html>
+<head>
+<%@include file="init.jsp" %>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/forms/receipt-list.js"></script>
+	<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jetform.js"></script>
+</head>
+<!-- body  -->
+<body>
+	<div class="container">
+	
+		<div class="row">
+			
+	
+			<div class="col-md-9" id="receiptListContainer" >
+			</div>
+		</div>
+	</div>
+</body>
 
-<portlet:renderURL var="receiptForm">
-	<portlet:param name="mvcPath" value="/receipt-form.jsp"/>
-</portlet:renderURL>
-
-
-<div class="container">
-	<div id="receiptList"></div>
-</div>
-
-
-<liferay-util:include page="/list-template.jsp"
-	servletContext="<%=application%>">
-	<liferay-util:param name="listContainerId" value="receiptList" />
-	<liferay-util:param name="listId" value="userDataTable" />
-	<liferay-util:param name="addPage" value="<%=receiptForm %>" />
-</liferay-util:include>
+<liferay-util:include page="/list-template.jsp" servletContext="<%=application%>"/>
+<script>
+	$(document).ready(() => {
+		var jetList=JetList({"id":"receiptList", "parentId":"receiptListContainer", "form":receiptList});
+		jetList.render();
+	});
+</script>
+</html>
