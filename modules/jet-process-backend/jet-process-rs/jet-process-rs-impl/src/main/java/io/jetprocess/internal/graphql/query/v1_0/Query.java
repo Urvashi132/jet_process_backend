@@ -13,6 +13,7 @@ import com.liferay.portal.vulcan.pagination.Page;
 
 import io.jetprocess.dto.v1_0.BasicHeadRsModel;
 import io.jetprocess.dto.v1_0.CategoryRsModel;
+import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
@@ -24,6 +25,7 @@ import io.jetprocess.dto.v1_0.TertiaryHeadRsModel;
 import io.jetprocess.dto.v1_0.TypeRsModel;
 import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
+import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
@@ -67,6 +69,14 @@ public class Query {
 
 		_categoryRsModelResourceComponentServiceObjects =
 			categoryRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setCountryRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<CountryRsModelResource>
+			countryRsModelResourceComponentServiceObjects) {
+
+		_countryRsModelResourceComponentServiceObjects =
+			countryRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setDeliveryModeRsModelResourceComponentServiceObjects(
@@ -167,6 +177,20 @@ public class Query {
 			this::_populateResourceContext,
 			categoryRsModelResource -> new CategoryRsModelPage(
 				categoryRsModelResource.getCategoryList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {countryList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public CountryRsModelPage countryList() throws Exception {
+		return _applyComponentServiceObjects(
+			_countryRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			countryRsModelResource -> new CountryRsModelPage(
+				countryRsModelResource.getCountryList()));
 	}
 
 	/**
@@ -393,6 +417,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<CategoryRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("CountryRsModelPage")
+	public class CountryRsModelPage {
+
+		public CountryRsModelPage(Page countryRsModelPage) {
+			actions = countryRsModelPage.getActions();
+
+			items = countryRsModelPage.getItems();
+			lastPage = countryRsModelPage.getLastPage();
+			page = countryRsModelPage.getPage();
+			pageSize = countryRsModelPage.getPageSize();
+			totalCount = countryRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<CountryRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -757,6 +814,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			CountryRsModelResource countryRsModelResource)
+		throws Exception {
+
+		countryRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		countryRsModelResource.setContextCompany(_company);
+		countryRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		countryRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		countryRsModelResource.setContextUriInfo(_uriInfo);
+		countryRsModelResource.setContextUser(_user);
+		countryRsModelResource.setGroupLocalService(_groupLocalService);
+		countryRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			DeliveryModeRsModelResource deliveryModeRsModelResource)
 		throws Exception {
 
@@ -899,6 +972,8 @@ public class Query {
 		_basicHeadRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<CategoryRsModelResource>
 		_categoryRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<CountryRsModelResource>
+		_countryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DeliveryModeRsModelResource>
 		_deliveryModeRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
