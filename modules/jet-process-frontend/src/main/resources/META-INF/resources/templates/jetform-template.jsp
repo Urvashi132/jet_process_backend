@@ -258,16 +258,16 @@
 						{{#if_eq applyTo "list"}}
 							{{#if_eq type "button"}}
 								{{#if_eq handler.type "javascript"}}
-									<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{handler.func}}">{{label}}</button>
+									<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{handler.func}}">{{label}}</button>
 								{{else}}
-	  								<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</button>
+	  								<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</button>
 								{{/if_eq}}
 							{{/if_eq}}
 							{{#if_eq type "link"}}
 								{{#if_eq handler.type "javascript"}}
-									<a name="{{name}}" id="{{name}}" applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{handler.func}}">{{label}}</a>
+									<a name="{{name}}" id="{{name}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{handler.func}}">{{label}}</a>
 								{{else}}
-									<a name="{{name}}" id="{{name}}" applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</a>
+									<a name="{{name}}" id="{{name}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</a>
 								{{/if_eq}}
 							{{/if_eq}}
 						{{/if_eq}}

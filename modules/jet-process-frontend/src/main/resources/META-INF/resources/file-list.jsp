@@ -1,164 +1,67 @@
 <%@include file="init.jsp"%>
 <link rel="stylesheet" href="/css/style.css">
 
-<portlet:renderURL var="fileForm">
+<portlet:renderURL var="fileCreation">
 	<portlet:param name="mvcPath" value="/file-form.jsp"/>
 </portlet:renderURL>
 
 
 <div class="container">
-	<div id="fileList"></div>
+	<div id="fileList">
+	
+	</div>
+	
 </div>
 
-
 <script>
-	var form = {
+var form = {
 		"id" : "fileForm",
 		"title" : "File Creation",
 		"subtitle" : "New File Creation",
 		"namespace" : "",
 		"enctype" : "multipart/form-data",
 		"fields" : [
-				{
-					"type" : "select",
-					"name" : "nature",
-					"label" : "Nature",
-					"options" : [ {
-						"value" : "electronic",
-						"label" : "Electronic",
-						"selected" : "selected"
-					}, {
-						"value" : "physical",
-						"label" : "Physical",
-					}],
-					"required" : true
-				},
-				{
-					"type" : "select",
-					"name" : "type",
-					"label" : "Type",
-					"options" : [ {
-						"value" : "NON-SFS",
-						"label" : "NON-SFS",
-						"selected" : "selected"
-					}, {
-						"value" : "SFS",
-						"label" : "SFS",
-					}],
-					"required" : true
-				},
-				{
-					"type" : "select",
-					"name" : "basicHead",
-					"label" : "BasicHead",
-					"required" : true,
-					"listable" : false,
-					"provider" : {
-						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/BasicHead?p_auth='+ Liferay.authToken",
-						"value" : "basicHeadId",
-						"label" : "basicHeadValue"
+			{
+				"type" : "text",
+				"name" : "id",
+				"label" : "File Id",
+			},
+			{
+				"type" : "select",
+				"name" : "type",
+				"label" : "Type",
+				"searchable" : true
+			},
+			{
+				"type" : "text",
+				"name" : "fileNo",
+				"label" : "File No.",
+				"searchable" : true
+			},
+			{
+				"type" : "textarea",
+				"name" : "subject",
+				"label" : "Subject",
+				"searchable" : false
+			},{
+				"type" : "textarea",
+				"name" : "remarks",
+				"label" : "Remarks",
+				"searchable" : false
+			},
+			{
+				"type" : "select",
+				"name" : "categoryId",
+				"label" : "Category",
+				"required" : true,
+				"provider" : {
+					"url" : "http://localhost:8080/o/jet-process-rs/v1.0/category?p_auth="+ Liferay.authToken,
+					"value" : "id",
+					"label" : "name",
+					"dataNode" : "items" 
 					}
-				},
-				{
-					"type" : "select",
-					"name" : "primaryHead",
-					"label" : "PrimaryHead",
-					"required" : true,
-					"listable" : false,
-					"provider" : {
-						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/primaryHead/?p_auth='+ Liferay.authToken",
-						"value" : "primaryHeadId",
-						"label" : "primaryHeadValue",
-						"params" : [ {
-							"name" : "basicHeadId",
-							"value" : "#basicHead"
-						}, {
-							"name" : "deleted",
-							"value" : "0"
-						} ]
-					}
-				},
-				{
-					"type" : "select",
-					"name" : "secondaryHead",
-					"label" : "SecondaryHead",
-					"required" : true,
-					"listable" : false,
-					"provider" : {
-						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/SecondaryHead/?p_auth='+ Liferay.authToken",
-						"value" : "secondaryHeadId",
-						"label" : "secondaryHeadValue",
-						"params" : [ {
-							"name" : "primaryHeadId",
-							"value" : "#primaryHead"
-						}, {
-							"name" : "deleted",
-							"value" : "0"
-						} ]
-					}
-				},
-				{
-					"type" : "select",
-					"name" : "tertiaryHead",
-					"label" : "TertiaryHead",
-					"required" : true,
-					"provider" : {
-						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/TertiaryHead/?p_auth='+ Liferay.authToken",
-						"value" : "tertiaryHeadId",
-						"label" : "tertiaryHeadValue",
-						"params" : [ {
-							"name" : "secondaryHeadId",
-							"value" : "#secondaryHead"
-						}, {
-							"name" : "deleted",
-							"value" : "0"
-						} ]
-					},
-					"listable" : false
-				},				
-				{
-					"type" : "text",
-					"name" : "year",
-					"label" : "year",
-					"required" : true,
-					"listable" : true,
-					"searchable" : false
-				},	
-				{
-					"type" : "text",
-					"name" : "subject",
-					"label" : "Subject",
-					"required" : true,
-					"listable" : true,
-					"searchable" : false
-				},
-				{
-					"type" : "select",
-					"name" : "category",
-					"label" : "Category",
-					"required" : true,
-					"provider" : {
-						"url" : "'http://localhost:8080/o/jet-process-rs/v1.0/Category?p_auth='+ Liferay.authToken",
-						"value" : "categoryId",
-						"label" : "categoryValue"
-					}
-				},
-				{
-					"type" : "text",
-					"name" : "remarks",
-					"label" : "Remarks",
-					"required" : true,
-					"listable" : true,
-					"searchable" : false
-				},
-				{
-					"type" : "text",
-					"name" : "reference",
-					"label" : "Reference",
-					"required" : false,
-					"listable" : false,
-					"searchable" : false
-				}],
+			}
+		],
 		"actions" : [ {
 			"name" : "save",
 			"type" : "submit",
@@ -168,7 +71,7 @@
 				"type" : "javascript",
 				"func" : "submitForm(event)",
 				"method" : "post",
-				"url" : "http://localhost:8082/api/v1/user"
+				"url" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth="+ Liferay.authToken
 			},
 			"cssClass" : "btn-primary"
 		}, {
@@ -178,7 +81,7 @@
 			"applyTo" : "form",
 			"handler" : {
 				"type" : "javascript",
-				"func" : "alert('ok');"
+				"func" : "cancelOnClick(event)"
 			},
 			"cssClass" : "btn-secondary"
 		}, {
@@ -190,7 +93,7 @@
 		} ],
 		"dataProvider" : {
 			"collection" : {
-				"url" : ""
+				"url" : "http://localhost:8080/o/jet-process-rs/v1.0/docfiles?p_auth="+ Liferay.authToken
 			},
 			"selector" : {
 				"url" : ""
@@ -198,10 +101,9 @@
 		}
 	};
 </script>
-
-<liferay-ut il:include page="/list-template.jsp"
+<liferay-util:include page="/list-template.jsp"
 	servletContext="<%=application%>">
 	<liferay-util:param name="listContainerId" value="fileList" />
 	<liferay-util:param name="listId" value="userDataTable" />
-	<liferay-util:param name="addPage" value="<%=fileForm %>" />
+	<liferay-util:param name="addPage" value="<%=fileCreation %>" />
 </liferay-util:include>
