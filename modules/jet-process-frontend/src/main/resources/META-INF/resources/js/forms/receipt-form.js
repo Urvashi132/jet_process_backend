@@ -298,6 +298,10 @@ var receiptForm = {
 			]
 		}
 
+		
+
+		
+		
 	],
 	"actions": [{
 			"name": "save",

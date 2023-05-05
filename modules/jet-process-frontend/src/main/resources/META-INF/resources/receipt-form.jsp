@@ -18,17 +18,9 @@
 			<div class="col-md-9" id="receiptFormContainer">
 				<h3 id="receiptFormTitle"></h3>
 				<form id="receiptForm">
-					<div class="row" id="nameGroup"></div>
-
-
-					
-						<div class="row" id="dates"></div>
-					
-					
-					
-					
-					<div class="row" id="middleGroup">
-					
+					<div class="row" id="nameGroup"></div>				
+						<div class="row" id="dates"></div>		
+					<div class="row" id="middleGroup">					
 					</div>
 					<div class="row" id="lowerGroup">
 					
@@ -38,20 +30,14 @@
 					</div>
 					<div class="row" id="lowerGroup2">
 					
-					</div>
-					
-					
+					</div>								
 				</form>
 			</div>
 		</div>
 	</div>
-
-
 	<liferay-util:include page="/templates/jetform-template.jsp"
 		servletContext="<%=application%>">
-
 	</liferay-util:include>
-
 
 	<script>
 	$(document).ready(() => {
@@ -64,6 +50,5 @@
 	});
 
 </script>
-
 </body>
 </html>

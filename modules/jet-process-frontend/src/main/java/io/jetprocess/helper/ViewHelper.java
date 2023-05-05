@@ -1,9 +1,12 @@
 package io.jetprocess.helper;
 
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.Validator;
 
 import javax.portlet.RenderRequest;
 import javax.servlet.http.HttpServletRequest;
+
+import org.jsoup.helper.Validate;
 
 public class ViewHelper {
 
@@ -24,11 +27,11 @@ public class ViewHelper {
 		}
 
 		else if (parameter.equals("note")) {
-			page = "/note-form.jsp";
+			page = "/receipt-list.jsp";
 		}
 
 		
-		else {
+		else if(parameter.isEmpty() || Validator.isNull(parameter)){
 			page = "/dashboard.jsp";
 		}
 

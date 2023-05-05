@@ -5,12 +5,24 @@ var receiptList = {
 	"subtitle": "New Receipt",
 	"namespace": "",
 	"enctype": "multipart/form-data",
-	"fields": [{
-			"type": "group",
-			"name": "nameGroup",
-			"label": "name",
-			"fields": [
+	"fields": [
 				{
+				"type" : "text",
+				"name" : "type",
+				"label" : "Type",
+				"required" : true,
+				"listable" : true,
+				"searchable" : false
+			},
+			{
+				"type" : "text",
+				"name" : "receiptNo",
+				"label" : "Receipt No",
+				"required" : true,
+				"listable" : true,
+				"searchable" : false
+			},
+			{
 				"type" : "text",
 				"name" : "subject",
 				"label" : "Subject",
@@ -20,33 +32,33 @@ var receiptList = {
 			},
 			{
 				"type" : "text",
-				"name" : "remark",
+				"name" : "category",
+				"label" : "Category",
+				"required" : true,
+				"listable" : true,
+				"searchable" : false
+			},
+			{
+				"type" : "text",
+				"name" : "createdOn",
+				"label" : "CreatedOn",
+				"required" : true,
+				"listable" : true,
+				"searchable" : false
+			}
+			,
+			{
+				"type" : "text",
+				"name" : "remarks",
 				"label" : "Remarks",
-				"required" : true,
-				"listable" : true,
-				"searchable" : false
-			},
-			{
-				"type" : "text",
-				"name" : "designation",
-				"label" : "Designation",
-				
-				"required" : true,
-				"listable" : true,
-				"searchable" : false
-			},
-			{
-				"type" : "text",
-				"name" : "address",
-				"label" : "Address",
-				
 				"required" : true,
 				"listable" : true,
 				"searchable" : false
 			}
 			
-			]
-	}
+			
+			
+	
 ],
 "actions": [
 	{
@@ -58,7 +70,7 @@ var receiptList = {
 			"type" : "javascript",
 			"func" : "submitForm(event)",
 			"method" : "post",
-			"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken
+			"url" : ""
 		},
 		"cssClass" : "btn-primary"
 	}, {
@@ -76,7 +88,7 @@ var receiptList = {
 	{
 		"name": "add",
 		"type": "button",
-		"label": "Add",
+		"label": "Add Receipt",
 		"applyTo": "list",
 		"cssClass": "btn-danger",
 		"handler": {
@@ -86,7 +98,7 @@ var receiptList = {
 ],
 "dataProvider": {
 	"collection": {
-		"url": "http://localhost:8080/o/jet-process-rs/v1.0/Receipts?p_auth="+ Liferay.authToken,
+		"url": "",
 		"method": "get",
 		"dataNode": "items"
 	},
