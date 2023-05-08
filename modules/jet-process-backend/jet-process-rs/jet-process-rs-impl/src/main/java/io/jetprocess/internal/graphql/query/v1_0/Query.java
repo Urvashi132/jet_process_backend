@@ -210,7 +210,7 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){docFileId, groupId, nature, type, tertiaryHeadId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, currentUser, currentState, dealingOrganizationId, basicHeadId, primaryHeadId, secondaryHeadId}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){docFileId, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, currentUser, currentState, dealingOrganizationId}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public FileRsModel docFileById(@GraphQLName("docFileId") Long docFileId)

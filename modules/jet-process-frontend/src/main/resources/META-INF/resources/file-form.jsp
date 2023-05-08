@@ -8,7 +8,7 @@
 }
 </style>
 <%@include file="init.jsp"%>
-<link rel="stylesheet" href="/css/style.css">
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
 
 <portlet:renderURL var="list">
 	<portlet:param name="mvcPath" value="/file-list.jsp" />
@@ -45,6 +45,7 @@ $(document).ready(() => {
 	$('#fileNo').closest("div").addClass("text-margin");
 	$('#groupId').val(Liferay.ThemeDisplay.getScopeGroupId());
 	$('#year').val(new Date().getFullYear());
+	$('#year').attr("readonly", true);
 });
 /* function setFileDocIdFieldForSFS(){
 	var type = $('#type').val();

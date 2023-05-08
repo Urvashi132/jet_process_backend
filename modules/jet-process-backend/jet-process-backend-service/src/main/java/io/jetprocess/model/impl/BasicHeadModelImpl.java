@@ -86,7 +86,7 @@ public class BasicHeadModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_BasicHead (basicHeadId LONG not null primary key,basicHeadValue VARCHAR(75) null,basicHeadCode LONG)";
+		"create table JP_BasicHead (basicHeadId LONG not null primary key,basicHeadValue VARCHAR(255) null,basicHeadCode LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_BasicHead";
 

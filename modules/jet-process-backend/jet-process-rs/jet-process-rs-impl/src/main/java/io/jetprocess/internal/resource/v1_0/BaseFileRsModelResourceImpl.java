@@ -114,7 +114,7 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"basicHeadId": ___, "categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "nature": ___, "primaryHeadId": ___, "reference": ___, "remarks": ___, "secondaryHeadId": ___, "subject": ___, "tertiaryHeadId": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "FileRsModel")}
@@ -131,7 +131,7 @@ public abstract class BaseFileRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"basicHeadId": ___, "categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "nature": ___, "primaryHeadId": ___, "reference": ___, "remarks": ___, "secondaryHeadId": ___, "subject": ___, "tertiaryHeadId": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/docfile' -d $'{"categoryId": ___, "currentState": ___, "currentUser": ___, "dealingOrganizationId": ___, "docFileId": ___, "fileCodeId": ___, "fileNo": ___, "groupId": ___, "headId": ___, "nature": ___, "reference": ___, "remarks": ___, "subject": ___, "type": ___, "userPostId": ___, "year": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {

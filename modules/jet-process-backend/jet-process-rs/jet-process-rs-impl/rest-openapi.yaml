@@ -21,7 +21,7 @@ components:
           type: string
         type:
           type: string 
-        tertiaryHeadId:
+        headId:
           format: int64
           type: integer
         fileCodeId:
@@ -51,15 +51,6 @@ components:
           format: int32
           type: integer
         dealingOrganizationId:
-          format: int64
-          type: integer
-        basicHeadId:
-          format: int64
-          type: integer   
-        primaryHeadId:
-          format: int64
-          type: integer
-        secondaryHeadId:
           format: int64
           type: integer
       type: object 

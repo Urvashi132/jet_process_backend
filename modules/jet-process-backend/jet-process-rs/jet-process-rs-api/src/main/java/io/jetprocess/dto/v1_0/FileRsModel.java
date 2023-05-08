@@ -46,34 +46,6 @@ public class FileRsModel implements Serializable {
 	}
 
 	@Schema
-	public Long getBasicHeadId() {
-		return basicHeadId;
-	}
-
-	public void setBasicHeadId(Long basicHeadId) {
-		this.basicHeadId = basicHeadId;
-	}
-
-	@JsonIgnore
-	public void setBasicHeadId(
-		UnsafeSupplier<Long, Exception> basicHeadIdUnsafeSupplier) {
-
-		try {
-			basicHeadId = basicHeadIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long basicHeadId;
-
-	@Schema
 	public Long getCategoryId() {
 		return categoryId;
 	}
@@ -298,6 +270,34 @@ public class FileRsModel implements Serializable {
 	protected Long groupId;
 
 	@Schema
+	public Long getHeadId() {
+		return headId;
+	}
+
+	public void setHeadId(Long headId) {
+		this.headId = headId;
+	}
+
+	@JsonIgnore
+	public void setHeadId(
+		UnsafeSupplier<Long, Exception> headIdUnsafeSupplier) {
+
+		try {
+			headId = headIdUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Long headId;
+
+	@Schema
 	public String getNature() {
 		return nature;
 	}
@@ -324,34 +324,6 @@ public class FileRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected String nature;
-
-	@Schema
-	public Long getPrimaryHeadId() {
-		return primaryHeadId;
-	}
-
-	public void setPrimaryHeadId(Long primaryHeadId) {
-		this.primaryHeadId = primaryHeadId;
-	}
-
-	@JsonIgnore
-	public void setPrimaryHeadId(
-		UnsafeSupplier<Long, Exception> primaryHeadIdUnsafeSupplier) {
-
-		try {
-			primaryHeadId = primaryHeadIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long primaryHeadId;
 
 	@Schema
 	public String getReference() {
@@ -410,34 +382,6 @@ public class FileRsModel implements Serializable {
 	protected String remarks;
 
 	@Schema
-	public Long getSecondaryHeadId() {
-		return secondaryHeadId;
-	}
-
-	public void setSecondaryHeadId(Long secondaryHeadId) {
-		this.secondaryHeadId = secondaryHeadId;
-	}
-
-	@JsonIgnore
-	public void setSecondaryHeadId(
-		UnsafeSupplier<Long, Exception> secondaryHeadIdUnsafeSupplier) {
-
-		try {
-			secondaryHeadId = secondaryHeadIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long secondaryHeadId;
-
-	@Schema
 	public String getSubject() {
 		return subject;
 	}
@@ -464,34 +408,6 @@ public class FileRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected String subject;
-
-	@Schema
-	public Long getTertiaryHeadId() {
-		return tertiaryHeadId;
-	}
-
-	public void setTertiaryHeadId(Long tertiaryHeadId) {
-		this.tertiaryHeadId = tertiaryHeadId;
-	}
-
-	@JsonIgnore
-	public void setTertiaryHeadId(
-		UnsafeSupplier<Long, Exception> tertiaryHeadIdUnsafeSupplier) {
-
-		try {
-			tertiaryHeadId = tertiaryHeadIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long tertiaryHeadId;
 
 	@Schema
 	public String getType() {
@@ -600,16 +516,6 @@ public class FileRsModel implements Serializable {
 
 		sb.append("{");
 
-		if (basicHeadId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"basicHeadId\": ");
-
-			sb.append(basicHeadId);
-		}
-
 		if (categoryId != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -694,6 +600,16 @@ public class FileRsModel implements Serializable {
 			sb.append(groupId);
 		}
 
+		if (headId != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"headId\": ");
+
+			sb.append(headId);
+		}
+
 		if (nature != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -706,16 +622,6 @@ public class FileRsModel implements Serializable {
 			sb.append(_escape(nature));
 
 			sb.append("\"");
-		}
-
-		if (primaryHeadId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"primaryHeadId\": ");
-
-			sb.append(primaryHeadId);
 		}
 
 		if (reference != null) {
@@ -746,16 +652,6 @@ public class FileRsModel implements Serializable {
 			sb.append("\"");
 		}
 
-		if (secondaryHeadId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"secondaryHeadId\": ");
-
-			sb.append(secondaryHeadId);
-		}
-
 		if (subject != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -768,16 +664,6 @@ public class FileRsModel implements Serializable {
 			sb.append(_escape(subject));
 
 			sb.append("\"");
-		}
-
-		if (tertiaryHeadId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"tertiaryHeadId\": ");
-
-			sb.append(tertiaryHeadId);
 		}
 
 		if (type != null) {

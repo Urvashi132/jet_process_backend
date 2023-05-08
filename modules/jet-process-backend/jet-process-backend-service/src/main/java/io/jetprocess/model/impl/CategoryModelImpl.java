@@ -84,7 +84,7 @@ public class CategoryModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Category (id_ LONG not null primary key,name VARCHAR(75) null)";
+		"create table JP_Category (id_ LONG not null primary key,name VARCHAR(255) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Category";
 

@@ -1,12 +1,12 @@
 create table JP_BasicHead (
 	basicHeadId LONG not null primary key,
-	basicHeadValue VARCHAR(75) null,
+	basicHeadValue VARCHAR(255) null,
 	basicHeadCode LONG
 );
 
 create table JP_Category (
 	id_ LONG not null primary key,
-	name VARCHAR(75) null
+	name VARCHAR(255) null
 );
 
 create table JP_DeliveryMode (
@@ -27,10 +27,10 @@ create table JP_DocFile (
 	type_ VARCHAR(75) null,
 	headId LONG,
 	fileCodeId LONG,
-	subject VARCHAR(75) null,
+	subject VARCHAR(500) null,
 	fileNo VARCHAR(75) null,
 	categoryId LONG,
-	remarks VARCHAR(75) null,
+	remarks VARCHAR(500) null,
 	reference VARCHAR(75) null,
 	year LONG,
 	userPostId LONG,
@@ -46,7 +46,7 @@ create table JP_Organization (
 
 create table JP_PrimaryHead (
 	primaryHeadId LONG not null primary key,
-	primaryHeadValue VARCHAR(75) null,
+	primaryHeadValue VARCHAR(255) null,
 	basicHeadId LONG
 );
 
@@ -89,7 +89,7 @@ create table JP_Receipt (
 
 create table JP_SecondaryHead (
 	secondaryHeadId LONG not null primary key,
-	secondaryHeadValue VARCHAR(75) null,
+	secondaryHeadValue VARCHAR(255) null,
 	primaryHeadId LONG
 );
 
@@ -101,7 +101,7 @@ create table JP_State (
 
 create table JP_TertiaryHead (
 	tertiaryHeadId LONG not null primary key,
-	tertiaryHeadvalue VARCHAR(75) null,
+	tertiaryHeadvalue VARCHAR(255) null,
 	secondaryHeadId LONG
 );
 

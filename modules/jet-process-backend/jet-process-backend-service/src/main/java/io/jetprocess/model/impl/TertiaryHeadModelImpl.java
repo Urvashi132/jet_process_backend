@@ -87,7 +87,7 @@ public class TertiaryHeadModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_TertiaryHead (tertiaryHeadId LONG not null primary key,tertiaryHeadvalue VARCHAR(75) null,secondaryHeadId LONG)";
+		"create table JP_TertiaryHead (tertiaryHeadId LONG not null primary key,tertiaryHeadvalue VARCHAR(255) null,secondaryHeadId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_TertiaryHead";
 

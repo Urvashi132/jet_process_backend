@@ -42,27 +42,31 @@ var fileForm = {
 				"required" : true,
 				"events":{
 					"change":[
-						{"receiver":"fileGroup2",
-						"type":"field",
-						"trigger": "hide",
-						"criterias": {
-							"#type": "SFS"
+						{
+							"receiver":"fileNo",
+							"type":"field",
+							"trigger": "hide",
+							"criterias": {
+								"#type": "-1"
 							}
 						},
-						{"receiver":"fileNo",
+						{
+							"receiver":"fileNo",
 							"type":"field",
 							"trigger": "hide",
 							"criterias": {
 								"#type": "NON-SFS"
-								}
-						},{"receiver":"fileNo",
+							}
+						},{
+							"receiver":"fileGroup2",
 							"type":"field",
 							"trigger": "hide",
 							"criterias": {
-								"#type": "NON-SFS"
-								}
+								"#type": "SFS"
+							}
+						
 						}
-						]
+					]
 				}
 			}]
 		 },
@@ -76,6 +80,7 @@ var fileForm = {
 					"label" : "BasicHead",
 					"required" : true,
 					"listable" : false,
+					"tranzient": true,
 					"provider" : {
 						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/basichead?p_auth="+ Liferay.authToken,
 						"value" : "id",
@@ -85,7 +90,7 @@ var fileForm = {
 					"events":{
 						"change":[{"receiver":"primaryHeadId", "type":"field", "trigger":"refill"},
 							{"receiver":"secondaryHeadId", "type":"field", "trigger":"refill"},
-							{"receiver":"tertiaryHeadId", "type":"field", "trigger":"refill"}]
+							{"receiver":"headId", "type":"field", "trigger":"refill"}]
 					}
 				},
 				{
@@ -94,6 +99,7 @@ var fileForm = {
 					"label" : "PrimaryHead",
 					"required" : true,
 					"listable" : false,
+					"tranzient": true,
 					"provider" : {
 						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/primaryhead?p_auth="+ Liferay.authToken,
 						"value" : "id",
@@ -109,7 +115,7 @@ var fileForm = {
 						},
 					"events":{
 						"change":[{"receiver":"secondaryHeadId", "type":"field", "trigger":"refill"},
-							{"receiver":"tertiaryHeadId", "type":"field", "trigger":"refill"}]
+							{"receiver":"headId", "type":"field", "trigger":"refill"}]
 					}
 				},
 				{
@@ -118,6 +124,7 @@ var fileForm = {
 					"label" : "SecondaryHead",
 					"required" : true,
 					"listable" : false,
+					"tranzient": true,
 					"provider" : {
 						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/secondaryhead?p_auth="+ Liferay.authToken,
 						"value" : "id",
@@ -132,12 +139,12 @@ var fileForm = {
 							}]
 					},
 					"events":{
-						"change":[{"receiver":"tertiaryHeadId", "type":"field", "trigger":"refill"}]
+						"change":[{"receiver":"headId", "type":"field", "trigger":"refill"}]
 					}
 				}, 
 				{
 					"type" : "select",
-					"name" : "tertiaryHeadId",
+					"name" : "headId",
 					"label" : "TertiaryHead",
 					"required" : true,
 					"provider" : {
@@ -232,7 +239,6 @@ var fileForm = {
 					"type" : "textarea",
 					"name" : "remarks",
 					"label" : "Remarks",
-					"required" : true,
 					"listable" : true,
 					"searchable" : false,
 					"validations": {
@@ -247,37 +253,36 @@ var fileForm = {
 			},{
 				"type" : "hidden",
 				"name" : "groupId",
-				"value" : 20121,
-				"listable" : false,
+				"listable" : false
 			},
 			{
 				"type" : "hidden",
 				"name" : "userPostId",
-				"value" : 0,
-				"listable" : false,
+				"value" : "0",
+				"listable" : false
 			},
 			{
 				"type" : "hidden",
 				"name" : "docFileId",
-				"value" : 0,
-				"listable" : false,
+				"value" : "0",
+				"listable" : false
 			},
 			{
 				"type" : "hidden",
 				"name" : "currentState",
 				"value" : 1,
-				"listable" : false,
+				"listable" : false
 			},{
 				"type" : "hidden",
 				"name" : "currentUser",
-				"value" : 0,
-				"listable" : false,
+				"value" : "0",
+				"listable" : false
 			},
 			{
 				"type" : "hidden",
 				"name" : "dealingOrganizationId",
-				"value" : 0,
-				"listable" : false,
+				"value" : "0",
+				"listable" : false
 			}],
 	"actions": [{
 		"name": "save",
@@ -288,14 +293,14 @@ var fileForm = {
 			"type": "javascript",
 			"func": "submitForm(event)",
 			"method": "post",
-			"url": "http://localhost:8080/o/jet-process-rs/v1.0/docfixcle?p_auth="+ Liferay.authToken
+			"url": ""
 		},
 		"redirects": {
 			"success": {"href":""},
 			"failure": {"href":"#"}
 		},
 		"cssClass": "btn-primary"
-	}, {
+	},{
 		"name": "cancel",
 		"type": "button",
 		"label": "Cancel",

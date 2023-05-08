@@ -120,7 +120,7 @@ public class DocFileModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_DocFile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nature VARCHAR(75) null,type_ VARCHAR(75) null,headId LONG,fileCodeId LONG,subject VARCHAR(75) null,fileNo VARCHAR(75) null,categoryId LONG,remarks VARCHAR(75) null,reference VARCHAR(75) null,year LONG,userPostId LONG,currentUser LONG,currentState INTEGER,dealingOrganizationId LONG)";
+		"create table JP_DocFile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nature VARCHAR(75) null,type_ VARCHAR(75) null,headId LONG,fileCodeId LONG,subject VARCHAR(500) null,fileNo VARCHAR(75) null,categoryId LONG,remarks VARCHAR(500) null,reference VARCHAR(75) null,year LONG,userPostId LONG,currentUser LONG,currentState INTEGER,dealingOrganizationId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_DocFile";
 
