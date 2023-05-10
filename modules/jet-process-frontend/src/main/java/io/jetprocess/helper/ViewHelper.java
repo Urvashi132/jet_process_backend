@@ -27,7 +27,7 @@ public class ViewHelper {
 		}
 
 		else if (parameter.equals("note")) {
-			page = "/receipt-list.jsp";
+			page = "/note-form.jsp";
 		}
 
 		

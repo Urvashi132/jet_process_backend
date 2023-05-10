@@ -1,11 +1,10 @@
 <%@include file="init.jsp"%>
-<link rel="stylesheet" href="/css/style.css">
 
 <portlet:renderURL var="fileCreation">
 	<portlet:param name="mvcPath" value="/file-form.jsp" />
 </portlet:renderURL>
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/file-json.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/file-list-json.js"%>'></script>
 
 <div class="container">
 	<div id="fileListContainer"></div>
@@ -16,9 +15,9 @@
 	servletContext="<%=application%>" />
 <script>
 	$(document).ready(() => {
-		fileForm.actions[2].handler.href = '<%=fileCreation%>';
-	
-		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileForm});
+		fileList.actions[0].handler.href = '<%=fileCreation%>';
+		fileList.actions[1].handler.href = '<%=fileCreation%>';
+		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileList});
 		jetList.render();
 	});
 </script>

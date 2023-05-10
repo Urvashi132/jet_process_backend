@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Registration Form</title>
+<%@include file="init.jsp"%>
 <style>
 .text-margin {
 	margin: 0px 14px 9px;
 }
 </style>
-<%@include file="init.jsp"%>
-<!-- <link rel="stylesheet" href="/css/style.css"> -->
 
 <portlet:renderURL var="list">
 	<portlet:param name="mvcPath" value="/file-list.jsp" />
@@ -16,24 +11,21 @@
 
 <script type="text/javascript"
 	src='<%=request.getContextPath() + "/js/forms/file-json.js"%>'></script>
-</head>
-<body>
 
-	<div class="container border m-2">
-		<div class="row">
-			<div class="col" id="fileFormContainer">
-				<h3>New File</h3>
-				<form id="fileForm"></form>
-			</div>
+<div class="container border m-2">
+	<div class="row">
+		<div class="col" id="fileFormContainer">
+			<h3>New File</h3>
+			<form id="fileForm"></form>
 		</div>
 	</div>
+</div>
 
+<liferay-util:include page="/templates/jetform-template.jsp"
+	servletContext="<%=application%>">
+</liferay-util:include>
 
-
-	<liferay-util:include page="/templates/jetform-template.jsp"
-		servletContext="<%=application%>">
-	</liferay-util:include>
-	<script>
+<script>
 $(document).ready(() => {
 	fileForm.actions[0].redirects.success.href = '<%=list%>';
 	fileForm.actions[1].redirects.success.href = '<%=list%>';
@@ -58,5 +50,3 @@ $(document).ready(() => {
 	}
  } */
 </script>
-</body>
-</html>
