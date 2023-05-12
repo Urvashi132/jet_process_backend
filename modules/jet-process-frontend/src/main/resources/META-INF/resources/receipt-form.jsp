@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>Receipt Form</title>
-<%@include file="/cdns.jsp"%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-form.js"></script>
 	

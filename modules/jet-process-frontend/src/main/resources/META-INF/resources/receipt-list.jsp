@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="/cdns.jsp"%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-list.js"></script>
 	</head>
