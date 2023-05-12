@@ -14,7 +14,7 @@
 			
 	
 			<div class="col-md-9" id="receiptListContainer" >
-			<div class="row" id="nameGroup"></div>
+			
 			</div>
 			</div>
 		</div>

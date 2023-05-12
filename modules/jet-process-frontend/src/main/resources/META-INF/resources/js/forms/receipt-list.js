@@ -1,6 +1,6 @@
-var receiptForm = {
-	"id": "receiptForm",
-	"parentId": "receiptFormContainer",
+var receiptList = {
+	"id": "receiptList",
+	"parentId": "receiptListContainer",
 	"title": "",
 	"subtitle": "",
 	"namespace": "",
@@ -65,37 +65,15 @@ var receiptForm = {
 		
 		],
 				
-		"actions": [{
-			"name": "save",
-			"type": "submit",
-			"label": "Save",
-			"applyTo": "form",
-			"handler": {
-				"script": "submitForm(event)",
-			},
-			"redirects": {
-				"success": {"href":"http://localhost:8080/web/jetcrm/jetprocess?view=note"},
-				"failure": {"script":"alert('Saving operation failed')"}
-			},
-			"cssClass": "btn-primary"
-		}, {
-			"name": "cancel",
-			"type": "button",
-			"label": "Cancel",
-			"applyTo": "form",
-			"cssClass": "btn-secondary",
-			"redirects": {
-				"success": {"href":"http://localhost:8080/web/jetcrm/jetprocess?view=receipt"},
-			}
-		},
+		"actions": [
 		{
 			"name": "add",
 			"type": "button",
-			"label": "Add",
+			"label": "Add Receipt",
 			"applyTo": "list",
-			"cssClass": "btn-danger",
+			"cssClass": "btn-primary",
 			"handler": {
-				"href": ""
+				"href": "http://localhost:8080/web/jetcrm/jetprocess?view=receipt"
 			}
 		},
 		{
@@ -103,7 +81,7 @@ var receiptForm = {
 			"type": "button",
 			"label": "Edit",
 			"applyTo": "row",
-			"cssClass": "btn-danger",
+			"cssClass": "btn-primary",
 			"handler": {
 				"href": ""
 			}
@@ -122,19 +100,19 @@ var receiptForm = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipts?p_auth="+ Liferay.authToken,
-			//"method": "get",
-			"dataNode": "data"
+			"method": "get"
+			//"dataNode":"data"
 		},
 		"selector": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
-			//"method": "get",
-			"pathParams":{"id":"#id"},
-			//"queryParams":{}
-			"dataNode": "data"
-
+			"method": "get",
+			//"dataNode":"data",
+			//"pathParams":{"id":"#id"},
+			//"queryParams":{"id":"#id"}
+			
 		},
 		"create": {
-			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
+			"ajax": "",
 			"method": "post",
 			"pathParams":{},
 			"queryParams":{},
@@ -142,7 +120,7 @@ var receiptForm = {
 		},
 		"update": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
-			"method": "post"
+			"method": "put"
 		},
 		"delete": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,

@@ -39,6 +39,9 @@
 	<script>
 	$(document).ready(() => {
 		var jetform=JetForm({"id":"receiptForm", "parentId":"receiptFormContainer", "form":receiptForm});
+		jetform.form.providers.selector.pathParams={"id":"<%=request.getParameter("id")%>"};
+
+
 		jetform.render();
 	});
 	
