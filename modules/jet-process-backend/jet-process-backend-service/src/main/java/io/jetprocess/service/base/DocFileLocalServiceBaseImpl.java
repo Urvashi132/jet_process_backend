@@ -56,7 +56,6 @@ import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
-import io.jetprocess.service.persistence.StatePersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 import io.jetprocess.service.persistence.TypePersistence;
 
@@ -618,9 +617,6 @@ public abstract class DocFileLocalServiceBaseImpl
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
-
-	@Reference
-	protected StatePersistence statePersistence;
 
 	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;

@@ -2,7 +2,6 @@ package io.jetprocess.internal.resource.v1_0;
 
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
-import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -23,46 +22,50 @@ import io.jetprocess.service.ReceiptLocalService;
 /**
  * @author Admin
  */
-@Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/receipt-rs-model.properties",
-	scope = ServiceScope.PROTOTYPE, service = ReceiptRsModelResource.class
-)
+@Component(properties = "OSGI-INF/liferay/rest/v1_0/receipt-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = ReceiptRsModelResource.class)
 public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<ReceiptRsModel>, UnsafeConsumer<ReceiptRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public ReceiptRsModel createReceipt(ReceiptRsModel receiptRsModel) throws Exception {
-		receiptLocalService.createReceipt(receiptRsModel.getGroupId(), receiptRsModel.getTypeId(), receiptRsModel.getDeliveryModeId(),
-				receiptRsModel.getReceivedOn(), receiptRsModel.getLetterDate(), receiptRsModel.getReferenceNo(), receiptRsModel.getModeNo(),
-				receiptRsModel.getCategoryId(),receiptRsModel.getSubject(), receiptRsModel.getRemarks(), receiptRsModel.getName(),
+		receiptLocalService.createReceipt(receiptRsModel.getGroupId(), receiptRsModel.getType(),
+				receiptRsModel.getDeliveryModeId(), receiptRsModel.getReceivedOn(), receiptRsModel.getLetterDate(),
+				receiptRsModel.getReferenceNo(), receiptRsModel.getModeNo(), receiptRsModel.getCategoryId(),
+				receiptRsModel.getSubject(), receiptRsModel.getRemarks(), receiptRsModel.getName(),
 				receiptRsModel.getDesignation(), receiptRsModel.getMobile(), receiptRsModel.getEmail(),
-				receiptRsModel.getAddress(), receiptRsModel.getStateId(),receiptRsModel.getPincode(),
-				receiptRsModel.getOrganization(),receiptRsModel.getCity() , receiptRsModel.getUserPostId() , receiptRsModel.getViewPdfUrl() , 
-				receiptRsModel.getDocfileId() , receiptRsModel.getNature() , receiptRsModel.getCurrentlyWith() ,receiptRsModel.getCurrentState() , receiptRsModel.getAttachStatus(),receiptRsModel.getReceiptNo());
+				receiptRsModel.getAddress(), receiptRsModel.getStateId(), receiptRsModel.getPincode(),
+				receiptRsModel.getOrganization(), receiptRsModel.getCity(), receiptRsModel.getUserPostId(),
+				receiptRsModel.getViewPdfUrl(), receiptRsModel.getDocfileId(), receiptRsModel.getNature(),
+				receiptRsModel.getCurrentlyWith(), receiptRsModel.getCurrentState(), receiptRsModel.getAttachStatus(),
+				receiptRsModel.getReceiptNo());
 		return receiptRsModel;
 	}
-   
+
 	@Override
 	public ReceiptRsModel updateReceipt(@NotNull Long receiptId, ReceiptRsModel receiptRsModel) throws Exception {
-		Receipt receipt = receiptLocalService.updateReceipt(receiptId ,receiptRsModel.getGroupId(), receiptRsModel.getTypeId(), receiptRsModel.getDeliveryModeId(),
-				receiptRsModel.getReceivedOn(), receiptRsModel.getLetterDate(), receiptRsModel.getReferenceNo(), receiptRsModel.getModeNo(),
-				receiptRsModel.getCategoryId(),receiptRsModel.getSubject(), receiptRsModel.getRemarks(), receiptRsModel.getName(),
-				receiptRsModel.getDesignation(), receiptRsModel.getMobile(), receiptRsModel.getEmail(),
-				receiptRsModel.getAddress(), receiptRsModel.getStateId(),receiptRsModel.getPincode(),receiptRsModel.getOrganization(),receiptRsModel.getCity() , receiptRsModel.getUserPostId() , receiptRsModel.getViewPdfUrl() , 
-				receiptRsModel.getDocfileId() , receiptRsModel.getNature() , receiptRsModel.getCurrentlyWith() ,receiptRsModel.getCurrentState() , receiptRsModel.getAttachStatus(),receiptRsModel.getReceiptNo());
+		Receipt receipt = receiptLocalService.updateReceipt(receiptId, receiptRsModel.getGroupId(),
+				receiptRsModel.getType(), receiptRsModel.getDeliveryModeId(), receiptRsModel.getReceivedOn(),
+				receiptRsModel.getLetterDate(), receiptRsModel.getReferenceNo(), receiptRsModel.getModeNo(),
+				receiptRsModel.getCategoryId(), receiptRsModel.getSubject(), receiptRsModel.getRemarks(),
+				receiptRsModel.getName(), receiptRsModel.getDesignation(), receiptRsModel.getMobile(),
+				receiptRsModel.getEmail(), receiptRsModel.getAddress(), receiptRsModel.getStateId(),
+				receiptRsModel.getPincode(), receiptRsModel.getOrganization(), receiptRsModel.getCity(),
+				receiptRsModel.getUserPostId(), receiptRsModel.getViewPdfUrl(), receiptRsModel.getDocfileId(),
+				receiptRsModel.getNature(), receiptRsModel.getCurrentlyWith(), receiptRsModel.getCurrentState(),
+				receiptRsModel.getAttachStatus(), receiptRsModel.getReceiptNo());
 		return getReceiptRsModel(receipt);
 	}
 
 	@Override
 	public Page<ReceiptRsModel> getReceiptList() throws Exception {
 		List<ReceiptRsModel> ReceiptRsModelList = new ArrayList<>();
-		List<Receipt> docFileList = receiptLocalService.getReceipts(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		List<Receipt> docFileList = receiptLocalService.getReceiptList();
 		docFileList.stream().forEach(docFile -> {
 			ReceiptRsModelList.add(getReceiptRsModel(docFile));
 		});
@@ -70,14 +73,14 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 	}
 
 	@Override
-	
+
 	public void deleteReceiptById(@NotNull Long receiptId) throws Exception {
 		receiptLocalService.deleteReceipt(receiptId);
 	}
 
 	@Override
 	public ReceiptRsModel getReceiptById(@NotNull Long receiptId) throws Exception {
-		Receipt receipt = receiptLocalService.getReceipt(receiptId);
+		Receipt receipt = receiptLocalService.getReceiptById(receiptId);
 		return getReceiptRsModel(receipt);
 	}
 
@@ -85,11 +88,11 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		ReceiptRsModel createdReceipt = new ReceiptRsModel();
 		createdReceipt.setReceiptId(receipt.getReceiptId());
 		createdReceipt.setGroupId(receipt.getGroupId());
-		createdReceipt.setTypeId(receipt.getTypeId());
+		createdReceipt.setType(receipt.getType());
 		createdReceipt.setDeliveryModeId(receipt.getDeliveryModeId());
 		createdReceipt.setReceiptNo(receipt.getReceiptNo());
 		createdReceipt.setLetterDate(receipt.getLetterDate());
-		createdReceipt.setLetterDate(receipt.getReferenceNo());		
+		createdReceipt.setLetterDate(receipt.getReferenceNo());
 		createdReceipt.setModeNo(receipt.getModeNo());
 		createdReceipt.setCategoryId(receipt.getCategoryId());
 		createdReceipt.setSubject(receipt.getSubject());
@@ -110,11 +113,11 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		createdReceipt.setNature(receipt.getNature());
 		createdReceipt.setCurrentlyWith(receipt.getCurrentlyWith());
 		createdReceipt.setCurrentState(receipt.getCurrentState());
-		
+
 		return createdReceipt;
 	}
 
 	@Reference
 	private ReceiptLocalService receiptLocalService;
-	
+
 }

@@ -66,15 +66,19 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="typeId" type="long" />
+		<field name="type" type="String" />
 		<field name="deliveryModeId" type="long" />
 		<field name="receivedOn" type="String" />
 		<field name="letterDate" type="String" />
 		<field name="referenceNo" type="String" />
 		<field name="modeNo" type="String" />
 		<field name="CategoryId" type="long" />
-		<field name="subject" type="String" />
-		<field name="remarks" type="String" />
+		<field name="subject" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="remarks" type="String">
+			<hint name="max-length">500</hint>
+		</field>
 		<field name="name" type="String" />
 		<field name="designation" type="String" />
 		<field name="mobile" type="String" />
@@ -100,11 +104,6 @@
 		</field>
 		<field name="primaryHeadId" type="long" />
 	</model>
-	<model name="io.jetprocess.model.State">
-		<field name="id" type="long" />
-		<field name="name" type="String" />
-		<field name="countryId" type="long" />
-	</model>
 	<model name="io.jetprocess.model.TertiaryHead">
 		<field name="tertiaryHeadId" type="long" />
 		<field name="tertiaryHeadvalue" type="String">
@@ -113,7 +112,6 @@
 		<field name="secondaryHeadId" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Type">
-		<field name="uuid" type="String" />
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>

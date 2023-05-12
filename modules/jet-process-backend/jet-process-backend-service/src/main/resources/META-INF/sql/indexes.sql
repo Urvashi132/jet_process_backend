@@ -9,5 +9,3 @@ create unique index IX_380B979B on JP_Receipt (uuid_[$COLUMN_LENGTH:75$], groupI
 create index IX_BC0E2BEC on JP_SecondaryHead (primaryHeadId);
 
 create index IX_6BB88E6E on JP_TertiaryHead (secondaryHeadId);
-
-create index IX_4399C5DB on JP_Type (uuid_[$COLUMN_LENGTH:75$]);

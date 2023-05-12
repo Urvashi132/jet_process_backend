@@ -54,21 +54,6 @@ public interface TypeModel extends BaseModel<Type> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the uuid of this type.
-	 *
-	 * @return the uuid of this type
-	 */
-	@AutoEscape
-	public String getUuid();
-
-	/**
-	 * Sets the uuid of this type.
-	 *
-	 * @param uuid the uuid of this type
-	 */
-	public void setUuid(String uuid);
-
-	/**
 	 * Returns the ID of this type.
 	 *
 	 * @return the ID of this type

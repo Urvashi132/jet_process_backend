@@ -59,11 +59,9 @@ public class TypeCacheModel implements CacheModel<Type>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(7);
+		StringBundler sb = new StringBundler(5);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", id=");
+		sb.append("{id=");
 		sb.append(id);
 		sb.append(", name=");
 		sb.append(name);
@@ -75,13 +73,6 @@ public class TypeCacheModel implements CacheModel<Type>, Externalizable {
 	@Override
 	public Type toEntityModel() {
 		TypeImpl typeImpl = new TypeImpl();
-
-		if (uuid == null) {
-			typeImpl.setUuid("");
-		}
-		else {
-			typeImpl.setUuid(uuid);
-		}
 
 		typeImpl.setId(id);
 
@@ -99,21 +90,12 @@ public class TypeCacheModel implements CacheModel<Type>, Externalizable {
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		id = objectInput.readLong();
 		name = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
 		objectOutput.writeLong(id);
 
 		if (name == null) {
@@ -124,7 +106,6 @@ public class TypeCacheModel implements CacheModel<Type>, Externalizable {
 		}
 	}
 
-	public String uuid;
 	public long id;
 	public String name;
 

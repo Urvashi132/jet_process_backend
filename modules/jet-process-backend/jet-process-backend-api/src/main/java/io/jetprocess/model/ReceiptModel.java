@@ -204,18 +204,19 @@ public interface ReceiptModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
-	 * Returns the type ID of this receipt.
+	 * Returns the type of this receipt.
 	 *
-	 * @return the type ID of this receipt
+	 * @return the type of this receipt
 	 */
-	public long getTypeId();
+	@AutoEscape
+	public String getType();
 
 	/**
-	 * Sets the type ID of this receipt.
+	 * Sets the type of this receipt.
 	 *
-	 * @param typeId the type ID of this receipt
+	 * @param type the type of this receipt
 	 */
-	public void setTypeId(long typeId);
+	public void setType(String type);
 
 	/**
 	 * Returns the delivery mode ID of this receipt.

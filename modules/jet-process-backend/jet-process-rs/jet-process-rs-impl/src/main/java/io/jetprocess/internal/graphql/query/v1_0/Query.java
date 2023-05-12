@@ -272,7 +272,7 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, receiptNo, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, receiptNo, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ReceiptRsModel receiptById(@GraphQLName("receiptId") Long receiptId)

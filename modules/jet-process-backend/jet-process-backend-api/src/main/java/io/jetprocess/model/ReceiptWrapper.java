@@ -51,7 +51,7 @@ public class ReceiptWrapper
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("typeId", getTypeId());
+		attributes.put("type", getType());
 		attributes.put("deliveryModeId", getDeliveryModeId());
 		attributes.put("receivedOn", getReceivedOn());
 		attributes.put("letterDate", getLetterDate());
@@ -131,10 +131,10 @@ public class ReceiptWrapper
 			setModifiedDate(modifiedDate);
 		}
 
-		Long typeId = (Long)attributes.get("typeId");
+		String type = (String)attributes.get("type");
 
-		if (typeId != null) {
-			setTypeId(typeId);
+		if (type != null) {
+			setType(type);
 		}
 
 		Long deliveryModeId = (Long)attributes.get("deliveryModeId");
@@ -584,13 +584,13 @@ public class ReceiptWrapper
 	}
 
 	/**
-	 * Returns the type ID of this receipt.
+	 * Returns the type of this receipt.
 	 *
-	 * @return the type ID of this receipt
+	 * @return the type of this receipt
 	 */
 	@Override
-	public long getTypeId() {
-		return model.getTypeId();
+	public String getType() {
+		return model.getType();
 	}
 
 	/**
@@ -949,13 +949,13 @@ public class ReceiptWrapper
 	}
 
 	/**
-	 * Sets the type ID of this receipt.
+	 * Sets the type of this receipt.
 	 *
-	 * @param typeId the type ID of this receipt
+	 * @param type the type of this receipt
 	 */
 	@Override
-	public void setTypeId(long typeId) {
-		model.setTypeId(typeId);
+	public void setType(String type) {
+		model.setType(type);
 	}
 
 	/**

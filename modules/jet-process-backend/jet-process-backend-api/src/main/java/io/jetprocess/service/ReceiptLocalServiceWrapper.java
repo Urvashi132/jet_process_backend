@@ -71,7 +71,7 @@ public class ReceiptLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.Receipt createReceipt(
-			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			long groupId, String type, long deliveryModeId, String receivedOn,
 			String letterDate, String referenceNo, String modeNo,
 			long categoryId, String subject, String remark, String name,
 			String designation, String mobile, String email, String address,
@@ -82,11 +82,11 @@ public class ReceiptLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _receiptLocalService.createReceipt(
-			groupId, typeId, deliveryModeId, receivedOn, letterDate,
-			referenceNo, modeNo, categoryId, subject, remark, name, designation,
-			mobile, email, address, stateId, pinCode, organizationId, city,
-			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
-			currentState, attachStatus, receiptNo);
+			groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo,
+			modeNo, categoryId, subject, remark, name, designation, mobile,
+			email, address, stateId, pinCode, organizationId, city, userPostId,
+			viewPdfUrl, docfileId, nature, currentlyWith, currentState,
+			attachStatus, receiptNo);
 	}
 
 	/**
@@ -133,6 +133,13 @@ public class ReceiptLocalServiceWrapper
 		io.jetprocess.model.Receipt receipt) {
 
 		return _receiptLocalService.deleteReceipt(receipt);
+	}
+
+	@Override
+	public void deleteReceiptById(long receiptId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		_receiptLocalService.deleteReceiptById(receiptId);
 	}
 
 	@Override
@@ -319,6 +326,13 @@ public class ReceiptLocalServiceWrapper
 		return _receiptLocalService.getReceipt(receiptId);
 	}
 
+	@Override
+	public io.jetprocess.model.Receipt getReceiptById(long receiptId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _receiptLocalService.getReceiptById(receiptId);
+	}
+
 	/**
 	 * Returns the receipt matching the UUID and group.
 	 *
@@ -333,6 +347,11 @@ public class ReceiptLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _receiptLocalService.getReceiptByUuidAndGroupId(uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<io.jetprocess.model.Receipt> getReceiptList() {
+		return _receiptLocalService.getReceiptList();
 	}
 
 	/**
@@ -401,7 +420,7 @@ public class ReceiptLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.Receipt updateReceipt(
-			long receiptId, long groupId, long typeId, long deliveryModeId,
+			long receiptId, long groupId, String type, long deliveryModeId,
 			String receivedOn, String letterDate, String referenceNo,
 			String modeNo, long categoryId, String subject, String remark,
 			String name, String designation, String mobile, String email,
@@ -412,7 +431,7 @@ public class ReceiptLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _receiptLocalService.updateReceipt(
-			receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			receiptId, groupId, type, deliveryModeId, receivedOn, letterDate,
 			referenceNo, modeNo, categoryId, subject, remark, name, designation,
 			mobile, email, address, stateId, pinCode, organizationId, city,
 			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,

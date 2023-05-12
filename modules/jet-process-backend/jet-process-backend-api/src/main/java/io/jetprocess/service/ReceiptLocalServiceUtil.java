@@ -81,7 +81,7 @@ public class ReceiptLocalServiceUtil {
 	}
 
 	public static Receipt createReceipt(
-			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			long groupId, String type, long deliveryModeId, String receivedOn,
 			String letterDate, String referenceNo, String modeNo,
 			long categoryId, String subject, String remark, String name,
 			String designation, String mobile, String email, String address,
@@ -92,11 +92,11 @@ public class ReceiptLocalServiceUtil {
 		throws PortalException {
 
 		return getService().createReceipt(
-			groupId, typeId, deliveryModeId, receivedOn, letterDate,
-			referenceNo, modeNo, categoryId, subject, remark, name, designation,
-			mobile, email, address, stateId, pinCode, organizationId, city,
-			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
-			currentState, attachStatus, receiptNo);
+			groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo,
+			modeNo, categoryId, subject, remark, name, designation, mobile,
+			email, address, stateId, pinCode, organizationId, city, userPostId,
+			viewPdfUrl, docfileId, nature, currentlyWith, currentState,
+			attachStatus, receiptNo);
 	}
 
 	/**
@@ -136,6 +136,12 @@ public class ReceiptLocalServiceUtil {
 	 */
 	public static Receipt deleteReceipt(Receipt receipt) {
 		return getService().deleteReceipt(receipt);
+	}
+
+	public static void deleteReceiptById(long receiptId)
+		throws PortalException {
+
+		getService().deleteReceiptById(receiptId);
 	}
 
 	public static <T> T dslQuery(DSLQuery dslQuery) {
@@ -294,6 +300,12 @@ public class ReceiptLocalServiceUtil {
 		return getService().getReceipt(receiptId);
 	}
 
+	public static Receipt getReceiptById(long receiptId)
+		throws PortalException {
+
+		return getService().getReceiptById(receiptId);
+	}
+
 	/**
 	 * Returns the receipt matching the UUID and group.
 	 *
@@ -306,6 +318,10 @@ public class ReceiptLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getReceiptByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static List<Receipt> getReceiptList() {
+		return getService().getReceiptList();
 	}
 
 	/**
@@ -364,7 +380,7 @@ public class ReceiptLocalServiceUtil {
 	}
 
 	public static Receipt updateReceipt(
-			long receiptId, long groupId, long typeId, long deliveryModeId,
+			long receiptId, long groupId, String type, long deliveryModeId,
 			String receivedOn, String letterDate, String referenceNo,
 			String modeNo, long categoryId, String subject, String remark,
 			String name, String designation, String mobile, String email,
@@ -375,7 +391,7 @@ public class ReceiptLocalServiceUtil {
 		throws PortalException {
 
 		return getService().updateReceipt(
-			receiptId, groupId, typeId, deliveryModeId, receivedOn, letterDate,
+			receiptId, groupId, type, deliveryModeId, receivedOn, letterDate,
 			referenceNo, modeNo, categoryId, subject, remark, name, designation,
 			mobile, email, address, stateId, pinCode, organizationId, city,
 			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,

@@ -82,7 +82,7 @@ public class ReceiptModelImpl
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
-		{"typeId", Types.BIGINT}, {"deliveryModeId", Types.BIGINT},
+		{"type_", Types.VARCHAR}, {"deliveryModeId", Types.BIGINT},
 		{"receivedOn", Types.VARCHAR}, {"letterDate", Types.VARCHAR},
 		{"referenceNo", Types.VARCHAR}, {"modeNo", Types.VARCHAR},
 		{"CategoryId", Types.BIGINT}, {"subject", Types.VARCHAR},
@@ -109,7 +109,7 @@ public class ReceiptModelImpl
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("typeId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("type_", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("deliveryModeId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("receivedOn", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("letterDate", Types.VARCHAR);
@@ -138,7 +138,7 @@ public class ReceiptModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Receipt (uuid_ VARCHAR(75) null,receiptId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,typeId LONG,deliveryModeId LONG,receivedOn VARCHAR(75) null,letterDate VARCHAR(75) null,referenceNo VARCHAR(75) null,modeNo VARCHAR(75) null,CategoryId LONG,subject VARCHAR(75) null,remarks VARCHAR(75) null,name VARCHAR(75) null,designation VARCHAR(75) null,mobile VARCHAR(75) null,email VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,pinCode VARCHAR(75) null,receiptNo VARCHAR(75) null,organizationId LONG,city VARCHAR(75) null,userPostId LONG,viewPdfUrl VARCHAR(75) null,docFileId LONG,nature VARCHAR(75) null,currentlyWith LONG,currentState LONG,attachStatus VARCHAR(75) null)";
+		"create table JP_Receipt (uuid_ VARCHAR(75) null,receiptId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,type_ VARCHAR(75) null,deliveryModeId LONG,receivedOn VARCHAR(75) null,letterDate VARCHAR(75) null,referenceNo VARCHAR(75) null,modeNo VARCHAR(75) null,CategoryId LONG,subject VARCHAR(500) null,remarks VARCHAR(500) null,name VARCHAR(75) null,designation VARCHAR(75) null,mobile VARCHAR(75) null,email VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,pinCode VARCHAR(75) null,receiptNo VARCHAR(75) null,organizationId LONG,city VARCHAR(75) null,userPostId LONG,viewPdfUrl VARCHAR(75) null,docFileId LONG,nature VARCHAR(75) null,currentlyWith LONG,currentState LONG,attachStatus VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Receipt";
 
@@ -216,7 +216,7 @@ public class ReceiptModelImpl
 		model.setUserName(soapModel.getUserName());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setTypeId(soapModel.getTypeId());
+		model.setType(soapModel.getType());
 		model.setDeliveryModeId(soapModel.getDeliveryModeId());
 		model.setReceivedOn(soapModel.getReceivedOn());
 		model.setLetterDate(soapModel.getLetterDate());
@@ -415,9 +415,9 @@ public class ReceiptModelImpl
 		attributeSetterBiConsumers.put(
 			"modifiedDate",
 			(BiConsumer<Receipt, Date>)Receipt::setModifiedDate);
-		attributeGetterFunctions.put("typeId", Receipt::getTypeId);
+		attributeGetterFunctions.put("type", Receipt::getType);
 		attributeSetterBiConsumers.put(
-			"typeId", (BiConsumer<Receipt, Long>)Receipt::setTypeId);
+			"type", (BiConsumer<Receipt, String>)Receipt::setType);
 		attributeGetterFunctions.put(
 			"deliveryModeId", Receipt::getDeliveryModeId);
 		attributeSetterBiConsumers.put(
@@ -692,17 +692,22 @@ public class ReceiptModelImpl
 
 	@JSON
 	@Override
-	public long getTypeId() {
-		return _typeId;
+	public String getType() {
+		if (_type == null) {
+			return "";
+		}
+		else {
+			return _type;
+		}
 	}
 
 	@Override
-	public void setTypeId(long typeId) {
+	public void setType(String type) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_typeId = typeId;
+		_type = type;
 	}
 
 	@JSON
@@ -1235,7 +1240,7 @@ public class ReceiptModelImpl
 		receiptImpl.setUserName(getUserName());
 		receiptImpl.setCreateDate(getCreateDate());
 		receiptImpl.setModifiedDate(getModifiedDate());
-		receiptImpl.setTypeId(getTypeId());
+		receiptImpl.setType(getType());
 		receiptImpl.setDeliveryModeId(getDeliveryModeId());
 		receiptImpl.setReceivedOn(getReceivedOn());
 		receiptImpl.setLetterDate(getLetterDate());
@@ -1284,7 +1289,7 @@ public class ReceiptModelImpl
 			this.<Date>getColumnOriginalValue("createDate"));
 		receiptImpl.setModifiedDate(
 			this.<Date>getColumnOriginalValue("modifiedDate"));
-		receiptImpl.setTypeId(this.<Long>getColumnOriginalValue("typeId"));
+		receiptImpl.setType(this.<String>getColumnOriginalValue("type_"));
 		receiptImpl.setDeliveryModeId(
 			this.<Long>getColumnOriginalValue("deliveryModeId"));
 		receiptImpl.setReceivedOn(
@@ -1443,7 +1448,13 @@ public class ReceiptModelImpl
 			receiptCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		receiptCacheModel.typeId = getTypeId();
+		receiptCacheModel.type = getType();
+
+		String type = receiptCacheModel.type;
+
+		if ((type != null) && (type.length() == 0)) {
+			receiptCacheModel.type = null;
+		}
 
 		receiptCacheModel.deliveryModeId = getDeliveryModeId();
 
@@ -1696,7 +1707,7 @@ public class ReceiptModelImpl
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
-	private long _typeId;
+	private String _type;
 	private long _deliveryModeId;
 	private String _receivedOn;
 	private String _letterDate;
@@ -1760,7 +1771,7 @@ public class ReceiptModelImpl
 		_columnOriginalValues.put("userName", _userName);
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
-		_columnOriginalValues.put("typeId", _typeId);
+		_columnOriginalValues.put("type_", _type);
 		_columnOriginalValues.put("deliveryModeId", _deliveryModeId);
 		_columnOriginalValues.put("receivedOn", _receivedOn);
 		_columnOriginalValues.put("letterDate", _letterDate);
@@ -1794,6 +1805,7 @@ public class ReceiptModelImpl
 		Map<String, String> attributeNames = new HashMap<>();
 
 		attributeNames.put("uuid_", "uuid");
+		attributeNames.put("type_", "type");
 
 		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
@@ -1825,7 +1837,7 @@ public class ReceiptModelImpl
 
 		columnBitmasks.put("modifiedDate", 128L);
 
-		columnBitmasks.put("typeId", 256L);
+		columnBitmasks.put("type_", 256L);
 
 		columnBitmasks.put("deliveryModeId", 512L);
 

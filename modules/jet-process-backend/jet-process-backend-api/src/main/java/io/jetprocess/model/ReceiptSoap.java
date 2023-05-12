@@ -41,7 +41,7 @@ public class ReceiptSoap implements Serializable {
 		soapModel.setUserName(model.getUserName());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setTypeId(model.getTypeId());
+		soapModel.setType(model.getType());
 		soapModel.setDeliveryModeId(model.getDeliveryModeId());
 		soapModel.setReceivedOn(model.getReceivedOn());
 		soapModel.setLetterDate(model.getLetterDate());
@@ -184,12 +184,12 @@ public class ReceiptSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
-	public long getTypeId() {
-		return _typeId;
+	public String getType() {
+		return _type;
 	}
 
-	public void setTypeId(long typeId) {
-		_typeId = typeId;
+	public void setType(String type) {
+		_type = type;
 	}
 
 	public long getDeliveryModeId() {
@@ -400,7 +400,7 @@ public class ReceiptSoap implements Serializable {
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private long _typeId;
+	private String _type;
 	private long _deliveryModeId;
 	private String _receivedOn;
 	private String _letterDate;

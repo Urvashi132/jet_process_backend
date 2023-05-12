@@ -64,9 +64,8 @@ components:
         groupId:
           format: int64
           type: integer
-        typeId :
-          format: int64
-          type: integer
+        type :
+          type: string
         deliveryModeId :
           format: int64
           type: integer 

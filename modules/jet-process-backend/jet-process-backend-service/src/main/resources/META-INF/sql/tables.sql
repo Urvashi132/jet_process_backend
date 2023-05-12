@@ -59,15 +59,15 @@ create table JP_Receipt (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
-	typeId LONG,
+	type_ VARCHAR(75) null,
 	deliveryModeId LONG,
 	receivedOn VARCHAR(75) null,
 	letterDate VARCHAR(75) null,
 	referenceNo VARCHAR(75) null,
 	modeNo VARCHAR(75) null,
 	CategoryId LONG,
-	subject VARCHAR(75) null,
-	remarks VARCHAR(75) null,
+	subject VARCHAR(500) null,
+	remarks VARCHAR(500) null,
 	name VARCHAR(75) null,
 	designation VARCHAR(75) null,
 	mobile VARCHAR(75) null,
@@ -93,12 +93,6 @@ create table JP_SecondaryHead (
 	primaryHeadId LONG
 );
 
-create table JP_State (
-	id_ LONG not null primary key,
-	name VARCHAR(75) null,
-	countryId LONG
-);
-
 create table JP_TertiaryHead (
 	tertiaryHeadId LONG not null primary key,
 	tertiaryHeadvalue VARCHAR(255) null,
@@ -106,7 +100,6 @@ create table JP_TertiaryHead (
 );
 
 create table JP_Type (
-	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );

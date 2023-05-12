@@ -30,8 +30,6 @@ public class TypeTable extends BaseTable<TypeTable> {
 
 	public static final TypeTable INSTANCE = new TypeTable();
 
-	public final Column<TypeTable, String> uuid = createColumn(
-		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<TypeTable, Long> id = createColumn(
 		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<TypeTable, String> name = createColumn(

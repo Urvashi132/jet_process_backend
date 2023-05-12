@@ -742,20 +742,18 @@ public class ReceiptRsModel implements Serializable {
 	protected String subject;
 
 	@Schema
-	public Long getTypeId() {
-		return typeId;
+	public String getType() {
+		return type;
 	}
 
-	public void setTypeId(Long typeId) {
-		this.typeId = typeId;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@JsonIgnore
-	public void setTypeId(
-		UnsafeSupplier<Long, Exception> typeIdUnsafeSupplier) {
-
+	public void setType(UnsafeSupplier<String, Exception> typeUnsafeSupplier) {
 		try {
-			typeId = typeIdUnsafeSupplier.get();
+			type = typeUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -767,7 +765,7 @@ public class ReceiptRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long typeId;
+	protected String type;
 
 	@Schema
 	public Long getUserPostId() {
@@ -1166,14 +1164,18 @@ public class ReceiptRsModel implements Serializable {
 			sb.append("\"");
 		}
 
-		if (typeId != null) {
+		if (type != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"typeId\": ");
+			sb.append("\"type\": ");
 
-			sb.append(typeId);
+			sb.append("\"");
+
+			sb.append(_escape(type));
+
+			sb.append("\"");
 		}
 
 		if (userPostId != null) {

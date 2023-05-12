@@ -94,7 +94,7 @@ public interface ReceiptLocalService
 	public Receipt createReceipt(long receiptId);
 
 	public Receipt createReceipt(
-			long groupId, long typeId, long deliveryModeId, String receivedOn,
+			long groupId, String type, long deliveryModeId, String receivedOn,
 			String letterDate, String referenceNo, String modeNo,
 			long categoryId, String subject, String remark, String name,
 			String designation, String mobile, String email, String address,
@@ -137,6 +137,8 @@ public interface ReceiptLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public Receipt deleteReceipt(Receipt receipt);
+
+	public void deleteReceiptById(long receiptId) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public <T> T dslQuery(DSLQuery dslQuery);
@@ -260,6 +262,9 @@ public interface ReceiptLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Receipt getReceipt(long receiptId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Receipt getReceiptById(long receiptId) throws PortalException;
+
 	/**
 	 * Returns the receipt matching the UUID and group.
 	 *
@@ -271,6 +276,9 @@ public interface ReceiptLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Receipt getReceiptByUuidAndGroupId(String uuid, long groupId)
 		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Receipt> getReceiptList();
 
 	/**
 	 * Returns a range of all the receipts.
@@ -321,7 +329,7 @@ public interface ReceiptLocalService
 	public int getReceiptsCount();
 
 	public Receipt updateReceipt(
-			long receiptId, long groupId, long typeId, long deliveryModeId,
+			long receiptId, long groupId, String type, long deliveryModeId,
 			String receivedOn, String letterDate, String referenceNo,
 			String modeNo, long categoryId, String subject, String remark,
 			String name, String designation, String mobile, String email,

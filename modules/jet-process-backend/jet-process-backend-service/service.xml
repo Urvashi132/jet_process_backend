@@ -165,31 +165,6 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
-	<entity local-service="true" name="Category"
-		remote-service="true" >
-
-		<!-- PK fields -->
-		<column name="categoryId" primary="true" type="long" />
-
-		
-
-	
-
-		<!-- Other fields -->
-		<column name="categoryValue" type="String" />
-		
-
-		<!-- Order -->
-		<order by="asc">
-			<order-column name="categoryId" />
-		</order>
-
-		<!-- References -->
-		<reference entity="AssetEntry"
-			package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag"
-			package-path="com.liferay.portlet.asset" />
-	</entity>
 	
 	<entity name="Receipt" local-service="true"
 		remote-service="true" uuid="true">
@@ -209,7 +184,7 @@
 		<column name="modifiedDate" type="Date" />
 
 		<!-- Other fields -->
-		<column name="typeId" type="long" />
+		<column name="type" type="String" />
 		<column name="deliveryModeId" type="long" />
 		<column name="receivedOn" type="String" />
 		<column name="letterDate" type="String" />
@@ -251,15 +226,7 @@
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />	
 	</entity>
-	
-	<entity name="State" local-service="true"
-		remote-service="true" >
-		
-			<column name="id" primary="true" type="long" />	
-	  		<column name="name" type="String" />
-	  		<column name="countryId" type="long" />	
-	  		
-	</entity>
+
 	<entity name="Category" local-service="true"
 		remote-service="true" >
 		
@@ -268,7 +235,7 @@
 	  		
 	</entity>
 	<entity name="Type" local-service="true"
-		remote-service="true" uuid="true">
+		remote-service="true" >
 		
 			<column name="id" primary="true" type="long" />	
 	  		<column name="name" type="String" />	  			
@@ -278,5 +245,6 @@
 	
 	<exceptions>
 	<exception>FileValidation</exception>
+	<exception>ReceiptValidation</exception>
 	</exceptions>
 </service-builder>

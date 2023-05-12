@@ -79,8 +79,8 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", typeId=");
-		sb.append(typeId);
+		sb.append(", type=");
+		sb.append(type);
 		sb.append(", deliveryModeId=");
 		sb.append(deliveryModeId);
 		sb.append(", receivedOn=");
@@ -173,7 +173,13 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 			receiptImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
-		receiptImpl.setTypeId(typeId);
+		if (type == null) {
+			receiptImpl.setType("");
+		}
+		else {
+			receiptImpl.setType(type);
+		}
+
 		receiptImpl.setDeliveryModeId(deliveryModeId);
 
 		if (receivedOn == null) {
@@ -327,8 +333,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-
-		typeId = objectInput.readLong();
+		type = objectInput.readUTF();
 
 		deliveryModeId = objectInput.readLong();
 		receivedOn = objectInput.readUTF();
@@ -391,7 +396,12 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
-		objectOutput.writeLong(typeId);
+		if (type == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(type);
+		}
 
 		objectOutput.writeLong(deliveryModeId);
 
@@ -537,7 +547,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
-	public long typeId;
+	public String type;
 	public long deliveryModeId;
 	public String receivedOn;
 	public String letterDate;
