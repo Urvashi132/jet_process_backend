@@ -6,9 +6,7 @@
 <%@include file="/cdns.jsp"%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-list.js"></script>
-	<script type="text/javascript"
-	src="<%=request.getContextPath() %>/js/jetform.js"></script>
-</head>
+	</head>
 <!-- body  -->
 <body>
 	<div class="container">

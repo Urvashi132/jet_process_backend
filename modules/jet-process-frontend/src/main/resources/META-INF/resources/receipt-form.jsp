@@ -7,8 +7,6 @@
 <%@include file="/cdns.jsp"%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-form.js"></script>
-	<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jetform.js"></script>
 	
 </head>
 <!-- body  -->

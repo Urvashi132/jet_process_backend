@@ -15,6 +15,8 @@ package io.jetprocess.exception;
 
 import com.liferay.portal.kernel.exception.PortalException;
 
+import java.util.List;
+
 /**
  * @author Brian Wing Shun Chan
  */
@@ -33,6 +35,10 @@ public class ReceiptValidationException extends PortalException {
 
 	public ReceiptValidationException(Throwable throwable) {
 		super(throwable);
+	}
+
+	public ReceiptValidationException(List<String> errors) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -1,11 +1,17 @@
 var receiptForm = {
 	"id": "receiptForm",
 	"parentId": "receiptFormContainer",
-	"title": "New Receipt",
-	"subtitle": "New Receipt",
+	"title": "",
+	"subtitle": "",
 	"namespace": "",
 	"enctype": "multipart/form-data",
 	"fields": [{
+			"type": "hidden",
+			"name": "receiptId",
+			"id": true,
+			"required": true,
+		},
+		{
 			"type": "group",
 			"name": "nameGroup",
 			"label": "name",
@@ -13,17 +19,7 @@ var receiptForm = {
 				"type": "text",
 				"name": "date",
 				"label": "CreatedOn",
-				"required": true,
-				"placeHolder": "First Name",
-				"tranzient": true,
-				"validations": {
-					"rules": {
-						"minlength": 5
-					},
-					"messages": {
-						"minlength": " Your username must consist of at least 2 characters"
-					}
-				}
+				"tranzient": true
 			}, {
 				"type" : "select",
 				"name" : "nature",
@@ -52,7 +48,6 @@ var receiptForm = {
 				"required" : true
 			}]
 		},
-
 		{
 			"type": "group",
 			"name": "credentials",
@@ -65,18 +60,16 @@ var receiptForm = {
 					"listable": false,
 					"searchable": false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/DeliveryMode?p_auth="+ Liferay.authToken,
+						"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/DeliveryMode?p_auth=" + Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
-						"dataNode" : "items" 
+						"dataNode" : "items"
 					}
 				},
 				{
 					"type" : "date",
 					"name" : "letterDate",
-					"label" : "Letter Date",
-					
-					"required" : false,
+					"label" : "Letter Date"	,									
 					"listable" : false,
 					"searchable" : false
 					
@@ -91,7 +84,7 @@ var receiptForm = {
 					"searchable" : false
 				}
 			]
-		},
+		}, 
 		{
 			"type": "group",
 			"name": "dates",
@@ -100,10 +93,8 @@ var receiptForm = {
 			"fields": [
 				{
 					"type" : "text",
-					"name" : "refernceNo",
+					"name" : "referenceNo",
 					"label" : "Reference Number",
-					
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
 				},
@@ -111,22 +102,19 @@ var receiptForm = {
 					"type" : "text",
 					"name" : "modeNo",
 					"label" : "Mode Number",
-					
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
 				},
 				{
 					"type" : "select",
 					"name" : "organization",
-					"label" : "Organization",
-					
+					"label" : "Organization",				
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Organization?p_auth="+ Liferay.authToken,
+						"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Organization?p_auth=" + Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
-						"dataNode" : "items" 
+						"dataNode" : "items"
 					}
 				}
 				
@@ -152,7 +140,6 @@ var receiptForm = {
 					"type" : "text",
 					"name" : "designation",
 					"label" : "Designation",
-					
 					"required" : true,
 					"listable" : true,
 					"searchable" : false
@@ -161,8 +148,6 @@ var receiptForm = {
 					"type" : "text",
 					"name" : "address",
 					"label" : "Address",
-					
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
 				}
@@ -180,7 +165,6 @@ var receiptForm = {
 					"type" : "text",
 					"name" : "email",
 					"label" : "Email",
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
 				},
@@ -188,7 +172,6 @@ var receiptForm = {
 					"type" : "text",
 					"name" : "mobile",
 					"label" : "Mobile",
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
 				},
@@ -197,17 +180,20 @@ var receiptForm = {
 					"type" : "select",
 					"name" : "countryId",
 					"label" : "Country",
-					"required" : true,
+					"tranzient": true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/Country?p_auth="+ Liferay.authToken,
+						"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Country?p_auth=" + Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
-						"dataNode" : "items" 
-						},
-					"events":{
-
-						"change":[{"receiver":"stateId", "type":"field", "trigger":"refill"}]
+						"dataNode" : "items",
+					},
+					"events" : {
+						"change" : [ {
+							"receiver" : "stateId",
+							"type" : "field",
+							"trigger" : "refill"
+						} ]
 					}
 				}
 				
@@ -227,18 +213,18 @@ var receiptForm = {
 					"required" : true,
 					"listable" : false,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/State?p_auth="+ Liferay.authToken,
+						"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/State?p_auth=" + Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
 						"dataNode" : "items",
-						"params" : [{
+						"queryParams" : [ {
 							"name" : "countryId",
 							"value" : "#countryId"
-							},{
+						}, {
 							"name" : "deleted",
 							"value" : "0"
-							}]
-						},
+						} ]
+					}
 				},
 				{
 					"type" : "text",
@@ -263,7 +249,6 @@ var receiptForm = {
 			"type": "group",
 			"name": "lowerGroup2",
 			"label": "name",
-			
 			"fields": [
 				{
 					"type" : "select",
@@ -271,10 +256,10 @@ var receiptForm = {
 					"label" : "Category",
 					"required" : true,
 					"provider" : {
-						"url" : "http://localhost:8080/o/jet-process-rs/v1.0/category?p_auth="+ Liferay.authToken,
+						"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/category?p_auth=" + Liferay.authToken,
 						"value" : "id",
 						"label" : "name",
-						"dataNode" : "items" 
+						"dataNode" : "items"
 					}
 				},
 				{
@@ -287,36 +272,74 @@ var receiptForm = {
 				},
 				{
 					"type" : "text",
-					"name" : "remark",
+					"name" : "remarks",
 					"label" : "Remarks",
-					"required" : true,
 					"listable" : true,
 					"searchable" : false
+				},
+
+				
+				{
+					"type" : "hidden",
+					"name" : "attachStatus",
+					"value" : "abc",
+					"listable" : false
+				},
+				{
+					"type" : "hidden",
+					"name" : "currentState",
+					"value" : 0,
+					"listable" : false
+				},
+				{
+					"type" : "hidden",
+					"name" : "currentlyWith",
+					"value" : 0,
+					"listable" : false
+				},
+				{
+					"type" : "hidden",
+					"name" : "docfileId",
+					"value" : 0,
+					"listable" : false
+				},
+				{
+					"type" : "hidden",
+					"name" : "groupId",
+					"value" : 20121,
+					"listable" : false
+				},
+				
+				{
+					"type" : "hidden",
+					"name" : "userPostId",
+					"value" : 0,
+					"listable" : false
+				},
+				{
+					"type" : "hidden",
+					"name" : "viewPdfUrl",
+					"value" : 0,
+					"listable" : false
 				}
 				
-				
-			]
+				]
 		}
-
-		
-
 		
 		
-	],
-	"actions": [{
+		],
+				
+		"actions": [{
 			"name": "save",
 			"type": "submit",
 			"label": "Save",
 			"applyTo": "form",
 			"handler": {
-				"type": "javascript",
-				"func": "submitForm(event)",
-				"method": "post",
-				"url": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken
+				"script": "submitForm(event)",
 			},
 			"redirects": {
-				"success": {"href":"https://www.google.com"},
-				"failure": {"href":"https://www.yahoo.com"}
+				"success": {"href":"http://localhost:8080/web/jetcrm/jetprocess?view=note"},
+				"failure": {"script":"alert('Saving operation failed')"}
 			},
 			"cssClass": "btn-primary"
 		}, {
@@ -326,7 +349,7 @@ var receiptForm = {
 			"applyTo": "form",
 			"cssClass": "btn-secondary",
 			"redirects": {
-				"success": {"href":""},
+				"success": {"href":"http://localhost:8080/web/jetcrm/jetprocess?view=receipt"},
 			}
 		},
 		{
@@ -338,28 +361,56 @@ var receiptForm = {
 			"handler": {
 				"href": ""
 			}
+		},
+		{
+			"name": "edit",
+			"type": "button",
+			"label": "Edit",
+			"applyTo": "row",
+			"cssClass": "btn-danger",
+			"handler": {
+				"href": ""
+			}
+		},
+		{
+			"name": "delete",
+			"type": "button",
+			"label": "Delete",
+			"applyTo": "row",
+			"cssClass": "btn-danger",
+			/*"handler": {
+				"script": "delete(event)"
+			}*/
 		}
 	],
-	"dataProvider": {
+	"providers": {
 		"collection": {
-			"url": "",
-			"method": "get",
-			"dataNode": "items"
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipts?p_auth="+ Liferay.authToken,
+			//"method": "get",
+			"dataNode": "data"
 		},
 		"selector": {
-			"url": ""
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
+			//"method": "get",
+			"pathParams":{"id":"#id"},
+			//"queryParams":{}
+			"dataNode": "data"
+
 		},
 		"create": {
-			"url": "",
-			"method": "post"
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
+			"method": "post",
+			"pathParams":{},
+			"queryParams":{},
+			"requestParams":{}
 		},
 		"update": {
-			"url": "",
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
 			"method": "post"
 		},
 		"delete": {
-			"url": "",
-			"method": "post"
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
+			"method": "delete"
 		}
 	}
 };
