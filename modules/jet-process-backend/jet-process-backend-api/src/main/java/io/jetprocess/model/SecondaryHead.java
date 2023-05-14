@@ -36,12 +36,12 @@ public interface SecondaryHead extends PersistedModel, SecondaryHeadModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.SecondaryHeadImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<SecondaryHead, Long>
-		SECONDARY_HEAD_ID_ACCESSOR = new Accessor<SecondaryHead, Long>() {
+	public static final Accessor<SecondaryHead, Long> ID_ACCESSOR =
+		new Accessor<SecondaryHead, Long>() {
 
 			@Override
 			public Long get(SecondaryHead secondaryHead) {
-				return secondaryHead.getSecondaryHeadId();
+				return secondaryHead.getId();
 			}
 
 			@Override

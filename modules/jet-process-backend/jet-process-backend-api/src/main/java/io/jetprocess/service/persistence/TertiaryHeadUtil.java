@@ -263,7 +263,7 @@ public class TertiaryHeadUtil {
 	/**
 	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where secondaryHeadId = &#63;.
 	 *
-	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param id the primary key of the current tertiary head
 	 * @param secondaryHeadId the secondary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next tertiary head
@@ -271,12 +271,12 @@ public class TertiaryHeadUtil {
 	 */
 	public static TertiaryHead[]
 			findByTertiaryHeadBySecondaryHeadId_PrevAndNext(
-				long tertiaryHeadId, long secondaryHeadId,
+				long id, long secondaryHeadId,
 				OrderByComparator<TertiaryHead> orderByComparator)
 		throws io.jetprocess.exception.NoSuchTertiaryHeadException {
 
 		return getPersistence().findByTertiaryHeadBySecondaryHeadId_PrevAndNext(
-			tertiaryHeadId, secondaryHeadId, orderByComparator);
+			id, secondaryHeadId, orderByComparator);
 	}
 
 	/**
@@ -324,24 +324,24 @@ public class TertiaryHeadUtil {
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
-	public static TertiaryHead create(long tertiaryHeadId) {
-		return getPersistence().create(tertiaryHeadId);
+	public static TertiaryHead create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the tertiary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
-	public static TertiaryHead remove(long tertiaryHeadId)
+	public static TertiaryHead remove(long id)
 		throws io.jetprocess.exception.NoSuchTertiaryHeadException {
 
-		return getPersistence().remove(tertiaryHeadId);
+		return getPersistence().remove(id);
 	}
 
 	public static TertiaryHead updateImpl(TertiaryHead tertiaryHead) {
@@ -351,24 +351,24 @@ public class TertiaryHeadUtil {
 	/**
 	 * Returns the tertiary head with the primary key or throws a <code>NoSuchTertiaryHeadException</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
-	public static TertiaryHead findByPrimaryKey(long tertiaryHeadId)
+	public static TertiaryHead findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchTertiaryHeadException {
 
-		return getPersistence().findByPrimaryKey(tertiaryHeadId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the tertiary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head, or <code>null</code> if a tertiary head with the primary key could not be found
 	 */
-	public static TertiaryHead fetchByPrimaryKey(long tertiaryHeadId) {
-		return getPersistence().fetchByPrimaryKey(tertiaryHeadId);
+	public static TertiaryHead fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

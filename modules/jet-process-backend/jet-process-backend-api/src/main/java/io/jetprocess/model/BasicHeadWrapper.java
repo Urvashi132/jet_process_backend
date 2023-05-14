@@ -41,31 +41,31 @@ public class BasicHeadWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("basicHeadId", getBasicHeadId());
-		attributes.put("basicHeadValue", getBasicHeadValue());
-		attributes.put("basicHeadCode", getBasicHeadCode());
+		attributes.put("id", getId());
+		attributes.put("name", getName());
+		attributes.put("code", getCode());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long basicHeadId = (Long)attributes.get("basicHeadId");
+		Long id = (Long)attributes.get("id");
 
-		if (basicHeadId != null) {
-			setBasicHeadId(basicHeadId);
+		if (id != null) {
+			setId(id);
 		}
 
-		String basicHeadValue = (String)attributes.get("basicHeadValue");
+		String name = (String)attributes.get("name");
 
-		if (basicHeadValue != null) {
-			setBasicHeadValue(basicHeadValue);
+		if (name != null) {
+			setName(name);
 		}
 
-		Long basicHeadCode = (Long)attributes.get("basicHeadCode");
+		Long code = (Long)attributes.get("code");
 
-		if (basicHeadCode != null) {
-			setBasicHeadCode(basicHeadCode);
+		if (code != null) {
+			setCode(code);
 		}
 	}
 
@@ -75,33 +75,33 @@ public class BasicHeadWrapper
 	}
 
 	/**
-	 * Returns the basic head code of this basic head.
+	 * Returns the code of this basic head.
 	 *
-	 * @return the basic head code of this basic head
+	 * @return the code of this basic head
 	 */
 	@Override
-	public long getBasicHeadCode() {
-		return model.getBasicHeadCode();
+	public long getCode() {
+		return model.getCode();
 	}
 
 	/**
-	 * Returns the basic head ID of this basic head.
+	 * Returns the ID of this basic head.
 	 *
-	 * @return the basic head ID of this basic head
+	 * @return the ID of this basic head
 	 */
 	@Override
-	public long getBasicHeadId() {
-		return model.getBasicHeadId();
+	public long getId() {
+		return model.getId();
 	}
 
 	/**
-	 * Returns the basic head value of this basic head.
+	 * Returns the name of this basic head.
 	 *
-	 * @return the basic head value of this basic head
+	 * @return the name of this basic head
 	 */
 	@Override
-	public String getBasicHeadValue() {
-		return model.getBasicHeadValue();
+	public String getName() {
+		return model.getName();
 	}
 
 	/**
@@ -120,33 +120,33 @@ public class BasicHeadWrapper
 	}
 
 	/**
-	 * Sets the basic head code of this basic head.
+	 * Sets the code of this basic head.
 	 *
-	 * @param basicHeadCode the basic head code of this basic head
+	 * @param code the code of this basic head
 	 */
 	@Override
-	public void setBasicHeadCode(long basicHeadCode) {
-		model.setBasicHeadCode(basicHeadCode);
+	public void setCode(long code) {
+		model.setCode(code);
 	}
 
 	/**
-	 * Sets the basic head ID of this basic head.
+	 * Sets the ID of this basic head.
 	 *
-	 * @param basicHeadId the basic head ID of this basic head
+	 * @param id the ID of this basic head
 	 */
 	@Override
-	public void setBasicHeadId(long basicHeadId) {
-		model.setBasicHeadId(basicHeadId);
+	public void setId(long id) {
+		model.setId(id);
 	}
 
 	/**
-	 * Sets the basic head value of this basic head.
+	 * Sets the name of this basic head.
 	 *
-	 * @param basicHeadValue the basic head value of this basic head
+	 * @param name the name of this basic head
 	 */
 	@Override
-	public void setBasicHeadValue(String basicHeadValue) {
-		model.setBasicHeadValue(basicHeadValue);
+	public void setName(String name) {
+		model.setName(name);
 	}
 
 	/**

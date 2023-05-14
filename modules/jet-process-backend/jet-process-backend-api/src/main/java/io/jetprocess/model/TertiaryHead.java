@@ -36,12 +36,12 @@ public interface TertiaryHead extends PersistedModel, TertiaryHeadModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.TertiaryHeadImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<TertiaryHead, Long> TERTIARY_HEAD_ID_ACCESSOR =
+	public static final Accessor<TertiaryHead, Long> ID_ACCESSOR =
 		new Accessor<TertiaryHead, Long>() {
 
 			@Override
 			public Long get(TertiaryHead tertiaryHead) {
-				return tertiaryHead.getTertiaryHeadId();
+				return tertiaryHead.getId();
 			}
 
 			@Override

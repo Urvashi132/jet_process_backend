@@ -31,6 +31,7 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
+import com.liferay.portal.kernel.util.SetUtil;
 
 import io.jetprocess.exception.NoSuchBasicHeadException;
 import io.jetprocess.model.BasicHead;
@@ -45,6 +46,7 @@ import java.io.Serializable;
 
 import java.lang.reflect.Field;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -89,6 +91,13 @@ public class BasicHeadPersistenceImpl
 	private FinderPath _finderPathCountAll;
 
 	public BasicHeadPersistenceImpl() {
+		Map<String, String> dbColumnNames = new HashMap<String, String>();
+
+		dbColumnNames.put("id", "id_");
+		dbColumnNames.put("code", "code_");
+
+		setDBColumnNames(dbColumnNames);
+
 		setModelClass(BasicHead.class);
 
 		setModelImplClass(BasicHeadImpl.class);
@@ -178,15 +187,15 @@ public class BasicHeadPersistenceImpl
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
 	@Override
-	public BasicHead create(long basicHeadId) {
+	public BasicHead create(long id) {
 		BasicHead basicHead = new BasicHeadImpl();
 
 		basicHead.setNew(true);
-		basicHead.setPrimaryKey(basicHeadId);
+		basicHead.setPrimaryKey(id);
 
 		return basicHead;
 	}
@@ -194,13 +203,13 @@ public class BasicHeadPersistenceImpl
 	/**
 	 * Removes the basic head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
 	@Override
-	public BasicHead remove(long basicHeadId) throws NoSuchBasicHeadException {
-		return remove((Serializable)basicHeadId);
+	public BasicHead remove(long id) throws NoSuchBasicHeadException {
+		return remove((Serializable)id);
 	}
 
 	/**
@@ -336,26 +345,24 @@ public class BasicHeadPersistenceImpl
 	/**
 	 * Returns the basic head with the primary key or throws a <code>NoSuchBasicHeadException</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
 	@Override
-	public BasicHead findByPrimaryKey(long basicHeadId)
-		throws NoSuchBasicHeadException {
-
-		return findByPrimaryKey((Serializable)basicHeadId);
+	public BasicHead findByPrimaryKey(long id) throws NoSuchBasicHeadException {
+		return findByPrimaryKey((Serializable)id);
 	}
 
 	/**
 	 * Returns the basic head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head, or <code>null</code> if a basic head with the primary key could not be found
 	 */
 	@Override
-	public BasicHead fetchByPrimaryKey(long basicHeadId) {
-		return fetchByPrimaryKey((Serializable)basicHeadId);
+	public BasicHead fetchByPrimaryKey(long id) {
+		return fetchByPrimaryKey((Serializable)id);
 	}
 
 	/**
@@ -538,13 +545,18 @@ public class BasicHeadPersistenceImpl
 	}
 
 	@Override
+	public Set<String> getBadColumnNames() {
+		return _badColumnNames;
+	}
+
+	@Override
 	protected EntityCache getEntityCache() {
 		return entityCache;
 	}
 
 	@Override
 	protected String getPKDBName() {
-		return "basicHeadId";
+		return "id_";
 	}
 
 	@Override
@@ -647,6 +659,9 @@ public class BasicHeadPersistenceImpl
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		BasicHeadPersistenceImpl.class);
+
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(
+		new String[] {"id", "code"});
 
 	@Override
 	protected FinderCache getFinderCache() {

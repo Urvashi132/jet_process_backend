@@ -58,39 +58,38 @@ public interface BasicHeadPersistence extends BasePersistence<BasicHead> {
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
-	public BasicHead create(long basicHeadId);
+	public BasicHead create(long id);
 
 	/**
 	 * Removes the basic head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
-	public BasicHead remove(long basicHeadId) throws NoSuchBasicHeadException;
+	public BasicHead remove(long id) throws NoSuchBasicHeadException;
 
 	public BasicHead updateImpl(BasicHead basicHead);
 
 	/**
 	 * Returns the basic head with the primary key or throws a <code>NoSuchBasicHeadException</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
-	public BasicHead findByPrimaryKey(long basicHeadId)
-		throws NoSuchBasicHeadException;
+	public BasicHead findByPrimaryKey(long id) throws NoSuchBasicHeadException;
 
 	/**
 	 * Returns the basic head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head, or <code>null</code> if a basic head with the primary key could not be found
 	 */
-	public BasicHead fetchByPrimaryKey(long basicHeadId);
+	public BasicHead fetchByPrimaryKey(long id);
 
 	/**
 	 * Returns all the basic heads.

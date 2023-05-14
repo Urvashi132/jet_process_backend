@@ -8,12 +8,15 @@ import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.StateRsModelResource;
+import io.jetprocess.resource.v1_0.SubjectCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.TertiaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.TypeRsModelResource;
 
@@ -38,6 +41,8 @@ public class ServletDataImpl implements ServletData {
 	public void activate(BundleContext bundleContext) {
 		Mutation.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Mutation.setNoteDocumentRsModelResourceComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects);
 		Mutation.setReceiptRsModelResourceComponentServiceObjects(
 			_receiptRsModelResourceComponentServiceObjects);
 
@@ -49,6 +54,8 @@ public class ServletDataImpl implements ServletData {
 			_countryRsModelResourceComponentServiceObjects);
 		Query.setDeliveryModeRsModelResourceComponentServiceObjects(
 			_deliveryModeRsModelResourceComponentServiceObjects);
+		Query.setFileCategoryRsModelResourceComponentServiceObjects(
+			_fileCategoryRsModelResourceComponentServiceObjects);
 		Query.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
 		Query.setOrganizationRsModelResourceComponentServiceObjects(
@@ -61,6 +68,8 @@ public class ServletDataImpl implements ServletData {
 			_secondaryHeadRsModelResourceComponentServiceObjects);
 		Query.setStateRsModelResourceComponentServiceObjects(
 			_stateRsModelResourceComponentServiceObjects);
+		Query.setSubjectCategoryRsModelResourceComponentServiceObjects(
+			_subjectCategoryRsModelResourceComponentServiceObjects);
 		Query.setTertiaryHeadRsModelResourceComponentServiceObjects(
 			_tertiaryHeadRsModelResourceComponentServiceObjects);
 		Query.setTypeRsModelResourceComponentServiceObjects(
@@ -87,6 +96,10 @@ public class ServletDataImpl implements ServletData {
 		_fileRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<NoteDocumentRsModelResource>
+		_noteDocumentRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<ReceiptRsModelResource>
 		_receiptRsModelResourceComponentServiceObjects;
 
@@ -107,6 +120,10 @@ public class ServletDataImpl implements ServletData {
 		_deliveryModeRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<FileCategoryRsModelResource>
+		_fileCategoryRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<OrganizationRsModelResource>
 		_organizationRsModelResourceComponentServiceObjects;
 
@@ -121,6 +138,10 @@ public class ServletDataImpl implements ServletData {
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<StateRsModelResource>
 		_stateRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<SubjectCategoryRsModelResource>
+		_subjectCategoryRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<TertiaryHeadRsModelResource>

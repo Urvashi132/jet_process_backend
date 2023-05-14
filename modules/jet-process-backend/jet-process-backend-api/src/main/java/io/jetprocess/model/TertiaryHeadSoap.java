@@ -32,8 +32,8 @@ public class TertiaryHeadSoap implements Serializable {
 	public static TertiaryHeadSoap toSoapModel(TertiaryHead model) {
 		TertiaryHeadSoap soapModel = new TertiaryHeadSoap();
 
-		soapModel.setTertiaryHeadId(model.getTertiaryHeadId());
-		soapModel.setTertiaryHeadvalue(model.getTertiaryHeadvalue());
+		soapModel.setId(model.getId());
+		soapModel.setName(model.getName());
 		soapModel.setSecondaryHeadId(model.getSecondaryHeadId());
 
 		return soapModel;
@@ -81,27 +81,27 @@ public class TertiaryHeadSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _tertiaryHeadId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setTertiaryHeadId(pk);
+		setId(pk);
 	}
 
-	public long getTertiaryHeadId() {
-		return _tertiaryHeadId;
+	public long getId() {
+		return _id;
 	}
 
-	public void setTertiaryHeadId(long tertiaryHeadId) {
-		_tertiaryHeadId = tertiaryHeadId;
+	public void setId(long id) {
+		_id = id;
 	}
 
-	public String getTertiaryHeadvalue() {
-		return _tertiaryHeadvalue;
+	public String getName() {
+		return _name;
 	}
 
-	public void setTertiaryHeadvalue(String tertiaryHeadvalue) {
-		_tertiaryHeadvalue = tertiaryHeadvalue;
+	public void setName(String name) {
+		_name = name;
 	}
 
 	public long getSecondaryHeadId() {
@@ -112,8 +112,8 @@ public class TertiaryHeadSoap implements Serializable {
 		_secondaryHeadId = secondaryHeadId;
 	}
 
-	private long _tertiaryHeadId;
-	private String _tertiaryHeadvalue;
+	private long _id;
+	private String _name;
 	private long _secondaryHeadId;
 
 }

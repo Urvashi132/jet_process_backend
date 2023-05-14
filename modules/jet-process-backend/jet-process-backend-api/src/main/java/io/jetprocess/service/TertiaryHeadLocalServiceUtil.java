@@ -73,11 +73,11 @@ public class TertiaryHeadLocalServiceUtil {
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
-	public static TertiaryHead createTertiaryHead(long tertiaryHeadId) {
-		return getService().createTertiaryHead(tertiaryHeadId);
+	public static TertiaryHead createTertiaryHead(long id) {
+		return getService().createTertiaryHead(id);
 	}
 
 	/**
@@ -97,14 +97,14 @@ public class TertiaryHeadLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect TertiaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
-	public static TertiaryHead deleteTertiaryHead(long tertiaryHeadId)
+	public static TertiaryHead deleteTertiaryHead(long id)
 		throws PortalException {
 
-		return getService().deleteTertiaryHead(tertiaryHeadId);
+		return getService().deleteTertiaryHead(id);
 	}
 
 	/**
@@ -206,8 +206,8 @@ public class TertiaryHeadLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static TertiaryHead fetchTertiaryHead(long tertiaryHeadId) {
-		return getService().fetchTertiaryHead(tertiaryHeadId);
+	public static TertiaryHead fetchTertiaryHead(long id) {
+		return getService().fetchTertiaryHead(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -250,14 +250,12 @@ public class TertiaryHeadLocalServiceUtil {
 	/**
 	 * Returns the tertiary head with the primary key.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
-	public static TertiaryHead getTertiaryHead(long tertiaryHeadId)
-		throws PortalException {
-
-		return getService().getTertiaryHead(tertiaryHeadId);
+	public static TertiaryHead getTertiaryHead(long id) throws PortalException {
+		return getService().getTertiaryHead(id);
 	}
 
 	/**

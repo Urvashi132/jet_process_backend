@@ -46,10 +46,16 @@ import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
+import io.jetprocess.service.persistence.FileCategoryPersistence;
+import io.jetprocess.service.persistence.NoteDocumentPersistence;
+import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
+import io.jetprocess.service.persistence.SubjectCategoryPersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 import io.jetprocess.service.persistence.TypePersistence;
 
@@ -106,13 +112,13 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 	/**
 	 * Creates a new primary head with the primary key. Does not add the primary head to the database.
 	 *
-	 * @param primaryHeadId the primary key for the new primary head
+	 * @param id the primary key for the new primary head
 	 * @return the new primary head
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public PrimaryHead createPrimaryHead(long primaryHeadId) {
-		return primaryHeadPersistence.create(primaryHeadId);
+	public PrimaryHead createPrimaryHead(long id) {
+		return primaryHeadPersistence.create(id);
 	}
 
 	/**
@@ -122,16 +128,14 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect PrimaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head that was removed
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public PrimaryHead deletePrimaryHead(long primaryHeadId)
-		throws PortalException {
-
-		return primaryHeadPersistence.remove(primaryHeadId);
+	public PrimaryHead deletePrimaryHead(long id) throws PortalException {
+		return primaryHeadPersistence.remove(id);
 	}
 
 	/**
@@ -250,22 +254,20 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 	}
 
 	@Override
-	public PrimaryHead fetchPrimaryHead(long primaryHeadId) {
-		return primaryHeadPersistence.fetchByPrimaryKey(primaryHeadId);
+	public PrimaryHead fetchPrimaryHead(long id) {
+		return primaryHeadPersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the primary head with the primary key.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Override
-	public PrimaryHead getPrimaryHead(long primaryHeadId)
-		throws PortalException {
-
-		return primaryHeadPersistence.findByPrimaryKey(primaryHeadId);
+	public PrimaryHead getPrimaryHead(long id) throws PortalException {
+		return primaryHeadPersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -277,7 +279,7 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(PrimaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("primaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -294,8 +296,7 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(PrimaryHead.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName(
-			"primaryHeadId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -307,7 +308,7 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(PrimaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("primaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	/**
@@ -479,6 +480,18 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
+	protected DocumentNoteMappingPersistence documentNoteMappingPersistence;
+
+	@Reference
+	protected FileCategoryPersistence fileCategoryPersistence;
+
+	@Reference
+	protected NotePersistence notePersistence;
+
+	@Reference
+	protected NoteDocumentPersistence noteDocumentPersistence;
+
+	@Reference
 	protected OrganizationPersistence organizationPersistence;
 
 	protected PrimaryHeadLocalService primaryHeadLocalService;
@@ -491,6 +504,12 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
+
+	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
+	protected SubjectCategoryPersistence subjectCategoryPersistence;
 
 	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;
@@ -513,13 +532,5 @@ public abstract class PrimaryHeadLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetEntryLocalService
-		assetEntryLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetTagLocalService
-		assetTagLocalService;
 
 }

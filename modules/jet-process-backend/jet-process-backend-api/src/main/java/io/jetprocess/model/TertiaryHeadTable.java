@@ -30,12 +30,10 @@ public class TertiaryHeadTable extends BaseTable<TertiaryHeadTable> {
 
 	public static final TertiaryHeadTable INSTANCE = new TertiaryHeadTable();
 
-	public final Column<TertiaryHeadTable, Long> tertiaryHeadId = createColumn(
-		"tertiaryHeadId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<TertiaryHeadTable, String> tertiaryHeadvalue =
-		createColumn(
-			"tertiaryHeadvalue", String.class, Types.VARCHAR,
-			Column.FLAG_DEFAULT);
+	public final Column<TertiaryHeadTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<TertiaryHeadTable, String> name = createColumn(
+		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<TertiaryHeadTable, Long> secondaryHeadId = createColumn(
 		"secondaryHeadId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 

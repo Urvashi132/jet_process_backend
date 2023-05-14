@@ -73,7 +73,7 @@ public class PrimaryHeadModelImpl
 	public static final String TABLE_NAME = "JP_PrimaryHead";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"primaryHeadId", Types.BIGINT}, {"primaryHeadValue", Types.VARCHAR},
+		{"id_", Types.BIGINT}, {"name", Types.VARCHAR},
 		{"basicHeadId", Types.BIGINT}
 	};
 
@@ -81,21 +81,20 @@ public class PrimaryHeadModelImpl
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("primaryHeadId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("primaryHeadValue", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("basicHeadId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_PrimaryHead (primaryHeadId LONG not null primary key,primaryHeadValue VARCHAR(255) null,basicHeadId LONG)";
+		"create table JP_PrimaryHead (id_ LONG not null primary key,name VARCHAR(255) null,basicHeadId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_PrimaryHead";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY primaryHead.primaryHeadId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY primaryHead.id ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_PrimaryHead.primaryHeadId ASC";
+		" ORDER BY JP_PrimaryHead.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -114,7 +113,7 @@ public class PrimaryHeadModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long PRIMARYHEADID_COLUMN_BITMASK = 2L;
+	public static final long ID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -145,8 +144,8 @@ public class PrimaryHeadModelImpl
 
 		PrimaryHead model = new PrimaryHeadImpl();
 
-		model.setPrimaryHeadId(soapModel.getPrimaryHeadId());
-		model.setPrimaryHeadValue(soapModel.getPrimaryHeadValue());
+		model.setId(soapModel.getId());
+		model.setName(soapModel.getName());
 		model.setBasicHeadId(soapModel.getBasicHeadId());
 
 		return model;
@@ -180,17 +179,17 @@ public class PrimaryHeadModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _primaryHeadId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setPrimaryHeadId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _primaryHeadId;
+		return _id;
 	}
 
 	@Override
@@ -299,16 +298,12 @@ public class PrimaryHeadModelImpl
 		Map<String, BiConsumer<PrimaryHead, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<PrimaryHead, ?>>();
 
-		attributeGetterFunctions.put(
-			"primaryHeadId", PrimaryHead::getPrimaryHeadId);
+		attributeGetterFunctions.put("id", PrimaryHead::getId);
 		attributeSetterBiConsumers.put(
-			"primaryHeadId",
-			(BiConsumer<PrimaryHead, Long>)PrimaryHead::setPrimaryHeadId);
-		attributeGetterFunctions.put(
-			"primaryHeadValue", PrimaryHead::getPrimaryHeadValue);
+			"id", (BiConsumer<PrimaryHead, Long>)PrimaryHead::setId);
+		attributeGetterFunctions.put("name", PrimaryHead::getName);
 		attributeSetterBiConsumers.put(
-			"primaryHeadValue",
-			(BiConsumer<PrimaryHead, String>)PrimaryHead::setPrimaryHeadValue);
+			"name", (BiConsumer<PrimaryHead, String>)PrimaryHead::setName);
 		attributeGetterFunctions.put(
 			"basicHeadId", PrimaryHead::getBasicHeadId);
 		attributeSetterBiConsumers.put(
@@ -323,37 +318,37 @@ public class PrimaryHeadModelImpl
 
 	@JSON
 	@Override
-	public long getPrimaryHeadId() {
-		return _primaryHeadId;
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setPrimaryHeadId(long primaryHeadId) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_primaryHeadId = primaryHeadId;
+		_id = id;
 	}
 
 	@JSON
 	@Override
-	public String getPrimaryHeadValue() {
-		if (_primaryHeadValue == null) {
+	public String getName() {
+		if (_name == null) {
 			return "";
 		}
 		else {
-			return _primaryHeadValue;
+			return _name;
 		}
 	}
 
 	@Override
-	public void setPrimaryHeadValue(String primaryHeadValue) {
+	public void setName(String name) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_primaryHeadValue = primaryHeadValue;
+		_name = name;
 	}
 
 	@JSON
@@ -437,8 +432,8 @@ public class PrimaryHeadModelImpl
 	public Object clone() {
 		PrimaryHeadImpl primaryHeadImpl = new PrimaryHeadImpl();
 
-		primaryHeadImpl.setPrimaryHeadId(getPrimaryHeadId());
-		primaryHeadImpl.setPrimaryHeadValue(getPrimaryHeadValue());
+		primaryHeadImpl.setId(getId());
+		primaryHeadImpl.setName(getName());
 		primaryHeadImpl.setBasicHeadId(getBasicHeadId());
 
 		primaryHeadImpl.resetOriginalValues();
@@ -450,10 +445,8 @@ public class PrimaryHeadModelImpl
 	public PrimaryHead cloneWithOriginalValues() {
 		PrimaryHeadImpl primaryHeadImpl = new PrimaryHeadImpl();
 
-		primaryHeadImpl.setPrimaryHeadId(
-			this.<Long>getColumnOriginalValue("primaryHeadId"));
-		primaryHeadImpl.setPrimaryHeadValue(
-			this.<String>getColumnOriginalValue("primaryHeadValue"));
+		primaryHeadImpl.setId(this.<Long>getColumnOriginalValue("id_"));
+		primaryHeadImpl.setName(this.<String>getColumnOriginalValue("name"));
 		primaryHeadImpl.setBasicHeadId(
 			this.<Long>getColumnOriginalValue("basicHeadId"));
 
@@ -464,10 +457,10 @@ public class PrimaryHeadModelImpl
 	public int compareTo(PrimaryHead primaryHead) {
 		int value = 0;
 
-		if (getPrimaryHeadId() < primaryHead.getPrimaryHeadId()) {
+		if (getId() < primaryHead.getId()) {
 			value = -1;
 		}
-		else if (getPrimaryHeadId() > primaryHead.getPrimaryHeadId()) {
+		else if (getId() > primaryHead.getId()) {
 			value = 1;
 		}
 		else {
@@ -538,14 +531,14 @@ public class PrimaryHeadModelImpl
 		PrimaryHeadCacheModel primaryHeadCacheModel =
 			new PrimaryHeadCacheModel();
 
-		primaryHeadCacheModel.primaryHeadId = getPrimaryHeadId();
+		primaryHeadCacheModel.id = getId();
 
-		primaryHeadCacheModel.primaryHeadValue = getPrimaryHeadValue();
+		primaryHeadCacheModel.name = getName();
 
-		String primaryHeadValue = primaryHeadCacheModel.primaryHeadValue;
+		String name = primaryHeadCacheModel.name;
 
-		if ((primaryHeadValue != null) && (primaryHeadValue.length() == 0)) {
-			primaryHeadCacheModel.primaryHeadValue = null;
+		if ((name != null) && (name.length() == 0)) {
+			primaryHeadCacheModel.name = null;
 		}
 
 		primaryHeadCacheModel.basicHeadId = getBasicHeadId();
@@ -640,11 +633,13 @@ public class PrimaryHeadModelImpl
 
 	}
 
-	private long _primaryHeadId;
-	private String _primaryHeadValue;
+	private long _id;
+	private String _name;
 	private long _basicHeadId;
 
 	public <T> T getColumnValue(String columnName) {
+		columnName = _attributeNames.getOrDefault(columnName, columnName);
+
 		Function<PrimaryHead, Object> function = _attributeGetterFunctions.get(
 			columnName);
 
@@ -671,9 +666,19 @@ public class PrimaryHeadModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("primaryHeadId", _primaryHeadId);
-		_columnOriginalValues.put("primaryHeadValue", _primaryHeadValue);
+		_columnOriginalValues.put("id_", _id);
+		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("basicHeadId", _basicHeadId);
+	}
+
+	private static final Map<String, String> _attributeNames;
+
+	static {
+		Map<String, String> attributeNames = new HashMap<>();
+
+		attributeNames.put("id_", "id");
+
+		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
 
 	private transient Map<String, Object> _columnOriginalValues;
@@ -687,9 +692,9 @@ public class PrimaryHeadModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("primaryHeadId", 1L);
+		columnBitmasks.put("id_", 1L);
 
-		columnBitmasks.put("primaryHeadValue", 2L);
+		columnBitmasks.put("name", 2L);
 
 		columnBitmasks.put("basicHeadId", 4L);
 

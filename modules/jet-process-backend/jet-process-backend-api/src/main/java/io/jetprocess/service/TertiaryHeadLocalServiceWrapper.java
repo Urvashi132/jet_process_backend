@@ -64,14 +64,12 @@ public class TertiaryHeadLocalServiceWrapper
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
 	@Override
-	public io.jetprocess.model.TertiaryHead createTertiaryHead(
-		long tertiaryHeadId) {
-
-		return _tertiaryHeadLocalService.createTertiaryHead(tertiaryHeadId);
+	public io.jetprocess.model.TertiaryHead createTertiaryHead(long id) {
+		return _tertiaryHeadLocalService.createTertiaryHead(id);
 	}
 
 	/**
@@ -92,16 +90,15 @@ public class TertiaryHeadLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect TertiaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.TertiaryHead deleteTertiaryHead(
-			long tertiaryHeadId)
+	public io.jetprocess.model.TertiaryHead deleteTertiaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _tertiaryHeadLocalService.deleteTertiaryHead(tertiaryHeadId);
+		return _tertiaryHeadLocalService.deleteTertiaryHead(id);
 	}
 
 	/**
@@ -224,10 +221,8 @@ public class TertiaryHeadLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.TertiaryHead fetchTertiaryHead(
-		long tertiaryHeadId) {
-
-		return _tertiaryHeadLocalService.fetchTertiaryHead(tertiaryHeadId);
+	public io.jetprocess.model.TertiaryHead fetchTertiaryHead(long id) {
+		return _tertiaryHeadLocalService.fetchTertiaryHead(id);
 	}
 
 	@Override
@@ -276,15 +271,15 @@ public class TertiaryHeadLocalServiceWrapper
 	/**
 	 * Returns the tertiary head with the primary key.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.TertiaryHead getTertiaryHead(long tertiaryHeadId)
+	public io.jetprocess.model.TertiaryHead getTertiaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _tertiaryHeadLocalService.getTertiaryHead(tertiaryHeadId);
+		return _tertiaryHeadLocalService.getTertiaryHead(id);
 	}
 
 	/**

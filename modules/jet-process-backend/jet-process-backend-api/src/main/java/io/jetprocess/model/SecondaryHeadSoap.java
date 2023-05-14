@@ -32,8 +32,8 @@ public class SecondaryHeadSoap implements Serializable {
 	public static SecondaryHeadSoap toSoapModel(SecondaryHead model) {
 		SecondaryHeadSoap soapModel = new SecondaryHeadSoap();
 
-		soapModel.setSecondaryHeadId(model.getSecondaryHeadId());
-		soapModel.setSecondaryHeadValue(model.getSecondaryHeadValue());
+		soapModel.setId(model.getId());
+		soapModel.setName(model.getName());
 		soapModel.setPrimaryHeadId(model.getPrimaryHeadId());
 
 		return soapModel;
@@ -81,27 +81,27 @@ public class SecondaryHeadSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _secondaryHeadId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setSecondaryHeadId(pk);
+		setId(pk);
 	}
 
-	public long getSecondaryHeadId() {
-		return _secondaryHeadId;
+	public long getId() {
+		return _id;
 	}
 
-	public void setSecondaryHeadId(long secondaryHeadId) {
-		_secondaryHeadId = secondaryHeadId;
+	public void setId(long id) {
+		_id = id;
 	}
 
-	public String getSecondaryHeadValue() {
-		return _secondaryHeadValue;
+	public String getName() {
+		return _name;
 	}
 
-	public void setSecondaryHeadValue(String secondaryHeadValue) {
-		_secondaryHeadValue = secondaryHeadValue;
+	public void setName(String name) {
+		_name = name;
 	}
 
 	public long getPrimaryHeadId() {
@@ -112,8 +112,8 @@ public class SecondaryHeadSoap implements Serializable {
 		_primaryHeadId = primaryHeadId;
 	}
 
-	private long _secondaryHeadId;
-	private String _secondaryHeadValue;
+	private long _id;
+	private String _name;
 	private long _primaryHeadId;
 
 }

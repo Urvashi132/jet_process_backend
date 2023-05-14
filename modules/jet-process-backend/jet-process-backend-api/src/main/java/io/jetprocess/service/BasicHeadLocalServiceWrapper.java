@@ -52,12 +52,12 @@ public class BasicHeadLocalServiceWrapper
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
 	@Override
-	public io.jetprocess.model.BasicHead createBasicHead(long basicHeadId) {
-		return _basicHeadLocalService.createBasicHead(basicHeadId);
+	public io.jetprocess.model.BasicHead createBasicHead(long id) {
+		return _basicHeadLocalService.createBasicHead(id);
 	}
 
 	/**
@@ -95,15 +95,15 @@ public class BasicHeadLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect BasicHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.BasicHead deleteBasicHead(long basicHeadId)
+	public io.jetprocess.model.BasicHead deleteBasicHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _basicHeadLocalService.deleteBasicHead(basicHeadId);
+		return _basicHeadLocalService.deleteBasicHead(id);
 	}
 
 	/**
@@ -220,8 +220,8 @@ public class BasicHeadLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.BasicHead fetchBasicHead(long basicHeadId) {
-		return _basicHeadLocalService.fetchBasicHead(basicHeadId);
+	public io.jetprocess.model.BasicHead fetchBasicHead(long id) {
+		return _basicHeadLocalService.fetchBasicHead(id);
 	}
 
 	@Override
@@ -234,15 +234,22 @@ public class BasicHeadLocalServiceWrapper
 	/**
 	 * Returns the basic head with the primary key.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.BasicHead getBasicHead(long basicHeadId)
+	public io.jetprocess.model.BasicHead getBasicHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _basicHeadLocalService.getBasicHead(basicHeadId);
+		return _basicHeadLocalService.getBasicHead(id);
+	}
+
+	@Override
+	public java.util.List<io.jetprocess.model.BasicHead> getBasicHeadList()
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _basicHeadLocalService.getBasicHeadList();
 	}
 
 	/**

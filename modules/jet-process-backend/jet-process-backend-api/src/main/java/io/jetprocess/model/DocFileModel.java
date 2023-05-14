@@ -77,18 +77,18 @@ public interface DocFileModel
 	public void setUuid(String uuid);
 
 	/**
-	 * Returns the doc file ID of this doc file.
+	 * Returns the ID of this doc file.
 	 *
-	 * @return the doc file ID of this doc file
+	 * @return the ID of this doc file
 	 */
-	public long getDocFileId();
+	public long getId();
 
 	/**
-	 * Sets the doc file ID of this doc file.
+	 * Sets the ID of this doc file.
 	 *
-	 * @param docFileId the doc file ID of this doc file
+	 * @param id the ID of this doc file
 	 */
-	public void setDocFileId(long docFileId);
+	public void setId(long id);
 
 	/**
 	 * Returns the group ID of this doc file.

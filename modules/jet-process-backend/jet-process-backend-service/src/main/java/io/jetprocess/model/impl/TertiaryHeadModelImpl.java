@@ -73,7 +73,7 @@ public class TertiaryHeadModelImpl
 	public static final String TABLE_NAME = "JP_TertiaryHead";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"tertiaryHeadId", Types.BIGINT}, {"tertiaryHeadvalue", Types.VARCHAR},
+		{"id_", Types.BIGINT}, {"name", Types.VARCHAR},
 		{"secondaryHeadId", Types.BIGINT}
 	};
 
@@ -81,21 +81,20 @@ public class TertiaryHeadModelImpl
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("tertiaryHeadId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("tertiaryHeadvalue", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("secondaryHeadId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_TertiaryHead (tertiaryHeadId LONG not null primary key,tertiaryHeadvalue VARCHAR(255) null,secondaryHeadId LONG)";
+		"create table JP_TertiaryHead (id_ LONG not null primary key,name VARCHAR(255) null,secondaryHeadId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_TertiaryHead";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY tertiaryHead.tertiaryHeadId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY tertiaryHead.id ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_TertiaryHead.tertiaryHeadId ASC";
+		" ORDER BY JP_TertiaryHead.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -114,7 +113,7 @@ public class TertiaryHeadModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long TERTIARYHEADID_COLUMN_BITMASK = 2L;
+	public static final long ID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -145,8 +144,8 @@ public class TertiaryHeadModelImpl
 
 		TertiaryHead model = new TertiaryHeadImpl();
 
-		model.setTertiaryHeadId(soapModel.getTertiaryHeadId());
-		model.setTertiaryHeadvalue(soapModel.getTertiaryHeadvalue());
+		model.setId(soapModel.getId());
+		model.setName(soapModel.getName());
 		model.setSecondaryHeadId(soapModel.getSecondaryHeadId());
 
 		return model;
@@ -180,17 +179,17 @@ public class TertiaryHeadModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _tertiaryHeadId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setTertiaryHeadId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _tertiaryHeadId;
+		return _id;
 	}
 
 	@Override
@@ -299,17 +298,12 @@ public class TertiaryHeadModelImpl
 		Map<String, BiConsumer<TertiaryHead, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<TertiaryHead, ?>>();
 
-		attributeGetterFunctions.put(
-			"tertiaryHeadId", TertiaryHead::getTertiaryHeadId);
+		attributeGetterFunctions.put("id", TertiaryHead::getId);
 		attributeSetterBiConsumers.put(
-			"tertiaryHeadId",
-			(BiConsumer<TertiaryHead, Long>)TertiaryHead::setTertiaryHeadId);
-		attributeGetterFunctions.put(
-			"tertiaryHeadvalue", TertiaryHead::getTertiaryHeadvalue);
+			"id", (BiConsumer<TertiaryHead, Long>)TertiaryHead::setId);
+		attributeGetterFunctions.put("name", TertiaryHead::getName);
 		attributeSetterBiConsumers.put(
-			"tertiaryHeadvalue",
-			(BiConsumer<TertiaryHead, String>)
-				TertiaryHead::setTertiaryHeadvalue);
+			"name", (BiConsumer<TertiaryHead, String>)TertiaryHead::setName);
 		attributeGetterFunctions.put(
 			"secondaryHeadId", TertiaryHead::getSecondaryHeadId);
 		attributeSetterBiConsumers.put(
@@ -324,37 +318,37 @@ public class TertiaryHeadModelImpl
 
 	@JSON
 	@Override
-	public long getTertiaryHeadId() {
-		return _tertiaryHeadId;
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setTertiaryHeadId(long tertiaryHeadId) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_tertiaryHeadId = tertiaryHeadId;
+		_id = id;
 	}
 
 	@JSON
 	@Override
-	public String getTertiaryHeadvalue() {
-		if (_tertiaryHeadvalue == null) {
+	public String getName() {
+		if (_name == null) {
 			return "";
 		}
 		else {
-			return _tertiaryHeadvalue;
+			return _name;
 		}
 	}
 
 	@Override
-	public void setTertiaryHeadvalue(String tertiaryHeadvalue) {
+	public void setName(String name) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_tertiaryHeadvalue = tertiaryHeadvalue;
+		_name = name;
 	}
 
 	@JSON
@@ -438,8 +432,8 @@ public class TertiaryHeadModelImpl
 	public Object clone() {
 		TertiaryHeadImpl tertiaryHeadImpl = new TertiaryHeadImpl();
 
-		tertiaryHeadImpl.setTertiaryHeadId(getTertiaryHeadId());
-		tertiaryHeadImpl.setTertiaryHeadvalue(getTertiaryHeadvalue());
+		tertiaryHeadImpl.setId(getId());
+		tertiaryHeadImpl.setName(getName());
 		tertiaryHeadImpl.setSecondaryHeadId(getSecondaryHeadId());
 
 		tertiaryHeadImpl.resetOriginalValues();
@@ -451,10 +445,8 @@ public class TertiaryHeadModelImpl
 	public TertiaryHead cloneWithOriginalValues() {
 		TertiaryHeadImpl tertiaryHeadImpl = new TertiaryHeadImpl();
 
-		tertiaryHeadImpl.setTertiaryHeadId(
-			this.<Long>getColumnOriginalValue("tertiaryHeadId"));
-		tertiaryHeadImpl.setTertiaryHeadvalue(
-			this.<String>getColumnOriginalValue("tertiaryHeadvalue"));
+		tertiaryHeadImpl.setId(this.<Long>getColumnOriginalValue("id_"));
+		tertiaryHeadImpl.setName(this.<String>getColumnOriginalValue("name"));
 		tertiaryHeadImpl.setSecondaryHeadId(
 			this.<Long>getColumnOriginalValue("secondaryHeadId"));
 
@@ -465,10 +457,10 @@ public class TertiaryHeadModelImpl
 	public int compareTo(TertiaryHead tertiaryHead) {
 		int value = 0;
 
-		if (getTertiaryHeadId() < tertiaryHead.getTertiaryHeadId()) {
+		if (getId() < tertiaryHead.getId()) {
 			value = -1;
 		}
-		else if (getTertiaryHeadId() > tertiaryHead.getTertiaryHeadId()) {
+		else if (getId() > tertiaryHead.getId()) {
 			value = 1;
 		}
 		else {
@@ -539,14 +531,14 @@ public class TertiaryHeadModelImpl
 		TertiaryHeadCacheModel tertiaryHeadCacheModel =
 			new TertiaryHeadCacheModel();
 
-		tertiaryHeadCacheModel.tertiaryHeadId = getTertiaryHeadId();
+		tertiaryHeadCacheModel.id = getId();
 
-		tertiaryHeadCacheModel.tertiaryHeadvalue = getTertiaryHeadvalue();
+		tertiaryHeadCacheModel.name = getName();
 
-		String tertiaryHeadvalue = tertiaryHeadCacheModel.tertiaryHeadvalue;
+		String name = tertiaryHeadCacheModel.name;
 
-		if ((tertiaryHeadvalue != null) && (tertiaryHeadvalue.length() == 0)) {
-			tertiaryHeadCacheModel.tertiaryHeadvalue = null;
+		if ((name != null) && (name.length() == 0)) {
+			tertiaryHeadCacheModel.name = null;
 		}
 
 		tertiaryHeadCacheModel.secondaryHeadId = getSecondaryHeadId();
@@ -641,11 +633,13 @@ public class TertiaryHeadModelImpl
 
 	}
 
-	private long _tertiaryHeadId;
-	private String _tertiaryHeadvalue;
+	private long _id;
+	private String _name;
 	private long _secondaryHeadId;
 
 	public <T> T getColumnValue(String columnName) {
+		columnName = _attributeNames.getOrDefault(columnName, columnName);
+
 		Function<TertiaryHead, Object> function = _attributeGetterFunctions.get(
 			columnName);
 
@@ -672,9 +666,19 @@ public class TertiaryHeadModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("tertiaryHeadId", _tertiaryHeadId);
-		_columnOriginalValues.put("tertiaryHeadvalue", _tertiaryHeadvalue);
+		_columnOriginalValues.put("id_", _id);
+		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("secondaryHeadId", _secondaryHeadId);
+	}
+
+	private static final Map<String, String> _attributeNames;
+
+	static {
+		Map<String, String> attributeNames = new HashMap<>();
+
+		attributeNames.put("id_", "id");
+
+		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
 
 	private transient Map<String, Object> _columnOriginalValues;
@@ -688,9 +692,9 @@ public class TertiaryHeadModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("tertiaryHeadId", 1L);
+		columnBitmasks.put("id_", 1L);
 
-		columnBitmasks.put("tertiaryHeadvalue", 2L);
+		columnBitmasks.put("name", 2L);
 
 		columnBitmasks.put("secondaryHeadId", 4L);
 

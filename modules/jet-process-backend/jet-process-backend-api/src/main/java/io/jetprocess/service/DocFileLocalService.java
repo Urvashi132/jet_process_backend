@@ -81,17 +81,16 @@ public interface DocFileLocalService
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
 	@Transactional(enabled = false)
-	public DocFile createDocFile(long docFileId);
+	public DocFile createDocFile(long id);
 
 	public DocFile createDocFile(
 			long groupId, String nature, String type, long headId,
 			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			String remarks, String reference, long year, long userPostId)
 		throws PortalException;
 
 	/**
@@ -120,14 +119,12 @@ public interface DocFileLocalService
 	 * <strong>Important:</strong> Inspect DocFileLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public DocFile deleteDocFile(long docFileId) throws PortalException;
-
-	public DocFile deleteDocFileById(long docFileId) throws PortalException;
+	public DocFile deleteDocFile(long id) throws PortalException;
 
 	/**
 	 * @throws PortalException
@@ -209,7 +206,7 @@ public interface DocFileLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public DocFile fetchDocFile(long docFileId);
+	public DocFile fetchDocFile(long id);
 
 	/**
 	 * Returns the doc file matching the UUID and group.
@@ -221,7 +218,7 @@ public interface DocFileLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public DocFile fetchDocFileByUuidAndGroupId(String uuid, long groupId);
 
-	public String generateFileNo(long docFileId);
+	public String generateFileNo(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -229,15 +226,12 @@ public interface DocFileLocalService
 	/**
 	 * Returns the doc file with the primary key.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public DocFile getDocFile(long docFileId) throws PortalException;
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public DocFile getDocFileById(long docFileId) throws PortalException;
+	public DocFile getDocFile(long id) throws PortalException;
 
 	/**
 	 * Returns the doc file matching the UUID and group.
@@ -338,10 +332,8 @@ public interface DocFileLocalService
 	public DocFile updateDocFile(DocFile docFile);
 
 	public DocFile updateDocFile(
-			long docFileId, String nature, String type, long headId,
-			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			long id, String subject, long categoryId, String remarks,
+			String reference)
 		throws PortalException;
 
 }

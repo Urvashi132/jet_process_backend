@@ -54,33 +54,33 @@ public interface PrimaryHeadModel extends BaseModel<PrimaryHead> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the primary head ID of this primary head.
+	 * Returns the ID of this primary head.
 	 *
-	 * @return the primary head ID of this primary head
+	 * @return the ID of this primary head
 	 */
-	public long getPrimaryHeadId();
+	public long getId();
 
 	/**
-	 * Sets the primary head ID of this primary head.
+	 * Sets the ID of this primary head.
 	 *
-	 * @param primaryHeadId the primary head ID of this primary head
+	 * @param id the ID of this primary head
 	 */
-	public void setPrimaryHeadId(long primaryHeadId);
+	public void setId(long id);
 
 	/**
-	 * Returns the primary head value of this primary head.
+	 * Returns the name of this primary head.
 	 *
-	 * @return the primary head value of this primary head
+	 * @return the name of this primary head
 	 */
 	@AutoEscape
-	public String getPrimaryHeadValue();
+	public String getName();
 
 	/**
-	 * Sets the primary head value of this primary head.
+	 * Sets the name of this primary head.
 	 *
-	 * @param primaryHeadValue the primary head value of this primary head
+	 * @param name the name of this primary head
 	 */
-	public void setPrimaryHeadValue(String primaryHeadValue);
+	public void setName(String name);
 
 	/**
 	 * Returns the basic head ID of this primary head.

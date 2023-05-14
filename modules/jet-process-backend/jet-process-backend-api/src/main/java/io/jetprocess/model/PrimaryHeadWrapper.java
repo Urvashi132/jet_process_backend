@@ -41,8 +41,8 @@ public class PrimaryHeadWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("primaryHeadId", getPrimaryHeadId());
-		attributes.put("primaryHeadValue", getPrimaryHeadValue());
+		attributes.put("id", getId());
+		attributes.put("name", getName());
 		attributes.put("basicHeadId", getBasicHeadId());
 
 		return attributes;
@@ -50,16 +50,16 @@ public class PrimaryHeadWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long primaryHeadId = (Long)attributes.get("primaryHeadId");
+		Long id = (Long)attributes.get("id");
 
-		if (primaryHeadId != null) {
-			setPrimaryHeadId(primaryHeadId);
+		if (id != null) {
+			setId(id);
 		}
 
-		String primaryHeadValue = (String)attributes.get("primaryHeadValue");
+		String name = (String)attributes.get("name");
 
-		if (primaryHeadValue != null) {
-			setPrimaryHeadValue(primaryHeadValue);
+		if (name != null) {
+			setName(name);
 		}
 
 		Long basicHeadId = (Long)attributes.get("basicHeadId");
@@ -85,23 +85,23 @@ public class PrimaryHeadWrapper
 	}
 
 	/**
-	 * Returns the primary head ID of this primary head.
+	 * Returns the ID of this primary head.
 	 *
-	 * @return the primary head ID of this primary head
+	 * @return the ID of this primary head
 	 */
 	@Override
-	public long getPrimaryHeadId() {
-		return model.getPrimaryHeadId();
+	public long getId() {
+		return model.getId();
 	}
 
 	/**
-	 * Returns the primary head value of this primary head.
+	 * Returns the name of this primary head.
 	 *
-	 * @return the primary head value of this primary head
+	 * @return the name of this primary head
 	 */
 	@Override
-	public String getPrimaryHeadValue() {
-		return model.getPrimaryHeadValue();
+	public String getName() {
+		return model.getName();
 	}
 
 	/**
@@ -130,23 +130,23 @@ public class PrimaryHeadWrapper
 	}
 
 	/**
-	 * Sets the primary head ID of this primary head.
+	 * Sets the ID of this primary head.
 	 *
-	 * @param primaryHeadId the primary head ID of this primary head
+	 * @param id the ID of this primary head
 	 */
 	@Override
-	public void setPrimaryHeadId(long primaryHeadId) {
-		model.setPrimaryHeadId(primaryHeadId);
+	public void setId(long id) {
+		model.setId(id);
 	}
 
 	/**
-	 * Sets the primary head value of this primary head.
+	 * Sets the name of this primary head.
 	 *
-	 * @param primaryHeadValue the primary head value of this primary head
+	 * @param name the name of this primary head
 	 */
 	@Override
-	public void setPrimaryHeadValue(String primaryHeadValue) {
-		model.setPrimaryHeadValue(primaryHeadValue);
+	public void setName(String name) {
+		model.setName(name);
 	}
 
 	/**

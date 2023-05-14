@@ -52,10 +52,16 @@ import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
+import io.jetprocess.service.persistence.FileCategoryPersistence;
+import io.jetprocess.service.persistence.NoteDocumentPersistence;
+import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
+import io.jetprocess.service.persistence.SubjectCategoryPersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 import io.jetprocess.service.persistence.TypePersistence;
 
@@ -112,13 +118,13 @@ public abstract class DocFileLocalServiceBaseImpl
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public DocFile createDocFile(long docFileId) {
-		return docFilePersistence.create(docFileId);
+	public DocFile createDocFile(long id) {
+		return docFilePersistence.create(id);
 	}
 
 	/**
@@ -128,14 +134,14 @@ public abstract class DocFileLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect DocFileLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public DocFile deleteDocFile(long docFileId) throws PortalException {
-		return docFilePersistence.remove(docFileId);
+	public DocFile deleteDocFile(long id) throws PortalException {
+		return docFilePersistence.remove(id);
 	}
 
 	/**
@@ -254,8 +260,8 @@ public abstract class DocFileLocalServiceBaseImpl
 	}
 
 	@Override
-	public DocFile fetchDocFile(long docFileId) {
-		return docFilePersistence.fetchByPrimaryKey(docFileId);
+	public DocFile fetchDocFile(long id) {
+		return docFilePersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
@@ -273,13 +279,13 @@ public abstract class DocFileLocalServiceBaseImpl
 	/**
 	 * Returns the doc file with the primary key.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Override
-	public DocFile getDocFile(long docFileId) throws PortalException {
-		return docFilePersistence.findByPrimaryKey(docFileId);
+	public DocFile getDocFile(long id) throws PortalException {
+		return docFilePersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -291,7 +297,7 @@ public abstract class DocFileLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(DocFile.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("docFileId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -308,7 +314,7 @@ public abstract class DocFileLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(DocFile.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("docFileId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -320,7 +326,7 @@ public abstract class DocFileLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(DocFile.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("docFileId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	@Override
@@ -607,6 +613,18 @@ public abstract class DocFileLocalServiceBaseImpl
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
+	protected DocumentNoteMappingPersistence documentNoteMappingPersistence;
+
+	@Reference
+	protected FileCategoryPersistence fileCategoryPersistence;
+
+	@Reference
+	protected NotePersistence notePersistence;
+
+	@Reference
+	protected NoteDocumentPersistence noteDocumentPersistence;
+
+	@Reference
 	protected OrganizationPersistence organizationPersistence;
 
 	@Reference
@@ -617,6 +635,12 @@ public abstract class DocFileLocalServiceBaseImpl
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
+
+	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
+	protected SubjectCategoryPersistence subjectCategoryPersistence;
 
 	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;

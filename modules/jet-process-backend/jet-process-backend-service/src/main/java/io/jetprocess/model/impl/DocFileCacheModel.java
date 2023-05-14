@@ -47,7 +47,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 
 		DocFileCacheModel docFileCacheModel = (DocFileCacheModel)object;
 
-		if (docFileId == docFileCacheModel.docFileId) {
+		if (id == docFileCacheModel.id) {
 			return true;
 		}
 
@@ -56,7 +56,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, docFileId);
+		return HashUtil.hash(0, id);
 	}
 
 	@Override
@@ -65,8 +65,8 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 
 		sb.append("{uuid=");
 		sb.append(uuid);
-		sb.append(", docFileId=");
-		sb.append(docFileId);
+		sb.append(", id=");
+		sb.append(id);
 		sb.append(", groupId=");
 		sb.append(groupId);
 		sb.append(", companyId=");
@@ -123,7 +123,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			docFileImpl.setUuid(uuid);
 		}
 
-		docFileImpl.setDocFileId(docFileId);
+		docFileImpl.setId(id);
 		docFileImpl.setGroupId(groupId);
 		docFileImpl.setCompanyId(companyId);
 		docFileImpl.setUserId(userId);
@@ -211,7 +211,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		uuid = objectInput.readUTF();
 
-		docFileId = objectInput.readLong();
+		id = objectInput.readLong();
 
 		groupId = objectInput.readLong();
 
@@ -254,7 +254,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 			objectOutput.writeUTF(uuid);
 		}
 
-		objectOutput.writeLong(docFileId);
+		objectOutput.writeLong(id);
 
 		objectOutput.writeLong(groupId);
 
@@ -332,7 +332,7 @@ public class DocFileCacheModel implements CacheModel<DocFile>, Externalizable {
 	}
 
 	public String uuid;
-	public long docFileId;
+	public long id;
 	public long groupId;
 	public long companyId;
 	public long userId;

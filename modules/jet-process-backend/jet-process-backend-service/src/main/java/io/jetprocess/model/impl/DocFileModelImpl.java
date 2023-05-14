@@ -78,7 +78,7 @@ public class DocFileModelImpl
 	public static final String TABLE_NAME = "JP_DocFile";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"docFileId", Types.BIGINT},
+		{"uuid_", Types.VARCHAR}, {"id_", Types.BIGINT},
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
@@ -96,7 +96,7 @@ public class DocFileModelImpl
 
 	static {
 		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("docFileId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("groupId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("userId", Types.BIGINT);
@@ -120,15 +120,13 @@ public class DocFileModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_DocFile (uuid_ VARCHAR(75) null,docFileId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nature VARCHAR(75) null,type_ VARCHAR(75) null,headId LONG,fileCodeId LONG,subject VARCHAR(500) null,fileNo VARCHAR(75) null,categoryId LONG,remarks VARCHAR(500) null,reference VARCHAR(75) null,year LONG,userPostId LONG,currentUser LONG,currentState INTEGER,dealingOrganizationId LONG)";
+		"create table JP_DocFile (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nature VARCHAR(75) null,type_ VARCHAR(75) null,headId LONG,fileCodeId LONG,subject VARCHAR(500) null,fileNo VARCHAR(75) null,categoryId LONG,remarks VARCHAR(500) null,reference VARCHAR(75) null,year LONG,userPostId LONG,currentUser LONG,currentState INTEGER,dealingOrganizationId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_DocFile";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY docFile.docFileId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY docFile.id ASC";
 
-	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_DocFile.docFileId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY JP_DocFile.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -159,7 +157,7 @@ public class DocFileModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long DOCFILEID_COLUMN_BITMASK = 8L;
+	public static final long ID_COLUMN_BITMASK = 8L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -191,7 +189,7 @@ public class DocFileModelImpl
 		DocFile model = new DocFileImpl();
 
 		model.setUuid(soapModel.getUuid());
-		model.setDocFileId(soapModel.getDocFileId());
+		model.setId(soapModel.getId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setUserId(soapModel.getUserId());
@@ -243,17 +241,17 @@ public class DocFileModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _docFileId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setDocFileId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _docFileId;
+		return _id;
 	}
 
 	@Override
@@ -363,9 +361,9 @@ public class DocFileModelImpl
 		attributeGetterFunctions.put("uuid", DocFile::getUuid);
 		attributeSetterBiConsumers.put(
 			"uuid", (BiConsumer<DocFile, String>)DocFile::setUuid);
-		attributeGetterFunctions.put("docFileId", DocFile::getDocFileId);
+		attributeGetterFunctions.put("id", DocFile::getId);
 		attributeSetterBiConsumers.put(
-			"docFileId", (BiConsumer<DocFile, Long>)DocFile::setDocFileId);
+			"id", (BiConsumer<DocFile, Long>)DocFile::setId);
 		attributeGetterFunctions.put("groupId", DocFile::getGroupId);
 		attributeSetterBiConsumers.put(
 			"groupId", (BiConsumer<DocFile, Long>)DocFile::setGroupId);
@@ -468,17 +466,17 @@ public class DocFileModelImpl
 
 	@JSON
 	@Override
-	public long getDocFileId() {
-		return _docFileId;
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setDocFileId(long docFileId) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_docFileId = docFileId;
+		_id = id;
 	}
 
 	@JSON
@@ -920,7 +918,7 @@ public class DocFileModelImpl
 		DocFileImpl docFileImpl = new DocFileImpl();
 
 		docFileImpl.setUuid(getUuid());
-		docFileImpl.setDocFileId(getDocFileId());
+		docFileImpl.setId(getId());
 		docFileImpl.setGroupId(getGroupId());
 		docFileImpl.setCompanyId(getCompanyId());
 		docFileImpl.setUserId(getUserId());
@@ -952,8 +950,7 @@ public class DocFileModelImpl
 		DocFileImpl docFileImpl = new DocFileImpl();
 
 		docFileImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
-		docFileImpl.setDocFileId(
-			this.<Long>getColumnOriginalValue("docFileId"));
+		docFileImpl.setId(this.<Long>getColumnOriginalValue("id_"));
 		docFileImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
 		docFileImpl.setCompanyId(
 			this.<Long>getColumnOriginalValue("companyId"));
@@ -993,10 +990,10 @@ public class DocFileModelImpl
 	public int compareTo(DocFile docFile) {
 		int value = 0;
 
-		if (getDocFileId() < docFile.getDocFileId()) {
+		if (getId() < docFile.getId()) {
 			value = -1;
 		}
-		else if (getDocFileId() > docFile.getDocFileId()) {
+		else if (getId() > docFile.getId()) {
 			value = 1;
 		}
 		else {
@@ -1076,7 +1073,7 @@ public class DocFileModelImpl
 			docFileCacheModel.uuid = null;
 		}
 
-		docFileCacheModel.docFileId = getDocFileId();
+		docFileCacheModel.id = getId();
 
 		docFileCacheModel.groupId = getGroupId();
 
@@ -1265,7 +1262,7 @@ public class DocFileModelImpl
 	}
 
 	private String _uuid;
-	private long _docFileId;
+	private long _id;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
@@ -1318,7 +1315,7 @@ public class DocFileModelImpl
 		_columnOriginalValues = new HashMap<String, Object>();
 
 		_columnOriginalValues.put("uuid_", _uuid);
-		_columnOriginalValues.put("docFileId", _docFileId);
+		_columnOriginalValues.put("id_", _id);
 		_columnOriginalValues.put("groupId", _groupId);
 		_columnOriginalValues.put("companyId", _companyId);
 		_columnOriginalValues.put("userId", _userId);
@@ -1348,6 +1345,7 @@ public class DocFileModelImpl
 		Map<String, String> attributeNames = new HashMap<>();
 
 		attributeNames.put("uuid_", "uuid");
+		attributeNames.put("id_", "id");
 		attributeNames.put("type_", "type");
 
 		_attributeNames = Collections.unmodifiableMap(attributeNames);
@@ -1366,7 +1364,7 @@ public class DocFileModelImpl
 
 		columnBitmasks.put("uuid_", 1L);
 
-		columnBitmasks.put("docFileId", 2L);
+		columnBitmasks.put("id_", 2L);
 
 		columnBitmasks.put("groupId", 4L);
 

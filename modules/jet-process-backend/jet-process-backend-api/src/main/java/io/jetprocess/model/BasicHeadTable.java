@@ -30,12 +30,12 @@ public class BasicHeadTable extends BaseTable<BasicHeadTable> {
 
 	public static final BasicHeadTable INSTANCE = new BasicHeadTable();
 
-	public final Column<BasicHeadTable, Long> basicHeadId = createColumn(
-		"basicHeadId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<BasicHeadTable, String> basicHeadValue = createColumn(
-		"basicHeadValue", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<BasicHeadTable, Long> basicHeadCode = createColumn(
-		"basicHeadCode", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<BasicHeadTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<BasicHeadTable, String> name = createColumn(
+		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<BasicHeadTable, Long> code = createColumn(
+		"code_", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 
 	private BasicHeadTable() {
 		super("JP_BasicHead", BasicHeadTable::new);

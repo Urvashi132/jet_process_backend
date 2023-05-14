@@ -15,24 +15,28 @@ import io.jetprocess.dto.v1_0.BasicHeadRsModel;
 import io.jetprocess.dto.v1_0.CategoryRsModel;
 import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
+import io.jetprocess.dto.v1_0.FileCategoryRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.dto.v1_0.SecondaryHeadRsModel;
 import io.jetprocess.dto.v1_0.StateRsModel;
+import io.jetprocess.dto.v1_0.SubjectCategoryRsModel;
 import io.jetprocess.dto.v1_0.TertiaryHeadRsModel;
 import io.jetprocess.dto.v1_0.TypeRsModel;
 import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.StateRsModelResource;
+import io.jetprocess.resource.v1_0.SubjectCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.TertiaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.TypeRsModelResource;
 
@@ -87,6 +91,14 @@ public class Query {
 			deliveryModeRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setFileCategoryRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<FileCategoryRsModelResource>
+			fileCategoryRsModelResourceComponentServiceObjects) {
+
+		_fileCategoryRsModelResourceComponentServiceObjects =
+			fileCategoryRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setFileRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<FileRsModelResource>
 			fileRsModelResourceComponentServiceObjects) {
@@ -133,6 +145,14 @@ public class Query {
 
 		_stateRsModelResourceComponentServiceObjects =
 			stateRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setSubjectCategoryRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<SubjectCategoryRsModelResource>
+			subjectCategoryRsModelResourceComponentServiceObjects) {
+
+		_subjectCategoryRsModelResourceComponentServiceObjects =
+			subjectCategoryRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setTertiaryHeadRsModelResourceComponentServiceObjects(
@@ -210,17 +230,30 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){docFileId, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, currentUser, currentState, dealingOrganizationId}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {fileCategoryList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public FileRsModel docFileById(@GraphQLName("docFileId") Long docFileId)
+	public FileCategoryRsModelPage fileCategoryList() throws Exception {
+		return _applyComponentServiceObjects(
+			_fileCategoryRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			fileCategoryRsModelResource -> new FileCategoryRsModelPage(
+				fileCategoryRsModelResource.getFileCategoryList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(id: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public FileRsModel docFileById(@GraphQLName("id") Long id)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			fileRsModelResource -> fileRsModelResource.getDocFileById(
-				docFileId));
+			fileRsModelResource -> fileRsModelResource.getDocFileById(id));
 	}
 
 	/**
@@ -332,6 +365,20 @@ public class Query {
 			this::_populateResourceContext,
 			stateRsModelResource -> new StateRsModelPage(
 				stateRsModelResource.getStateByCountryId(countryId)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {subjectCategoryList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public SubjectCategoryRsModelPage subjectCategoryList() throws Exception {
+		return _applyComponentServiceObjects(
+			_subjectCategoryRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			subjectCategoryRsModelResource -> new SubjectCategoryRsModelPage(
+				subjectCategoryRsModelResource.getSubjectCategoryList()));
 	}
 
 	/**
@@ -483,6 +530,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<DeliveryModeRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("FileCategoryRsModelPage")
+	public class FileCategoryRsModelPage {
+
+		public FileCategoryRsModelPage(Page fileCategoryRsModelPage) {
+			actions = fileCategoryRsModelPage.getActions();
+
+			items = fileCategoryRsModelPage.getItems();
+			lastPage = fileCategoryRsModelPage.getLastPage();
+			page = fileCategoryRsModelPage.getPage();
+			pageSize = fileCategoryRsModelPage.getPageSize();
+			totalCount = fileCategoryRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<FileCategoryRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -696,6 +776,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("SubjectCategoryRsModelPage")
+	public class SubjectCategoryRsModelPage {
+
+		public SubjectCategoryRsModelPage(Page subjectCategoryRsModelPage) {
+			actions = subjectCategoryRsModelPage.getActions();
+
+			items = subjectCategoryRsModelPage.getItems();
+			lastPage = subjectCategoryRsModelPage.getLastPage();
+			page = subjectCategoryRsModelPage.getPage();
+			pageSize = subjectCategoryRsModelPage.getPageSize();
+			totalCount = subjectCategoryRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<SubjectCategoryRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("TertiaryHeadRsModelPage")
 	public class TertiaryHeadRsModelPage {
 
@@ -846,6 +959,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			FileCategoryRsModelResource fileCategoryRsModelResource)
+		throws Exception {
+
+		fileCategoryRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		fileCategoryRsModelResource.setContextCompany(_company);
+		fileCategoryRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		fileCategoryRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		fileCategoryRsModelResource.setContextUriInfo(_uriInfo);
+		fileCategoryRsModelResource.setContextUser(_user);
+		fileCategoryRsModelResource.setGroupLocalService(_groupLocalService);
+		fileCategoryRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
@@ -939,6 +1068,23 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			SubjectCategoryRsModelResource subjectCategoryRsModelResource)
+		throws Exception {
+
+		subjectCategoryRsModelResource.setContextAcceptLanguage(
+			_acceptLanguage);
+		subjectCategoryRsModelResource.setContextCompany(_company);
+		subjectCategoryRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		subjectCategoryRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		subjectCategoryRsModelResource.setContextUriInfo(_uriInfo);
+		subjectCategoryRsModelResource.setContextUser(_user);
+		subjectCategoryRsModelResource.setGroupLocalService(_groupLocalService);
+		subjectCategoryRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			TertiaryHeadRsModelResource tertiaryHeadRsModelResource)
 		throws Exception {
 
@@ -976,6 +1122,8 @@ public class Query {
 		_countryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DeliveryModeRsModelResource>
 		_deliveryModeRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<FileCategoryRsModelResource>
+		_fileCategoryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<OrganizationRsModelResource>
@@ -988,6 +1136,8 @@ public class Query {
 		_secondaryHeadRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<StateRsModelResource>
 		_stateRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<SubjectCategoryRsModelResource>
+		_subjectCategoryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<TertiaryHeadRsModelResource>
 		_tertiaryHeadRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<TypeRsModelResource>

@@ -47,7 +47,7 @@ public class SecondaryHeadCacheModel
 		SecondaryHeadCacheModel secondaryHeadCacheModel =
 			(SecondaryHeadCacheModel)object;
 
-		if (secondaryHeadId == secondaryHeadCacheModel.secondaryHeadId) {
+		if (id == secondaryHeadCacheModel.id) {
 			return true;
 		}
 
@@ -56,17 +56,17 @@ public class SecondaryHeadCacheModel
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, secondaryHeadId);
+		return HashUtil.hash(0, id);
 	}
 
 	@Override
 	public String toString() {
 		StringBundler sb = new StringBundler(7);
 
-		sb.append("{secondaryHeadId=");
-		sb.append(secondaryHeadId);
-		sb.append(", secondaryHeadValue=");
-		sb.append(secondaryHeadValue);
+		sb.append("{id=");
+		sb.append(id);
+		sb.append(", name=");
+		sb.append(name);
 		sb.append(", primaryHeadId=");
 		sb.append(primaryHeadId);
 		sb.append("}");
@@ -78,13 +78,13 @@ public class SecondaryHeadCacheModel
 	public SecondaryHead toEntityModel() {
 		SecondaryHeadImpl secondaryHeadImpl = new SecondaryHeadImpl();
 
-		secondaryHeadImpl.setSecondaryHeadId(secondaryHeadId);
+		secondaryHeadImpl.setId(id);
 
-		if (secondaryHeadValue == null) {
-			secondaryHeadImpl.setSecondaryHeadValue("");
+		if (name == null) {
+			secondaryHeadImpl.setName("");
 		}
 		else {
-			secondaryHeadImpl.setSecondaryHeadValue(secondaryHeadValue);
+			secondaryHeadImpl.setName(name);
 		}
 
 		secondaryHeadImpl.setPrimaryHeadId(primaryHeadId);
@@ -96,28 +96,28 @@ public class SecondaryHeadCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		secondaryHeadId = objectInput.readLong();
-		secondaryHeadValue = objectInput.readUTF();
+		id = objectInput.readLong();
+		name = objectInput.readUTF();
 
 		primaryHeadId = objectInput.readLong();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		objectOutput.writeLong(secondaryHeadId);
+		objectOutput.writeLong(id);
 
-		if (secondaryHeadValue == null) {
+		if (name == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(secondaryHeadValue);
+			objectOutput.writeUTF(name);
 		}
 
 		objectOutput.writeLong(primaryHeadId);
 	}
 
-	public long secondaryHeadId;
-	public String secondaryHeadValue;
+	public long id;
+	public String name;
 	public long primaryHeadId;
 
 }

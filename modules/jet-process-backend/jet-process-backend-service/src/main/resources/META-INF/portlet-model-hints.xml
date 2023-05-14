@@ -2,11 +2,9 @@
 
 <model-hints>
 	<model name="io.jetprocess.model.BasicHead">
-		<field name="basicHeadId" type="long" />
-		<field name="basicHeadValue" type="String">
-			<hint name="max-length">255</hint>
-		</field>
-		<field name="basicHeadCode" type="long" />
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="code" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Category">
 		<field name="id" type="long" />
@@ -20,7 +18,7 @@
 	</model>
 	<model name="io.jetprocess.model.DocFile">
 		<field name="uuid" type="String" />
-		<field name="docFileId" type="long" />
+		<field name="id" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />
@@ -46,13 +44,66 @@
 		<field name="currentState" type="int" />
 		<field name="dealingOrganizationId" type="long" />
 	</model>
+	<model name="io.jetprocess.model.DocumentNoteMapping">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="noteDocumentId" type="long" />
+		<field name="noteId" type="long" />
+	</model>
+	<model name="io.jetprocess.model.FileCategory">
+		<field name="id" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+	</model>
+	<model name="io.jetprocess.model.Note">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="content" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="createdBy" type="long" />
+		<field name="signature" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+	</model>
+	<model name="io.jetprocess.model.NoteDocument">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="noteDocumentNumber" type="String" />
+		<field name="subject" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="createdBy" type="long" />
+		<field name="subjectCategoryId" type="long" />
+		<field name="currentUser" type="long" />
+		<field name="currentState" type="int" />
+	</model>
 	<model name="io.jetprocess.model.Organization">
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>
 	<model name="io.jetprocess.model.PrimaryHead">
-		<field name="primaryHeadId" type="long" />
-		<field name="primaryHeadValue" type="String">
+		<field name="id" type="long" />
+		<field name="name" type="String">
 			<hint name="max-length">255</hint>
 		</field>
 		<field name="basicHeadId" type="long" />
@@ -98,15 +149,26 @@
 		<field name="attachStatus" type="String" />
 	</model>
 	<model name="io.jetprocess.model.SecondaryHead">
-		<field name="secondaryHeadId" type="long" />
-		<field name="secondaryHeadValue" type="String">
+		<field name="id" type="long" />
+		<field name="name" type="String">
 			<hint name="max-length">255</hint>
 		</field>
 		<field name="primaryHeadId" type="long" />
 	</model>
+	<model name="io.jetprocess.model.State">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="countryId" type="long" />
+	</model>
+	<model name="io.jetprocess.model.SubjectCategory">
+		<field name="id" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">255</hint>
+		</field>
+	</model>
 	<model name="io.jetprocess.model.TertiaryHead">
-		<field name="tertiaryHeadId" type="long" />
-		<field name="tertiaryHeadvalue" type="String">
+		<field name="id" type="long" />
+		<field name="name" type="String">
 			<hint name="max-length">255</hint>
 		</field>
 		<field name="secondaryHeadId" type="long" />

@@ -1,7 +1,7 @@
 create table JP_BasicHead (
-	basicHeadId LONG not null primary key,
-	basicHeadValue VARCHAR(255) null,
-	basicHeadCode LONG
+	id_ LONG not null primary key,
+	name VARCHAR(75) null,
+	code_ LONG
 );
 
 create table JP_Category (
@@ -16,7 +16,7 @@ create table JP_DeliveryMode (
 
 create table JP_DocFile (
 	uuid_ VARCHAR(75) null,
-	docFileId LONG not null primary key,
+	id_ LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
 	userId LONG,
@@ -39,14 +39,63 @@ create table JP_DocFile (
 	dealingOrganizationId LONG
 );
 
+create table JP_DocumentNoteMapping (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	noteDocumentId LONG,
+	noteId LONG
+);
+
+create table JP_FileCategory (
+	id_ LONG not null primary key,
+	name VARCHAR(255) null
+);
+
+create table JP_Note (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	content TEXT null,
+	createdBy LONG,
+	signature VARCHAR(500) null
+);
+
+create table JP_NoteDocument (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	noteDocumentNumber VARCHAR(75) null,
+	subject VARCHAR(500) null,
+	createdBy LONG,
+	subjectCategoryId LONG,
+	currentUser LONG,
+	currentState INTEGER
+);
+
 create table JP_Organization (
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );
 
 create table JP_PrimaryHead (
-	primaryHeadId LONG not null primary key,
-	primaryHeadValue VARCHAR(255) null,
+	id_ LONG not null primary key,
+	name VARCHAR(255) null,
 	basicHeadId LONG
 );
 
@@ -88,14 +137,25 @@ create table JP_Receipt (
 );
 
 create table JP_SecondaryHead (
-	secondaryHeadId LONG not null primary key,
-	secondaryHeadValue VARCHAR(255) null,
+	id_ LONG not null primary key,
+	name VARCHAR(255) null,
 	primaryHeadId LONG
 );
 
+create table JP_State (
+	id_ LONG not null primary key,
+	name VARCHAR(75) null,
+	countryId LONG
+);
+
+create table JP_SubjectCategory (
+	id_ LONG not null primary key,
+	name VARCHAR(255) null
+);
+
 create table JP_TertiaryHead (
-	tertiaryHeadId LONG not null primary key,
-	tertiaryHeadvalue VARCHAR(255) null,
+	id_ LONG not null primary key,
+	name VARCHAR(255) null,
 	secondaryHeadId LONG
 );
 

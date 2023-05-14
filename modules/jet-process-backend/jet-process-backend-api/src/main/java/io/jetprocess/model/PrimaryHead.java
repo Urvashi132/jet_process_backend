@@ -36,12 +36,12 @@ public interface PrimaryHead extends PersistedModel, PrimaryHeadModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.PrimaryHeadImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<PrimaryHead, Long> PRIMARY_HEAD_ID_ACCESSOR =
+	public static final Accessor<PrimaryHead, Long> ID_ACCESSOR =
 		new Accessor<PrimaryHead, Long>() {
 
 			@Override
 			public Long get(PrimaryHead primaryHead) {
-				return primaryHead.getPrimaryHeadId();
+				return primaryHead.getId();
 			}
 
 			@Override

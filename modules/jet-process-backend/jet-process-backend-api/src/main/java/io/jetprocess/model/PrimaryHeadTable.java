@@ -30,12 +30,10 @@ public class PrimaryHeadTable extends BaseTable<PrimaryHeadTable> {
 
 	public static final PrimaryHeadTable INSTANCE = new PrimaryHeadTable();
 
-	public final Column<PrimaryHeadTable, Long> primaryHeadId = createColumn(
-		"primaryHeadId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
-	public final Column<PrimaryHeadTable, String> primaryHeadValue =
-		createColumn(
-			"primaryHeadValue", String.class, Types.VARCHAR,
-			Column.FLAG_DEFAULT);
+	public final Column<PrimaryHeadTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<PrimaryHeadTable, String> name = createColumn(
+		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<PrimaryHeadTable, Long> basicHeadId = createColumn(
 		"basicHeadId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 

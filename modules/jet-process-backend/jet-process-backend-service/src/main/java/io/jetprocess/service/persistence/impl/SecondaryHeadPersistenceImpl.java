@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.util.SetUtil;
 
 import io.jetprocess.exception.NoSuchSecondaryHeadException;
 import io.jetprocess.model.SecondaryHead;
@@ -48,6 +49,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -386,7 +388,7 @@ public class SecondaryHeadPersistenceImpl
 	/**
 	 * Returns the secondary heads before and after the current secondary head in the ordered set where primaryHeadId = &#63;.
 	 *
-	 * @param secondaryHeadId the primary key of the current secondary head
+	 * @param id the primary key of the current secondary head
 	 * @param primaryHeadId the primary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next secondary head
@@ -394,11 +396,11 @@ public class SecondaryHeadPersistenceImpl
 	 */
 	@Override
 	public SecondaryHead[] findBySecondaryHeadByPrimaryHeadId_PrevAndNext(
-			long secondaryHeadId, long primaryHeadId,
+			long id, long primaryHeadId,
 			OrderByComparator<SecondaryHead> orderByComparator)
 		throws NoSuchSecondaryHeadException {
 
-		SecondaryHead secondaryHead = findByPrimaryKey(secondaryHeadId);
+		SecondaryHead secondaryHead = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -606,6 +608,12 @@ public class SecondaryHeadPersistenceImpl
 			"secondaryHead.primaryHeadId = ?";
 
 	public SecondaryHeadPersistenceImpl() {
+		Map<String, String> dbColumnNames = new HashMap<String, String>();
+
+		dbColumnNames.put("id", "id_");
+
+		setDBColumnNames(dbColumnNames);
+
 		setModelClass(SecondaryHead.class);
 
 		setModelImplClass(SecondaryHeadImpl.class);
@@ -697,15 +705,15 @@ public class SecondaryHeadPersistenceImpl
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
 	@Override
-	public SecondaryHead create(long secondaryHeadId) {
+	public SecondaryHead create(long id) {
 		SecondaryHead secondaryHead = new SecondaryHeadImpl();
 
 		secondaryHead.setNew(true);
-		secondaryHead.setPrimaryKey(secondaryHeadId);
+		secondaryHead.setPrimaryKey(id);
 
 		return secondaryHead;
 	}
@@ -713,15 +721,13 @@ public class SecondaryHeadPersistenceImpl
 	/**
 	 * Removes the secondary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public SecondaryHead remove(long secondaryHeadId)
-		throws NoSuchSecondaryHeadException {
-
-		return remove((Serializable)secondaryHeadId);
+	public SecondaryHead remove(long id) throws NoSuchSecondaryHeadException {
+		return remove((Serializable)id);
 	}
 
 	/**
@@ -878,26 +884,26 @@ public class SecondaryHeadPersistenceImpl
 	/**
 	 * Returns the secondary head with the primary key or throws a <code>NoSuchSecondaryHeadException</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public SecondaryHead findByPrimaryKey(long secondaryHeadId)
+	public SecondaryHead findByPrimaryKey(long id)
 		throws NoSuchSecondaryHeadException {
 
-		return findByPrimaryKey((Serializable)secondaryHeadId);
+		return findByPrimaryKey((Serializable)id);
 	}
 
 	/**
 	 * Returns the secondary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head, or <code>null</code> if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public SecondaryHead fetchByPrimaryKey(long secondaryHeadId) {
-		return fetchByPrimaryKey((Serializable)secondaryHeadId);
+	public SecondaryHead fetchByPrimaryKey(long id) {
+		return fetchByPrimaryKey((Serializable)id);
 	}
 
 	/**
@@ -1081,13 +1087,18 @@ public class SecondaryHeadPersistenceImpl
 	}
 
 	@Override
+	public Set<String> getBadColumnNames() {
+		return _badColumnNames;
+	}
+
+	@Override
 	protected EntityCache getEntityCache() {
 		return entityCache;
 	}
 
 	@Override
 	protected String getPKDBName() {
-		return "secondaryHeadId";
+		return "id_";
 	}
 
 	@Override
@@ -1223,6 +1234,9 @@ public class SecondaryHeadPersistenceImpl
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		SecondaryHeadPersistenceImpl.class);
+
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(
+		new String[] {"id"});
 
 	@Override
 	protected FinderCache getFinderCache() {

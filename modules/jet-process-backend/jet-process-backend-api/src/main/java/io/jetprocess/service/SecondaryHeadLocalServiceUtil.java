@@ -73,11 +73,11 @@ public class SecondaryHeadLocalServiceUtil {
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
-	public static SecondaryHead createSecondaryHead(long secondaryHeadId) {
-		return getService().createSecondaryHead(secondaryHeadId);
+	public static SecondaryHead createSecondaryHead(long id) {
+		return getService().createSecondaryHead(id);
 	}
 
 	/**
@@ -97,14 +97,14 @@ public class SecondaryHeadLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect SecondaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
-	public static SecondaryHead deleteSecondaryHead(long secondaryHeadId)
+	public static SecondaryHead deleteSecondaryHead(long id)
 		throws PortalException {
 
-		return getService().deleteSecondaryHead(secondaryHeadId);
+		return getService().deleteSecondaryHead(id);
 	}
 
 	/**
@@ -208,8 +208,8 @@ public class SecondaryHeadLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static SecondaryHead fetchSecondaryHead(long secondaryHeadId) {
-		return getService().fetchSecondaryHead(secondaryHeadId);
+	public static SecondaryHead fetchSecondaryHead(long id) {
+		return getService().fetchSecondaryHead(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -246,14 +246,14 @@ public class SecondaryHeadLocalServiceUtil {
 	/**
 	 * Returns the secondary head with the primary key.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
-	public static SecondaryHead getSecondaryHead(long secondaryHeadId)
+	public static SecondaryHead getSecondaryHead(long id)
 		throws PortalException {
 
-		return getService().getSecondaryHead(secondaryHeadId);
+		return getService().getSecondaryHead(id);
 	}
 
 	public static List<SecondaryHead> getSecondaryHeadByPrimaryHeadId(

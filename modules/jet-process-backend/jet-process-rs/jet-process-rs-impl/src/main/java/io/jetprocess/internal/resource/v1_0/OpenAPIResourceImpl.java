@@ -74,7 +74,11 @@ public class OpenAPIResourceImpl {
 
 			add(DeliveryModeRsModelResourceImpl.class);
 
+			add(FileCategoryRsModelResourceImpl.class);
+
 			add(FileRsModelResourceImpl.class);
+
+			add(NoteDocumentRsModelResourceImpl.class);
 
 			add(OrganizationRsModelResourceImpl.class);
 
@@ -85,6 +89,8 @@ public class OpenAPIResourceImpl {
 			add(SecondaryHeadRsModelResourceImpl.class);
 
 			add(StateRsModelResourceImpl.class);
+
+			add(SubjectCategoryRsModelResourceImpl.class);
 
 			add(TertiaryHeadRsModelResourceImpl.class);
 

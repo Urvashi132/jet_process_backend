@@ -34,8 +34,8 @@ public class DocFileTable extends BaseTable<DocFileTable> {
 
 	public final Column<DocFileTable, String> uuid = createColumn(
 		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<DocFileTable, Long> docFileId = createColumn(
-		"docFileId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<DocFileTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<DocFileTable, Long> groupId = createColumn(
 		"groupId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<DocFileTable, Long> companyId = createColumn(

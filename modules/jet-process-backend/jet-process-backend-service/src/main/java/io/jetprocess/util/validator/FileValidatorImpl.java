@@ -24,25 +24,20 @@ public class FileValidatorImpl implements FileValidator {
 
 	}
 
-	private boolean isRemarksValid(final String remarks, List<String> errors) {
-		boolean result = true;
-		if (remarks.isEmpty() || remarks.equalsIgnoreCase("")) {
-			errors.add("Please Enter remarks");
-			result = false;
-		}
-		return result;
-
-	}
-
-	private boolean isReferenceValid(final String reference, List<String> errors) {
-		boolean result = true;
-		if (reference.isEmpty() || reference.equalsIgnoreCase("")) {
-			errors.add("Please Enter reference");
-			result = false;
-		}
-		return result;
-
-	}
+	/*
+	 * private boolean isRemarksValid(final String remarks, List<String> errors) {
+	 * boolean result = true; if (remarks.isEmpty() || remarks.equalsIgnoreCase(""))
+	 * { errors.add("Please Enter remarks"); result = false; } return result;
+	 * 
+	 * }
+	 * 
+	 * private boolean isReferenceValid(final String reference, List<String> errors)
+	 * { boolean result = true; if (reference.isEmpty() ||
+	 * reference.equalsIgnoreCase("")) { errors.add("Please Enter reference");
+	 * result = false; } return result;
+	 * 
+	 * }
+	 */
 
 	private boolean isTypeValid(String type, List<String> errors) {
 		boolean result = true;
@@ -54,30 +49,42 @@ public class FileValidatorImpl implements FileValidator {
 
 	}
 
-	private boolean validator(final String subject, final String remarks, final String reference, final String type,
-			final List<String> errors) {
+	private boolean validator(final String subject, final String type, final List<String> errors) {
 		boolean result = true;
 
 		result &= isSubjectValid(subject, errors);
-		result &= isRemarksValid(remarks, errors);
-		result &= isReferenceValid(reference, errors);
+		/*
+		 * result &= isRemarksValid(remarks, errors); result &=
+		 * isReferenceValid(reference, errors);
+		 */
 		result &= isTypeValid(type, errors);
 		return result;
 	}
 
+	/*
+	 * @Override public List<String> validate(String subject, String remarks, String
+	 * reference, String type) throws FileValidationException { List<String> errors
+	 * = new ArrayList<String>();
+	 * 
+	 * try { if (!validator(subject, remarks, reference, type, errors)) { throw new
+	 * FileValidationException(errors); } }catch(Exception e) {
+	 * System.out.println(errors); } return errors;
+	 * 
+	 * }
+	 */
+
 	@Override
-	public List<String> validate(String subject, String remarks, String reference, String type) throws FileValidationException {
+	public List<String> validate(String subject, String type) throws FileValidationException {
 		List<String> errors = new ArrayList<String>();
-      
+
 		try {
-		if (!validator(subject, remarks, reference, type, errors)) {
-			throw new FileValidationException(errors);
-		}
-		}catch(Exception e) {
+			if (!validator(subject, type, errors)) {
+				throw new FileValidationException(errors);
+			}
+		} catch (Exception e) {
 			System.out.println(errors);
 		}
 		return errors;
 
 	}
-
 }

@@ -85,11 +85,11 @@ public interface SecondaryHeadLocalService
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
 	@Transactional(enabled = false)
-	public SecondaryHead createSecondaryHead(long secondaryHeadId);
+	public SecondaryHead createSecondaryHead(long id);
 
 	/**
 	 * @throws PortalException
@@ -105,13 +105,12 @@ public interface SecondaryHeadLocalService
 	 * <strong>Important:</strong> Inspect SecondaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public SecondaryHead deleteSecondaryHead(long secondaryHeadId)
-		throws PortalException;
+	public SecondaryHead deleteSecondaryHead(long id) throws PortalException;
 
 	/**
 	 * Deletes the secondary head from the database. Also notifies the appropriate model listeners.
@@ -199,7 +198,7 @@ public interface SecondaryHeadLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public SecondaryHead fetchSecondaryHead(long secondaryHeadId);
+	public SecondaryHead fetchSecondaryHead(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -225,13 +224,12 @@ public interface SecondaryHeadLocalService
 	/**
 	 * Returns the secondary head with the primary key.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public SecondaryHead getSecondaryHead(long secondaryHeadId)
-		throws PortalException;
+	public SecondaryHead getSecondaryHead(long id) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<SecondaryHead> getSecondaryHeadByPrimaryHeadId(

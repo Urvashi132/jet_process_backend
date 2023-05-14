@@ -34,7 +34,7 @@ public class DocFileSoap implements Serializable {
 		DocFileSoap soapModel = new DocFileSoap();
 
 		soapModel.setUuid(model.getUuid());
-		soapModel.setDocFileId(model.getDocFileId());
+		soapModel.setId(model.getId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setUserId(model.getUserId());
@@ -101,11 +101,11 @@ public class DocFileSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _docFileId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setDocFileId(pk);
+		setId(pk);
 	}
 
 	public String getUuid() {
@@ -116,12 +116,12 @@ public class DocFileSoap implements Serializable {
 		_uuid = uuid;
 	}
 
-	public long getDocFileId() {
-		return _docFileId;
+	public long getId() {
+		return _id;
 	}
 
-	public void setDocFileId(long docFileId) {
-		_docFileId = docFileId;
+	public void setId(long id) {
+		_id = id;
 	}
 
 	public long getGroupId() {
@@ -285,7 +285,7 @@ public class DocFileSoap implements Serializable {
 	}
 
 	private String _uuid;
-	private long _docFileId;
+	private long _id;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;

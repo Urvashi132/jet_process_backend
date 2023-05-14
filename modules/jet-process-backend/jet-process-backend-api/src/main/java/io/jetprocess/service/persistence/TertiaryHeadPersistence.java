@@ -158,14 +158,14 @@ public interface TertiaryHeadPersistence extends BasePersistence<TertiaryHead> {
 	/**
 	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where secondaryHeadId = &#63;.
 	 *
-	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param id the primary key of the current tertiary head
 	 * @param secondaryHeadId the secondary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next tertiary head
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
 	public TertiaryHead[] findByTertiaryHeadBySecondaryHeadId_PrevAndNext(
-			long tertiaryHeadId, long secondaryHeadId,
+			long id, long secondaryHeadId,
 			com.liferay.portal.kernel.util.OrderByComparator<TertiaryHead>
 				orderByComparator)
 		throws NoSuchTertiaryHeadException;
@@ -202,40 +202,39 @@ public interface TertiaryHeadPersistence extends BasePersistence<TertiaryHead> {
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
-	public TertiaryHead create(long tertiaryHeadId);
+	public TertiaryHead create(long id);
 
 	/**
 	 * Removes the tertiary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
-	public TertiaryHead remove(long tertiaryHeadId)
-		throws NoSuchTertiaryHeadException;
+	public TertiaryHead remove(long id) throws NoSuchTertiaryHeadException;
 
 	public TertiaryHead updateImpl(TertiaryHead tertiaryHead);
 
 	/**
 	 * Returns the tertiary head with the primary key or throws a <code>NoSuchTertiaryHeadException</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
-	public TertiaryHead findByPrimaryKey(long tertiaryHeadId)
+	public TertiaryHead findByPrimaryKey(long id)
 		throws NoSuchTertiaryHeadException;
 
 	/**
 	 * Returns the tertiary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head, or <code>null</code> if a tertiary head with the primary key could not be found
 	 */
-	public TertiaryHead fetchByPrimaryKey(long tertiaryHeadId);
+	public TertiaryHead fetchByPrimaryKey(long id);
 
 	/**
 	 * Returns all the tertiary heads.

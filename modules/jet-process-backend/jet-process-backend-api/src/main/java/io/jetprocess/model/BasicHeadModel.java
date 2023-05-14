@@ -54,47 +54,47 @@ public interface BasicHeadModel extends BaseModel<BasicHead> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the basic head ID of this basic head.
+	 * Returns the ID of this basic head.
 	 *
-	 * @return the basic head ID of this basic head
+	 * @return the ID of this basic head
 	 */
-	public long getBasicHeadId();
+	public long getId();
 
 	/**
-	 * Sets the basic head ID of this basic head.
+	 * Sets the ID of this basic head.
 	 *
-	 * @param basicHeadId the basic head ID of this basic head
+	 * @param id the ID of this basic head
 	 */
-	public void setBasicHeadId(long basicHeadId);
+	public void setId(long id);
 
 	/**
-	 * Returns the basic head value of this basic head.
+	 * Returns the name of this basic head.
 	 *
-	 * @return the basic head value of this basic head
+	 * @return the name of this basic head
 	 */
 	@AutoEscape
-	public String getBasicHeadValue();
+	public String getName();
 
 	/**
-	 * Sets the basic head value of this basic head.
+	 * Sets the name of this basic head.
 	 *
-	 * @param basicHeadValue the basic head value of this basic head
+	 * @param name the name of this basic head
 	 */
-	public void setBasicHeadValue(String basicHeadValue);
+	public void setName(String name);
 
 	/**
-	 * Returns the basic head code of this basic head.
+	 * Returns the code of this basic head.
 	 *
-	 * @return the basic head code of this basic head
+	 * @return the code of this basic head
 	 */
-	public long getBasicHeadCode();
+	public long getCode();
 
 	/**
-	 * Sets the basic head code of this basic head.
+	 * Sets the code of this basic head.
 	 *
-	 * @param basicHeadCode the basic head code of this basic head
+	 * @param code the code of this basic head
 	 */
-	public void setBasicHeadCode(long basicHeadCode);
+	public void setCode(long code);
 
 	@Override
 	public BasicHead cloneWithOriginalValues();

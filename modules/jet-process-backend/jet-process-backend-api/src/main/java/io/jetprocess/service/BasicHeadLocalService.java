@@ -79,11 +79,11 @@ public interface BasicHeadLocalService
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
 	@Transactional(enabled = false)
-	public BasicHead createBasicHead(long basicHeadId);
+	public BasicHead createBasicHead(long id);
 
 	/**
 	 * @throws PortalException
@@ -111,12 +111,12 @@ public interface BasicHeadLocalService
 	 * <strong>Important:</strong> Inspect BasicHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public BasicHead deleteBasicHead(long basicHeadId) throws PortalException;
+	public BasicHead deleteBasicHead(long id) throws PortalException;
 
 	/**
 	 * @throws PortalException
@@ -198,7 +198,7 @@ public interface BasicHeadLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public BasicHead fetchBasicHead(long basicHeadId);
+	public BasicHead fetchBasicHead(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -206,12 +206,15 @@ public interface BasicHeadLocalService
 	/**
 	 * Returns the basic head with the primary key.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public BasicHead getBasicHead(long basicHeadId) throws PortalException;
+	public BasicHead getBasicHead(long id) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<BasicHead> getBasicHeadList() throws PortalException;
 
 	/**
 	 * Returns a range of all the basic heads.

@@ -384,7 +384,7 @@ public class DocFilePersistenceImpl
 	/**
 	 * Returns the doc files before and after the current doc file in the ordered set where uuid = &#63;.
 	 *
-	 * @param docFileId the primary key of the current doc file
+	 * @param id the primary key of the current doc file
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next doc file
@@ -392,13 +392,12 @@ public class DocFilePersistenceImpl
 	 */
 	@Override
 	public DocFile[] findByUuid_PrevAndNext(
-			long docFileId, String uuid,
-			OrderByComparator<DocFile> orderByComparator)
+			long id, String uuid, OrderByComparator<DocFile> orderByComparator)
 		throws NoSuchDocFileException {
 
 		uuid = Objects.toString(uuid, "");
 
-		DocFile docFile = findByPrimaryKey(docFileId);
+		DocFile docFile = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -1191,7 +1190,7 @@ public class DocFilePersistenceImpl
 	/**
 	 * Returns the doc files before and after the current doc file in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param docFileId the primary key of the current doc file
+	 * @param id the primary key of the current doc file
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -1200,13 +1199,13 @@ public class DocFilePersistenceImpl
 	 */
 	@Override
 	public DocFile[] findByUuid_C_PrevAndNext(
-			long docFileId, String uuid, long companyId,
+			long id, String uuid, long companyId,
 			OrderByComparator<DocFile> orderByComparator)
 		throws NoSuchDocFileException {
 
 		uuid = Objects.toString(uuid, "");
 
-		DocFile docFile = findByPrimaryKey(docFileId);
+		DocFile docFile = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -1453,6 +1452,7 @@ public class DocFilePersistenceImpl
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
 		dbColumnNames.put("uuid", "uuid_");
+		dbColumnNames.put("id", "id_");
 		dbColumnNames.put("type", "type_");
 
 		setDBColumnNames(dbColumnNames);
@@ -1559,15 +1559,15 @@ public class DocFilePersistenceImpl
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
 	@Override
-	public DocFile create(long docFileId) {
+	public DocFile create(long id) {
 		DocFile docFile = new DocFileImpl();
 
 		docFile.setNew(true);
-		docFile.setPrimaryKey(docFileId);
+		docFile.setPrimaryKey(id);
 
 		String uuid = PortalUUIDUtil.generate();
 
@@ -1581,13 +1581,13 @@ public class DocFilePersistenceImpl
 	/**
 	 * Removes the doc file with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
 	@Override
-	public DocFile remove(long docFileId) throws NoSuchDocFileException {
-		return remove((Serializable)docFileId);
+	public DocFile remove(long id) throws NoSuchDocFileException {
+		return remove((Serializable)id);
 	}
 
 	/**
@@ -1772,26 +1772,24 @@ public class DocFilePersistenceImpl
 	/**
 	 * Returns the doc file with the primary key or throws a <code>NoSuchDocFileException</code> if it could not be found.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
 	@Override
-	public DocFile findByPrimaryKey(long docFileId)
-		throws NoSuchDocFileException {
-
-		return findByPrimaryKey((Serializable)docFileId);
+	public DocFile findByPrimaryKey(long id) throws NoSuchDocFileException {
+		return findByPrimaryKey((Serializable)id);
 	}
 
 	/**
 	 * Returns the doc file with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file, or <code>null</code> if a doc file with the primary key could not be found
 	 */
 	@Override
-	public DocFile fetchByPrimaryKey(long docFileId) {
-		return fetchByPrimaryKey((Serializable)docFileId);
+	public DocFile fetchByPrimaryKey(long id) {
+		return fetchByPrimaryKey((Serializable)id);
 	}
 
 	/**
@@ -1984,7 +1982,7 @@ public class DocFilePersistenceImpl
 
 	@Override
 	protected String getPKDBName() {
-		return "docFileId";
+		return "id_";
 	}
 
 	@Override
@@ -2145,7 +2143,7 @@ public class DocFilePersistenceImpl
 		DocFilePersistenceImpl.class);
 
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(
-		new String[] {"uuid", "type"});
+		new String[] {"uuid", "id", "type"});
 
 	@Override
 	protected FinderCache getFinderCache() {

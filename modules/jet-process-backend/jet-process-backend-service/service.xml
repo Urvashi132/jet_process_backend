@@ -6,9 +6,8 @@
 	<namespace>JP</namespace>
 	<entity local-service="true" name="DocFile"
 		remote-service="true" uuid="true">
-
 		<!-- PK fields -->
-		<column name="docFileId" primary="true" type="long" />
+		<column name="id" primary="true" type="long" />
 
 		<!-- Group instance -->
 		<column name="groupId" type="long" />
@@ -38,7 +37,7 @@
 
 		<!-- Order -->
 		<order by="asc">
-			<order-column name="docFileId" />
+			<order-column name="id" />
 		</order>
 
 		<!-- References -->
@@ -47,128 +46,91 @@
 		<reference entity="AssetTag"
 			package-path="com.liferay.portlet.asset" />
 	</entity>
+
 	<entity local-service="true" name="TertiaryHead"
-		remote-service="true" >
-
-		<!-- PK fields -->
-		<column name="tertiaryHeadId" primary="true" type="long" />
-
-		
-
-	
-
-		<!-- Other fields -->
-		<column name="tertiaryHeadvalue" type="String" />
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
 		<column name="secondaryHeadId" type="long" />
-		
 
 		<!-- Order -->
 		<order by="asc">
-			<order-column name="tertiaryHeadId" />
+			<order-column name="id" />
 		</order>
-		
-		 <finder name="TertiaryHeadBySecondaryHeadId" return-type="Collection">
+
+		<!-- finder -->
+		<finder name="TertiaryHeadBySecondaryHeadId"
+			return-type="Collection">
 			<finder-column name="secondaryHeadId"></finder-column>
 		</finder>
-
-		<!-- References -->
-		<reference entity="AssetEntry"
-			package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag"
-			package-path="com.liferay.portlet.asset" />
 	</entity>
+
 	<entity local-service="true" name="SecondaryHead"
-		remote-service="true" >
-
-		<!-- PK fields -->
-		<column name="secondaryHeadId" primary="true" type="long" />
-
-		
-
-	
-
-		<!-- Other fields -->
-		<column name="secondaryHeadValue" type="String" />
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
 		<column name="primaryHeadId" type="long" />
-		
 
 		<!-- Order -->
 		<order by="asc">
-			<order-column name="secondaryHeadId" />
+			<order-column name="id" />
 		</order>
-		
-		 <finder name="SecondaryHeadByPrimaryHeadId" return-type="Collection">
+
+		<!-- finder -->
+		<finder name="SecondaryHeadByPrimaryHeadId"
+			return-type="Collection">
 			<finder-column name="primaryHeadId"></finder-column>
 		</finder>
-
-		<!-- References -->
-		<reference entity="AssetEntry"
-			package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag"
-			package-path="com.liferay.portlet.asset" />
 	</entity>
+
 	<entity local-service="true" name="PrimaryHead"
-		remote-service="true" >
-
-		<!-- PK fields -->
-		<column name="primaryHeadId" primary="true" type="long" />
-
-		
-
-	
-
-		<!-- Other fields -->
-		<column name="primaryHeadValue" type="String" />
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
 		<column name="basicHeadId" type="long" />
-		
 
 		<!-- Order -->
 		<order by="asc">
-			<order-column name="primaryHeadId" />
+			<order-column name="id" />
 		</order>
 
-        <finder name="PrimaryHeadByBasicHeadId" return-type="Collection">
+		<!-- finder -->
+		<finder name="PrimaryHeadByBasicHeadId"
+			return-type="Collection">
 			<finder-column name="basicHeadId"></finder-column>
 		</finder>
-
-		<!-- References -->
-		<reference entity="AssetEntry"
-			package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag"
-			package-path="com.liferay.portlet.asset" />
-			
-			
 	</entity>
+
 	<entity local-service="true" name="BasicHead"
-		remote-service="true" >
-
-		<!-- PK fields -->
-		<column name="basicHeadId" primary="true" type="long" />
-
-		
-
-	
-
-		<!-- Other fields -->
-		<column name="basicHeadValue" type="String" />
-		<column name="basicHeadCode" type="long" />
-		
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+		<column name="code" type="long" />
 
 		<!-- Order -->
 		<order by="asc">
-			<order-column name="basicHeadId" />
+			<order-column name="id" />
 		</order>
-
-		<!-- References -->
-		<reference entity="AssetEntry"
-			package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag"
-			package-path="com.liferay.portlet.asset" />
 	</entity>
-	
+
+	<entity local-service="true" name="FileCategory"
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+	</entity>
+
 	<entity name="Receipt" local-service="true"
 		remote-service="true" uuid="true">
-
 		<!-- PK fields -->
 		<column name="receiptId" primary="true" type="long" />
 
@@ -205,46 +167,136 @@
 		<column name="city" type="String" />
 		<column name="userPostId" type="long" />
 		<column name="viewPdfUrl" type="String" />
-		<column name="docFileId" type="long" ></column>
+		<column name="docFileId" type="long"></column>
 		<column name="nature" type="String" />
 		<column name="currentlyWith" type="long" />
 		<column name="currentState" type="long" />
 		<column name="attachStatus" type="String" />
-		
-	
-		
 	</entity>
+
 	<entity name="DeliveryMode" local-service="true"
-		remote-service="true" >
-		
-			<column name="id" primary="true" type="long" />	
-	  		<column name="name" type="String" />	
+		remote-service="true">
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
 	</entity>
-		<entity name="Organization" local-service="true"
-		remote-service="true" >
-		
-			<column name="id" primary="true" type="long" />	
-	  		<column name="name" type="String" />	
+
+	<entity name="Organization" local-service="true"
+		remote-service="true">
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+	</entity>
+
+	<entity name="State" local-service="true" remote-service="true">
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+		<column name="countryId" type="long" />
 	</entity>
 
 	<entity name="Category" local-service="true"
-		remote-service="true" >
-		
-			<column name="id" primary="true" type="long" />	
-	  		<column name="name" type="String" />	  			
-	  		
-	</entity>
-	<entity name="Type" local-service="true"
-		remote-service="true" >
-		
-			<column name="id" primary="true" type="long" />	
-	  		<column name="name" type="String" />	  			
-	  		
+		remote-service="true">
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
 	</entity>
 
-	
+	<entity name="Type" local-service="true" remote-service="true">
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+	</entity>
+
+	<!-- Note -->
+	<entity local-service="true" name="Note" remote-service="true"
+		uuid="true">
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+		<!-- Other fields -->
+		<column name="content" type="String"></column>
+		<column name="createdBy" type="long"></column>
+		<column name="signature" type="String"></column>
+
+		<!-- Group Reference -->
+		<reference entity="Group" package-path="com.liferay.portal" />
+	</entity>
+
+	<entity local-service="true" name="NoteDocument"
+		remote-service="true" uuid="true">
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="noteDocumentNumber" type="String" />
+		<column name="subject" type="String" />
+		<column name="createdBy" type="long" />
+		<column name="subjectCategoryId" type="long" />
+		<column name="currentUser" type="long" />
+		<column name="currentState" type="int" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+	</entity>
+
+	<!-- Document Note Mapping -->
+	<entity local-service="true" name="DocumentNoteMapping"
+		uuid="true" remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="noteDocumentId" type="long" />
+		<column name="noteId" type="long" />
+
+		<!-- Group Reference -->
+		<reference entity="Group" package-path="com.liferay.portal" />
+	</entity>
+
+	<entity local-service="true" name="SubjectCategory"
+		remote-service="true">
+		<!-- fields -->
+		<column name="id" primary="true" type="long" />
+		<column name="name" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+	</entity>
+
 	<exceptions>
-	<exception>FileValidation</exception>
-	<exception>ReceiptValidation</exception>
+		<exception>FileValidation</exception>
+		<exception>ReceiptValidation</exception>
+		<exception>DuplicateFileNumber</exception>
 	</exceptions>
 </service-builder>

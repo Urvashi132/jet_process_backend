@@ -46,10 +46,16 @@ import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
+import io.jetprocess.service.persistence.FileCategoryPersistence;
+import io.jetprocess.service.persistence.NoteDocumentPersistence;
+import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
+import io.jetprocess.service.persistence.SubjectCategoryPersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 import io.jetprocess.service.persistence.TypePersistence;
 
@@ -106,13 +112,13 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public TertiaryHead createTertiaryHead(long tertiaryHeadId) {
-		return tertiaryHeadPersistence.create(tertiaryHeadId);
+	public TertiaryHead createTertiaryHead(long id) {
+		return tertiaryHeadPersistence.create(id);
 	}
 
 	/**
@@ -122,16 +128,14 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect TertiaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public TertiaryHead deleteTertiaryHead(long tertiaryHeadId)
-		throws PortalException {
-
-		return tertiaryHeadPersistence.remove(tertiaryHeadId);
+	public TertiaryHead deleteTertiaryHead(long id) throws PortalException {
+		return tertiaryHeadPersistence.remove(id);
 	}
 
 	/**
@@ -250,22 +254,20 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	}
 
 	@Override
-	public TertiaryHead fetchTertiaryHead(long tertiaryHeadId) {
-		return tertiaryHeadPersistence.fetchByPrimaryKey(tertiaryHeadId);
+	public TertiaryHead fetchTertiaryHead(long id) {
+		return tertiaryHeadPersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the tertiary head with the primary key.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public TertiaryHead getTertiaryHead(long tertiaryHeadId)
-		throws PortalException {
-
-		return tertiaryHeadPersistence.findByPrimaryKey(tertiaryHeadId);
+	public TertiaryHead getTertiaryHead(long id) throws PortalException {
+		return tertiaryHeadPersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -277,7 +279,7 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(TertiaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("tertiaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -294,8 +296,7 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(TertiaryHead.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName(
-			"tertiaryHeadId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -307,7 +308,7 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(TertiaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("tertiaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	/**
@@ -480,6 +481,18 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
+	protected DocumentNoteMappingPersistence documentNoteMappingPersistence;
+
+	@Reference
+	protected FileCategoryPersistence fileCategoryPersistence;
+
+	@Reference
+	protected NotePersistence notePersistence;
+
+	@Reference
+	protected NoteDocumentPersistence noteDocumentPersistence;
+
+	@Reference
 	protected OrganizationPersistence organizationPersistence;
 
 	@Reference
@@ -490,6 +503,12 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
+
+	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
+	protected SubjectCategoryPersistence subjectCategoryPersistence;
 
 	protected TertiaryHeadLocalService tertiaryHeadLocalService;
 
@@ -514,13 +533,5 @@ public abstract class TertiaryHeadLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetEntryLocalService
-		assetEntryLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetTagLocalService
-		assetTagLocalService;
 
 }

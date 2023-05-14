@@ -141,24 +141,24 @@ public class BasicHeadUtil {
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
-	public static BasicHead create(long basicHeadId) {
-		return getPersistence().create(basicHeadId);
+	public static BasicHead create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the basic head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
-	public static BasicHead remove(long basicHeadId)
+	public static BasicHead remove(long id)
 		throws io.jetprocess.exception.NoSuchBasicHeadException {
 
-		return getPersistence().remove(basicHeadId);
+		return getPersistence().remove(id);
 	}
 
 	public static BasicHead updateImpl(BasicHead basicHead) {
@@ -168,24 +168,24 @@ public class BasicHeadUtil {
 	/**
 	 * Returns the basic head with the primary key or throws a <code>NoSuchBasicHeadException</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws NoSuchBasicHeadException if a basic head with the primary key could not be found
 	 */
-	public static BasicHead findByPrimaryKey(long basicHeadId)
+	public static BasicHead findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchBasicHeadException {
 
-		return getPersistence().findByPrimaryKey(basicHeadId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the basic head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head, or <code>null</code> if a basic head with the primary key could not be found
 	 */
-	public static BasicHead fetchByPrimaryKey(long basicHeadId) {
-		return getPersistence().fetchByPrimaryKey(basicHeadId);
+	public static BasicHead fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

@@ -32,9 +32,9 @@ public class BasicHeadSoap implements Serializable {
 	public static BasicHeadSoap toSoapModel(BasicHead model) {
 		BasicHeadSoap soapModel = new BasicHeadSoap();
 
-		soapModel.setBasicHeadId(model.getBasicHeadId());
-		soapModel.setBasicHeadValue(model.getBasicHeadValue());
-		soapModel.setBasicHeadCode(model.getBasicHeadCode());
+		soapModel.setId(model.getId());
+		soapModel.setName(model.getName());
+		soapModel.setCode(model.getCode());
 
 		return soapModel;
 	}
@@ -81,39 +81,39 @@ public class BasicHeadSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _basicHeadId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setBasicHeadId(pk);
+		setId(pk);
 	}
 
-	public long getBasicHeadId() {
-		return _basicHeadId;
+	public long getId() {
+		return _id;
 	}
 
-	public void setBasicHeadId(long basicHeadId) {
-		_basicHeadId = basicHeadId;
+	public void setId(long id) {
+		_id = id;
 	}
 
-	public String getBasicHeadValue() {
-		return _basicHeadValue;
+	public String getName() {
+		return _name;
 	}
 
-	public void setBasicHeadValue(String basicHeadValue) {
-		_basicHeadValue = basicHeadValue;
+	public void setName(String name) {
+		_name = name;
 	}
 
-	public long getBasicHeadCode() {
-		return _basicHeadCode;
+	public long getCode() {
+		return _code;
 	}
 
-	public void setBasicHeadCode(long basicHeadCode) {
-		_basicHeadCode = basicHeadCode;
+	public void setCode(long code) {
+		_code = code;
 	}
 
-	private long _basicHeadId;
-	private String _basicHeadValue;
-	private long _basicHeadCode;
+	private long _id;
+	private String _name;
+	private long _code;
 
 }

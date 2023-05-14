@@ -10,8 +10,10 @@ import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 
 import java.util.function.BiFunction;
@@ -40,6 +42,14 @@ public class Mutation {
 			fileRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setNoteDocumentRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<NoteDocumentRsModelResource>
+			noteDocumentRsModelResourceComponentServiceObjects) {
+
+		_noteDocumentRsModelResourceComponentServiceObjects =
+			noteDocumentRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setReceiptRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<ReceiptRsModelResource>
 			receiptRsModelResourceComponentServiceObjects) {
@@ -49,14 +59,13 @@ public class Mutation {
 	}
 
 	@GraphQLField
-	public boolean deleteDocFileById(@GraphQLName("docFileId") Long docFileId)
+	public boolean deleteDocFileById(@GraphQLName("id") Long id)
 		throws Exception {
 
 		_applyVoidComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			fileRsModelResource -> fileRsModelResource.deleteDocFileById(
-				docFileId));
+			fileRsModelResource -> fileRsModelResource.deleteDocFileById(id));
 
 		return true;
 	}
@@ -75,7 +84,7 @@ public class Mutation {
 
 	@GraphQLField
 	public FileRsModel updateDocFile(
-			@GraphQLName("docFileId") Long docFileId,
+			@GraphQLName("id") Long id,
 			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
 		throws Exception {
 
@@ -83,7 +92,49 @@ public class Mutation {
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			fileRsModelResource -> fileRsModelResource.updateDocFile(
-				docFileId, fileRsModel));
+				id, fileRsModel));
+	}
+
+	@GraphQLField
+	public boolean deleteNoteDocumentById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocumentRsModelResource ->
+				noteDocumentRsModelResource.deleteNoteDocumentById(id));
+
+		return true;
+	}
+
+	@GraphQLField
+	public NoteDocumentRsModel createNotedocument(
+			@GraphQLName("noteDocumentRsModel") NoteDocumentRsModel
+				noteDocumentRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocumentRsModelResource ->
+				noteDocumentRsModelResource.createNotedocument(
+					noteDocumentRsModel));
+	}
+
+	@GraphQLField
+	public NoteDocumentRsModel updateNoteDocument(
+			@GraphQLName("id") Long id,
+			@GraphQLName("noteDocumentRsModel") NoteDocumentRsModel
+				noteDocumentRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocumentRsModelResource ->
+				noteDocumentRsModelResource.updateNoteDocument(
+					id, noteDocumentRsModel));
 	}
 
 	@GraphQLField
@@ -177,6 +228,22 @@ public class Mutation {
 	}
 
 	private void _populateResourceContext(
+			NoteDocumentRsModelResource noteDocumentRsModelResource)
+		throws Exception {
+
+		noteDocumentRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		noteDocumentRsModelResource.setContextCompany(_company);
+		noteDocumentRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		noteDocumentRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		noteDocumentRsModelResource.setContextUriInfo(_uriInfo);
+		noteDocumentRsModelResource.setContextUser(_user);
+		noteDocumentRsModelResource.setGroupLocalService(_groupLocalService);
+		noteDocumentRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			ReceiptRsModelResource receiptRsModelResource)
 		throws Exception {
 
@@ -194,6 +261,8 @@ public class Mutation {
 
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<NoteDocumentRsModelResource>
+		_noteDocumentRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptRsModelResource>
 		_receiptRsModelResourceComponentServiceObjects;
 

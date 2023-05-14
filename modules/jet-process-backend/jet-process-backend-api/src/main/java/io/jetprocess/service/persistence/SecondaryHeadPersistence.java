@@ -159,14 +159,14 @@ public interface SecondaryHeadPersistence
 	/**
 	 * Returns the secondary heads before and after the current secondary head in the ordered set where primaryHeadId = &#63;.
 	 *
-	 * @param secondaryHeadId the primary key of the current secondary head
+	 * @param id the primary key of the current secondary head
 	 * @param primaryHeadId the primary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next secondary head
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
 	public SecondaryHead[] findBySecondaryHeadByPrimaryHeadId_PrevAndNext(
-			long secondaryHeadId, long primaryHeadId,
+			long id, long primaryHeadId,
 			com.liferay.portal.kernel.util.OrderByComparator<SecondaryHead>
 				orderByComparator)
 		throws NoSuchSecondaryHeadException;
@@ -203,40 +203,39 @@ public interface SecondaryHeadPersistence
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
-	public SecondaryHead create(long secondaryHeadId);
+	public SecondaryHead create(long id);
 
 	/**
 	 * Removes the secondary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
-	public SecondaryHead remove(long secondaryHeadId)
-		throws NoSuchSecondaryHeadException;
+	public SecondaryHead remove(long id) throws NoSuchSecondaryHeadException;
 
 	public SecondaryHead updateImpl(SecondaryHead secondaryHead);
 
 	/**
 	 * Returns the secondary head with the primary key or throws a <code>NoSuchSecondaryHeadException</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
-	public SecondaryHead findByPrimaryKey(long secondaryHeadId)
+	public SecondaryHead findByPrimaryKey(long id)
 		throws NoSuchSecondaryHeadException;
 
 	/**
 	 * Returns the secondary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head, or <code>null</code> if a secondary head with the primary key could not be found
 	 */
-	public SecondaryHead fetchByPrimaryKey(long secondaryHeadId);
+	public SecondaryHead fetchByPrimaryKey(long id);
 
 	/**
 	 * Returns all the secondary heads.

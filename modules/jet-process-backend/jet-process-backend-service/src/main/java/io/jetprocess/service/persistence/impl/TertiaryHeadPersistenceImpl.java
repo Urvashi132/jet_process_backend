@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.util.SetUtil;
 
 import io.jetprocess.exception.NoSuchTertiaryHeadException;
 import io.jetprocess.model.TertiaryHead;
@@ -48,6 +49,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -386,7 +388,7 @@ public class TertiaryHeadPersistenceImpl
 	/**
 	 * Returns the tertiary heads before and after the current tertiary head in the ordered set where secondaryHeadId = &#63;.
 	 *
-	 * @param tertiaryHeadId the primary key of the current tertiary head
+	 * @param id the primary key of the current tertiary head
 	 * @param secondaryHeadId the secondary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next tertiary head
@@ -394,11 +396,11 @@ public class TertiaryHeadPersistenceImpl
 	 */
 	@Override
 	public TertiaryHead[] findByTertiaryHeadBySecondaryHeadId_PrevAndNext(
-			long tertiaryHeadId, long secondaryHeadId,
+			long id, long secondaryHeadId,
 			OrderByComparator<TertiaryHead> orderByComparator)
 		throws NoSuchTertiaryHeadException {
 
-		TertiaryHead tertiaryHead = findByPrimaryKey(tertiaryHeadId);
+		TertiaryHead tertiaryHead = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -607,6 +609,12 @@ public class TertiaryHeadPersistenceImpl
 			"tertiaryHead.secondaryHeadId = ?";
 
 	public TertiaryHeadPersistenceImpl() {
+		Map<String, String> dbColumnNames = new HashMap<String, String>();
+
+		dbColumnNames.put("id", "id_");
+
+		setDBColumnNames(dbColumnNames);
+
 		setModelClass(TertiaryHead.class);
 
 		setModelImplClass(TertiaryHeadImpl.class);
@@ -697,15 +705,15 @@ public class TertiaryHeadPersistenceImpl
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
 	@Override
-	public TertiaryHead create(long tertiaryHeadId) {
+	public TertiaryHead create(long id) {
 		TertiaryHead tertiaryHead = new TertiaryHeadImpl();
 
 		tertiaryHead.setNew(true);
-		tertiaryHead.setPrimaryKey(tertiaryHeadId);
+		tertiaryHead.setPrimaryKey(id);
 
 		return tertiaryHead;
 	}
@@ -713,15 +721,13 @@ public class TertiaryHeadPersistenceImpl
 	/**
 	 * Removes the tertiary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public TertiaryHead remove(long tertiaryHeadId)
-		throws NoSuchTertiaryHeadException {
-
-		return remove((Serializable)tertiaryHeadId);
+	public TertiaryHead remove(long id) throws NoSuchTertiaryHeadException {
+		return remove((Serializable)id);
 	}
 
 	/**
@@ -878,26 +884,26 @@ public class TertiaryHeadPersistenceImpl
 	/**
 	 * Returns the tertiary head with the primary key or throws a <code>NoSuchTertiaryHeadException</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws NoSuchTertiaryHeadException if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public TertiaryHead findByPrimaryKey(long tertiaryHeadId)
+	public TertiaryHead findByPrimaryKey(long id)
 		throws NoSuchTertiaryHeadException {
 
-		return findByPrimaryKey((Serializable)tertiaryHeadId);
+		return findByPrimaryKey((Serializable)id);
 	}
 
 	/**
 	 * Returns the tertiary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head, or <code>null</code> if a tertiary head with the primary key could not be found
 	 */
 	@Override
-	public TertiaryHead fetchByPrimaryKey(long tertiaryHeadId) {
-		return fetchByPrimaryKey((Serializable)tertiaryHeadId);
+	public TertiaryHead fetchByPrimaryKey(long id) {
+		return fetchByPrimaryKey((Serializable)id);
 	}
 
 	/**
@@ -1080,13 +1086,18 @@ public class TertiaryHeadPersistenceImpl
 	}
 
 	@Override
+	public Set<String> getBadColumnNames() {
+		return _badColumnNames;
+	}
+
+	@Override
 	protected EntityCache getEntityCache() {
 		return entityCache;
 	}
 
 	@Override
 	protected String getPKDBName() {
-		return "tertiaryHeadId";
+		return "id_";
 	}
 
 	@Override
@@ -1222,6 +1233,9 @@ public class TertiaryHeadPersistenceImpl
 
 	private static final Log _log = LogFactoryUtil.getLog(
 		TertiaryHeadPersistenceImpl.class);
+
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(
+		new String[] {"id"});
 
 	@Override
 	protected FinderCache getFinderCache() {

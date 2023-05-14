@@ -64,14 +64,12 @@ public class PrimaryHeadLocalServiceWrapper
 	/**
 	 * Creates a new primary head with the primary key. Does not add the primary head to the database.
 	 *
-	 * @param primaryHeadId the primary key for the new primary head
+	 * @param id the primary key for the new primary head
 	 * @return the new primary head
 	 */
 	@Override
-	public io.jetprocess.model.PrimaryHead createPrimaryHead(
-		long primaryHeadId) {
-
-		return _primaryHeadLocalService.createPrimaryHead(primaryHeadId);
+	public io.jetprocess.model.PrimaryHead createPrimaryHead(long id) {
+		return _primaryHeadLocalService.createPrimaryHead(id);
 	}
 
 	/**
@@ -92,15 +90,15 @@ public class PrimaryHeadLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect PrimaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head that was removed
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.PrimaryHead deletePrimaryHead(long primaryHeadId)
+	public io.jetprocess.model.PrimaryHead deletePrimaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _primaryHeadLocalService.deletePrimaryHead(primaryHeadId);
+		return _primaryHeadLocalService.deletePrimaryHead(id);
 	}
 
 	/**
@@ -223,10 +221,8 @@ public class PrimaryHeadLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.PrimaryHead fetchPrimaryHead(
-		long primaryHeadId) {
-
-		return _primaryHeadLocalService.fetchPrimaryHead(primaryHeadId);
+	public io.jetprocess.model.PrimaryHead fetchPrimaryHead(long id) {
+		return _primaryHeadLocalService.fetchPrimaryHead(id);
 	}
 
 	@Override
@@ -267,15 +263,15 @@ public class PrimaryHeadLocalServiceWrapper
 	/**
 	 * Returns the primary head with the primary key.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.PrimaryHead getPrimaryHead(long primaryHeadId)
+	public io.jetprocess.model.PrimaryHead getPrimaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _primaryHeadLocalService.getPrimaryHead(primaryHeadId);
+		return _primaryHeadLocalService.getPrimaryHead(id);
 	}
 
 	@Override

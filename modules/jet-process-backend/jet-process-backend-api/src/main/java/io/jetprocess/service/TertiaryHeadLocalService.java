@@ -85,11 +85,11 @@ public interface TertiaryHeadLocalService
 	/**
 	 * Creates a new tertiary head with the primary key. Does not add the tertiary head to the database.
 	 *
-	 * @param tertiaryHeadId the primary key for the new tertiary head
+	 * @param id the primary key for the new tertiary head
 	 * @return the new tertiary head
 	 */
 	@Transactional(enabled = false)
-	public TertiaryHead createTertiaryHead(long tertiaryHeadId);
+	public TertiaryHead createTertiaryHead(long id);
 
 	/**
 	 * @throws PortalException
@@ -105,13 +105,12 @@ public interface TertiaryHeadLocalService
 	 * <strong>Important:</strong> Inspect TertiaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head that was removed
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public TertiaryHead deleteTertiaryHead(long tertiaryHeadId)
-		throws PortalException;
+	public TertiaryHead deleteTertiaryHead(long id) throws PortalException;
 
 	/**
 	 * Deletes the tertiary head from the database. Also notifies the appropriate model listeners.
@@ -199,7 +198,7 @@ public interface TertiaryHeadLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public TertiaryHead fetchTertiaryHead(long tertiaryHeadId);
+	public TertiaryHead fetchTertiaryHead(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -229,13 +228,12 @@ public interface TertiaryHeadLocalService
 	/**
 	 * Returns the tertiary head with the primary key.
 	 *
-	 * @param tertiaryHeadId the primary key of the tertiary head
+	 * @param id the primary key of the tertiary head
 	 * @return the tertiary head
 	 * @throws PortalException if a tertiary head with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public TertiaryHead getTertiaryHead(long tertiaryHeadId)
-		throws PortalException;
+	public TertiaryHead getTertiaryHead(long id) throws PortalException;
 
 	/**
 	 * Returns a range of all the tertiary heads.

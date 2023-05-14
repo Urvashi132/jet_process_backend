@@ -24,38 +24,33 @@ import io.jetprocess.service.DocFileLocalService;
 /**
  * @author Admin
  */
-@Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/file-rs-model.properties",
-	scope = ServiceScope.PROTOTYPE, service = FileRsModelResource.class
-)
+@Component(properties = "OSGI-INF/liferay/rest/v1_0/file-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = FileRsModelResource.class)
 public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
-private final Log LOGGER = LogFactoryUtil.getLog(FileRsModelResourceImpl.class);
+	private final Log LOGGER = LogFactoryUtil.getLog(FileRsModelResourceImpl.class);
+
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<FileRsModel>, UnsafeConsumer<FileRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
-		LOGGER.info(fileRsModel.toString());
+		LOGGER.info(fileRsModel);
+		
 		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
 				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
-				fileRsModel.getYear(), fileRsModel.getUserPostId(), fileRsModel.getCurrentUser(),
-				fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
+				fileRsModel.getYear(), fileRsModel.getUserPostId());
 		LOGGER.info("after");
 		return fileRsModel;
 	}
 
 	@Override
 	public FileRsModel updateDocFile(@NotNull Long docFileId, FileRsModel fileRsModel) throws Exception {
-		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getDocFileId(), fileRsModel.getNature(),
-				fileRsModel.getType(), fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
-				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
-				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserPostId(),
-				fileRsModel.getCurrentUser(), fileRsModel.getCurrentState(), fileRsModel.getDealingOrganizationId());
+		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getId(), fileRsModel.getSubject(),
+				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference());
 		return getFileRsModel(docFile);
 	}
 
@@ -70,21 +65,22 @@ private final Log LOGGER = LogFactoryUtil.getLog(FileRsModelResourceImpl.class);
 	}
 
 	@Override
-	
+
 	public void deleteDocFileById(@NotNull Long docFileId) throws Exception {
-		docFileLocalService.deleteDocFileById(docFileId);
+		docFileLocalService.deleteDocFile(docFileId);
 	}
 
 	@Override
 	public FileRsModel getDocFileById(@NotNull Long docFileId) throws Exception {
-		DocFile docFile = docFileLocalService.getDocFileById(docFileId);
+		DocFile docFile = docFileLocalService.getDocFile(docFileId);
 		return getFileRsModel(docFile);
 	}
 
 	private FileRsModel getFileRsModel(DocFile docFile) {
 		FileRsModel createdDocFile = new FileRsModel();
-		createdDocFile.setDocFileId(docFile.getDocFileId());
+		createdDocFile.setId(docFile.getId());
 		createdDocFile.setGroupId(docFile.getGroupId());
+		createdDocFile.setModifiedDate(docFile.getModifiedDate());;
 		createdDocFile.setNature(docFile.getNature());
 		createdDocFile.setType(docFile.getType());
 		createdDocFile.setHeadId(docFile.getHeadId());
@@ -96,9 +92,6 @@ private final Log LOGGER = LogFactoryUtil.getLog(FileRsModelResourceImpl.class);
 		createdDocFile.setReference(docFile.getReference());
 		createdDocFile.setYear(docFile.getYear());
 		createdDocFile.setUserPostId(docFile.getUserPostId());
-		createdDocFile.setCurrentUser(docFile.getCurrentUser());
-		createdDocFile.setCurrentState(docFile.getCurrentState());
-		createdDocFile.setDealingOrganizationId(docFile.getDealingOrganizationId());
 		return createdDocFile;
 	}
 

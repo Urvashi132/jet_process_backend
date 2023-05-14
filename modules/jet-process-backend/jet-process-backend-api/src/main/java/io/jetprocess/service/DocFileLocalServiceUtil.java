@@ -63,24 +63,22 @@ public class DocFileLocalServiceUtil {
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
-	public static DocFile createDocFile(long docFileId) {
-		return getService().createDocFile(docFileId);
+	public static DocFile createDocFile(long id) {
+		return getService().createDocFile(id);
 	}
 
 	public static DocFile createDocFile(
 			long groupId, String nature, String type, long headId,
 			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			String remarks, String reference, long year, long userPostId)
 		throws PortalException {
 
 		return getService().createDocFile(
 			groupId, nature, type, headId, fileCodeId, subject, fileNo,
-			categoryId, remarks, reference, year, userPostId, currentUser,
-			currentState, dealingOrganizationId);
+			categoryId, remarks, reference, year, userPostId);
 	}
 
 	/**
@@ -114,18 +112,12 @@ public class DocFileLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect DocFileLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
-	public static DocFile deleteDocFile(long docFileId) throws PortalException {
-		return getService().deleteDocFile(docFileId);
-	}
-
-	public static DocFile deleteDocFileById(long docFileId)
-		throws PortalException {
-
-		return getService().deleteDocFileById(docFileId);
+	public static DocFile deleteDocFile(long id) throws PortalException {
+		return getService().deleteDocFile(id);
 	}
 
 	/**
@@ -223,8 +215,8 @@ public class DocFileLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static DocFile fetchDocFile(long docFileId) {
-		return getService().fetchDocFile(docFileId);
+	public static DocFile fetchDocFile(long id) {
+		return getService().fetchDocFile(id);
 	}
 
 	/**
@@ -240,8 +232,8 @@ public class DocFileLocalServiceUtil {
 		return getService().fetchDocFileByUuidAndGroupId(uuid, groupId);
 	}
 
-	public static String generateFileNo(long docFileId) {
-		return getService().generateFileNo(docFileId);
+	public static String generateFileNo(long id) {
+		return getService().generateFileNo(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -253,18 +245,12 @@ public class DocFileLocalServiceUtil {
 	/**
 	 * Returns the doc file with the primary key.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
-	public static DocFile getDocFile(long docFileId) throws PortalException {
-		return getService().getDocFile(docFileId);
-	}
-
-	public static DocFile getDocFileById(long docFileId)
-		throws PortalException {
-
-		return getService().getDocFileById(docFileId);
+	public static DocFile getDocFile(long id) throws PortalException {
+		return getService().getDocFile(id);
 	}
 
 	/**
@@ -388,16 +374,12 @@ public class DocFileLocalServiceUtil {
 	}
 
 	public static DocFile updateDocFile(
-			long docFileId, String nature, String type, long headId,
-			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			long id, String subject, long categoryId, String remarks,
+			String reference)
 		throws PortalException {
 
 		return getService().updateDocFile(
-			docFileId, nature, type, headId, fileCodeId, subject, fileNo,
-			categoryId, remarks, reference, year, userPostId, currentUser,
-			currentState, dealingOrganizationId);
+			id, subject, categoryId, remarks, reference);
 	}
 
 	public static DocFileLocalService getService() {

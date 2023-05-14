@@ -15,6 +15,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -72,118 +76,6 @@ public class FileRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long categoryId;
-
-	@Schema
-	public Integer getCurrentState() {
-		return currentState;
-	}
-
-	public void setCurrentState(Integer currentState) {
-		this.currentState = currentState;
-	}
-
-	@JsonIgnore
-	public void setCurrentState(
-		UnsafeSupplier<Integer, Exception> currentStateUnsafeSupplier) {
-
-		try {
-			currentState = currentStateUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Integer currentState;
-
-	@Schema
-	public Long getCurrentUser() {
-		return currentUser;
-	}
-
-	public void setCurrentUser(Long currentUser) {
-		this.currentUser = currentUser;
-	}
-
-	@JsonIgnore
-	public void setCurrentUser(
-		UnsafeSupplier<Long, Exception> currentUserUnsafeSupplier) {
-
-		try {
-			currentUser = currentUserUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long currentUser;
-
-	@Schema
-	public Long getDealingOrganizationId() {
-		return dealingOrganizationId;
-	}
-
-	public void setDealingOrganizationId(Long dealingOrganizationId) {
-		this.dealingOrganizationId = dealingOrganizationId;
-	}
-
-	@JsonIgnore
-	public void setDealingOrganizationId(
-		UnsafeSupplier<Long, Exception> dealingOrganizationIdUnsafeSupplier) {
-
-		try {
-			dealingOrganizationId = dealingOrganizationIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long dealingOrganizationId;
-
-	@Schema
-	public Long getDocFileId() {
-		return docFileId;
-	}
-
-	public void setDocFileId(Long docFileId) {
-		this.docFileId = docFileId;
-	}
-
-	@JsonIgnore
-	public void setDocFileId(
-		UnsafeSupplier<Long, Exception> docFileIdUnsafeSupplier) {
-
-		try {
-			docFileId = docFileIdUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long docFileId;
 
 	@Schema
 	public Long getFileCodeId() {
@@ -296,6 +188,60 @@ public class FileRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long headId;
+
+	@Schema
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@JsonIgnore
+	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
+		try {
+			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Long id;
+
+	@Schema
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	@JsonIgnore
+	public void setModifiedDate(
+		UnsafeSupplier<Date, Exception> modifiedDateUnsafeSupplier) {
+
+		try {
+			modifiedDate = modifiedDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Date modifiedDate;
 
 	@Schema
 	public String getNature() {
@@ -516,6 +462,9 @@ public class FileRsModel implements Serializable {
 
 		sb.append("{");
 
+		DateFormat liferayToJSONDateFormat = new SimpleDateFormat(
+			"yyyy-MM-dd'T'HH:mm:ss'Z'");
+
 		if (categoryId != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -524,46 +473,6 @@ public class FileRsModel implements Serializable {
 			sb.append("\"categoryId\": ");
 
 			sb.append(categoryId);
-		}
-
-		if (currentState != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"currentState\": ");
-
-			sb.append(currentState);
-		}
-
-		if (currentUser != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"currentUser\": ");
-
-			sb.append(currentUser);
-		}
-
-		if (dealingOrganizationId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"dealingOrganizationId\": ");
-
-			sb.append(dealingOrganizationId);
-		}
-
-		if (docFileId != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"docFileId\": ");
-
-			sb.append(docFileId);
 		}
 
 		if (fileCodeId != null) {
@@ -608,6 +517,30 @@ public class FileRsModel implements Serializable {
 			sb.append("\"headId\": ");
 
 			sb.append(headId);
+		}
+
+		if (id != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"id\": ");
+
+			sb.append(id);
+		}
+
+		if (modifiedDate != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"modifiedDate\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(modifiedDate));
+
+			sb.append("\"");
 		}
 
 		if (nature != null) {

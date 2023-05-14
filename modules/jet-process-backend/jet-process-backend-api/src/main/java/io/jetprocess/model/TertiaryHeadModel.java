@@ -54,33 +54,33 @@ public interface TertiaryHeadModel extends BaseModel<TertiaryHead> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the tertiary head ID of this tertiary head.
+	 * Returns the ID of this tertiary head.
 	 *
-	 * @return the tertiary head ID of this tertiary head
+	 * @return the ID of this tertiary head
 	 */
-	public long getTertiaryHeadId();
+	public long getId();
 
 	/**
-	 * Sets the tertiary head ID of this tertiary head.
+	 * Sets the ID of this tertiary head.
 	 *
-	 * @param tertiaryHeadId the tertiary head ID of this tertiary head
+	 * @param id the ID of this tertiary head
 	 */
-	public void setTertiaryHeadId(long tertiaryHeadId);
+	public void setId(long id);
 
 	/**
-	 * Returns the tertiary headvalue of this tertiary head.
+	 * Returns the name of this tertiary head.
 	 *
-	 * @return the tertiary headvalue of this tertiary head
+	 * @return the name of this tertiary head
 	 */
 	@AutoEscape
-	public String getTertiaryHeadvalue();
+	public String getName();
 
 	/**
-	 * Sets the tertiary headvalue of this tertiary head.
+	 * Sets the name of this tertiary head.
 	 *
-	 * @param tertiaryHeadvalue the tertiary headvalue of this tertiary head
+	 * @param name the name of this tertiary head
 	 */
-	public void setTertiaryHeadvalue(String tertiaryHeadvalue);
+	public void setName(String name);
 
 	/**
 	 * Returns the secondary head ID of this tertiary head.

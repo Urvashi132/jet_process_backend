@@ -36,12 +36,12 @@ public interface BasicHead extends BasicHeadModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.BasicHeadImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<BasicHead, Long> BASIC_HEAD_ID_ACCESSOR =
+	public static final Accessor<BasicHead, Long> ID_ACCESSOR =
 		new Accessor<BasicHead, Long>() {
 
 			@Override
 			public Long get(BasicHead basicHead) {
-				return basicHead.getBasicHeadId();
+				return basicHead.getId();
 			}
 
 			@Override

@@ -247,19 +247,18 @@ public class DocFileUtil {
 	/**
 	 * Returns the doc files before and after the current doc file in the ordered set where uuid = &#63;.
 	 *
-	 * @param docFileId the primary key of the current doc file
+	 * @param id the primary key of the current doc file
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next doc file
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
 	public static DocFile[] findByUuid_PrevAndNext(
-			long docFileId, String uuid,
-			OrderByComparator<DocFile> orderByComparator)
+			long id, String uuid, OrderByComparator<DocFile> orderByComparator)
 		throws io.jetprocess.exception.NoSuchDocFileException {
 
 		return getPersistence().findByUuid_PrevAndNext(
-			docFileId, uuid, orderByComparator);
+			id, uuid, orderByComparator);
 	}
 
 	/**
@@ -490,7 +489,7 @@ public class DocFileUtil {
 	/**
 	 * Returns the doc files before and after the current doc file in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param docFileId the primary key of the current doc file
+	 * @param id the primary key of the current doc file
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -498,12 +497,12 @@ public class DocFileUtil {
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
 	public static DocFile[] findByUuid_C_PrevAndNext(
-			long docFileId, String uuid, long companyId,
+			long id, String uuid, long companyId,
 			OrderByComparator<DocFile> orderByComparator)
 		throws io.jetprocess.exception.NoSuchDocFileException {
 
 		return getPersistence().findByUuid_C_PrevAndNext(
-			docFileId, uuid, companyId, orderByComparator);
+			id, uuid, companyId, orderByComparator);
 	}
 
 	/**
@@ -548,24 +547,24 @@ public class DocFileUtil {
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
-	public static DocFile create(long docFileId) {
-		return getPersistence().create(docFileId);
+	public static DocFile create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the doc file with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
-	public static DocFile remove(long docFileId)
+	public static DocFile remove(long id)
 		throws io.jetprocess.exception.NoSuchDocFileException {
 
-		return getPersistence().remove(docFileId);
+		return getPersistence().remove(id);
 	}
 
 	public static DocFile updateImpl(DocFile docFile) {
@@ -575,24 +574,24 @@ public class DocFileUtil {
 	/**
 	 * Returns the doc file with the primary key or throws a <code>NoSuchDocFileException</code> if it could not be found.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws NoSuchDocFileException if a doc file with the primary key could not be found
 	 */
-	public static DocFile findByPrimaryKey(long docFileId)
+	public static DocFile findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchDocFileException {
 
-		return getPersistence().findByPrimaryKey(docFileId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the doc file with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file, or <code>null</code> if a doc file with the primary key could not be found
 	 */
-	public static DocFile fetchByPrimaryKey(long docFileId) {
-		return getPersistence().fetchByPrimaryKey(docFileId);
+	public static DocFile fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

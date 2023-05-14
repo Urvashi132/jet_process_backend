@@ -41,8 +41,8 @@ public class SecondaryHeadWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("secondaryHeadId", getSecondaryHeadId());
-		attributes.put("secondaryHeadValue", getSecondaryHeadValue());
+		attributes.put("id", getId());
+		attributes.put("name", getName());
 		attributes.put("primaryHeadId", getPrimaryHeadId());
 
 		return attributes;
@@ -50,17 +50,16 @@ public class SecondaryHeadWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long secondaryHeadId = (Long)attributes.get("secondaryHeadId");
+		Long id = (Long)attributes.get("id");
 
-		if (secondaryHeadId != null) {
-			setSecondaryHeadId(secondaryHeadId);
+		if (id != null) {
+			setId(id);
 		}
 
-		String secondaryHeadValue = (String)attributes.get(
-			"secondaryHeadValue");
+		String name = (String)attributes.get("name");
 
-		if (secondaryHeadValue != null) {
-			setSecondaryHeadValue(secondaryHeadValue);
+		if (name != null) {
+			setName(name);
 		}
 
 		Long primaryHeadId = (Long)attributes.get("primaryHeadId");
@@ -73,6 +72,26 @@ public class SecondaryHeadWrapper
 	@Override
 	public SecondaryHead cloneWithOriginalValues() {
 		return wrap(model.cloneWithOriginalValues());
+	}
+
+	/**
+	 * Returns the ID of this secondary head.
+	 *
+	 * @return the ID of this secondary head
+	 */
+	@Override
+	public long getId() {
+		return model.getId();
+	}
+
+	/**
+	 * Returns the name of this secondary head.
+	 *
+	 * @return the name of this secondary head
+	 */
+	@Override
+	public String getName() {
+		return model.getName();
 	}
 
 	/**
@@ -95,29 +114,29 @@ public class SecondaryHeadWrapper
 		return model.getPrimaryKey();
 	}
 
-	/**
-	 * Returns the secondary head ID of this secondary head.
-	 *
-	 * @return the secondary head ID of this secondary head
-	 */
-	@Override
-	public long getSecondaryHeadId() {
-		return model.getSecondaryHeadId();
-	}
-
-	/**
-	 * Returns the secondary head value of this secondary head.
-	 *
-	 * @return the secondary head value of this secondary head
-	 */
-	@Override
-	public String getSecondaryHeadValue() {
-		return model.getSecondaryHeadValue();
-	}
-
 	@Override
 	public void persist() {
 		model.persist();
+	}
+
+	/**
+	 * Sets the ID of this secondary head.
+	 *
+	 * @param id the ID of this secondary head
+	 */
+	@Override
+	public void setId(long id) {
+		model.setId(id);
+	}
+
+	/**
+	 * Sets the name of this secondary head.
+	 *
+	 * @param name the name of this secondary head
+	 */
+	@Override
+	public void setName(String name) {
+		model.setName(name);
 	}
 
 	/**
@@ -138,26 +157,6 @@ public class SecondaryHeadWrapper
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		model.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	 * Sets the secondary head ID of this secondary head.
-	 *
-	 * @param secondaryHeadId the secondary head ID of this secondary head
-	 */
-	@Override
-	public void setSecondaryHeadId(long secondaryHeadId) {
-		model.setSecondaryHeadId(secondaryHeadId);
-	}
-
-	/**
-	 * Sets the secondary head value of this secondary head.
-	 *
-	 * @param secondaryHeadValue the secondary head value of this secondary head
-	 */
-	@Override
-	public void setSecondaryHeadValue(String secondaryHeadValue) {
-		model.setSecondaryHeadValue(secondaryHeadValue);
 	}
 
 	@Override

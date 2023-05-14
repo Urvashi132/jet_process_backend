@@ -41,8 +41,8 @@ public class TertiaryHeadWrapper
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("tertiaryHeadId", getTertiaryHeadId());
-		attributes.put("tertiaryHeadvalue", getTertiaryHeadvalue());
+		attributes.put("id", getId());
+		attributes.put("name", getName());
 		attributes.put("secondaryHeadId", getSecondaryHeadId());
 
 		return attributes;
@@ -50,16 +50,16 @@ public class TertiaryHeadWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long tertiaryHeadId = (Long)attributes.get("tertiaryHeadId");
+		Long id = (Long)attributes.get("id");
 
-		if (tertiaryHeadId != null) {
-			setTertiaryHeadId(tertiaryHeadId);
+		if (id != null) {
+			setId(id);
 		}
 
-		String tertiaryHeadvalue = (String)attributes.get("tertiaryHeadvalue");
+		String name = (String)attributes.get("name");
 
-		if (tertiaryHeadvalue != null) {
-			setTertiaryHeadvalue(tertiaryHeadvalue);
+		if (name != null) {
+			setName(name);
 		}
 
 		Long secondaryHeadId = (Long)attributes.get("secondaryHeadId");
@@ -72,6 +72,26 @@ public class TertiaryHeadWrapper
 	@Override
 	public TertiaryHead cloneWithOriginalValues() {
 		return wrap(model.cloneWithOriginalValues());
+	}
+
+	/**
+	 * Returns the ID of this tertiary head.
+	 *
+	 * @return the ID of this tertiary head
+	 */
+	@Override
+	public long getId() {
+		return model.getId();
+	}
+
+	/**
+	 * Returns the name of this tertiary head.
+	 *
+	 * @return the name of this tertiary head
+	 */
+	@Override
+	public String getName() {
+		return model.getName();
 	}
 
 	/**
@@ -94,29 +114,29 @@ public class TertiaryHeadWrapper
 		return model.getSecondaryHeadId();
 	}
 
-	/**
-	 * Returns the tertiary head ID of this tertiary head.
-	 *
-	 * @return the tertiary head ID of this tertiary head
-	 */
-	@Override
-	public long getTertiaryHeadId() {
-		return model.getTertiaryHeadId();
-	}
-
-	/**
-	 * Returns the tertiary headvalue of this tertiary head.
-	 *
-	 * @return the tertiary headvalue of this tertiary head
-	 */
-	@Override
-	public String getTertiaryHeadvalue() {
-		return model.getTertiaryHeadvalue();
-	}
-
 	@Override
 	public void persist() {
 		model.persist();
+	}
+
+	/**
+	 * Sets the ID of this tertiary head.
+	 *
+	 * @param id the ID of this tertiary head
+	 */
+	@Override
+	public void setId(long id) {
+		model.setId(id);
+	}
+
+	/**
+	 * Sets the name of this tertiary head.
+	 *
+	 * @param name the name of this tertiary head
+	 */
+	@Override
+	public void setName(String name) {
+		model.setName(name);
 	}
 
 	/**
@@ -137,26 +157,6 @@ public class TertiaryHeadWrapper
 	@Override
 	public void setSecondaryHeadId(long secondaryHeadId) {
 		model.setSecondaryHeadId(secondaryHeadId);
-	}
-
-	/**
-	 * Sets the tertiary head ID of this tertiary head.
-	 *
-	 * @param tertiaryHeadId the tertiary head ID of this tertiary head
-	 */
-	@Override
-	public void setTertiaryHeadId(long tertiaryHeadId) {
-		model.setTertiaryHeadId(tertiaryHeadId);
-	}
-
-	/**
-	 * Sets the tertiary headvalue of this tertiary head.
-	 *
-	 * @param tertiaryHeadvalue the tertiary headvalue of this tertiary head
-	 */
-	@Override
-	public void setTertiaryHeadvalue(String tertiaryHeadvalue) {
-		model.setTertiaryHeadvalue(tertiaryHeadvalue);
 	}
 
 	@Override

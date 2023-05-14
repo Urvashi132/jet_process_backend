@@ -46,10 +46,16 @@ import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
+import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
+import io.jetprocess.service.persistence.FileCategoryPersistence;
+import io.jetprocess.service.persistence.NoteDocumentPersistence;
+import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
+import io.jetprocess.service.persistence.StatePersistence;
+import io.jetprocess.service.persistence.SubjectCategoryPersistence;
 import io.jetprocess.service.persistence.TertiaryHeadPersistence;
 import io.jetprocess.service.persistence.TypePersistence;
 
@@ -106,13 +112,13 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public SecondaryHead createSecondaryHead(long secondaryHeadId) {
-		return secondaryHeadPersistence.create(secondaryHeadId);
+	public SecondaryHead createSecondaryHead(long id) {
+		return secondaryHeadPersistence.create(id);
 	}
 
 	/**
@@ -122,16 +128,14 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect SecondaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public SecondaryHead deleteSecondaryHead(long secondaryHeadId)
-		throws PortalException {
-
-		return secondaryHeadPersistence.remove(secondaryHeadId);
+	public SecondaryHead deleteSecondaryHead(long id) throws PortalException {
+		return secondaryHeadPersistence.remove(id);
 	}
 
 	/**
@@ -250,22 +254,20 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 	}
 
 	@Override
-	public SecondaryHead fetchSecondaryHead(long secondaryHeadId) {
-		return secondaryHeadPersistence.fetchByPrimaryKey(secondaryHeadId);
+	public SecondaryHead fetchSecondaryHead(long id) {
+		return secondaryHeadPersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the secondary head with the primary key.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public SecondaryHead getSecondaryHead(long secondaryHeadId)
-		throws PortalException {
-
-		return secondaryHeadPersistence.findByPrimaryKey(secondaryHeadId);
+	public SecondaryHead getSecondaryHead(long id) throws PortalException {
+		return secondaryHeadPersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -277,7 +279,7 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(SecondaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("secondaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -294,8 +296,7 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(SecondaryHead.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName(
-			"secondaryHeadId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -307,7 +308,7 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(SecondaryHead.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("secondaryHeadId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	/**
@@ -480,6 +481,18 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
+	protected DocumentNoteMappingPersistence documentNoteMappingPersistence;
+
+	@Reference
+	protected FileCategoryPersistence fileCategoryPersistence;
+
+	@Reference
+	protected NotePersistence notePersistence;
+
+	@Reference
+	protected NoteDocumentPersistence noteDocumentPersistence;
+
+	@Reference
 	protected OrganizationPersistence organizationPersistence;
 
 	@Reference
@@ -492,6 +505,12 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;
+
+	@Reference
+	protected StatePersistence statePersistence;
+
+	@Reference
+	protected SubjectCategoryPersistence subjectCategoryPersistence;
 
 	@Reference
 	protected TertiaryHeadPersistence tertiaryHeadPersistence;
@@ -514,13 +533,5 @@ public abstract class SecondaryHeadLocalServiceBaseImpl
 	@Reference
 	protected com.liferay.portal.kernel.service.UserLocalService
 		userLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetEntryLocalService
-		assetEntryLocalService;
-
-	@Reference
-	protected com.liferay.asset.kernel.service.AssetTagLocalService
-		assetTagLocalService;
 
 }

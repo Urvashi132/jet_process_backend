@@ -263,7 +263,7 @@ public class SecondaryHeadUtil {
 	/**
 	 * Returns the secondary heads before and after the current secondary head in the ordered set where primaryHeadId = &#63;.
 	 *
-	 * @param secondaryHeadId the primary key of the current secondary head
+	 * @param id the primary key of the current secondary head
 	 * @param primaryHeadId the primary head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next secondary head
@@ -271,12 +271,12 @@ public class SecondaryHeadUtil {
 	 */
 	public static SecondaryHead[]
 			findBySecondaryHeadByPrimaryHeadId_PrevAndNext(
-				long secondaryHeadId, long primaryHeadId,
+				long id, long primaryHeadId,
 				OrderByComparator<SecondaryHead> orderByComparator)
 		throws io.jetprocess.exception.NoSuchSecondaryHeadException {
 
 		return getPersistence().findBySecondaryHeadByPrimaryHeadId_PrevAndNext(
-			secondaryHeadId, primaryHeadId, orderByComparator);
+			id, primaryHeadId, orderByComparator);
 	}
 
 	/**
@@ -322,24 +322,24 @@ public class SecondaryHeadUtil {
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
-	public static SecondaryHead create(long secondaryHeadId) {
-		return getPersistence().create(secondaryHeadId);
+	public static SecondaryHead create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the secondary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
-	public static SecondaryHead remove(long secondaryHeadId)
+	public static SecondaryHead remove(long id)
 		throws io.jetprocess.exception.NoSuchSecondaryHeadException {
 
-		return getPersistence().remove(secondaryHeadId);
+		return getPersistence().remove(id);
 	}
 
 	public static SecondaryHead updateImpl(SecondaryHead secondaryHead) {
@@ -349,24 +349,24 @@ public class SecondaryHeadUtil {
 	/**
 	 * Returns the secondary head with the primary key or throws a <code>NoSuchSecondaryHeadException</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws NoSuchSecondaryHeadException if a secondary head with the primary key could not be found
 	 */
-	public static SecondaryHead findByPrimaryKey(long secondaryHeadId)
+	public static SecondaryHead findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchSecondaryHeadException {
 
-		return getPersistence().findByPrimaryKey(secondaryHeadId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the secondary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head, or <code>null</code> if a secondary head with the primary key could not be found
 	 */
-	public static SecondaryHead fetchByPrimaryKey(long secondaryHeadId) {
-		return getPersistence().fetchByPrimaryKey(secondaryHeadId);
+	public static SecondaryHead fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

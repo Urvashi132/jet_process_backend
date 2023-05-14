@@ -15,10 +15,15 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.exception.PortalException;
 
-import io.jetprocess.service.base.BasicHeadLocalServiceBaseImpl;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+
+import io.jetprocess.model.BasicHead;
+import io.jetprocess.service.base.BasicHeadLocalServiceBaseImpl;
 
 /**
  * @author Brian Wing Shun Chan
@@ -28,4 +33,10 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class BasicHeadLocalServiceImpl extends BasicHeadLocalServiceBaseImpl {
+
+	public List<BasicHead> getBasicHeadList() throws PortalException {
+		List<BasicHead> basicHeadList = getBasicHeads(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		return basicHeadList;
+	}
+
 }

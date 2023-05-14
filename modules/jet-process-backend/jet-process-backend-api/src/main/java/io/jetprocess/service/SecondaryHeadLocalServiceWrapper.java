@@ -64,14 +64,12 @@ public class SecondaryHeadLocalServiceWrapper
 	/**
 	 * Creates a new secondary head with the primary key. Does not add the secondary head to the database.
 	 *
-	 * @param secondaryHeadId the primary key for the new secondary head
+	 * @param id the primary key for the new secondary head
 	 * @return the new secondary head
 	 */
 	@Override
-	public io.jetprocess.model.SecondaryHead createSecondaryHead(
-		long secondaryHeadId) {
-
-		return _secondaryHeadLocalService.createSecondaryHead(secondaryHeadId);
+	public io.jetprocess.model.SecondaryHead createSecondaryHead(long id) {
+		return _secondaryHeadLocalService.createSecondaryHead(id);
 	}
 
 	/**
@@ -92,16 +90,15 @@ public class SecondaryHeadLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect SecondaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head that was removed
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.SecondaryHead deleteSecondaryHead(
-			long secondaryHeadId)
+	public io.jetprocess.model.SecondaryHead deleteSecondaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _secondaryHeadLocalService.deleteSecondaryHead(secondaryHeadId);
+		return _secondaryHeadLocalService.deleteSecondaryHead(id);
 	}
 
 	/**
@@ -225,10 +222,8 @@ public class SecondaryHeadLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.SecondaryHead fetchSecondaryHead(
-		long secondaryHeadId) {
-
-		return _secondaryHeadLocalService.fetchSecondaryHead(secondaryHeadId);
+	public io.jetprocess.model.SecondaryHead fetchSecondaryHead(long id) {
+		return _secondaryHeadLocalService.fetchSecondaryHead(id);
 	}
 
 	@Override
@@ -269,16 +264,15 @@ public class SecondaryHeadLocalServiceWrapper
 	/**
 	 * Returns the secondary head with the primary key.
 	 *
-	 * @param secondaryHeadId the primary key of the secondary head
+	 * @param id the primary key of the secondary head
 	 * @return the secondary head
 	 * @throws PortalException if a secondary head with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.SecondaryHead getSecondaryHead(
-			long secondaryHeadId)
+	public io.jetprocess.model.SecondaryHead getSecondaryHead(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _secondaryHeadLocalService.getSecondaryHead(secondaryHeadId);
+		return _secondaryHeadLocalService.getSecondaryHead(id);
 	}
 
 	@Override

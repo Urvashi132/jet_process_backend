@@ -73,29 +73,28 @@ public class SecondaryHeadModelImpl
 	public static final String TABLE_NAME = "JP_SecondaryHead";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"secondaryHeadId", Types.BIGINT},
-		{"secondaryHeadValue", Types.VARCHAR}, {"primaryHeadId", Types.BIGINT}
+		{"id_", Types.BIGINT}, {"name", Types.VARCHAR},
+		{"primaryHeadId", Types.BIGINT}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
 		new HashMap<String, Integer>();
 
 	static {
-		TABLE_COLUMNS_MAP.put("secondaryHeadId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("secondaryHeadValue", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("primaryHeadId", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_SecondaryHead (secondaryHeadId LONG not null primary key,secondaryHeadValue VARCHAR(255) null,primaryHeadId LONG)";
+		"create table JP_SecondaryHead (id_ LONG not null primary key,name VARCHAR(255) null,primaryHeadId LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_SecondaryHead";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY secondaryHead.secondaryHeadId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY secondaryHead.id ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_SecondaryHead.secondaryHeadId ASC";
+		" ORDER BY JP_SecondaryHead.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -114,7 +113,7 @@ public class SecondaryHeadModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long SECONDARYHEADID_COLUMN_BITMASK = 2L;
+	public static final long ID_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -145,8 +144,8 @@ public class SecondaryHeadModelImpl
 
 		SecondaryHead model = new SecondaryHeadImpl();
 
-		model.setSecondaryHeadId(soapModel.getSecondaryHeadId());
-		model.setSecondaryHeadValue(soapModel.getSecondaryHeadValue());
+		model.setId(soapModel.getId());
+		model.setName(soapModel.getName());
 		model.setPrimaryHeadId(soapModel.getPrimaryHeadId());
 
 		return model;
@@ -180,17 +179,17 @@ public class SecondaryHeadModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _secondaryHeadId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setSecondaryHeadId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _secondaryHeadId;
+		return _id;
 	}
 
 	@Override
@@ -299,17 +298,12 @@ public class SecondaryHeadModelImpl
 		Map<String, BiConsumer<SecondaryHead, ?>> attributeSetterBiConsumers =
 			new LinkedHashMap<String, BiConsumer<SecondaryHead, ?>>();
 
-		attributeGetterFunctions.put(
-			"secondaryHeadId", SecondaryHead::getSecondaryHeadId);
+		attributeGetterFunctions.put("id", SecondaryHead::getId);
 		attributeSetterBiConsumers.put(
-			"secondaryHeadId",
-			(BiConsumer<SecondaryHead, Long>)SecondaryHead::setSecondaryHeadId);
-		attributeGetterFunctions.put(
-			"secondaryHeadValue", SecondaryHead::getSecondaryHeadValue);
+			"id", (BiConsumer<SecondaryHead, Long>)SecondaryHead::setId);
+		attributeGetterFunctions.put("name", SecondaryHead::getName);
 		attributeSetterBiConsumers.put(
-			"secondaryHeadValue",
-			(BiConsumer<SecondaryHead, String>)
-				SecondaryHead::setSecondaryHeadValue);
+			"name", (BiConsumer<SecondaryHead, String>)SecondaryHead::setName);
 		attributeGetterFunctions.put(
 			"primaryHeadId", SecondaryHead::getPrimaryHeadId);
 		attributeSetterBiConsumers.put(
@@ -324,37 +318,37 @@ public class SecondaryHeadModelImpl
 
 	@JSON
 	@Override
-	public long getSecondaryHeadId() {
-		return _secondaryHeadId;
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setSecondaryHeadId(long secondaryHeadId) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_secondaryHeadId = secondaryHeadId;
+		_id = id;
 	}
 
 	@JSON
 	@Override
-	public String getSecondaryHeadValue() {
-		if (_secondaryHeadValue == null) {
+	public String getName() {
+		if (_name == null) {
 			return "";
 		}
 		else {
-			return _secondaryHeadValue;
+			return _name;
 		}
 	}
 
 	@Override
-	public void setSecondaryHeadValue(String secondaryHeadValue) {
+	public void setName(String name) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_secondaryHeadValue = secondaryHeadValue;
+		_name = name;
 	}
 
 	@JSON
@@ -438,8 +432,8 @@ public class SecondaryHeadModelImpl
 	public Object clone() {
 		SecondaryHeadImpl secondaryHeadImpl = new SecondaryHeadImpl();
 
-		secondaryHeadImpl.setSecondaryHeadId(getSecondaryHeadId());
-		secondaryHeadImpl.setSecondaryHeadValue(getSecondaryHeadValue());
+		secondaryHeadImpl.setId(getId());
+		secondaryHeadImpl.setName(getName());
 		secondaryHeadImpl.setPrimaryHeadId(getPrimaryHeadId());
 
 		secondaryHeadImpl.resetOriginalValues();
@@ -451,10 +445,8 @@ public class SecondaryHeadModelImpl
 	public SecondaryHead cloneWithOriginalValues() {
 		SecondaryHeadImpl secondaryHeadImpl = new SecondaryHeadImpl();
 
-		secondaryHeadImpl.setSecondaryHeadId(
-			this.<Long>getColumnOriginalValue("secondaryHeadId"));
-		secondaryHeadImpl.setSecondaryHeadValue(
-			this.<String>getColumnOriginalValue("secondaryHeadValue"));
+		secondaryHeadImpl.setId(this.<Long>getColumnOriginalValue("id_"));
+		secondaryHeadImpl.setName(this.<String>getColumnOriginalValue("name"));
 		secondaryHeadImpl.setPrimaryHeadId(
 			this.<Long>getColumnOriginalValue("primaryHeadId"));
 
@@ -465,10 +457,10 @@ public class SecondaryHeadModelImpl
 	public int compareTo(SecondaryHead secondaryHead) {
 		int value = 0;
 
-		if (getSecondaryHeadId() < secondaryHead.getSecondaryHeadId()) {
+		if (getId() < secondaryHead.getId()) {
 			value = -1;
 		}
-		else if (getSecondaryHeadId() > secondaryHead.getSecondaryHeadId()) {
+		else if (getId() > secondaryHead.getId()) {
 			value = 1;
 		}
 		else {
@@ -539,16 +531,14 @@ public class SecondaryHeadModelImpl
 		SecondaryHeadCacheModel secondaryHeadCacheModel =
 			new SecondaryHeadCacheModel();
 
-		secondaryHeadCacheModel.secondaryHeadId = getSecondaryHeadId();
+		secondaryHeadCacheModel.id = getId();
 
-		secondaryHeadCacheModel.secondaryHeadValue = getSecondaryHeadValue();
+		secondaryHeadCacheModel.name = getName();
 
-		String secondaryHeadValue = secondaryHeadCacheModel.secondaryHeadValue;
+		String name = secondaryHeadCacheModel.name;
 
-		if ((secondaryHeadValue != null) &&
-			(secondaryHeadValue.length() == 0)) {
-
-			secondaryHeadCacheModel.secondaryHeadValue = null;
+		if ((name != null) && (name.length() == 0)) {
+			secondaryHeadCacheModel.name = null;
 		}
 
 		secondaryHeadCacheModel.primaryHeadId = getPrimaryHeadId();
@@ -643,11 +633,13 @@ public class SecondaryHeadModelImpl
 
 	}
 
-	private long _secondaryHeadId;
-	private String _secondaryHeadValue;
+	private long _id;
+	private String _name;
 	private long _primaryHeadId;
 
 	public <T> T getColumnValue(String columnName) {
+		columnName = _attributeNames.getOrDefault(columnName, columnName);
+
 		Function<SecondaryHead, Object> function =
 			_attributeGetterFunctions.get(columnName);
 
@@ -674,9 +666,19 @@ public class SecondaryHeadModelImpl
 	private void _setColumnOriginalValues() {
 		_columnOriginalValues = new HashMap<String, Object>();
 
-		_columnOriginalValues.put("secondaryHeadId", _secondaryHeadId);
-		_columnOriginalValues.put("secondaryHeadValue", _secondaryHeadValue);
+		_columnOriginalValues.put("id_", _id);
+		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("primaryHeadId", _primaryHeadId);
+	}
+
+	private static final Map<String, String> _attributeNames;
+
+	static {
+		Map<String, String> attributeNames = new HashMap<>();
+
+		attributeNames.put("id_", "id");
+
+		_attributeNames = Collections.unmodifiableMap(attributeNames);
 	}
 
 	private transient Map<String, Object> _columnOriginalValues;
@@ -690,9 +692,9 @@ public class SecondaryHeadModelImpl
 	static {
 		Map<String, Long> columnBitmasks = new HashMap<>();
 
-		columnBitmasks.put("secondaryHeadId", 1L);
+		columnBitmasks.put("id_", 1L);
 
-		columnBitmasks.put("secondaryHeadValue", 2L);
+		columnBitmasks.put("name", 2L);
 
 		columnBitmasks.put("primaryHeadId", 4L);
 

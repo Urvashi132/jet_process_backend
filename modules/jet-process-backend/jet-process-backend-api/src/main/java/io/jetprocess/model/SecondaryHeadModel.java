@@ -54,33 +54,33 @@ public interface SecondaryHeadModel extends BaseModel<SecondaryHead> {
 	public void setPrimaryKey(long primaryKey);
 
 	/**
-	 * Returns the secondary head ID of this secondary head.
+	 * Returns the ID of this secondary head.
 	 *
-	 * @return the secondary head ID of this secondary head
+	 * @return the ID of this secondary head
 	 */
-	public long getSecondaryHeadId();
+	public long getId();
 
 	/**
-	 * Sets the secondary head ID of this secondary head.
+	 * Sets the ID of this secondary head.
 	 *
-	 * @param secondaryHeadId the secondary head ID of this secondary head
+	 * @param id the ID of this secondary head
 	 */
-	public void setSecondaryHeadId(long secondaryHeadId);
+	public void setId(long id);
 
 	/**
-	 * Returns the secondary head value of this secondary head.
+	 * Returns the name of this secondary head.
 	 *
-	 * @return the secondary head value of this secondary head
+	 * @return the name of this secondary head
 	 */
 	@AutoEscape
-	public String getSecondaryHeadValue();
+	public String getName();
 
 	/**
-	 * Sets the secondary head value of this secondary head.
+	 * Sets the name of this secondary head.
 	 *
-	 * @param secondaryHeadValue the secondary head value of this secondary head
+	 * @param name the name of this secondary head
 	 */
-	public void setSecondaryHeadValue(String secondaryHeadValue);
+	public void setName(String name);
 
 	/**
 	 * Returns the primary head ID of this secondary head.

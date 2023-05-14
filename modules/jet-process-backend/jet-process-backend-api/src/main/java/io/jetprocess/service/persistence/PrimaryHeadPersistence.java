@@ -158,14 +158,14 @@ public interface PrimaryHeadPersistence extends BasePersistence<PrimaryHead> {
 	/**
 	 * Returns the primary heads before and after the current primary head in the ordered set where basicHeadId = &#63;.
 	 *
-	 * @param primaryHeadId the primary key of the current primary head
+	 * @param id the primary key of the current primary head
 	 * @param basicHeadId the basic head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next primary head
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
 	public PrimaryHead[] findByPrimaryHeadByBasicHeadId_PrevAndNext(
-			long primaryHeadId, long basicHeadId,
+			long id, long basicHeadId,
 			com.liferay.portal.kernel.util.OrderByComparator<PrimaryHead>
 				orderByComparator)
 		throws NoSuchPrimaryHeadException;
@@ -202,40 +202,39 @@ public interface PrimaryHeadPersistence extends BasePersistence<PrimaryHead> {
 	/**
 	 * Creates a new primary head with the primary key. Does not add the primary head to the database.
 	 *
-	 * @param primaryHeadId the primary key for the new primary head
+	 * @param id the primary key for the new primary head
 	 * @return the new primary head
 	 */
-	public PrimaryHead create(long primaryHeadId);
+	public PrimaryHead create(long id);
 
 	/**
 	 * Removes the primary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head that was removed
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
-	public PrimaryHead remove(long primaryHeadId)
-		throws NoSuchPrimaryHeadException;
+	public PrimaryHead remove(long id) throws NoSuchPrimaryHeadException;
 
 	public PrimaryHead updateImpl(PrimaryHead primaryHead);
 
 	/**
 	 * Returns the primary head with the primary key or throws a <code>NoSuchPrimaryHeadException</code> if it could not be found.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
-	public PrimaryHead findByPrimaryKey(long primaryHeadId)
+	public PrimaryHead findByPrimaryKey(long id)
 		throws NoSuchPrimaryHeadException;
 
 	/**
 	 * Returns the primary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head, or <code>null</code> if a primary head with the primary key could not be found
 	 */
-	public PrimaryHead fetchByPrimaryKey(long primaryHeadId);
+	public PrimaryHead fetchByPrimaryKey(long id);
 
 	/**
 	 * Returns all the primary heads.

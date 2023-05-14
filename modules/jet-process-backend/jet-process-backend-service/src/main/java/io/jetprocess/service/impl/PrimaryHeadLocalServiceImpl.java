@@ -26,16 +26,10 @@ import org.osgi.service.component.annotations.Component;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=io.jetprocess.model.PrimaryHead",
-	service = AopService.class
-)
-public class PrimaryHeadLocalServiceImpl
-	extends PrimaryHeadLocalServiceBaseImpl {
-	
+@Component(property = "model.class.name=io.jetprocess.model.PrimaryHead", service = AopService.class)
+public class PrimaryHeadLocalServiceImpl extends PrimaryHeadLocalServiceBaseImpl {
+
 	public List<PrimaryHead> getPrimaryHeadByBasicHead(long basicHeadId) {
-		
-		System.out.println("in impl laayerrrr"+primaryHeadPersistence.findByPrimaryHeadByBasicHeadId(basicHeadId));
 		return primaryHeadPersistence.findByPrimaryHeadByBasicHeadId(basicHeadId);
-		}
+	}
 }

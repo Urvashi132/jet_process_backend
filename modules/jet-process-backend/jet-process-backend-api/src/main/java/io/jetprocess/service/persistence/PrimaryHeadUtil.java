@@ -258,19 +258,19 @@ public class PrimaryHeadUtil {
 	/**
 	 * Returns the primary heads before and after the current primary head in the ordered set where basicHeadId = &#63;.
 	 *
-	 * @param primaryHeadId the primary key of the current primary head
+	 * @param id the primary key of the current primary head
 	 * @param basicHeadId the basic head ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next primary head
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
 	public static PrimaryHead[] findByPrimaryHeadByBasicHeadId_PrevAndNext(
-			long primaryHeadId, long basicHeadId,
+			long id, long basicHeadId,
 			OrderByComparator<PrimaryHead> orderByComparator)
 		throws io.jetprocess.exception.NoSuchPrimaryHeadException {
 
 		return getPersistence().findByPrimaryHeadByBasicHeadId_PrevAndNext(
-			primaryHeadId, basicHeadId, orderByComparator);
+			id, basicHeadId, orderByComparator);
 	}
 
 	/**
@@ -313,24 +313,24 @@ public class PrimaryHeadUtil {
 	/**
 	 * Creates a new primary head with the primary key. Does not add the primary head to the database.
 	 *
-	 * @param primaryHeadId the primary key for the new primary head
+	 * @param id the primary key for the new primary head
 	 * @return the new primary head
 	 */
-	public static PrimaryHead create(long primaryHeadId) {
-		return getPersistence().create(primaryHeadId);
+	public static PrimaryHead create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the primary head with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head that was removed
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
-	public static PrimaryHead remove(long primaryHeadId)
+	public static PrimaryHead remove(long id)
 		throws io.jetprocess.exception.NoSuchPrimaryHeadException {
 
-		return getPersistence().remove(primaryHeadId);
+		return getPersistence().remove(id);
 	}
 
 	public static PrimaryHead updateImpl(PrimaryHead primaryHead) {
@@ -340,24 +340,24 @@ public class PrimaryHeadUtil {
 	/**
 	 * Returns the primary head with the primary key or throws a <code>NoSuchPrimaryHeadException</code> if it could not be found.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head
 	 * @throws NoSuchPrimaryHeadException if a primary head with the primary key could not be found
 	 */
-	public static PrimaryHead findByPrimaryKey(long primaryHeadId)
+	public static PrimaryHead findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchPrimaryHeadException {
 
-		return getPersistence().findByPrimaryKey(primaryHeadId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the primary head with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head, or <code>null</code> if a primary head with the primary key could not be found
 	 */
-	public static PrimaryHead fetchByPrimaryKey(long primaryHeadId) {
-		return getPersistence().fetchByPrimaryKey(primaryHeadId);
+	public static PrimaryHead fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

@@ -44,7 +44,7 @@ public class DocFileWrapper
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("uuid", getUuid());
-		attributes.put("docFileId", getDocFileId());
+		attributes.put("id", getId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
@@ -77,10 +77,10 @@ public class DocFileWrapper
 			setUuid(uuid);
 		}
 
-		Long docFileId = (Long)attributes.get("docFileId");
+		Long id = (Long)attributes.get("id");
 
-		if (docFileId != null) {
-			setDocFileId(docFileId);
+		if (id != null) {
+			setId(id);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -271,16 +271,6 @@ public class DocFileWrapper
 	}
 
 	/**
-	 * Returns the doc file ID of this doc file.
-	 *
-	 * @return the doc file ID of this doc file
-	 */
-	@Override
-	public long getDocFileId() {
-		return model.getDocFileId();
-	}
-
-	/**
 	 * Returns the file code ID of this doc file.
 	 *
 	 * @return the file code ID of this doc file
@@ -318,6 +308,16 @@ public class DocFileWrapper
 	@Override
 	public long getHeadId() {
 		return model.getHeadId();
+	}
+
+	/**
+	 * Returns the ID of this doc file.
+	 *
+	 * @return the ID of this doc file
+	 */
+	@Override
+	public long getId() {
+		return model.getId();
 	}
 
 	/**
@@ -516,16 +516,6 @@ public class DocFileWrapper
 	}
 
 	/**
-	 * Sets the doc file ID of this doc file.
-	 *
-	 * @param docFileId the doc file ID of this doc file
-	 */
-	@Override
-	public void setDocFileId(long docFileId) {
-		model.setDocFileId(docFileId);
-	}
-
-	/**
 	 * Sets the file code ID of this doc file.
 	 *
 	 * @param fileCodeId the file code ID of this doc file
@@ -563,6 +553,16 @@ public class DocFileWrapper
 	@Override
 	public void setHeadId(long headId) {
 		model.setHeadId(headId);
+	}
+
+	/**
+	 * Sets the ID of this doc file.
+	 *
+	 * @param id the ID of this doc file
+	 */
+	@Override
+	public void setId(long id) {
+		model.setId(id);
 	}
 
 	/**

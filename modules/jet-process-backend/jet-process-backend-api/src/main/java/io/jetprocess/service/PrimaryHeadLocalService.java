@@ -85,11 +85,11 @@ public interface PrimaryHeadLocalService
 	/**
 	 * Creates a new primary head with the primary key. Does not add the primary head to the database.
 	 *
-	 * @param primaryHeadId the primary key for the new primary head
+	 * @param id the primary key for the new primary head
 	 * @return the new primary head
 	 */
 	@Transactional(enabled = false)
-	public PrimaryHead createPrimaryHead(long primaryHeadId);
+	public PrimaryHead createPrimaryHead(long id);
 
 	/**
 	 * @throws PortalException
@@ -105,13 +105,12 @@ public interface PrimaryHeadLocalService
 	 * <strong>Important:</strong> Inspect PrimaryHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head that was removed
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public PrimaryHead deletePrimaryHead(long primaryHeadId)
-		throws PortalException;
+	public PrimaryHead deletePrimaryHead(long id) throws PortalException;
 
 	/**
 	 * Deletes the primary head from the database. Also notifies the appropriate model listeners.
@@ -199,7 +198,7 @@ public interface PrimaryHeadLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public PrimaryHead fetchPrimaryHead(long primaryHeadId);
+	public PrimaryHead fetchPrimaryHead(long id);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
@@ -225,13 +224,12 @@ public interface PrimaryHeadLocalService
 	/**
 	 * Returns the primary head with the primary key.
 	 *
-	 * @param primaryHeadId the primary key of the primary head
+	 * @param id the primary key of the primary head
 	 * @return the primary head
 	 * @throws PortalException if a primary head with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public PrimaryHead getPrimaryHead(long primaryHeadId)
-		throws PortalException;
+	public PrimaryHead getPrimaryHead(long id) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<PrimaryHead> getPrimaryHeadByBasicHead(long basicHeadId);

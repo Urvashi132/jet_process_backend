@@ -50,26 +50,24 @@ public class DocFileLocalServiceWrapper
 	/**
 	 * Creates a new doc file with the primary key. Does not add the doc file to the database.
 	 *
-	 * @param docFileId the primary key for the new doc file
+	 * @param id the primary key for the new doc file
 	 * @return the new doc file
 	 */
 	@Override
-	public io.jetprocess.model.DocFile createDocFile(long docFileId) {
-		return _docFileLocalService.createDocFile(docFileId);
+	public io.jetprocess.model.DocFile createDocFile(long id) {
+		return _docFileLocalService.createDocFile(id);
 	}
 
 	@Override
 	public io.jetprocess.model.DocFile createDocFile(
 			long groupId, String nature, String type, long headId,
 			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			String remarks, String reference, long year, long userPostId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _docFileLocalService.createDocFile(
 			groupId, nature, type, headId, fileCodeId, subject, fileNo,
-			categoryId, remarks, reference, year, userPostId, currentUser,
-			currentState, dealingOrganizationId);
+			categoryId, remarks, reference, year, userPostId);
 	}
 
 	/**
@@ -107,22 +105,15 @@ public class DocFileLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect DocFileLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file that was removed
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.DocFile deleteDocFile(long docFileId)
+	public io.jetprocess.model.DocFile deleteDocFile(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _docFileLocalService.deleteDocFile(docFileId);
-	}
-
-	@Override
-	public io.jetprocess.model.DocFile deleteDocFileById(long docFileId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _docFileLocalService.deleteDocFileById(docFileId);
+		return _docFileLocalService.deleteDocFile(id);
 	}
 
 	/**
@@ -238,8 +229,8 @@ public class DocFileLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.DocFile fetchDocFile(long docFileId) {
-		return _docFileLocalService.fetchDocFile(docFileId);
+	public io.jetprocess.model.DocFile fetchDocFile(long id) {
+		return _docFileLocalService.fetchDocFile(id);
 	}
 
 	/**
@@ -257,8 +248,8 @@ public class DocFileLocalServiceWrapper
 	}
 
 	@Override
-	public String generateFileNo(long docFileId) {
-		return _docFileLocalService.generateFileNo(docFileId);
+	public String generateFileNo(long id) {
+		return _docFileLocalService.generateFileNo(id);
 	}
 
 	@Override
@@ -271,22 +262,15 @@ public class DocFileLocalServiceWrapper
 	/**
 	 * Returns the doc file with the primary key.
 	 *
-	 * @param docFileId the primary key of the doc file
+	 * @param id the primary key of the doc file
 	 * @return the doc file
 	 * @throws PortalException if a doc file with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.DocFile getDocFile(long docFileId)
+	public io.jetprocess.model.DocFile getDocFile(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _docFileLocalService.getDocFile(docFileId);
-	}
-
-	@Override
-	public io.jetprocess.model.DocFile getDocFileById(long docFileId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-
-		return _docFileLocalService.getDocFileById(docFileId);
+		return _docFileLocalService.getDocFile(id);
 	}
 
 	/**
@@ -433,16 +417,12 @@ public class DocFileLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.DocFile updateDocFile(
-			long docFileId, String nature, String type, long headId,
-			long fileCodeId, String subject, String fileNo, long categoryId,
-			String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId)
+			long id, String subject, long categoryId, String remarks,
+			String reference)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _docFileLocalService.updateDocFile(
-			docFileId, nature, type, headId, fileCodeId, subject, fileNo,
-			categoryId, remarks, reference, year, userPostId, currentUser,
-			currentState, dealingOrganizationId);
+			id, subject, categoryId, remarks, reference);
 	}
 
 	@Override

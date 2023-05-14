@@ -46,8 +46,8 @@ public class BasicHeadRsModelResourceImpl
 
 	private BasicHeadRsModel GetBasicHeadModel(BasicHead basicHead) {
 		BasicHeadRsModel createdBasicHead = new BasicHeadRsModel();
-		createdBasicHead.setId(basicHead.getBasicHeadId());
-		createdBasicHead.setName(basicHead.getBasicHeadValue());
+		createdBasicHead.setId(basicHead.getId());
+		createdBasicHead.setName(basicHead.getName());
 		
 		return createdBasicHead;
 	}

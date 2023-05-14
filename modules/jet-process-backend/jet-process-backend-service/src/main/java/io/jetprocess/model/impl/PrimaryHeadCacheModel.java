@@ -47,7 +47,7 @@ public class PrimaryHeadCacheModel
 		PrimaryHeadCacheModel primaryHeadCacheModel =
 			(PrimaryHeadCacheModel)object;
 
-		if (primaryHeadId == primaryHeadCacheModel.primaryHeadId) {
+		if (id == primaryHeadCacheModel.id) {
 			return true;
 		}
 
@@ -56,17 +56,17 @@ public class PrimaryHeadCacheModel
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, primaryHeadId);
+		return HashUtil.hash(0, id);
 	}
 
 	@Override
 	public String toString() {
 		StringBundler sb = new StringBundler(7);
 
-		sb.append("{primaryHeadId=");
-		sb.append(primaryHeadId);
-		sb.append(", primaryHeadValue=");
-		sb.append(primaryHeadValue);
+		sb.append("{id=");
+		sb.append(id);
+		sb.append(", name=");
+		sb.append(name);
 		sb.append(", basicHeadId=");
 		sb.append(basicHeadId);
 		sb.append("}");
@@ -78,13 +78,13 @@ public class PrimaryHeadCacheModel
 	public PrimaryHead toEntityModel() {
 		PrimaryHeadImpl primaryHeadImpl = new PrimaryHeadImpl();
 
-		primaryHeadImpl.setPrimaryHeadId(primaryHeadId);
+		primaryHeadImpl.setId(id);
 
-		if (primaryHeadValue == null) {
-			primaryHeadImpl.setPrimaryHeadValue("");
+		if (name == null) {
+			primaryHeadImpl.setName("");
 		}
 		else {
-			primaryHeadImpl.setPrimaryHeadValue(primaryHeadValue);
+			primaryHeadImpl.setName(name);
 		}
 
 		primaryHeadImpl.setBasicHeadId(basicHeadId);
@@ -96,28 +96,28 @@ public class PrimaryHeadCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		primaryHeadId = objectInput.readLong();
-		primaryHeadValue = objectInput.readUTF();
+		id = objectInput.readLong();
+		name = objectInput.readUTF();
 
 		basicHeadId = objectInput.readLong();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
-		objectOutput.writeLong(primaryHeadId);
+		objectOutput.writeLong(id);
 
-		if (primaryHeadValue == null) {
+		if (name == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(primaryHeadValue);
+			objectOutput.writeUTF(name);
 		}
 
 		objectOutput.writeLong(basicHeadId);
 	}
 
-	public long primaryHeadId;
-	public String primaryHeadValue;
+	public long id;
+	public String name;
 	public long basicHeadId;
 
 }

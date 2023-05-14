@@ -63,11 +63,11 @@ public class BasicHeadLocalServiceUtil {
 	/**
 	 * Creates a new basic head with the primary key. Does not add the basic head to the database.
 	 *
-	 * @param basicHeadId the primary key for the new basic head
+	 * @param id the primary key for the new basic head
 	 * @return the new basic head
 	 */
-	public static BasicHead createBasicHead(long basicHeadId) {
-		return getService().createBasicHead(basicHeadId);
+	public static BasicHead createBasicHead(long id) {
+		return getService().createBasicHead(id);
 	}
 
 	/**
@@ -101,14 +101,12 @@ public class BasicHeadLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect BasicHeadLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head that was removed
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
-	public static BasicHead deleteBasicHead(long basicHeadId)
-		throws PortalException {
-
-		return getService().deleteBasicHead(basicHeadId);
+	public static BasicHead deleteBasicHead(long id) throws PortalException {
+		return getService().deleteBasicHead(id);
 	}
 
 	/**
@@ -206,8 +204,8 @@ public class BasicHeadLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static BasicHead fetchBasicHead(long basicHeadId) {
-		return getService().fetchBasicHead(basicHeadId);
+	public static BasicHead fetchBasicHead(long id) {
+		return getService().fetchBasicHead(id);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
@@ -219,14 +217,16 @@ public class BasicHeadLocalServiceUtil {
 	/**
 	 * Returns the basic head with the primary key.
 	 *
-	 * @param basicHeadId the primary key of the basic head
+	 * @param id the primary key of the basic head
 	 * @return the basic head
 	 * @throws PortalException if a basic head with the primary key could not be found
 	 */
-	public static BasicHead getBasicHead(long basicHeadId)
-		throws PortalException {
+	public static BasicHead getBasicHead(long id) throws PortalException {
+		return getService().getBasicHead(id);
+	}
 
-		return getService().getBasicHead(basicHeadId);
+	public static List<BasicHead> getBasicHeadList() throws PortalException {
+		return getService().getBasicHeadList();
 	}
 
 	/**

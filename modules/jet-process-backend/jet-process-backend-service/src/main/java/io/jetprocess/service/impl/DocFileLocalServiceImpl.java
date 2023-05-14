@@ -17,6 +17,8 @@ package io.jetprocess.service.impl;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Group;
 import com.liferay.portal.kernel.service.GroupLocalService;
 
@@ -25,6 +27,7 @@ import java.util.List;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import io.jetprocess.exception.DuplicateFileNumberException;
 import io.jetprocess.model.DocFile;
 import io.jetprocess.service.base.DocFileLocalServiceBaseImpl;
 import io.jetprocess.validator.FileValidator;
@@ -39,88 +42,74 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 	private GroupLocalService groupLocalService;
 
 	public DocFile createDocFile(long groupId, String nature, String type, long headId, long fileCodeId, String subject,
-			String fileNo, long categoryId, String remarks, String reference, long year, long userPostId,
-			long currentUser, int currentState, long dealingOrganizationId) throws PortalException {
+			String fileNo, long categoryId, String remarks, String reference, long year, long userPostId)
+			throws PortalException {
+		LOGGER.info("--");
 		DocFile docFile = null;
-		List<String> error = fileValidator.validate(subject, remarks, reference, type);
-        if(!error.isEmpty()) {        	
-         }else {
-        
-        	long docFileId = counterLocalService.increment(DocFile.class.getName());
-    		 docFile = createDocFile(docFileId);
-    		Group group = groupLocalService.getGroup(groupId);
+		List<String> error = fileValidator.validate(subject, type);
+		if (!error.isEmpty()) {
+		} else {
+			long id = counterLocalService.increment(DocFile.class.getName());
+			docFile = createDocFile(id);
+			Group group = groupLocalService.getGroup(groupId);
 //    			long userId = serviceContext.getUserId();
 //    			User user = userLocalService.getUser(userId);
-    		docFile.setGroupId(groupId);
-    		docFile.setCompanyId(group.getCompanyId());
 //    			docFile.setUserId(userId);
 //    			docFile.setUserName(user.getScreenName());
-//    			docFile.setCreateDate(serviceContext.getCreateDate(new Date()));
-//    			docFile.setModifiedDate(serviceContext.getModifiedDate(new Date()));
+			docFile.setGroupId(groupId);
+			docFile.setCompanyId(group.getCompanyId());
 
-    		docFile.setNature(nature);
-    		docFile.setType(type);
-    		if (docFile.getType().equals("SFS")) {
-    			docFile.setHeadId(0);
-    		} else {
-    			docFile.setHeadId(headId);
-    		}
-
-    		docFile.setFileCodeId(fileCodeId);
-    		docFile.setSubject(subject);
-    		docFile.setFileNo(fileNo);
-    		docFile.setCategoryId(categoryId);
-    		docFile.setRemarks(remarks);
-    		docFile.setReference(reference);
-    		docFile.setYear(year);
-    		docFile.setUserPostId(userPostId);
-    		docFile.setCurrentUser(currentUser);
-    		docFile.setCurrentState(currentState);
-    		docFile.setDealingOrganizationId(dealingOrganizationId);
-    		docFile = super.addDocFile(docFile);
-        	
-        	
-        	
-        }
-		
-		
+			docFile.setNature(nature);
+			docFile.setType(type);
+			if (type.equals("SFS")) {
+				List<DocFile> docFileList = getDocFiles();
+				for (DocFile docFileObj : docFileList) {
+					if (fileNo.equals(docFileObj.getFileNo())) {
+						throw new DuplicateFileNumberException("DuplicateFileNumber");
+					} else {
+						docFile.setFileNo(fileNo);
+					}
+				}
+			} else {
+				docFile.setHeadId(headId);
+				docFile.setYear(year);
+				docFile.setFileCodeId(fileCodeId);
+				String fileNumber = generateFileNo(id);
+				docFile.setFileNo(fileNumber);
+			}
+			docFile.setSubject(subject);
+			docFile.setCategoryId(categoryId);
+			docFile.setRemarks(remarks);
+			docFile.setReference(reference);
+			docFile.setUserPostId(userPostId);
+			docFile.setCurrentUser(userPostId);
+			docFile.setCurrentState(1);
+//			docFile.setDealingOrganizationId(dealingOrganizationId);
+			docFile = super.addDocFile(docFile);
+		}
 		return docFile;
-
 	}
 
-	public DocFile updateDocFile(long docFileId, String nature, String type, long headId, long fileCodeId,
-			String subject, String fileNo, long categoryId, String remarks, String reference, long year,
-			long userPostId, long currentUser, int currentState, long dealingOrganizationId) throws PortalException {
-		DocFile docFile = getDocFile(docFileId);
-		docFile.setNature(nature);
-		docFile.setType(type);
-		docFile.setHeadId(headId);
-		docFile.setFileCodeId(fileCodeId);
+	public DocFile updateDocFile(long id, String subject, long categoryId, String remarks, String reference)
+			throws PortalException {
+		DocFile docFile = getDocFile(id);
 		docFile.setSubject(subject);
-		docFile.setFileNo(fileNo);
 		docFile.setCategoryId(categoryId);
 		docFile.setRemarks(remarks);
 		docFile.setReference(reference);
-		docFile.setYear(year);
-		docFile.setUserPostId(userPostId);
-		docFile.setCurrentUser(currentUser);
-		docFile.setCurrentState(currentState);
-		docFile.setDealingOrganizationId(dealingOrganizationId);
-		docFile = updateDocFile(docFile);
+		docFile = super.updateDocFile(docFile);
 		return docFile;
 	}
+	/*
+	 * public DocFile deleteDocFileById(long id) throws PortalException { DocFile
+	 * docFile = deleteDocFile(id); return docFile; }
+	 * 
+	 * public DocFile getDocFileById(long id) throws PortalException { return
+	 * getDocFile(id); }
+	 */
 
-	public DocFile deleteDocFileById(long docFileId) throws PortalException {
-		DocFile docFile = deleteDocFile(docFileId);
-		return docFile;
-	}
-
-	public DocFile getDocFileById(long docFileId) throws PortalException {
-		return getDocFile(docFileId);
-	}
-
-	public String generateFileNo(long docFileId) {
-		String number = String.valueOf(docFileId);
+	public String generateFileNo(long id) {
+		String number = String.valueOf(id);
 		String fileNo = 'F' + number;
 		return fileNo;
 	}
@@ -132,5 +121,7 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 
 	@Reference
 	private FileValidator fileValidator;
+
+	private final Log LOGGER = LogFactoryUtil.getLog(DocFileLocalServiceImpl.class);
 
 }

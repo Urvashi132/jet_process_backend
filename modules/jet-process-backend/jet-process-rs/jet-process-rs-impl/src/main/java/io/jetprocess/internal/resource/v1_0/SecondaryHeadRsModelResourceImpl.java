@@ -50,8 +50,8 @@ public class SecondaryHeadRsModelResourceImpl
 
 	private SecondaryHeadRsModel getSecondaryHeadModel(SecondaryHead secondaryHead) {
 		SecondaryHeadRsModel createdSecondaryHead = new SecondaryHeadRsModel();
-		createdSecondaryHead.setId(secondaryHead.getSecondaryHeadId());
-		createdSecondaryHead.setName(secondaryHead.getSecondaryHeadValue());
+		createdSecondaryHead.setId(secondaryHead.getId());
+		createdSecondaryHead.setName(secondaryHead.getName());
 		return createdSecondaryHead;
 	}
 

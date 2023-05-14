@@ -26,15 +26,10 @@ import org.osgi.service.component.annotations.Component;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=io.jetprocess.model.SecondaryHead",
-	service = AopService.class
-)
-public class SecondaryHeadLocalServiceImpl
-	extends SecondaryHeadLocalServiceBaseImpl {
-	
-	public List<SecondaryHead> getSecondaryHeadByPrimaryHeadId(long primaryHeadId){
-		
+@Component(property = "model.class.name=io.jetprocess.model.SecondaryHead", service = AopService.class)
+public class SecondaryHeadLocalServiceImpl extends SecondaryHeadLocalServiceBaseImpl {
+
+	public List<SecondaryHead> getSecondaryHeadByPrimaryHeadId(long primaryHeadId) {
 		return secondaryHeadPersistence.findBySecondaryHeadByPrimaryHeadId(primaryHeadId);
 	}
 }

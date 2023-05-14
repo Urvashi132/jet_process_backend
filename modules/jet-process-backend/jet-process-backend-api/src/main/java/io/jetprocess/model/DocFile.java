@@ -36,12 +36,12 @@ public interface DocFile extends DocFileModel, PersistedModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.DocFileImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<DocFile, Long> DOC_FILE_ID_ACCESSOR =
+	public static final Accessor<DocFile, Long> ID_ACCESSOR =
 		new Accessor<DocFile, Long>() {
 
 			@Override
 			public Long get(DocFile docFile) {
-				return docFile.getDocFileId();
+				return docFile.getId();
 			}
 
 			@Override
