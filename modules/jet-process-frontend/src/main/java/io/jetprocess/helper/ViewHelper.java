@@ -19,7 +19,7 @@ public class ViewHelper {
 		if (parameter.equals("dashboard")) {
 			page = "/dashboard.jsp";
 		} else if (parameter.equals("file")) {
-			page = "/file-form.jsp";
+			page = "/file-list.jsp";
 		}
 
 		else if (parameter.equals("receipt")) {

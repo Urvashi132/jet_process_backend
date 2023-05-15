@@ -8,7 +8,6 @@
 
 <div class="container">
 	<div id="fileListContainer"></div>
-
 </div>
 
 <liferay-util:include page="/templates/jetform-template.jsp"
