@@ -367,20 +367,11 @@ var receiptForm = {
 			"type": "button",
 			"label": "Edit",
 			"applyTo": "row",
-			"cssClass": "btn-danger",
+			"cssClass": "btn-primary",
 			"handler": {
-				"href": ""
+				"href": "http://localhost:8080/web/jetcrm/jetprocess?view=receipt"
+				
 			}
-		},
-		{
-			"name": "delete",
-			"type": "button",
-			"label": "Delete",
-			"applyTo": "row",
-			"cssClass": "btn-danger",
-			/*"handler": {
-				"script": "delete(event)"
-			}*/
 		}
 	],
 	"providers": {
@@ -390,12 +381,7 @@ var receiptForm = {
 			"dataNode": "data"
 		},
 		"selector": {
-			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
-			//"method": "get",
-			"pathParams":{"id":"#id"},
-			//"queryParams":{}
-			"dataNode": "data"
-
+			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken
 		},
 		"create": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
@@ -403,10 +389,10 @@ var receiptForm = {
 			"pathParams":{},
 			"queryParams":{},
 			"requestParams":{}
-		},
+		}, 
 		"update": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
-			"method": "post"
+			"method": "put"
 		},
 		"delete": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,

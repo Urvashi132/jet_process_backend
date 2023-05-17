@@ -11,7 +11,7 @@ components:
     FileRsModel:
       description: Contains all the data for file creation.
       properties:
-        id:
+        docFileId:
           format: int64
           type: integer
         groupId:
@@ -44,9 +44,15 @@ components:
         userPostId:
           format: int64
           type: integer   
-        modifiedDate:
-          format: date-time
-          type : string
+        currentUser:
+          format: int64
+          type: integer
+        currentState:
+          format: int32
+          type: integer
+        dealingOrganizationId:
+          format: int64
+          type: integer
       type: object 
       
     ReceiptRsModel:
@@ -93,8 +99,6 @@ components:
          type: integer
         pincode:
          type: string
-        receiptNo:
-         type: string
         organization:
          format: int64
          type: integer
@@ -118,6 +122,12 @@ components:
         currentState:
          format: int64
          type: integer 
+        errorCode:
+         type: string
+        status:
+         type: string
+        errorMessage:
+         type: string
       type: object 
     
     DeliveryModeRsModel:
@@ -167,15 +177,6 @@ components:
         name:
           type: string
       type: object  
-      
-    CategoryRsModel:
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          type: string
-      type: object
        
     BasicHeadRsModel:
       properties:
@@ -224,7 +225,7 @@ components:
           type: integer     
       type: object
       
-    FileCategoryRsModel:
+    CategoryRsModel:
       properties:
         id:
           format: int64
@@ -232,36 +233,6 @@ components:
         name:
           type: string
       type: object
-      
-    NoteDocumentRsModel:
-      properties:
-        id:
-          format: int64
-          type: integer
-        groupId:
-          format: int64
-          type: integer
-        subject:
-          type: string
-        subjectCategoryId:
-          format: int64
-          type: integer
-        content:
-          type: string
-        createdBy:  
-          format: int64
-          type: integer
-      type: object
-
-    SubjectCategoryRsModel:
-      properties:
-        id:
-          format: int64
-          type: integer
-        name:
-          type: string
-      type: object
-      
     
 paths:
   /docfile:
@@ -290,7 +261,7 @@ paths:
       operationId: getDocFileById
       parameters:
         - in: "query"
-          name: id
+          name: docFileId
           required: true
           schema:
             format: int64
@@ -310,7 +281,7 @@ paths:
       operationId: deleteDocFileById
       parameters:
         - in: "query"
-          name: id
+          name: docFileId
           required: true
           schema:
             format: int64
@@ -326,7 +297,7 @@ paths:
       operationId: updateDocFile
       parameters:
         - in: "query"
-          name: id
+          name: docFileId
           required: true
           schema:
             format: int64
@@ -461,22 +432,22 @@ paths:
                   $ref: '#/components/schemas/BasicHeadRsModel'
           description: ''
       tags: ["BasicHeadRsModel"]  
-  /filecategory:
+  /category:
     get:
-      operationId: getFileCategoryList
+      operationId: getCategoryList
       responses:
         '200':
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/FileCategoryRsModel'
+                  $ref: '#/components/schemas/CategoryRsModel'
             application/xml:
               schema:
                 items:
-                  $ref: '#/components/schemas/FileCategoryRsModel'
+                  $ref: '#/components/schemas/CategoryRsModel'
           description: ''
-      tags: ["FileCategoryRsModel"]
+      tags: ["CategoryRsModel"]
   /Type:
     get:
       operationId: getTypeList
@@ -550,24 +521,6 @@ paths:
                 type: array
           description: ''
       tags: ["StateRsModel"]
-  
-  /category:
-    get:
-      operationId: getCategoryList
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/CategoryRsModel'
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/CategoryRsModel'
-          description: ''
-      tags: ["CategoryRsModel"]
-      
   /Receipt:
     post:
       operationId: createReceipt
@@ -688,85 +641,4 @@ paths:
           description: ''
       tags: ["CountryRsModel"]      
       
-  /note:
-    post:
-      operationId: createNotedocument
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NoteDocumentRsModel'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/NoteDocumentRsModel'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/NoteDocumentRsModel'
-            application/xml:
-              schema:
-                  $ref: '#/components/schemas/NoteDocumentRsModel'
-          description: ''
-      tags: ["NoteDocumentRsModel"]
-    delete:
-      operationId: deleteNoteDocumentById
-      parameters:
-        - in: "query"
-          name: id
-          required: true
-          schema:
-            format: int64
-            type: integer
-      responses:
-        '200':
-          content:
-            application/json: {}
-            application/xml: {}
-          description: ''
-      tags: ["NoteDocumentRsModel"]
-    put:
-      operationId: updateNoteDocument
-      parameters:
-        - in: "query"
-          name: id
-          required: true
-          schema:
-            format: int64
-            type: integer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NoteDocumentRsModel'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/NoteDocumentRsModel'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/NoteDocumentRsModel'
-            application/xml:
-              schema:
-                  $ref: '#/components/schemas/NoteDocumentRsModel'
-          description: ''
-      tags: ["NoteDocumentRsModel"]
-  /subjectcategory:
-    get:
-      operationId: getSubjectCategoryList
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/SubjectCategoryRsModel'
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/SubjectCategoryRsModel'
-          description: ''
-      tags: ["SubjectCategoryRsModel"]
+      

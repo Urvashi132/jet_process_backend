@@ -18,6 +18,7 @@ import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.model.Receipt;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.service.ReceiptLocalService;
+import io.jetprocess.validator.ReceiptValidator;
 
 /**
  * @author Admin
@@ -34,6 +35,15 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 
 	@Override
 	public ReceiptRsModel createReceipt(ReceiptRsModel receiptRsModel) throws Exception {
+		
+		
+		List<String> errorList = 	receiptValidator.validate(receiptRsModel.getSubject(), receiptRsModel.getRemarks(), receiptRsModel.getReferenceNo(), receiptRsModel.getType());
+		 
+		
+		if(!errorList.isEmpty()) { 
+			
+         }else {
+		
 		receiptLocalService.createReceipt(receiptRsModel.getGroupId(), receiptRsModel.getType(),
 				receiptRsModel.getDeliveryModeId(), receiptRsModel.getReceivedOn(), receiptRsModel.getLetterDate(),
 				receiptRsModel.getReferenceNo(), receiptRsModel.getModeNo(), receiptRsModel.getCategoryId(),
@@ -42,8 +52,8 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 				receiptRsModel.getAddress(), receiptRsModel.getStateId(), receiptRsModel.getPincode(),
 				receiptRsModel.getOrganization(), receiptRsModel.getCity(), receiptRsModel.getUserPostId(),
 				receiptRsModel.getViewPdfUrl(), receiptRsModel.getDocfileId(), receiptRsModel.getNature(),
-				receiptRsModel.getCurrentlyWith(), receiptRsModel.getCurrentState(), receiptRsModel.getAttachStatus(),
-				receiptRsModel.getReceiptNo());
+				receiptRsModel.getCurrentlyWith(), receiptRsModel.getCurrentState(), receiptRsModel.getAttachStatus());
+         }
 		return receiptRsModel;
 	}
 
@@ -58,7 +68,9 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 				receiptRsModel.getPincode(), receiptRsModel.getOrganization(), receiptRsModel.getCity(),
 				receiptRsModel.getUserPostId(), receiptRsModel.getViewPdfUrl(), receiptRsModel.getDocfileId(),
 				receiptRsModel.getNature(), receiptRsModel.getCurrentlyWith(), receiptRsModel.getCurrentState(),
-				receiptRsModel.getAttachStatus(), receiptRsModel.getReceiptNo());
+				receiptRsModel.getAttachStatus());
+		
+		System.out.println("called rest api builder-----");
 		return getReceiptRsModel(receipt);
 	}
 
@@ -90,7 +102,7 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		createdReceipt.setGroupId(receipt.getGroupId());
 		createdReceipt.setType(receipt.getType());
 		createdReceipt.setDeliveryModeId(receipt.getDeliveryModeId());
-		createdReceipt.setReceiptNo(receipt.getReceiptNo());
+		//createdReceipt.setReceiptNo(receipt.getReceiptNo());
 		createdReceipt.setLetterDate(receipt.getLetterDate());
 		createdReceipt.setLetterDate(receipt.getReferenceNo());
 		createdReceipt.setModeNo(receipt.getModeNo());
@@ -104,7 +116,7 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		createdReceipt.setAddress(receipt.getAddress());
 		createdReceipt.setStateId(receipt.getStateId());
 		createdReceipt.setPincode(receipt.getPinCode());
-		createdReceipt.setReceiptNo(receipt.getReceiptNo());
+	//	createdReceipt.setReceiptNo(receipt.getReceiptNo());
 		createdReceipt.setOrganization(receipt.getOrganizationId());
 		createdReceipt.setCity(receipt.getCity());
 		createdReceipt.setUserPostId(receipt.getUserPostId());
@@ -119,5 +131,8 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 
 	@Reference
 	private ReceiptLocalService receiptLocalService;
+	
+	@Reference
+	private ReceiptValidator receiptValidator;
 
 }

@@ -100,8 +100,7 @@ public interface ReceiptLocalService
 			String designation, String mobile, String email, String address,
 			long stateId, String pinCode, long organizationId, String city,
 			long userPostId, String viewPdfUrl, long docfileId, String nature,
-			long currentlyWith, long currentState, String attachStatus,
-			String receiptNo)
+			long currentlyWith, long currentState, String attachStatus)
 		throws PortalException;
 
 	/**
@@ -336,7 +335,7 @@ public interface ReceiptLocalService
 			String address, long stateId, String pinCode, long organizationId,
 			String city, long userPostId, String viewPdfUrl, long docfileId,
 			String nature, long currentlyWith, long currentState,
-			String attachStatus, String receiptNo)
+			String attachStatus)
 		throws PortalException;
 
 	/**

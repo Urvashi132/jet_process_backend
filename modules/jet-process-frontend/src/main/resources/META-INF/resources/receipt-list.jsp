@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript"
+<script>
+var portletNamespace='<portlet:namespace/>';
+</script>
+ <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-list.js"></script>
 	</head>
 <!-- body  -->
@@ -23,6 +26,7 @@
 
 <liferay-util:include page="/templates/jetform-template.jsp" servletContext="<%=application%>"/>
 <script>
+
 	$(document).ready(() => {
 		var jetList=JetList({"id":"receiptList", "parentId":"receiptListContainer", "form":receiptList});
 		jetList.render();

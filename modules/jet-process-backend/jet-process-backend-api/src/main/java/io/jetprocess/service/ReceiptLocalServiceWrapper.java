@@ -77,8 +77,7 @@ public class ReceiptLocalServiceWrapper
 			String designation, String mobile, String email, String address,
 			long stateId, String pinCode, long organizationId, String city,
 			long userPostId, String viewPdfUrl, long docfileId, String nature,
-			long currentlyWith, long currentState, String attachStatus,
-			String receiptNo)
+			long currentlyWith, long currentState, String attachStatus)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _receiptLocalService.createReceipt(
@@ -86,7 +85,7 @@ public class ReceiptLocalServiceWrapper
 			modeNo, categoryId, subject, remark, name, designation, mobile,
 			email, address, stateId, pinCode, organizationId, city, userPostId,
 			viewPdfUrl, docfileId, nature, currentlyWith, currentState,
-			attachStatus, receiptNo);
+			attachStatus);
 	}
 
 	/**
@@ -427,7 +426,7 @@ public class ReceiptLocalServiceWrapper
 			String address, long stateId, String pinCode, long organizationId,
 			String city, long userPostId, String viewPdfUrl, long docfileId,
 			String nature, long currentlyWith, long currentState,
-			String attachStatus, String receiptNo)
+			String attachStatus)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _receiptLocalService.updateReceipt(
@@ -435,7 +434,7 @@ public class ReceiptLocalServiceWrapper
 			referenceNo, modeNo, categoryId, subject, remark, name, designation,
 			mobile, email, address, stateId, pinCode, organizationId, city,
 			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
-			currentState, attachStatus, receiptNo);
+			currentState, attachStatus);
 	}
 
 	/**

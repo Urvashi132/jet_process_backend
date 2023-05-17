@@ -41,7 +41,7 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 			String referenceNo, String modeNo, long categoryId, String subject, String remark, String name,
 			String designation, String mobile, String email, String address, long stateId, String pinCode,
 			long organizationId, String city, long userPostId, String viewPdfUrl, long docfileId, String nature,
-			long currentlyWith, long currentState, String attachStatus, String receiptNo) throws PortalException {
+			long currentlyWith, long currentState, String attachStatus) throws PortalException {
 
 		String receiptNumber = null;
 		long receiptId = counterLocalService.increment(Receipt.class.getName());
@@ -73,7 +73,9 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 		receipt.setViewPdfUrl(viewPdfUrl);
 		receipt.setDocFileId(docfileId);
 		receipt.setUserPostId(userPostId);
-		receipt.setReceiptNo(receiptNo);
+		//receipt.setReceiptNo(receiptNo);
+		receiptNumber =generateReceiptNumber(receiptId);
+		receipt.setReceiptNo(receiptNumber);
 		receipt = super.addReceipt(receipt);
 		logger.info("create receipt service builder called-----");
 		return receipt;
@@ -84,7 +86,7 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 			String letterDate, String referenceNo, String modeNo, long categoryId, String subject, String remark,
 			String name, String designation, String mobile, String email, String address, long stateId, String pinCode,
 			long organizationId, String city, long userPostId, String viewPdfUrl, long docfileId, String nature,
-			long currentlyWith, long currentState, String attachStatus, String receiptNo) throws PortalException {
+			long currentlyWith, long currentState, String attachStatus) throws PortalException {
 		Receipt receipt = getReceipt(receiptId);
 		receipt.setReceiptId(receiptId);
 		receipt.setType(type);
@@ -113,7 +115,7 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 		receipt.setViewPdfUrl(viewPdfUrl);
 		receipt.setDocFileId(docfileId);
 		receipt.setUserPostId(userPostId);
-		receipt.setReceiptNo(receiptNo);
+		
 		receipt = super.updateReceipt(receipt);
 		logger.info("update receipt service builder called-----");
 		return receipt;

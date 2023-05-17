@@ -324,6 +324,62 @@ public class ReceiptRsModel implements Serializable {
 	protected String email;
 
 	@Schema
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	@JsonIgnore
+	public void setErrorCode(
+		UnsafeSupplier<String, Exception> errorCodeUnsafeSupplier) {
+
+		try {
+			errorCode = errorCodeUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String errorCode;
+
+	@Schema
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	@JsonIgnore
+	public void setErrorMessage(
+		UnsafeSupplier<String, Exception> errorMessageUnsafeSupplier) {
+
+		try {
+			errorMessage = errorMessageUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String errorMessage;
+
+	@Schema
 	public Long getGroupId() {
 		return groupId;
 	}
@@ -574,34 +630,6 @@ public class ReceiptRsModel implements Serializable {
 	protected Long receiptId;
 
 	@Schema
-	public String getReceiptNo() {
-		return receiptNo;
-	}
-
-	public void setReceiptNo(String receiptNo) {
-		this.receiptNo = receiptNo;
-	}
-
-	@JsonIgnore
-	public void setReceiptNo(
-		UnsafeSupplier<String, Exception> receiptNoUnsafeSupplier) {
-
-		try {
-			receiptNo = receiptNoUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected String receiptNo;
-
-	@Schema
 	public String getReceivedOn() {
 		return receivedOn;
 	}
@@ -712,6 +740,34 @@ public class ReceiptRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long stateId;
+
+	@Schema
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@JsonIgnore
+	public void setStatus(
+		UnsafeSupplier<String, Exception> statusUnsafeSupplier) {
+
+		try {
+			status = statusUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String status;
 
 	@Schema
 	public String getSubject() {
@@ -970,6 +1026,34 @@ public class ReceiptRsModel implements Serializable {
 			sb.append("\"");
 		}
 
+		if (errorCode != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"errorCode\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(errorCode));
+
+			sb.append("\"");
+		}
+
+		if (errorMessage != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"errorMessage\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(errorMessage));
+
+			sb.append("\"");
+		}
+
 		if (groupId != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -1084,20 +1168,6 @@ public class ReceiptRsModel implements Serializable {
 			sb.append(receiptId);
 		}
 
-		if (receiptNo != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"receiptNo\": ");
-
-			sb.append("\"");
-
-			sb.append(_escape(receiptNo));
-
-			sb.append("\"");
-		}
-
 		if (receivedOn != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -1148,6 +1218,20 @@ public class ReceiptRsModel implements Serializable {
 			sb.append("\"stateId\": ");
 
 			sb.append(stateId);
+		}
+
+		if (status != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"status\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(status));
+
+			sb.append("\"");
 		}
 
 		if (subject != null) {

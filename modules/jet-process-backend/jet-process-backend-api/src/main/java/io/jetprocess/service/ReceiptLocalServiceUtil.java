@@ -87,8 +87,7 @@ public class ReceiptLocalServiceUtil {
 			String designation, String mobile, String email, String address,
 			long stateId, String pinCode, long organizationId, String city,
 			long userPostId, String viewPdfUrl, long docfileId, String nature,
-			long currentlyWith, long currentState, String attachStatus,
-			String receiptNo)
+			long currentlyWith, long currentState, String attachStatus)
 		throws PortalException {
 
 		return getService().createReceipt(
@@ -96,7 +95,7 @@ public class ReceiptLocalServiceUtil {
 			modeNo, categoryId, subject, remark, name, designation, mobile,
 			email, address, stateId, pinCode, organizationId, city, userPostId,
 			viewPdfUrl, docfileId, nature, currentlyWith, currentState,
-			attachStatus, receiptNo);
+			attachStatus);
 	}
 
 	/**
@@ -387,7 +386,7 @@ public class ReceiptLocalServiceUtil {
 			String address, long stateId, String pinCode, long organizationId,
 			String city, long userPostId, String viewPdfUrl, long docfileId,
 			String nature, long currentlyWith, long currentState,
-			String attachStatus, String receiptNo)
+			String attachStatus)
 		throws PortalException {
 
 		return getService().updateReceipt(
@@ -395,7 +394,7 @@ public class ReceiptLocalServiceUtil {
 			referenceNo, modeNo, categoryId, subject, remark, name, designation,
 			mobile, email, address, stateId, pinCode, organizationId, city,
 			userPostId, viewPdfUrl, docfileId, nature, currentlyWith,
-			currentState, attachStatus, receiptNo);
+			currentState, attachStatus);
 	}
 
 	/**
