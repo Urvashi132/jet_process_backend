@@ -30,33 +30,32 @@ var noteList = {
 
 	} ],
 	"actions" : [ {
-		"name" : "save",
-		"type" : "submit",
-		"label" : "Save",
-		"applyTo" : "form",
-		"handler" : {
-			"script" : "submitForm(event)",
-		},
-		"redirects" : {
-			"success" : {
-				"href" : ""
-			},
-			"failure" : {
-				"script" : "alert('Saving operation failed')"
-			}
-		},
-		"cssClass" : "btn-primary"
-	}, {
-		"name" : "cancel",
+		"name" : "add",
 		"type" : "button",
-		"label" : "Cancel",
-		"applyTo" : "form",
-		"cssClass" : "btn-secondary",
-		"redirects" : {
-			"success" : {
-				"href" : ""
-			},
+		"label" : "Add",
+		"applyTo" : "list",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
 		}
+	}, {
+		"name" : "edit",
+		"type" : "button",
+		"label" : "Edit",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
+		}
+	}, {
+		"name" : "delete",
+		"type" : "button",
+		"label" : "Delete",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+	/*
+	 * "handler": { "script": "delete(event)" }
+	 */
 	} ],
 	"providers" : {
 		"collection": {
