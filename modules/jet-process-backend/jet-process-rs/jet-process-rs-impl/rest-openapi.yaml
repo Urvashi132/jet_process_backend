@@ -298,7 +298,7 @@ paths:
       operationId: getDocFileById
       parameters:
         - in: "query"
-          name: docFileId
+          name: id
           required: true
           schema:
             format: int64
@@ -318,7 +318,7 @@ paths:
       operationId: deleteDocFileById
       parameters:
         - in: "query"
-          name: docFileId
+          name: id
           required: true
           schema:
             format: int64
@@ -334,7 +334,7 @@ paths:
       operationId: updateDocFile
       parameters:
         - in: "query"
-          name: docFileId
+          name: id
           required: true
           schema:
             format: int64
