@@ -33,9 +33,10 @@ public class SubjectCategoryRsModelResourceImpl extends BaseSubjectCategoryRsMod
 	@Override
 	public Page<SubjectCategoryRsModel> getSubjectCategoryList() throws Exception {
 		List<SubjectCategoryRsModel> subjectCategoryRsModelList = new ArrayList<>();
-		List<SubjectCategory> sbjectCategoryList = subjectCategoryLocalService.getSubjectCategoryList();
-		sbjectCategoryList.stream().forEach(sbjectCategory -> {
-			subjectCategoryRsModelList.add(GetSubjectCategoryRsModel(sbjectCategory));
+		List<SubjectCategory> subjectCategoryList = subjectCategoryLocalService.getSubjectCategoryList();
+		System.out.println(subjectCategoryList);
+		subjectCategoryList.stream().forEach(subjectCategory -> {
+			subjectCategoryRsModelList.add(GetSubjectCategoryRsModel(subjectCategory));
 		});
 		return Page.of(subjectCategoryRsModelList);
 	}

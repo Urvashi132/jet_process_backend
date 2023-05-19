@@ -42,13 +42,13 @@ public interface FileRsModelResource {
 		return FactoryHolder.factory.create();
 	}
 
-	public void deleteDocFileById(Long id) throws Exception;
+	public void deleteDocFileById(Long docFileId) throws Exception;
 
-	public FileRsModel getDocFileById(Long id) throws Exception;
+	public FileRsModel getDocFileById(Long docFileId) throws Exception;
 
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception;
 
-	public FileRsModel updateDocFile(Long id, FileRsModel fileRsModel)
+	public FileRsModel updateDocFile(Long docFileId, FileRsModel fileRsModel)
 		throws Exception;
 
 	public Page<FileRsModel> getDocFileList() throws Exception;

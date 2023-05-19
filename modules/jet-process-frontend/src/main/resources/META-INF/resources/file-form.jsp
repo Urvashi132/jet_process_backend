@@ -30,7 +30,9 @@ $(document).ready(() => {
 	fileForm.actions[0].redirects.success.href = '<%=list%>';
 	fileForm.actions[1].redirects.success.href = '<%=list%>';
 	
+	var id='<%=request.getParameter("id")!=null? request.getParameter("id"):""%>';
 	var jetform=JetForm({"id":"fileForm", "parentId":"fileFormContainer", "form":fileForm});
+	jetform.setDataKey(id);
 	jetform.render();
 
 	$('#fileNo').closest("div").hide();
@@ -38,6 +40,7 @@ $(document).ready(() => {
 	$('#groupId').val(Liferay.ThemeDisplay.getScopeGroupId());
 	$('#year').val(new Date().getFullYear());
 	$('#year').attr("readonly", true);
+		
 });
 /* function setFileDocIdFieldForSFS(){
 	var type = $('#type').val();

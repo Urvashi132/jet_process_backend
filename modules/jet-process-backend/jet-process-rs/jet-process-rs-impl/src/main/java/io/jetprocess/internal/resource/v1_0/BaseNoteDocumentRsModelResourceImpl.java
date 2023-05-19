@@ -29,6 +29,7 @@ import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 
 import java.io.Serializable;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -55,7 +56,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/note'  -u 'test@liferay.com:test'
+	 * curl -X 'DELETE' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -73,7 +74,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.DELETE
-	@javax.ws.rs.Path("/note")
+	@javax.ws.rs.Path("/notedocument")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public void deleteNoteDocumentById(
@@ -86,7 +87,40 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/note' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.Parameters(
+		value = {
+			@io.swagger.v3.oas.annotations.Parameter(
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
+				name = "id"
+			)
+		}
+	)
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {
+			@io.swagger.v3.oas.annotations.tags.Tag(
+				name = "NoteDocumentRsModel"
+			)
+		}
+	)
+	@javax.ws.rs.GET
+	@javax.ws.rs.Path("/notedocument")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public NoteDocumentRsModel getNoteDocumentId(
+			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id)
+		throws Exception {
+
+		return new NoteDocumentRsModel();
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "modifiedDate": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
@@ -96,7 +130,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/note")
+	@javax.ws.rs.Path("/notedocument")
 	@javax.ws.rs.POST
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
@@ -110,7 +144,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/note' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "modifiedDate": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
@@ -128,7 +162,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 		}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/note")
+	@javax.ws.rs.Path("/notedocument")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@javax.ws.rs.PUT
 	@Override
@@ -140,6 +174,26 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 		throws Exception {
 
 		return new NoteDocumentRsModel();
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocuments'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {
+			@io.swagger.v3.oas.annotations.tags.Tag(
+				name = "NoteDocumentRsModel"
+			)
+		}
+	)
+	@javax.ws.rs.GET
+	@javax.ws.rs.Path("/notedocuments")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public Page<NoteDocumentRsModel> getNoteDocumentList() throws Exception {
+		return Page.of(Collections.emptyList());
 	}
 
 	@Override

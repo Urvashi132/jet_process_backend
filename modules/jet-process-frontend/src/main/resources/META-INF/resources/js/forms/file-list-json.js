@@ -5,37 +5,33 @@ var fileList = {
 	"subtitle" : "File List",
 	"namespace" : "",
 	"enctype" : "multipart/form-data",
-	"fields" : [
-			{
-				"type" : "hidden",
-				"name" : "docFileId",
-				"id" : true,
-			},
-			{
-				"type" : "select",
-				"name" : "nature",
-				"label" : "Nature",
-			},
-			{
-				"type" : "text",
-				"name" : "fileNo",
-				"label" : "File No",
-			},
-			{
-				"type" : "select",
-				"name" : "categoryId",
-				"label" : "Category",
-			}, {
-				"type" : "textarea",
-				"name" : "subject",
-				"label" : "Subject",
-				"searchable" : false,
-			}, {
-				"type" : "textarea",
-				"name" : "remarks",
-				"label" : "Remarks",
-				"searchable" : false,
-			} ],
+	"fields" : [ {
+		"type" : "hidden",
+		"name" : "id",
+		"id" : true,
+	}, {
+		"type" : "select",
+		"name" : "nature",
+		"label" : "Nature",
+	}, {
+		"type" : "text",
+		"name" : "fileNo",
+		"label" : "File No",
+	}, {
+		"type" : "select",
+		"name" : "categoryId",
+		"label" : "Category",
+	}, {
+		"type" : "textarea",
+		"name" : "subject",
+		"label" : "Subject",
+		"searchable" : false,
+	}, {
+		"type" : "textarea",
+		"name" : "remarks",
+		"label" : "Remarks",
+		"searchable" : false,
+	} ],
 	"actions" : [ {
 		"name" : "add",
 		"type" : "button",
@@ -60,19 +56,36 @@ var fileList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger",
+	/*
+	 * "handler": { "script": "delete(event)" }
+	 */
 	} ],
 	"providers" : {
 		"collection" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfiles?p_auth=" + Liferay.authToken,
-			"method" : "get",
+			// "method" : "get",
 			"dataNode" : "items"
 		},
 		"selector" : {
-			"ajax" : "https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8/{name}",
+			"ajax" : "https://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
 			"method" : "get",
+			/*"pathParams" : {
+				"id" : "#id"
+			},*/
+			 "queryParams":{"id":"#id"}, 
+			"dataNode" : "items"
+		},
+		"create" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
+			"method" : "post",
 			"pathParams" : {},
-			"queryParams" : {}
-
+			"queryParams" : {},
+			"requestParams" : {}
+		},
+		"update" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
+			"method" : "put",
+			"dataNode" : "items"
 		},
 		"delete" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,

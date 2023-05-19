@@ -38,12 +38,11 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
 		LOGGER.info(fileRsModel);
-		
-		docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
+		DocFile createDocFile = docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
 				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
 				fileRsModel.getYear(), fileRsModel.getUserPostId());
-		LOGGER.info("after");
+		LOGGER.info(createDocFile);
 		return fileRsModel;
 	}
 
@@ -80,7 +79,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		FileRsModel createdDocFile = new FileRsModel();
 		createdDocFile.setId(docFile.getId());
 		createdDocFile.setGroupId(docFile.getGroupId());
-		createdDocFile.setModifiedDate(docFile.getModifiedDate());;
+		createdDocFile.setModifiedDate(docFile.getModifiedDate());
 		createdDocFile.setNature(docFile.getNature());
 		createdDocFile.setType(docFile.getType());
 		createdDocFile.setHeadId(docFile.getHeadId());

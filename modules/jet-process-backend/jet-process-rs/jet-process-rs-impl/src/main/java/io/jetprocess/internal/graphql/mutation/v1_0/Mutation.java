@@ -59,13 +59,14 @@ public class Mutation {
 	}
 
 	@GraphQLField
-	public boolean deleteDocFileById(@GraphQLName("id") Long id)
+	public boolean deleteDocFileById(@GraphQLName("docFileId") Long docFileId)
 		throws Exception {
 
 		_applyVoidComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			fileRsModelResource -> fileRsModelResource.deleteDocFileById(id));
+			fileRsModelResource -> fileRsModelResource.deleteDocFileById(
+				docFileId));
 
 		return true;
 	}
@@ -84,7 +85,7 @@ public class Mutation {
 
 	@GraphQLField
 	public FileRsModel updateDocFile(
-			@GraphQLName("id") Long id,
+			@GraphQLName("docFileId") Long docFileId,
 			@GraphQLName("fileRsModel") FileRsModel fileRsModel)
 		throws Exception {
 
@@ -92,7 +93,7 @@ public class Mutation {
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			fileRsModelResource -> fileRsModelResource.updateDocFile(
-				id, fileRsModel));
+				docFileId, fileRsModel));
 	}
 
 	@GraphQLField

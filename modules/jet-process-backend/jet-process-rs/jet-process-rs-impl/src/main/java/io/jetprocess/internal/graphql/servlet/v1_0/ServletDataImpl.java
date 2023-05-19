@@ -58,6 +58,8 @@ public class ServletDataImpl implements ServletData {
 			_fileCategoryRsModelResourceComponentServiceObjects);
 		Query.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Query.setNoteDocumentRsModelResourceComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects);
 		Query.setOrganizationRsModelResourceComponentServiceObjects(
 			_organizationRsModelResourceComponentServiceObjects);
 		Query.setPrimaryHeadRsModelResourceComponentServiceObjects(

@@ -8,6 +8,7 @@ import com.liferay.portal.kernel.service.RoleLocalService;
 import com.liferay.portal.odata.filter.ExpressionConvert;
 import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
+import com.liferay.portal.vulcan.pagination.Page;
 
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 
@@ -43,6 +44,8 @@ public interface NoteDocumentRsModelResource {
 
 	public void deleteNoteDocumentById(Long id) throws Exception;
 
+	public NoteDocumentRsModel getNoteDocumentId(Long id) throws Exception;
+
 	public NoteDocumentRsModel createNotedocument(
 			NoteDocumentRsModel noteDocumentRsModel)
 		throws Exception;
@@ -50,6 +53,8 @@ public interface NoteDocumentRsModelResource {
 	public NoteDocumentRsModel updateNoteDocument(
 			Long id, NoteDocumentRsModel noteDocumentRsModel)
 		throws Exception;
+
+	public Page<NoteDocumentRsModel> getNoteDocumentList() throws Exception;
 
 	public default void setContextAcceptLanguage(
 		AcceptLanguage contextAcceptLanguage) {

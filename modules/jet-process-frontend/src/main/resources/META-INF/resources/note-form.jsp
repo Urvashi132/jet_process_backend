@@ -1,123 +1,41 @@
+<script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 <%@include file="init.jsp"%>
-<link rel="stylesheet" href="/css/style.css">
+<style>
+.text-margin {
+	margin: 0px 14px 9px;
+}
+</style>
+<%-- 
+<portlet:renderURL var="list">
+	<portlet:param name="mvcPath" value="/note-list.jsp" />
+</portlet:renderURL> --%>
 
-<portlet:renderURL var="receiptForm">
-	<portlet:param name="mvcPath" value="/receipt-form.jsp"/>
-</portlet:renderURL>
+<script type="text/javascript"
+	src='<%=request.getContextPath() + "/js/forms/note-json.js"%>'></script>
 
-
-<div class="container">
-	<div id="createdReceiptList"></div>
+<div class="container border m-2">
+	<div class="row">
+		<div class="col" id="noteFormContainer">
+			<h3>Create Note</h3>
+			<form id="noteForm"></form>
+		</div>
+	</div>
 </div>
 
-<script>
-
-var form = {
-		"id": "receiptList",
-		"title" : "Receipt List",
-		"namespace" : "",
-		"enctype": "multipart/form-data",
-		"fields": [
-
-		       {
-					"type": "text",
-					"name": "id",
-					"label": "Id",
-					"required": true
-	     		},
-			       {
-						"type": "text",
-						"name": "name",
-						"label": "Category",
-						"required": true
-		     		}
-/* 			    	{
-						"type": "text",
-						"name": "receiptNo",
-						"label": "Receipt No",
-						"required": true
-			    	},
-		     		{
-						"type": "text",
-						"name": "subject",
-						"label": "Subject",
-						"required": true
-		     		},
-		     		{
-						"type": "text",
-						"name": "category",
-						"label": "Category",
-						"required": true
-		     		},
-		     		{
-						"type": "text",
-						"name": "createdOn",
-						"label": "CreatedOn",
-						"required": true
-		     		},
-		     		{
-						"type": "text",
-						"name": "remarks",
-						"label": "Remarks",
-						"required": true
-		     		}
-		     		 */
-		     		],
-		"actions": 	[ {
-						"name": "save",
-						"type": "submit",
-						"label": "Save",
-						"applyTo": "form",
-						"handler": {
-						"type": "javascript",
-						"func": "submitForm(event)",
-						"method": "post",
-						"url": ""
-					},
-						"cssClass": "btn-primary"
-					},  
-					
-					 {
-						"name": "delete",
-						"type": "link",
-						"label": "Delete",
-						"applyTo": "row",
-						"handler": {
-							"type": "javascript",
-							"func": "submitForm(event)",
-							"method": "post",
-							"url": ""
-						},
-						"cssClass": ""
-					}, 
-					 
-					{
-						"name": "cancel",
-						"type": "button",
-						"label": "Cancel",
-						"applyTo": "form",
-						"cssClass": "btn-secondary"
-					}, 
-					 {
-						"name": "add",
-						"type": "button",
-						"label": "New PO",
-						"applyTo": "list",
-						"cssClass": "btn-primary"
-					} 
-						],
-		"dataProvider":{
-			"collection":{"url":"http://localhost:8080/o/jet-process-rs/v1.0/Category?p_auth="+ Liferay.authToken },
-			"selector":{"url":""}
-					}
-			
-};
-
-</script>
-
-<liferay-util:include page="/list-template.jsp"
+<liferay-util:include page="/templates/jetform-template.jsp"
 	servletContext="<%=application%>">
-	<liferay-util:param name="listContainerId" value="createdReceiptList" />
-	<liferay-util:param name="listId" value="receiptList" />
-	<liferay-util:param name="addPage" value="<%=receiptForm %>" />
 </liferay-util:include>
+
+<script>
+	$(document).ready(() => {
+		var jetform=JetForm({"id":"noteForm", "parentId":"noteFormContainer", "form":noteForm});
+		jetform.render(); 
+		$('#subject').closest("div").addClass("text-margin");
+		$('#content').closest("div").addClass("text-margin");
+		CKEDITOR.replace('content');	
+		var m = new Date().getMonth()+1;
+		$('#createdOn').val(new Date().getDate()+"/"+m+"/"+new Date().getFullYear());
+		$('#createdOn').attr("disabled",true);
+		$('#groupId').val(Liferay.ThemeDisplay.getScopeGroupId());
+	});
+</script>

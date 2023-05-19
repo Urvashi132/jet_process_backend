@@ -17,6 +17,7 @@ import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
 import io.jetprocess.dto.v1_0.FileCategoryRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
@@ -31,6 +32,7 @@ import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
@@ -105,6 +107,14 @@ public class Query {
 
 		_fileRsModelResourceComponentServiceObjects =
 			fileRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setNoteDocumentRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<NoteDocumentRsModelResource>
+			noteDocumentRsModelResourceComponentServiceObjects) {
+
+		_noteDocumentRsModelResourceComponentServiceObjects =
+			noteDocumentRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setOrganizationRsModelResourceComponentServiceObjects(
@@ -244,16 +254,17 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(id: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(docFileId: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, modifiedDate}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public FileRsModel docFileById(@GraphQLName("id") Long id)
+	public FileRsModel docFileById(@GraphQLName("docFileId") Long docFileId)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
-			fileRsModelResource -> fileRsModelResource.getDocFileById(id));
+			fileRsModelResource -> fileRsModelResource.getDocFileById(
+				docFileId));
 	}
 
 	/**
@@ -268,6 +279,36 @@ public class Query {
 			this::_populateResourceContext,
 			fileRsModelResource -> new FileRsModelPage(
 				fileRsModelResource.getDocFileList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentId(id: ___){id, groupId, noteDocumentNo, subject, subjectCategoryId, content, createdBy, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public NoteDocumentRsModel noteDocumentId(@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocumentRsModelResource ->
+				noteDocumentRsModelResource.getNoteDocumentId(id));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public NoteDocumentRsModelPage noteDocumentList() throws Exception {
+		return _applyComponentServiceObjects(
+			_noteDocumentRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocumentRsModelResource -> new NoteDocumentRsModelPage(
+				noteDocumentRsModelResource.getNoteDocumentList()));
 	}
 
 	/**
@@ -305,7 +346,7 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, receiptNo, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState, errorCode, status, errorMessage}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ReceiptRsModel receiptById(@GraphQLName("receiptId") Long receiptId)
@@ -596,6 +637,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<FileRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("NoteDocumentRsModelPage")
+	public class NoteDocumentRsModelPage {
+
+		public NoteDocumentRsModelPage(Page noteDocumentRsModelPage) {
+			actions = noteDocumentRsModelPage.getActions();
+
+			items = noteDocumentRsModelPage.getItems();
+			lastPage = noteDocumentRsModelPage.getLastPage();
+			page = noteDocumentRsModelPage.getPage();
+			pageSize = noteDocumentRsModelPage.getPageSize();
+			totalCount = noteDocumentRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<NoteDocumentRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -989,6 +1063,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			NoteDocumentRsModelResource noteDocumentRsModelResource)
+		throws Exception {
+
+		noteDocumentRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		noteDocumentRsModelResource.setContextCompany(_company);
+		noteDocumentRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		noteDocumentRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		noteDocumentRsModelResource.setContextUriInfo(_uriInfo);
+		noteDocumentRsModelResource.setContextUser(_user);
+		noteDocumentRsModelResource.setGroupLocalService(_groupLocalService);
+		noteDocumentRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			OrganizationRsModelResource organizationRsModelResource)
 		throws Exception {
 
@@ -1126,6 +1216,8 @@ public class Query {
 		_fileCategoryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<NoteDocumentRsModelResource>
+		_noteDocumentRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<OrganizationRsModelResource>
 		_organizationRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<PrimaryHeadRsModelResource>

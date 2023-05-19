@@ -15,6 +15,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -154,6 +158,62 @@ public class NoteDocumentRsModel implements Serializable {
 	protected Long id;
 
 	@Schema
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	@JsonIgnore
+	public void setModifiedDate(
+		UnsafeSupplier<Date, Exception> modifiedDateUnsafeSupplier) {
+
+		try {
+			modifiedDate = modifiedDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Date modifiedDate;
+
+	@Schema
+	public String getNoteDocumentNo() {
+		return noteDocumentNo;
+	}
+
+	public void setNoteDocumentNo(String noteDocumentNo) {
+		this.noteDocumentNo = noteDocumentNo;
+	}
+
+	@JsonIgnore
+	public void setNoteDocumentNo(
+		UnsafeSupplier<String, Exception> noteDocumentNoUnsafeSupplier) {
+
+		try {
+			noteDocumentNo = noteDocumentNoUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String noteDocumentNo;
+
+	@Schema
 	public String getSubject() {
 		return subject;
 	}
@@ -236,6 +296,9 @@ public class NoteDocumentRsModel implements Serializable {
 
 		sb.append("{");
 
+		DateFormat liferayToJSONDateFormat = new SimpleDateFormat(
+			"yyyy-MM-dd'T'HH:mm:ss'Z'");
+
 		if (content != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -278,6 +341,34 @@ public class NoteDocumentRsModel implements Serializable {
 			sb.append("\"id\": ");
 
 			sb.append(id);
+		}
+
+		if (modifiedDate != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"modifiedDate\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(modifiedDate));
+
+			sb.append("\"");
+		}
+
+		if (noteDocumentNo != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"noteDocumentNo\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(noteDocumentNo));
+
+			sb.append("\"");
 		}
 
 		if (subject != null) {

@@ -14,9 +14,14 @@
 	servletContext="<%=application%>" />
 <script>
 	$(document).ready(() => {
+		// fileList.fields[0].name = "<portlet:namespace/>id"; 
 		fileList.actions[0].handler.href = '<%=fileCreation%>';
 		fileList.actions[1].handler.href = '<%=fileCreation%>';
+		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
+		console.log(id);
 		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileList});
+		jetList.setDataKey(id);
+		console.log(jetList);
 		jetList.render();
 	});
 </script>
