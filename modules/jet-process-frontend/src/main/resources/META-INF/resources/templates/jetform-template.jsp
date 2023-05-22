@@ -1,11 +1,11 @@
 <!-- templates  -->
 
 <script id="jf-modal-template" type="text/x-handlebars-template"> 
-	<div class="modal fade" id="{{id}}Modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="{{id}}ModalLabel" aria-hidden="true">
+	<div class="modal jet-modal fade" id="{{id}}Modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="{{id}}ModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="{{id}}ModalLabel">{{title}}</h5>
+	        <h5 class="modal-title" id="{{id}}ModalLabel"></h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
@@ -24,7 +24,7 @@
 
 <script id="jf-form-template" type="text/x-handlebars-template">          
   <form id="{{id}}" name="{{name}}" method="post" enctype="{{enctype}}">
-	{{#if_eq dialogMode undefined}}
+	{{#if_eq modal false}}
    		<h2>{{title}}</h2>
 	{{/if_eq}}
 	<h6>{{subtitle}}</h6>
@@ -91,7 +91,11 @@
     <label class="form-label">{{label}}</label>
 	{{#each options}}
     	<div class="form-check">
-      		<input type="radio" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" checked="checked"><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{#if_eq ../value value}}
+	      		<input type="radio" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" checked ><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{else}}
+	      		<input type="radio" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" ><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{/if_eq}}
     	</div>
 	 {{/each}}
   </div>
@@ -102,7 +106,11 @@
     <label for="{{name}}" class="form-label">{{label}}</label>
 	{{#each options}}
     	<div class="form-check">
-      		<input type="checkbox" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" checked="checked"><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{#if_eq ../value value}}
+	      		<input type="checkbox" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" checked><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{else}}
+      			<input type="checkbox" name="{{#if_ne ../parentNode undefined}}{{../parentNode}}.{{/if_ne}}{{../name}}" value="{{value}}" ><label class="form-check-label ms-1" for="{{../name}}">{{label}}</label>
+			{{/if_eq}}
     	</div>
 	 {{/each}}
   </div>
@@ -114,7 +122,11 @@
 		<select name="{{#if_ne parentNode undefined}}{{parentNode}}.{{/if_ne}}{{name}}" id="{{name}}" class="form-select">
 			<option value="-1">Select {{label}}</option>
 			{{#each options}}
-            	<option value="{{value}}">{{label}}</option>
+				{{#if_eq ../value value}}
+            		<option value="{{value}}" selected>{{label}}</option>
+				{{else}}
+					<option value="{{value}}">{{label}}</option>
+				{{/if_eq}}
             {{/each}}
 		</select>
 	</div>
@@ -143,23 +155,23 @@
 						{{#if_eq applyTo "form"}}
 							{{#if_eq type "button"}}
 								{{#if_eq handler undefined}}
-		  							<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{label}}</button>
+		  							<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
 								{{else}}
 									{{#if_ne handler.script undefined}}
-										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{handler.script}}">{{label}}</button>
+										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{handler.script}}">{{{label}}}</button>
 									{{/if_ne}}
 						
 									{{#if_ne handler.href undefined}}
-										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="invokeUrl(event)">{{label}}</button>
+										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="invokeUrl(event)">{{{label}}}</button>
 									{{/if_ne}}
 	
 									{{#if_ne handler.url undefined}}
-										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="invokeUrl(event)">{{label}}</button>
+										<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="invokeUrl(event)">{{{label}}}</button>
 									{{/if_ne}}
 								{{/if_eq}}
 							{{/if_eq}}
 							{{#if_eq type "submit"}}
-								<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="submitForm(event)">{{label}}</button>
+								<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="submitForm(event)">{{{label}}}</button>
 							{{/if_eq}}
 						{{/if_eq}}
 					{{/each}}
@@ -171,36 +183,36 @@
 
 <script id="jf-button-template" type="text/x-handlebars-template">
 	{{#if_eq handler undefined}}
-  		<button name="{{name}}" id="{{name}}" type="{{type}}" class="btn btn-primary" onclick="{{name}}OnClick(event)">{{label}}</button>
+  		<button name="{{name}}" id="{{name}}" type="{{type}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
 	{{else}}
 		{{#if_ne handler.script undefined}}
-	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="btn btn-primary" onclick="{{handler.script}}">{{label}}</button>
+	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="{{cssClass}}" onclick="{{handler.script}}">{{{label}}}</button>
 		{{/if_ne}}
 
 		{{#if_ne handler.href undefined}}
-	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="btn btn-primary" onclick="invokeUrl(event)">{{label}}</button>
+	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="{{cssClass}}" onclick="invokeUrl(event)">{{{label}}}</button>
 		{{/if_ne}}
 		
 		{{#if_ne handler.url undefined}}
-	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="btn btn-primary" onclick="invokeUrl(event)">{{label}}</button>
+	  		<button name="{{name}}" id="{{name}}" type="{{type}}" applyto="{{applyTo}}" formId="{{formId}}" class="{{cssClass}}" onclick="invokeUrl(event)">{{{label}}}</button>
 		{{/if_ne}}
 	{{/if_eq}}
 </script>
 
 <script id="jf-link-template" type="text/x-handlebars-template">
 	{{#if_eq handler undefined}}
-		<a name="{{name}}" id="{{name}}" type="link" onclick="{{name}}OnClick(event)" formid="{{formId}}" applyto="{{applyTo}}"><i class="fa {{label}}" aria-hidden="true"></i></a>
+		<a name="{{name}}" id="{{name}}" type="link" onclick="{{name}}OnClick(event)" formid="{{formId}}" class="{{cssClass}}" applyto="{{applyTo}}">{{{label}}}</a>
 	{{else}}
 		{{#if_ne handler.script undefined}}
-			<a name="{{name}}" id="{{name}}" type="link" onclick="{{handler.script}}" formid="{{formId}}" applyto="{{applyTo}}"><i class="fa {{label}}" aria-hidden="true"></i></a>
+			<a name="{{name}}" id="{{name}}" type="link" onclick="{{handler.script}}" formid="{{formId}}" class="{{cssClass}}" applyto="{{applyTo}}">{{{label}}}</a>
 		{{/if_ne}}
 
 		{{#if_ne handler.href undefined}}
-			<a name="{{name}}" id="{{name}}" type="link" onclick="invokeUrl(event)" formid="{{formId}}" applyto="{{applyTo}}"><i class="fa {{label}}" aria-hidden="true"></i></a>
+			<a name="{{name}}" id="{{name}}" type="link" onclick="invokeUrl(event)" formid="{{formId}}" class="{{cssClass}}" applyto="{{applyTo}}">{{{label}}}</a>
 		{{/if_ne}}
 		
 		{{#if_ne handler.dialog undefined}}
-			<a name="{{name}}" id="{{name}}" type="link" onclick="invokeUrl(event)" formid="{{formId}}" applyto="{{applyTo}}"><i class="fa {{label}}" aria-hidden="true"></i></a>
+			<a name="{{name}}" id="{{name}}" type="link" onclick="openDialog(event)" formid="{{formId}}" class="{{cssClass}}" applyto="{{applyTo}}">{{{label}}}</a>
 		{{/if_ne}}
 	{{/if_eq}}
 </script>
@@ -304,7 +316,7 @@
 					{{#each []}}
 						{{#if_eq applyTo "list"}}
 							{{#if_eq type "button"}}
-								<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
+								<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
 							{{else}}
 								{{#if_eq type "link"}}
 									<a name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</a>
@@ -322,7 +334,7 @@
 	{{#each []}}
 		{{#if_eq applyTo "row"}}
 			{{#if_eq type "button"}}
-				<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} dataKey="{{dataKey}}" applyto="{{applyTo}}" class="btn {{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
+				<button name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} dataKey="{{dataKey}}" applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</button>
 			{{else}}
 				{{#if_eq type "link"}}
 					<a name="{{name}}" id="{{name}}" type="{{type}}" formId={{formId}} dataKey="{{dataKey}}" applyto="{{applyTo}}" class="{{cssClass}}" onclick="{{name}}OnClick(event)">{{{label}}}</a>
@@ -339,8 +351,8 @@
 				{{message}}
 			</div>
 			<div class="col-md-12">
-		        <button type="button" class="btn btn-secondary" id="btnCancel" data-bs-dismiss="modal">{{labelCancel}}</button>
-	        	<button type="button" class="btn btn-primary" id="btnConfirm" onClick="{{confirmFunc}}">{{labelConfirm}}</button>
+		        <button type="button" class="btn btn-secondary" id="btnCancel" data-bs-dismiss="modal">{{{labelCancel}}}</button>
+	        	<button type="button" class="btn btn-primary" id="btnConfirm" onClick="{{confirmFunc}}">{{{labelConfirm}}}</button>
 			</div>
 		</div>
 	</div>

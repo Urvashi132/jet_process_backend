@@ -53,37 +53,15 @@ var noteList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger",
-	/*
-	 * "handler": { "script": "delete(event)" }
-	 */
 	} ],
 	"providers" : {
-		"collection": {
+		"collection" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocuments?p_auth=" + Liferay.authToken,
-			//"method" : "get",
 			"dataNode" : "items"
 		},
-		"selector" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocument?{id}",
-			// "method": "get",
-			"pathParams" : {
-				"id" : "#id"
-			},
-			// "queryParams":{}
-			"dataNode" : "data"
-
-		},
-		"create" : {
+		"delete" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocument?p_auth=" + Liferay.authToken,
-			"method" : "post",
-			"pathParams" : {},
-			"queryParams" : {},
-			"requestParams" : {}
-		},
-		"update" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocument?p_auth=" + Liferay.authToken,
-			"method" : "put",
-			"dataNode" : "items"
+			"method" : "delete"
 		}
 	}
 };

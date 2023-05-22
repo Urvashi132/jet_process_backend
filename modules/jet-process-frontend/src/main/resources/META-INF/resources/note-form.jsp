@@ -13,11 +13,12 @@
 <script type="text/javascript"
 	src='<%=request.getContextPath() + "/js/forms/note-json.js"%>'></script>
 
-<div class="container border m-2">
+<div class="container">
 	<div class="row">
 		<div class="col" id="noteFormContainer">
 			<h3>Create Note</h3>
-			<form id="noteForm"></form>
+			<form id="noteForm">
+			</form>
 		</div>
 	</div>
 </div>
