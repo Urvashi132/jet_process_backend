@@ -8,7 +8,7 @@ var receiptForm = {
 	"fields" : [
 			{
 				"type" : "hidden",
-				"name" : "receiptId",
+				"name" : "id",
 				"id" : true,
 				"required" : true,
 			},
@@ -243,14 +243,30 @@ var receiptForm = {
 						"required" : true,
 						"listable" : true,
 						"searchable" : false,
-						"col" : 12
+						"col" : 12,
+						"validations" : {
+							"rules" : {
+								"maxlength" : 500
+							},
+							"messages" : {
+								"maxlength" : "Subject should be maximum 500 charater."
+							}
+						}
 					}, {
 						"type" : "textarea",
 						"name" : "remarks",
 						"label" : "Remarks",
 						"listable" : true,
 						"searchable" : false,
-						"col" : 12
+						"col" : 12,
+						"validations" : {
+							"rules" : {
+								"maxlength" : 500
+							},
+							"messages" : {
+								"maxlength" : "Remarks should be maximum 500 charater."
+							}
+						}
 					}
 					]
 			},
@@ -353,11 +369,14 @@ var receiptForm = {
 	"providers" : {
 		"collection" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipts?p_auth=" + Liferay.authToken,
-			// "method": "get",
-			"dataNode" : "data"
+			 "method": "get"
+			 
+			
 		},
 		"selector" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth=" + Liferay.authToken
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth=" + Liferay.authToken,
+			 "method": "get",
+			"queryParams":{"id":"#id"}
 		},
 		"create" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth=" + Liferay.authToken,
@@ -372,7 +391,8 @@ var receiptForm = {
 		},
 		"delete" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth=" + Liferay.authToken,
-			"method" : "delete"
+			"method" : "delete",
+			"queryParams":{"id":"#id"}
 		}
 	}
 };

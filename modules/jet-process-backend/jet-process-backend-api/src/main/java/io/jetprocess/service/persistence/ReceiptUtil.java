@@ -247,19 +247,18 @@ public class ReceiptUtil {
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	public static Receipt[] findByUuid_PrevAndNext(
-			long receiptId, String uuid,
-			OrderByComparator<Receipt> orderByComparator)
+			long Id, String uuid, OrderByComparator<Receipt> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptException {
 
 		return getPersistence().findByUuid_PrevAndNext(
-			receiptId, uuid, orderByComparator);
+			Id, uuid, orderByComparator);
 	}
 
 	/**
@@ -490,7 +489,7 @@ public class ReceiptUtil {
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -498,12 +497,12 @@ public class ReceiptUtil {
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	public static Receipt[] findByUuid_C_PrevAndNext(
-			long receiptId, String uuid, long companyId,
+			long Id, String uuid, long companyId,
 			OrderByComparator<Receipt> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptException {
 
 		return getPersistence().findByUuid_C_PrevAndNext(
-			receiptId, uuid, companyId, orderByComparator);
+			Id, uuid, companyId, orderByComparator);
 	}
 
 	/**
@@ -548,24 +547,24 @@ public class ReceiptUtil {
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
-	public static Receipt create(long receiptId) {
-		return getPersistence().create(receiptId);
+	public static Receipt create(long Id) {
+		return getPersistence().create(Id);
 	}
 
 	/**
 	 * Removes the receipt with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
-	public static Receipt remove(long receiptId)
+	public static Receipt remove(long Id)
 		throws io.jetprocess.exception.NoSuchReceiptException {
 
-		return getPersistence().remove(receiptId);
+		return getPersistence().remove(Id);
 	}
 
 	public static Receipt updateImpl(Receipt receipt) {
@@ -575,24 +574,24 @@ public class ReceiptUtil {
 	/**
 	 * Returns the receipt with the primary key or throws a <code>NoSuchReceiptException</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
-	public static Receipt findByPrimaryKey(long receiptId)
+	public static Receipt findByPrimaryKey(long Id)
 		throws io.jetprocess.exception.NoSuchReceiptException {
 
-		return getPersistence().findByPrimaryKey(receiptId);
+		return getPersistence().findByPrimaryKey(Id);
 	}
 
 	/**
 	 * Returns the receipt with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt, or <code>null</code> if a receipt with the primary key could not be found
 	 */
-	public static Receipt fetchByPrimaryKey(long receiptId) {
-		return getPersistence().fetchByPrimaryKey(receiptId);
+	public static Receipt fetchByPrimaryKey(long Id) {
+		return getPersistence().fetchByPrimaryKey(Id);
 	}
 
 	/**

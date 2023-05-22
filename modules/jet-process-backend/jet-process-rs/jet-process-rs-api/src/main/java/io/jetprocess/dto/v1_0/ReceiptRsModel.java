@@ -156,6 +156,34 @@ public class ReceiptRsModel implements Serializable {
 	protected String city;
 
 	@Schema
+	public String getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	@JsonIgnore
+	public void setCreatedOn(
+		UnsafeSupplier<String, Exception> createdOnUnsafeSupplier) {
+
+		try {
+			createdOn = createdOnUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected String createdOn;
+
+	@Schema
 	public Long getCurrentState() {
 		return currentState;
 	}
@@ -408,6 +436,32 @@ public class ReceiptRsModel implements Serializable {
 	protected Long groupId;
 
 	@Schema
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@JsonIgnore
+	public void setId(UnsafeSupplier<Long, Exception> idUnsafeSupplier) {
+		try {
+			id = idUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Long id;
+
+	@Schema
 	public String getLetterDate() {
 		return letterDate;
 	}
@@ -602,20 +656,20 @@ public class ReceiptRsModel implements Serializable {
 	protected String pincode;
 
 	@Schema
-	public Long getReceiptId() {
-		return receiptId;
+	public String getReceiptNo() {
+		return receiptNo;
 	}
 
-	public void setReceiptId(Long receiptId) {
-		this.receiptId = receiptId;
+	public void setReceiptNo(String receiptNo) {
+		this.receiptNo = receiptNo;
 	}
 
 	@JsonIgnore
-	public void setReceiptId(
-		UnsafeSupplier<Long, Exception> receiptIdUnsafeSupplier) {
+	public void setReceiptNo(
+		UnsafeSupplier<String, Exception> receiptNoUnsafeSupplier) {
 
 		try {
-			receiptId = receiptIdUnsafeSupplier.get();
+			receiptNo = receiptNoUnsafeSupplier.get();
 		}
 		catch (RuntimeException re) {
 			throw re;
@@ -627,7 +681,7 @@ public class ReceiptRsModel implements Serializable {
 
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Long receiptId;
+	protected String receiptNo;
 
 	@Schema
 	public String getReceivedOn() {
@@ -958,6 +1012,20 @@ public class ReceiptRsModel implements Serializable {
 			sb.append("\"");
 		}
 
+		if (createdOn != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"createdOn\": ");
+
+			sb.append("\"");
+
+			sb.append(_escape(createdOn));
+
+			sb.append("\"");
+		}
+
 		if (currentState != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -1064,6 +1132,16 @@ public class ReceiptRsModel implements Serializable {
 			sb.append(groupId);
 		}
 
+		if (id != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"id\": ");
+
+			sb.append(id);
+		}
+
 		if (letterDate != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -1158,14 +1236,18 @@ public class ReceiptRsModel implements Serializable {
 			sb.append("\"");
 		}
 
-		if (receiptId != null) {
+		if (receiptNo != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
 			}
 
-			sb.append("\"receiptId\": ");
+			sb.append("\"receiptNo\": ");
 
-			sb.append(receiptId);
+			sb.append("\"");
+
+			sb.append(_escape(receiptNo));
+
+			sb.append("\"");
 		}
 
 		if (receivedOn != null) {

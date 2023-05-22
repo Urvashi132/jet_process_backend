@@ -73,11 +73,11 @@ public class ReceiptLocalServiceUtil {
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
-	public static Receipt createReceipt(long receiptId) {
-		return getService().createReceipt(receiptId);
+	public static Receipt createReceipt(long Id) {
+		return getService().createReceipt(Id);
 	}
 
 	public static Receipt createReceipt(
@@ -115,12 +115,12 @@ public class ReceiptLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect ReceiptLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
-	public static Receipt deleteReceipt(long receiptId) throws PortalException {
-		return getService().deleteReceipt(receiptId);
+	public static Receipt deleteReceipt(long Id) throws PortalException {
+		return getService().deleteReceipt(Id);
 	}
 
 	/**
@@ -228,8 +228,8 @@ public class ReceiptLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static Receipt fetchReceipt(long receiptId) {
-		return getService().fetchReceipt(receiptId);
+	public static Receipt fetchReceipt(long Id) {
+		return getService().fetchReceipt(Id);
 	}
 
 	/**
@@ -291,12 +291,12 @@ public class ReceiptLocalServiceUtil {
 	/**
 	 * Returns the receipt with the primary key.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
-	public static Receipt getReceipt(long receiptId) throws PortalException {
-		return getService().getReceipt(receiptId);
+	public static Receipt getReceipt(long Id) throws PortalException {
+		return getService().getReceipt(Id);
 	}
 
 	public static Receipt getReceiptById(long receiptId)

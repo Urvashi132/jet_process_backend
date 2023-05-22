@@ -4,6 +4,8 @@ import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
 import com.liferay.portal.vulcan.pagination.Page;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -98,11 +100,10 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 
 	private ReceiptRsModel getReceiptRsModel(Receipt receipt) {
 		ReceiptRsModel createdReceipt = new ReceiptRsModel();
-		createdReceipt.setReceiptId(receipt.getReceiptId());
+		createdReceipt.setId(receipt.getId());
 		createdReceipt.setGroupId(receipt.getGroupId());
 		createdReceipt.setType(receipt.getType());
 		createdReceipt.setDeliveryModeId(receipt.getDeliveryModeId());
-		//createdReceipt.setReceiptNo(receipt.getReceiptNo());
 		createdReceipt.setLetterDate(receipt.getLetterDate());
 		createdReceipt.setLetterDate(receipt.getReferenceNo());
 		createdReceipt.setModeNo(receipt.getModeNo());
@@ -116,7 +117,7 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		createdReceipt.setAddress(receipt.getAddress());
 		createdReceipt.setStateId(receipt.getStateId());
 		createdReceipt.setPincode(receipt.getPinCode());
-	//	createdReceipt.setReceiptNo(receipt.getReceiptNo());
+		createdReceipt.setReceiptNo(receipt.getReceiptNo());
 		createdReceipt.setOrganization(receipt.getOrganizationId());
 		createdReceipt.setCity(receipt.getCity());
 		createdReceipt.setUserPostId(receipt.getUserPostId());
@@ -125,7 +126,9 @@ public class ReceiptRsModelResourceImpl extends BaseReceiptRsModelResourceImpl {
 		createdReceipt.setNature(receipt.getNature());
 		createdReceipt.setCurrentlyWith(receipt.getCurrentlyWith());
 		createdReceipt.setCurrentState(receipt.getCurrentState());
-
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+		String strDate = dateFormat.format(receipt.getCreateDate());  
+		createdReceipt.setCreatedOn(strDate);
 		return createdReceipt;
 	}
 

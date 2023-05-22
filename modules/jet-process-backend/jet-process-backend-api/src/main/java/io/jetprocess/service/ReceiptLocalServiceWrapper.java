@@ -61,12 +61,12 @@ public class ReceiptLocalServiceWrapper
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
 	@Override
-	public io.jetprocess.model.Receipt createReceipt(long receiptId) {
-		return _receiptLocalService.createReceipt(receiptId);
+	public io.jetprocess.model.Receipt createReceipt(long Id) {
+		return _receiptLocalService.createReceipt(Id);
 	}
 
 	@Override
@@ -106,15 +106,15 @@ public class ReceiptLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect ReceiptLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.Receipt deleteReceipt(long receiptId)
+	public io.jetprocess.model.Receipt deleteReceipt(long Id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _receiptLocalService.deleteReceipt(receiptId);
+		return _receiptLocalService.deleteReceipt(Id);
 	}
 
 	/**
@@ -243,8 +243,8 @@ public class ReceiptLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.Receipt fetchReceipt(long receiptId) {
-		return _receiptLocalService.fetchReceipt(receiptId);
+	public io.jetprocess.model.Receipt fetchReceipt(long Id) {
+		return _receiptLocalService.fetchReceipt(Id);
 	}
 
 	/**
@@ -314,15 +314,15 @@ public class ReceiptLocalServiceWrapper
 	/**
 	 * Returns the receipt with the primary key.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.Receipt getReceipt(long receiptId)
+	public io.jetprocess.model.Receipt getReceipt(long Id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _receiptLocalService.getReceipt(receiptId);
+		return _receiptLocalService.getReceipt(Id);
 	}
 
 	@Override

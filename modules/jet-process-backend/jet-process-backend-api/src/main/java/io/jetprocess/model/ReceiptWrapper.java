@@ -44,7 +44,7 @@ public class ReceiptWrapper
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("uuid", getUuid());
-		attributes.put("receiptId", getReceiptId());
+		attributes.put("Id", getId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
@@ -89,10 +89,10 @@ public class ReceiptWrapper
 			setUuid(uuid);
 		}
 
-		Long receiptId = (Long)attributes.get("receiptId");
+		Long Id = (Long)attributes.get("Id");
 
-		if (receiptId != null) {
-			setReceiptId(receiptId);
+		if (Id != null) {
+			setId(Id);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -424,6 +424,16 @@ public class ReceiptWrapper
 	}
 
 	/**
+	 * Returns the ID of this receipt.
+	 *
+	 * @return the ID of this receipt
+	 */
+	@Override
+	public long getId() {
+		return model.getId();
+	}
+
+	/**
 	 * Returns the letter date of this receipt.
 	 *
 	 * @return the letter date of this receipt
@@ -511,16 +521,6 @@ public class ReceiptWrapper
 	@Override
 	public long getPrimaryKey() {
 		return model.getPrimaryKey();
-	}
-
-	/**
-	 * Returns the receipt ID of this receipt.
-	 *
-	 * @return the receipt ID of this receipt
-	 */
-	@Override
-	public long getReceiptId() {
-		return model.getReceiptId();
 	}
 
 	/**
@@ -789,6 +789,16 @@ public class ReceiptWrapper
 	}
 
 	/**
+	 * Sets the ID of this receipt.
+	 *
+	 * @param Id the ID of this receipt
+	 */
+	@Override
+	public void setId(long Id) {
+		model.setId(Id);
+	}
+
+	/**
 	 * Sets the letter date of this receipt.
 	 *
 	 * @param letterDate the letter date of this receipt
@@ -876,16 +886,6 @@ public class ReceiptWrapper
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		model.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	 * Sets the receipt ID of this receipt.
-	 *
-	 * @param receiptId the receipt ID of this receipt
-	 */
-	@Override
-	public void setReceiptId(long receiptId) {
-		model.setReceiptId(receiptId);
 	}
 
 	/**

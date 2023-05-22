@@ -36,12 +36,12 @@ public interface Receipt extends PersistedModel, ReceiptModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.ReceiptImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<Receipt, Long> RECEIPT_ID_ACCESSOR =
+	public static final Accessor<Receipt, Long> ID_ACCESSOR =
 		new Accessor<Receipt, Long>() {
 
 			@Override
 			public Long get(Receipt receipt) {
-				return receipt.getReceiptId();
+				return receipt.getId();
 			}
 
 			@Override

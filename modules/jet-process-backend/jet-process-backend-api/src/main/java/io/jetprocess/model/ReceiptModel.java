@@ -77,18 +77,18 @@ public interface ReceiptModel
 	public void setUuid(String uuid);
 
 	/**
-	 * Returns the receipt ID of this receipt.
+	 * Returns the ID of this receipt.
 	 *
-	 * @return the receipt ID of this receipt
+	 * @return the ID of this receipt
 	 */
-	public long getReceiptId();
+	public long getId();
 
 	/**
-	 * Sets the receipt ID of this receipt.
+	 * Sets the ID of this receipt.
 	 *
-	 * @param receiptId the receipt ID of this receipt
+	 * @param Id the ID of this receipt
 	 */
-	public void setReceiptId(long receiptId);
+	public void setId(long Id);
 
 	/**
 	 * Returns the group ID of this receipt.

@@ -7,64 +7,41 @@ var receiptList = {
 	"enctype": "multipart/form-data",
 	"fields": [{
 			"type": "hidden",
-			"name": "receiptId",
+			"name": "id",
 			"id": true,
 			"required": true,
 		},
 		{
 			"type" : "text",
 			"name" : "type",
-			"label" : "Type",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
+			"label" : "Type"
 		},
 		{
 			"type" : "text",
 			"name" : "receiptNo",
-			"label" : "Receipt No",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
+			"label" : "Receipt No"
 		},
 		{
 			"type" : "text",
 			"name" : "subject",
-			"label" : "Subject",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
+			"label" : "Subject"
 		},
 		{
 			"type" : "text",
-			"name" : "category",
-			"label" : "Category",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
+			"name" : "categoryId",
+			"label" : "Category"
 		},
 		{
 			"type" : "text",
 			"name" : "createdOn",
-			"label" : "CreatedOn",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
-		}
-		,
+			"label" : "CreatedOn"
+		},
 		{
 			"type" : "text",
 			"name" : "remarks",
-			"label" : "Remarks",
-			"required" : true,
-			"listable" : true,
-			"searchable" : false
-		}
-
-		
-		
+			"label" : "Remarks"
+		}	
 		],
-				
 		"actions": [
 		{
 			"name": "add",
@@ -73,7 +50,7 @@ var receiptList = {
 			"applyTo": "list",
 			"cssClass": "btn-primary",
 			"handler": {
-				"href": "http://localhost:8080/web/jetcrm/jetprocess?view=receipt"
+				"href": ""
 			}
 		},
 		{
@@ -100,16 +77,15 @@ var receiptList = {
 	"providers": {
 		"collection": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipts?p_auth="+ Liferay.authToken,
-			"method": "get"
-			//"dataNode":"data"
+			//"method": "get"
+			"dataNode":"items"
 		},
 		"selector": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
 			"method": "get",
 			//"dataNode":"data",
 			//"pathParams":{"id":"#id"},
-			//"queryParams":{"id":"#id"}
-			
+			"queryParams":{"id":"#id"}
 		},
 		"create": {
 			"ajax": "",
@@ -124,7 +100,8 @@ var receiptList = {
 		},
 		"delete": {
 			"ajax": "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
-			"method": "delete"
+			"method": "delete",
+			"queryParams":{"id":"#id"}
 		}
 	}
 };

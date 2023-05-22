@@ -62,7 +62,7 @@ public abstract class BaseReceiptRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "receiptId"
+				name = "id"
 			)
 		}
 	)
@@ -77,9 +77,8 @@ public abstract class BaseReceiptRsModelResourceImpl
 	@Override
 	public void deleteReceiptById(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("receiptId")
-			Long receiptId)
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id)
 		throws Exception {
 	}
 
@@ -92,7 +91,7 @@ public abstract class BaseReceiptRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "receiptId"
+				name = "id"
 			)
 		}
 	)
@@ -107,9 +106,8 @@ public abstract class BaseReceiptRsModelResourceImpl
 	@Override
 	public ReceiptRsModel getReceiptById(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("receiptId")
-			Long receiptId)
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id)
 		throws Exception {
 
 		return new ReceiptRsModel();
@@ -118,7 +116,7 @@ public abstract class BaseReceiptRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/Receipt' -d $'{"address": ___, "attachStatus": ___, "categoryId": ___, "city": ___, "currentState": ___, "currentlyWith": ___, "deliveryModeId": ___, "designation": ___, "docfileId": ___, "email": ___, "errorCode": ___, "errorMessage": ___, "groupId": ___, "letterDate": ___, "mobile": ___, "modeNo": ___, "name": ___, "nature": ___, "organization": ___, "pincode": ___, "receiptId": ___, "receivedOn": ___, "referenceNo": ___, "remarks": ___, "stateId": ___, "status": ___, "subject": ___, "type": ___, "userPostId": ___, "viewPdfUrl": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/Receipt' -d $'{"address": ___, "attachStatus": ___, "categoryId": ___, "city": ___, "createdOn": ___, "currentState": ___, "currentlyWith": ___, "deliveryModeId": ___, "designation": ___, "docfileId": ___, "email": ___, "errorCode": ___, "errorMessage": ___, "groupId": ___, "id": ___, "letterDate": ___, "mobile": ___, "modeNo": ___, "name": ___, "nature": ___, "organization": ___, "pincode": ___, "receiptNo": ___, "receivedOn": ___, "referenceNo": ___, "remarks": ___, "stateId": ___, "status": ___, "subject": ___, "type": ___, "userPostId": ___, "viewPdfUrl": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
@@ -139,13 +137,13 @@ public abstract class BaseReceiptRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/Receipt' -d $'{"address": ___, "attachStatus": ___, "categoryId": ___, "city": ___, "currentState": ___, "currentlyWith": ___, "deliveryModeId": ___, "designation": ___, "docfileId": ___, "email": ___, "errorCode": ___, "errorMessage": ___, "groupId": ___, "letterDate": ___, "mobile": ___, "modeNo": ___, "name": ___, "nature": ___, "organization": ___, "pincode": ___, "receiptId": ___, "receivedOn": ___, "referenceNo": ___, "remarks": ___, "stateId": ___, "status": ___, "subject": ___, "type": ___, "userPostId": ___, "viewPdfUrl": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/Receipt' -d $'{"address": ___, "attachStatus": ___, "categoryId": ___, "city": ___, "createdOn": ___, "currentState": ___, "currentlyWith": ___, "deliveryModeId": ___, "designation": ___, "docfileId": ___, "email": ___, "errorCode": ___, "errorMessage": ___, "groupId": ___, "id": ___, "letterDate": ___, "mobile": ___, "modeNo": ___, "name": ___, "nature": ___, "organization": ___, "pincode": ___, "receiptNo": ___, "receivedOn": ___, "referenceNo": ___, "remarks": ___, "stateId": ___, "status": ___, "subject": ___, "type": ___, "userPostId": ___, "viewPdfUrl": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "receiptId"
+				name = "id"
 			)
 		}
 	)
@@ -161,9 +159,8 @@ public abstract class BaseReceiptRsModelResourceImpl
 	@Override
 	public ReceiptRsModel updateReceipt(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("receiptId")
-			Long receiptId,
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id,
 			ReceiptRsModel receiptRsModel)
 		throws Exception {
 

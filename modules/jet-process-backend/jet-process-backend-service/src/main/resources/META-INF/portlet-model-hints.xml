@@ -110,7 +110,7 @@
 	</model>
 	<model name="io.jetprocess.model.Receipt">
 		<field name="uuid" type="String" />
-		<field name="receiptId" type="long" />
+		<field name="Id" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />

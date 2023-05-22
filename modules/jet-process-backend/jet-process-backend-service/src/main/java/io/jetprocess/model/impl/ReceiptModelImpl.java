@@ -78,7 +78,7 @@ public class ReceiptModelImpl
 	public static final String TABLE_NAME = "JP_Receipt";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"receiptId", Types.BIGINT},
+		{"uuid_", Types.VARCHAR}, {"Id", Types.BIGINT},
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
@@ -102,7 +102,7 @@ public class ReceiptModelImpl
 
 	static {
 		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("receiptId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("Id", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("groupId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("userId", Types.BIGINT);
@@ -138,15 +138,13 @@ public class ReceiptModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Receipt (uuid_ VARCHAR(75) null,receiptId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,type_ VARCHAR(75) null,deliveryModeId LONG,receivedOn VARCHAR(75) null,letterDate VARCHAR(75) null,referenceNo VARCHAR(75) null,modeNo VARCHAR(75) null,CategoryId LONG,subject VARCHAR(500) null,remarks VARCHAR(500) null,name VARCHAR(75) null,designation VARCHAR(75) null,mobile VARCHAR(75) null,email VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,pinCode VARCHAR(75) null,receiptNo VARCHAR(75) null,organizationId LONG,city VARCHAR(75) null,userPostId LONG,viewPdfUrl VARCHAR(75) null,docFileId LONG,nature VARCHAR(75) null,currentlyWith LONG,currentState LONG,attachStatus VARCHAR(75) null)";
+		"create table JP_Receipt (uuid_ VARCHAR(75) null,Id LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,type_ VARCHAR(75) null,deliveryModeId LONG,receivedOn VARCHAR(75) null,letterDate VARCHAR(75) null,referenceNo VARCHAR(75) null,modeNo VARCHAR(75) null,CategoryId LONG,subject VARCHAR(500) null,remarks VARCHAR(500) null,name VARCHAR(75) null,designation VARCHAR(75) null,mobile VARCHAR(75) null,email VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,pinCode VARCHAR(75) null,receiptNo VARCHAR(75) null,organizationId LONG,city VARCHAR(75) null,userPostId LONG,viewPdfUrl VARCHAR(75) null,docFileId LONG,nature VARCHAR(75) null,currentlyWith LONG,currentState LONG,attachStatus VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Receipt";
 
-	public static final String ORDER_BY_JPQL =
-		" ORDER BY receipt.receiptId ASC";
+	public static final String ORDER_BY_JPQL = " ORDER BY receipt.Id ASC";
 
-	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_Receipt.receiptId ASC";
+	public static final String ORDER_BY_SQL = " ORDER BY JP_Receipt.Id ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -177,7 +175,7 @@ public class ReceiptModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long RECEIPTID_COLUMN_BITMASK = 8L;
+	public static final long ID_COLUMN_BITMASK = 8L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -209,7 +207,7 @@ public class ReceiptModelImpl
 		Receipt model = new ReceiptImpl();
 
 		model.setUuid(soapModel.getUuid());
-		model.setReceiptId(soapModel.getReceiptId());
+		model.setId(soapModel.getId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setUserId(soapModel.getUserId());
@@ -273,17 +271,17 @@ public class ReceiptModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _receiptId;
+		return _Id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setReceiptId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _receiptId;
+		return _Id;
 	}
 
 	@Override
@@ -393,9 +391,9 @@ public class ReceiptModelImpl
 		attributeGetterFunctions.put("uuid", Receipt::getUuid);
 		attributeSetterBiConsumers.put(
 			"uuid", (BiConsumer<Receipt, String>)Receipt::setUuid);
-		attributeGetterFunctions.put("receiptId", Receipt::getReceiptId);
+		attributeGetterFunctions.put("Id", Receipt::getId);
 		attributeSetterBiConsumers.put(
-			"receiptId", (BiConsumer<Receipt, Long>)Receipt::setReceiptId);
+			"Id", (BiConsumer<Receipt, Long>)Receipt::setId);
 		attributeGetterFunctions.put("groupId", Receipt::getGroupId);
 		attributeSetterBiConsumers.put(
 			"groupId", (BiConsumer<Receipt, Long>)Receipt::setGroupId);
@@ -541,17 +539,17 @@ public class ReceiptModelImpl
 
 	@JSON
 	@Override
-	public long getReceiptId() {
-		return _receiptId;
+	public long getId() {
+		return _Id;
 	}
 
 	@Override
-	public void setReceiptId(long receiptId) {
+	public void setId(long Id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_receiptId = receiptId;
+		_Id = Id;
 	}
 
 	@JSON
@@ -1233,7 +1231,7 @@ public class ReceiptModelImpl
 		ReceiptImpl receiptImpl = new ReceiptImpl();
 
 		receiptImpl.setUuid(getUuid());
-		receiptImpl.setReceiptId(getReceiptId());
+		receiptImpl.setId(getId());
 		receiptImpl.setGroupId(getGroupId());
 		receiptImpl.setCompanyId(getCompanyId());
 		receiptImpl.setUserId(getUserId());
@@ -1277,8 +1275,7 @@ public class ReceiptModelImpl
 		ReceiptImpl receiptImpl = new ReceiptImpl();
 
 		receiptImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
-		receiptImpl.setReceiptId(
-			this.<Long>getColumnOriginalValue("receiptId"));
+		receiptImpl.setId(this.<Long>getColumnOriginalValue("Id"));
 		receiptImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
 		receiptImpl.setCompanyId(
 			this.<Long>getColumnOriginalValue("companyId"));
@@ -1414,7 +1411,7 @@ public class ReceiptModelImpl
 			receiptCacheModel.uuid = null;
 		}
 
-		receiptCacheModel.receiptId = getReceiptId();
+		receiptCacheModel.Id = getId();
 
 		receiptCacheModel.groupId = getGroupId();
 
@@ -1699,7 +1696,7 @@ public class ReceiptModelImpl
 	}
 
 	private String _uuid;
-	private long _receiptId;
+	private long _Id;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
@@ -1764,7 +1761,7 @@ public class ReceiptModelImpl
 		_columnOriginalValues = new HashMap<String, Object>();
 
 		_columnOriginalValues.put("uuid_", _uuid);
-		_columnOriginalValues.put("receiptId", _receiptId);
+		_columnOriginalValues.put("Id", _Id);
 		_columnOriginalValues.put("groupId", _groupId);
 		_columnOriginalValues.put("companyId", _companyId);
 		_columnOriginalValues.put("userId", _userId);
@@ -1823,7 +1820,7 @@ public class ReceiptModelImpl
 
 		columnBitmasks.put("uuid_", 1L);
 
-		columnBitmasks.put("receiptId", 2L);
+		columnBitmasks.put("Id", 2L);
 
 		columnBitmasks.put("groupId", 4L);
 

@@ -118,13 +118,13 @@ public abstract class ReceiptLocalServiceBaseImpl
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public Receipt createReceipt(long receiptId) {
-		return receiptPersistence.create(receiptId);
+	public Receipt createReceipt(long Id) {
+		return receiptPersistence.create(Id);
 	}
 
 	/**
@@ -134,14 +134,14 @@ public abstract class ReceiptLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect ReceiptLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public Receipt deleteReceipt(long receiptId) throws PortalException {
-		return receiptPersistence.remove(receiptId);
+	public Receipt deleteReceipt(long Id) throws PortalException {
+		return receiptPersistence.remove(Id);
 	}
 
 	/**
@@ -260,8 +260,8 @@ public abstract class ReceiptLocalServiceBaseImpl
 	}
 
 	@Override
-	public Receipt fetchReceipt(long receiptId) {
-		return receiptPersistence.fetchByPrimaryKey(receiptId);
+	public Receipt fetchReceipt(long Id) {
+		return receiptPersistence.fetchByPrimaryKey(Id);
 	}
 
 	/**
@@ -279,13 +279,13 @@ public abstract class ReceiptLocalServiceBaseImpl
 	/**
 	 * Returns the receipt with the primary key.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Override
-	public Receipt getReceipt(long receiptId) throws PortalException {
-		return receiptPersistence.findByPrimaryKey(receiptId);
+	public Receipt getReceipt(long Id) throws PortalException {
+		return receiptPersistence.findByPrimaryKey(Id);
 	}
 
 	@Override
@@ -297,7 +297,7 @@ public abstract class ReceiptLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Receipt.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("receiptId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("Id");
 
 		return actionableDynamicQuery;
 	}
@@ -314,7 +314,7 @@ public abstract class ReceiptLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(Receipt.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("receiptId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("Id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -326,7 +326,7 @@ public abstract class ReceiptLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(Receipt.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("receiptId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("Id");
 	}
 
 	@Override

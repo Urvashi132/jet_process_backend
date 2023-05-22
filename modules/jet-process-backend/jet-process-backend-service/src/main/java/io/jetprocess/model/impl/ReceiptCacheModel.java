@@ -47,7 +47,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 
 		ReceiptCacheModel receiptCacheModel = (ReceiptCacheModel)object;
 
-		if (receiptId == receiptCacheModel.receiptId) {
+		if (Id == receiptCacheModel.Id) {
 			return true;
 		}
 
@@ -56,7 +56,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, receiptId);
+		return HashUtil.hash(0, Id);
 	}
 
 	@Override
@@ -65,8 +65,8 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 
 		sb.append("{uuid=");
 		sb.append(uuid);
-		sb.append(", receiptId=");
-		sb.append(receiptId);
+		sb.append(", Id=");
+		sb.append(Id);
 		sb.append(", groupId=");
 		sb.append(groupId);
 		sb.append(", companyId=");
@@ -147,7 +147,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 			receiptImpl.setUuid(uuid);
 		}
 
-		receiptImpl.setReceiptId(receiptId);
+		receiptImpl.setId(Id);
 		receiptImpl.setGroupId(groupId);
 		receiptImpl.setCompanyId(companyId);
 		receiptImpl.setUserId(userId);
@@ -323,7 +323,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		uuid = objectInput.readUTF();
 
-		receiptId = objectInput.readLong();
+		Id = objectInput.readLong();
 
 		groupId = objectInput.readLong();
 
@@ -378,7 +378,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 			objectOutput.writeUTF(uuid);
 		}
 
-		objectOutput.writeLong(receiptId);
+		objectOutput.writeLong(Id);
 
 		objectOutput.writeLong(groupId);
 
@@ -540,7 +540,7 @@ public class ReceiptCacheModel implements CacheModel<Receipt>, Externalizable {
 	}
 
 	public String uuid;
-	public long receiptId;
+	public long Id;
 	public long groupId;
 	public long companyId;
 	public long userId;

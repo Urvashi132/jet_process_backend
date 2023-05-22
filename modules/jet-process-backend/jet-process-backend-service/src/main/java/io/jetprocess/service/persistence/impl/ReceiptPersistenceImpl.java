@@ -384,7 +384,7 @@ public class ReceiptPersistenceImpl
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt
@@ -392,13 +392,12 @@ public class ReceiptPersistenceImpl
 	 */
 	@Override
 	public Receipt[] findByUuid_PrevAndNext(
-			long receiptId, String uuid,
-			OrderByComparator<Receipt> orderByComparator)
+			long Id, String uuid, OrderByComparator<Receipt> orderByComparator)
 		throws NoSuchReceiptException {
 
 		uuid = Objects.toString(uuid, "");
 
-		Receipt receipt = findByPrimaryKey(receiptId);
+		Receipt receipt = findByPrimaryKey(Id);
 
 		Session session = null;
 
@@ -1191,7 +1190,7 @@ public class ReceiptPersistenceImpl
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -1200,13 +1199,13 @@ public class ReceiptPersistenceImpl
 	 */
 	@Override
 	public Receipt[] findByUuid_C_PrevAndNext(
-			long receiptId, String uuid, long companyId,
+			long Id, String uuid, long companyId,
 			OrderByComparator<Receipt> orderByComparator)
 		throws NoSuchReceiptException {
 
 		uuid = Objects.toString(uuid, "");
 
-		Receipt receipt = findByPrimaryKey(receiptId);
+		Receipt receipt = findByPrimaryKey(Id);
 
 		Session session = null;
 
@@ -1559,15 +1558,15 @@ public class ReceiptPersistenceImpl
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
 	@Override
-	public Receipt create(long receiptId) {
+	public Receipt create(long Id) {
 		Receipt receipt = new ReceiptImpl();
 
 		receipt.setNew(true);
-		receipt.setPrimaryKey(receiptId);
+		receipt.setPrimaryKey(Id);
 
 		String uuid = PortalUUIDUtil.generate();
 
@@ -1581,13 +1580,13 @@ public class ReceiptPersistenceImpl
 	/**
 	 * Removes the receipt with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	@Override
-	public Receipt remove(long receiptId) throws NoSuchReceiptException {
-		return remove((Serializable)receiptId);
+	public Receipt remove(long Id) throws NoSuchReceiptException {
+		return remove((Serializable)Id);
 	}
 
 	/**
@@ -1772,26 +1771,24 @@ public class ReceiptPersistenceImpl
 	/**
 	 * Returns the receipt with the primary key or throws a <code>NoSuchReceiptException</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	@Override
-	public Receipt findByPrimaryKey(long receiptId)
-		throws NoSuchReceiptException {
-
-		return findByPrimaryKey((Serializable)receiptId);
+	public Receipt findByPrimaryKey(long Id) throws NoSuchReceiptException {
+		return findByPrimaryKey((Serializable)Id);
 	}
 
 	/**
 	 * Returns the receipt with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt, or <code>null</code> if a receipt with the primary key could not be found
 	 */
 	@Override
-	public Receipt fetchByPrimaryKey(long receiptId) {
-		return fetchByPrimaryKey((Serializable)receiptId);
+	public Receipt fetchByPrimaryKey(long Id) {
+		return fetchByPrimaryKey((Serializable)Id);
 	}
 
 	/**
@@ -1984,7 +1981,7 @@ public class ReceiptPersistenceImpl
 
 	@Override
 	protected String getPKDBName() {
-		return "receiptId";
+		return "Id";
 	}
 
 	@Override

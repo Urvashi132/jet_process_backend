@@ -42,15 +42,14 @@ public interface ReceiptRsModelResource {
 		return FactoryHolder.factory.create();
 	}
 
-	public void deleteReceiptById(Long receiptId) throws Exception;
+	public void deleteReceiptById(Long id) throws Exception;
 
-	public ReceiptRsModel getReceiptById(Long receiptId) throws Exception;
+	public ReceiptRsModel getReceiptById(Long id) throws Exception;
 
 	public ReceiptRsModel createReceipt(ReceiptRsModel receiptRsModel)
 		throws Exception;
 
-	public ReceiptRsModel updateReceipt(
-			Long receiptId, ReceiptRsModel receiptRsModel)
+	public ReceiptRsModel updateReceipt(Long id, ReceiptRsModel receiptRsModel)
 		throws Exception;
 
 	public Page<ReceiptRsModel> getReceiptList() throws Exception;

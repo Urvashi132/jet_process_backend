@@ -87,11 +87,11 @@ public interface ReceiptLocalService
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
 	@Transactional(enabled = false)
-	public Receipt createReceipt(long receiptId);
+	public Receipt createReceipt(long Id);
 
 	public Receipt createReceipt(
 			long groupId, String type, long deliveryModeId, String receivedOn,
@@ -117,12 +117,12 @@ public interface ReceiptLocalService
 	 * <strong>Important:</strong> Inspect ReceiptLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public Receipt deleteReceipt(long receiptId) throws PortalException;
+	public Receipt deleteReceipt(long Id) throws PortalException;
 
 	/**
 	 * Deletes the receipt from the database. Also notifies the appropriate model listeners.
@@ -212,7 +212,7 @@ public interface ReceiptLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Receipt fetchReceipt(long receiptId);
+	public Receipt fetchReceipt(long Id);
 
 	/**
 	 * Returns the receipt matching the UUID and group.
@@ -254,12 +254,12 @@ public interface ReceiptLocalService
 	/**
 	 * Returns the receipt with the primary key.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws PortalException if a receipt with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Receipt getReceipt(long receiptId) throws PortalException;
+	public Receipt getReceipt(long Id) throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Receipt getReceiptById(long receiptId) throws PortalException;

@@ -156,14 +156,14 @@ public interface ReceiptPersistence extends BasePersistence<Receipt> {
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	public Receipt[] findByUuid_PrevAndNext(
-			long receiptId, String uuid,
+			long Id, String uuid,
 			com.liferay.portal.kernel.util.OrderByComparator<Receipt>
 				orderByComparator)
 		throws NoSuchReceiptException;
@@ -357,7 +357,7 @@ public interface ReceiptPersistence extends BasePersistence<Receipt> {
 	/**
 	 * Returns the receipts before and after the current receipt in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param receiptId the primary key of the current receipt
+	 * @param Id the primary key of the current receipt
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -365,7 +365,7 @@ public interface ReceiptPersistence extends BasePersistence<Receipt> {
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
 	public Receipt[] findByUuid_C_PrevAndNext(
-			long receiptId, String uuid, long companyId,
+			long Id, String uuid, long companyId,
 			com.liferay.portal.kernel.util.OrderByComparator<Receipt>
 				orderByComparator)
 		throws NoSuchReceiptException;
@@ -404,39 +404,38 @@ public interface ReceiptPersistence extends BasePersistence<Receipt> {
 	/**
 	 * Creates a new receipt with the primary key. Does not add the receipt to the database.
 	 *
-	 * @param receiptId the primary key for the new receipt
+	 * @param Id the primary key for the new receipt
 	 * @return the new receipt
 	 */
-	public Receipt create(long receiptId);
+	public Receipt create(long Id);
 
 	/**
 	 * Removes the receipt with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt that was removed
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
-	public Receipt remove(long receiptId) throws NoSuchReceiptException;
+	public Receipt remove(long Id) throws NoSuchReceiptException;
 
 	public Receipt updateImpl(Receipt receipt);
 
 	/**
 	 * Returns the receipt with the primary key or throws a <code>NoSuchReceiptException</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt
 	 * @throws NoSuchReceiptException if a receipt with the primary key could not be found
 	 */
-	public Receipt findByPrimaryKey(long receiptId)
-		throws NoSuchReceiptException;
+	public Receipt findByPrimaryKey(long Id) throws NoSuchReceiptException;
 
 	/**
 	 * Returns the receipt with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param receiptId the primary key of the receipt
+	 * @param Id the primary key of the receipt
 	 * @return the receipt, or <code>null</code> if a receipt with the primary key could not be found
 	 */
-	public Receipt fetchByPrimaryKey(long receiptId);
+	public Receipt fetchByPrimaryKey(long Id);
 
 	/**
 	 * Returns all the receipts.

@@ -52,7 +52,7 @@ components:
     ReceiptRsModel:
       description: Contains all the data for receipt creation.
       properties:
-        receiptId:
+        id:
           format: int64
           type: integer
         groupId:
@@ -70,7 +70,9 @@ components:
         referenceNo :
           type: string 
         modeNo :
-          type: string 
+          type: string
+        receiptNo :
+          type: string  
         categoryId:  
           format: int64
           type: integer 
@@ -108,6 +110,8 @@ components:
          type: integer
         nature:
          type: string
+        createdOn:
+         type: string 
         currentlyWith:
          format: int64
          type: integer
@@ -602,7 +606,7 @@ paths:
       operationId: getReceiptById
       parameters:
         - in: "query"
-          name: receiptId
+          name: id
           required: true
           schema:
             format: int64
@@ -622,7 +626,7 @@ paths:
       operationId: deleteReceiptById
       parameters:
         - in: "query"
-          name: receiptId
+          name: id
           required: true
           schema:
             format: int64
@@ -638,7 +642,7 @@ paths:
       operationId: updateReceipt
       parameters:
         - in: "query"
-          name: receiptId
+          name: id
           required: true
           schema:
             format: int64

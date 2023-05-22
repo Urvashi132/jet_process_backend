@@ -101,7 +101,7 @@ create table JP_PrimaryHead (
 
 create table JP_Receipt (
 	uuid_ VARCHAR(75) null,
-	receiptId LONG not null primary key,
+	Id LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
 	userId LONG,

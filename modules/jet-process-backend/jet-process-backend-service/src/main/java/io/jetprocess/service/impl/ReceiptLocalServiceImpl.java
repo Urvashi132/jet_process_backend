@@ -73,8 +73,7 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 		receipt.setViewPdfUrl(viewPdfUrl);
 		receipt.setDocFileId(docfileId);
 		receipt.setUserPostId(userPostId);
-		//receipt.setReceiptNo(receiptNo);
-		receiptNumber =generateReceiptNumber(receiptId);
+		receiptNumber = generateReceiptNumber(receiptId);
 		receipt.setReceiptNo(receiptNumber);
 		receipt = super.addReceipt(receipt);
 		logger.info("create receipt service builder called-----");
@@ -88,7 +87,7 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 			long organizationId, String city, long userPostId, String viewPdfUrl, long docfileId, String nature,
 			long currentlyWith, long currentState, String attachStatus) throws PortalException {
 		Receipt receipt = getReceipt(receiptId);
-		receipt.setReceiptId(receiptId);
+		receipt.setId(receiptId);
 		receipt.setType(type);
 		receipt.setDeliveryModeId(deliveryModeId);
 		receipt.setReceivedOn(receivedOn);
@@ -115,7 +114,6 @@ public class ReceiptLocalServiceImpl extends ReceiptLocalServiceBaseImpl {
 		receipt.setViewPdfUrl(viewPdfUrl);
 		receipt.setDocFileId(docfileId);
 		receipt.setUserPostId(userPostId);
-		
 		receipt = super.updateReceipt(receipt);
 		logger.info("update receipt service builder called-----");
 		return receipt;
