@@ -16,10 +16,9 @@ package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
 
-import io.jetprocess.dto.v1_0.CategoryRsModel;
-import io.jetprocess.service.base.CategoryLocalServiceBaseImpl;
-
 import org.osgi.service.component.annotations.Component;
+
+import io.jetprocess.service.base.CategoryLocalServiceBaseImpl;
 
 /**
  * @author Brian Wing Shun Chan

@@ -119,9 +119,17 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 		return docFileList;
 	}
 
+	
+	/*
+	 * public DocFile addFile(DocFile docFile) { LOGGER.info(docFile); return
+	 * docFile; }
+	 */
 	@Reference
 	private FileValidator fileValidator;
 
 	private final Log LOGGER = LogFactoryUtil.getLog(DocFileLocalServiceImpl.class);
 
+	/*
+	 * @BeanReference(type = DocFile.class) private DocFile docFile;
+	 */
 }

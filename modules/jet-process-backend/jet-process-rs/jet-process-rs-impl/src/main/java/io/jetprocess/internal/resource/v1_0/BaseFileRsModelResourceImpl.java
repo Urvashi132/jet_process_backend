@@ -62,7 +62,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "docFileId"
+				name = "id"
 			)
 		}
 	)
@@ -75,9 +75,8 @@ public abstract class BaseFileRsModelResourceImpl
 	@Override
 	public void deleteDocFileById(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("docFileId")
-			Long docFileId)
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id)
 		throws Exception {
 	}
 
@@ -90,7 +89,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "docFileId"
+				name = "id"
 			)
 		}
 	)
@@ -103,9 +102,8 @@ public abstract class BaseFileRsModelResourceImpl
 	@Override
 	public FileRsModel getDocFileById(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("docFileId")
-			Long docFileId)
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id)
 		throws Exception {
 
 		return new FileRsModel();
@@ -137,7 +135,7 @@ public abstract class BaseFileRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "docFileId"
+				name = "id"
 			)
 		}
 	)
@@ -151,9 +149,8 @@ public abstract class BaseFileRsModelResourceImpl
 	@Override
 	public FileRsModel updateDocFile(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("docFileId")
-			Long docFileId,
+			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
+			Long id,
 			FileRsModel fileRsModel)
 		throws Exception {
 
