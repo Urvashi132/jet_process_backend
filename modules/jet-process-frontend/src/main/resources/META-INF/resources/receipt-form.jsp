@@ -4,30 +4,33 @@
 <html>
 <head>
 <title>Receipt Form</title>
+<style type="text/css">
+.detail {
+	background-color: lightgray;
+	padding: 0.5%;
+}
+</style>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/forms/receipt-form.js"></script>
-	
+
 </head>
 <!-- body  -->
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9" id="receiptFormContainer">
-				<h3 id="receiptFormTitle"></h3>
+			<div class="col" id="receiptFormContainer">
+				<h3>Create Receipt</h3>
 				<form id="receiptForm">
-					<div class="row" id="nameGroup"></div>				
-						<div class="row" id="dates"></div>		
-					<div class="row" id="middleGroup">					
-					</div>
-					<div class="row" id="lowerGroup">
-					
-					</div>
-					<div class="row" id="lowerGroup1">
-					
-					</div>
-					<div class="row" id="lowerGroup2">
-					
-					</div>								
+
+					<h5 class="detail">Diary Details</h5>
+					<div class="row" id="diaryDetails"></div>
+
+					<h5 class="detail">Sender Details</h5>
+					<div class="row" id="senderDetails"></div>
+
+					<h5 class="detail">Receipt Details</h5>
+					<div class="row" id="receiptDetails"></div>
+
 				</form>
 			</div>
 		</div>
