@@ -6,8 +6,6 @@ import com.liferay.portal.kernel.util.Validator;
 import javax.portlet.RenderRequest;
 import javax.servlet.http.HttpServletRequest;
 
-import org.jsoup.helper.Validate;
-
 public class ViewHelper {
 
 	public static String getDisplayPage(RenderRequest renderRequest) {
@@ -23,7 +21,7 @@ public class ViewHelper {
 		}
 
 		else if (parameter.equals("receipt")) {
-			page = "/receipt-form.jsp";
+			page = "/receipt-list.jsp";
 		}
 
 		else if (parameter.equals("note")) {

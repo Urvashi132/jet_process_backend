@@ -132,7 +132,7 @@
 	<entity name="Receipt" local-service="true"
 		remote-service="true" uuid="true">
 		<!-- PK fields -->
-		<column name="receiptId" primary="true" type="long" />
+		<column name="Id" primary="true" type="long" />
 
 		<!-- Group instance -->
 		<column name="groupId" type="long" />
