@@ -21,7 +21,6 @@
 			<div class="col" id="receiptFormContainer">
 				<h3>Create Receipt</h3>
 				<form id="receiptForm">
-
 					<h5 class="detail">Diary Details</h5>
 					<div class="row" id="diaryDetails"></div>
 
