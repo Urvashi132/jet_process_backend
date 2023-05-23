@@ -16,13 +16,15 @@
 	<div class="row">
 		<div class="col" id="fileFormContainer">
 			<h3>New File</h3>
-			<form id="fileForm">
-				<div class="row" id="fileType"></div>
-				<h6>File No</h6>
-				<div class="row border m-1" id="fileNumberGroup"></div>
-				<div class="row" id="fileNoGroup"></div>
-				<div class="row mt-3" id="fileCategoryAndReference"></div>
-			</form>
+			<div class="border p-3 m-1">
+				<form id="fileForm">
+					<div class="row" id="fileType"></div>
+					<h6>File No</h6>
+					<div class="row border m-1" id="fileNumberGroup"></div>
+					<div class="row" id="fileNoGroup"></div>
+					<div class="row mt-3" id="fileCategoryAndReference"></div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
@@ -34,7 +36,7 @@
 <script>
 $(document).ready(() => {
 	fileForm.actions[0].redirects.success.href = '<%=list%>';
-	fileForm.actions[1].redirects.success.href = '<%=list%>';
+	fileForm.actions[1].handler.href = '<%=list%>';
 	
 	var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
 	var jetform=JetForm({"id":"fileForm", "parentId":"fileFormContainer", "form":fileForm});

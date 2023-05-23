@@ -306,6 +306,9 @@ var fileForm = {
 			"success" : {
 				"href" : ""
 			},
+		},
+		"handler" : {
+			"href" : ""
 		}
 	} ],
 	"providers" : {
@@ -314,8 +317,7 @@ var fileForm = {
 			"method" : "get",
 			"queryParams" : {
 				"id" : "#id"
-			},
-
+			}
 		},
 		"create" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
