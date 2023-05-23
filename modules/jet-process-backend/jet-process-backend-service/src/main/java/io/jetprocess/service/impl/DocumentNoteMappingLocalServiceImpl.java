@@ -17,6 +17,8 @@ package io.jetprocess.service.impl;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
 
+import java.util.List;
+
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -26,6 +28,7 @@ import io.jetprocess.model.NoteDocument;
 import io.jetprocess.service.NoteDocumentLocalService;
 import io.jetprocess.service.NoteLocalService;
 import io.jetprocess.service.base.DocumentNoteMappingLocalServiceBaseImpl;
+import io.jetprocess.validator.NoteDocumentValidator;
 
 /**
  * @author Brian Wing Shun Chan
@@ -35,35 +38,47 @@ public class DocumentNoteMappingLocalServiceImpl extends DocumentNoteMappingLoca
 
 	public DocumentNoteMapping addDocumentNoteMapping(String subject, long subjectCategoryId, long createdBy,
 			String content) throws PortalException {
-		long id = counterLocalService.increment(DocumentNoteMapping.class.getName());
-		DocumentNoteMapping documentNoteMapping = createDocumentNoteMapping(id);
+		DocumentNoteMapping documentNoteMapping = null;
+		List<String> error = noteDocumentValidator.validate(subject, subjectCategoryId, content);
+		if (!error.isEmpty()) {
+		} else {
 
-		// get note id
-		Note note = noteLocalService.createNote(content, createdBy);
+			long id = counterLocalService.increment(DocumentNoteMapping.class.getName());
+			documentNoteMapping = createDocumentNoteMapping(id);
 
-		// get note document id
-		NoteDocument noteDocument = noteDocumentLocalService.createNoteDocument(subject, subjectCategoryId, createdBy);
+			// get note id
+			Note note = noteLocalService.createNote(content, createdBy);
 
-		documentNoteMapping.setNoteId(note.getId());
-		documentNoteMapping.setNoteDocumentId(noteDocument.getId());
-		addDocumentNoteMapping(documentNoteMapping);
+			// get note document id
+			NoteDocument noteDocument = noteDocumentLocalService.createNoteDocument(subject, subjectCategoryId,
+					createdBy);
+
+			documentNoteMapping.setNoteId(note.getId());
+			documentNoteMapping.setNoteDocumentId(noteDocument.getId());
+			addDocumentNoteMapping(documentNoteMapping);
+		}
 		return documentNoteMapping;
 	}
 
 	public DocumentNoteMapping updateDocumentNoteMapping(long id, String subject, long subjectCategoryId,
 			String content) throws PortalException {
-		DocumentNoteMapping documentNoteMapping = getDocumentNoteMapping(id);
+		DocumentNoteMapping documentNoteMapping = null;
+		List<String> error = noteDocumentValidator.validate(subject, subjectCategoryId, content);
+		if (!error.isEmpty()) {
+		} else {
+			documentNoteMapping = getDocumentNoteMapping(id);
 
-		// get note id
-		Note note = noteLocalService.updateNote(documentNoteMapping.getNoteId(), content);
+			// get note id
+			Note note = noteLocalService.updateNote(documentNoteMapping.getNoteId(), content);
 
-		// get note document id
-		NoteDocument noteDocument = noteDocumentLocalService.updateNoteDocument(documentNoteMapping.getNoteDocumentId(),
-				subject, subjectCategoryId);
+			// get note document id
+			NoteDocument noteDocument = noteDocumentLocalService
+					.updateNoteDocument(documentNoteMapping.getNoteDocumentId(), subject, subjectCategoryId);
 
-		documentNoteMapping.setNoteId(note.getId());
-		documentNoteMapping.setNoteDocumentId(noteDocument.getId());
-		updateDocumentNoteMapping(documentNoteMapping);
+			documentNoteMapping.setNoteId(note.getId());
+			documentNoteMapping.setNoteDocumentId(noteDocument.getId());
+			updateDocumentNoteMapping(documentNoteMapping);
+		}
 		return documentNoteMapping;
 	}
 
@@ -79,19 +94,8 @@ public class DocumentNoteMappingLocalServiceImpl extends DocumentNoteMappingLoca
 		super.deleteDocumentNoteMapping(id);
 	}
 
-	/*
-	 * public DocumentNoteMapping getDocumentNoteMappingList() throws
-	 * PortalException { List<DocumentNoteMapping> documentNoteMapping =
-	 * getDocumentNoteMappings(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
-	 * 
-	 * // get note id Note note =
-	 * noteLocalService.deleteNote(documentNoteMapping.getNoteId());
-	 * 
-	 * // get note document id NoteDocument noteDocument = noteDocumentLocalService
-	 * .deleteNoteDocument(documentNoteMapping.getNoteDocumentId());
-	 * 
-	 * deleteDocumentNoteMapping(id); return documentNoteMapping; }
-	 */
+	@Reference
+	private NoteDocumentValidator noteDocumentValidator;
 
 	@Reference
 	private NoteLocalService noteLocalService;

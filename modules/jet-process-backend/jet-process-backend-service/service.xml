@@ -291,6 +291,7 @@
 	<exceptions>
 		<exception>FileValidation</exception>
 		<exception>ReceiptValidation</exception>
+		<exception>NoteDocumentValidation</exception>
 		<exception>DuplicateFileNumber</exception>
 	</exceptions>
 </service-builder>

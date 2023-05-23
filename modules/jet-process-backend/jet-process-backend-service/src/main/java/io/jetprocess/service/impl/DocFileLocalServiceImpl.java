@@ -100,14 +100,7 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 		docFile = super.updateDocFile(docFile);
 		return docFile;
 	}
-	/*
-	 * public DocFile deleteDocFileById(long id) throws PortalException { DocFile
-	 * docFile = deleteDocFile(id); return docFile; }
-	 * 
-	 * public DocFile getDocFileById(long id) throws PortalException { return
-	 * getDocFile(id); }
-	 */
-
+	
 	public String generateFileNo(long id) {
 		String number = String.valueOf(id);
 		String fileNo = 'F' + number;
@@ -116,20 +109,12 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 
 	public List<DocFile> getDocFiles() throws PortalException {
 		List<DocFile> docFileList = getDocFiles(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		System.out.println(docFileList);
 		return docFileList;
 	}
 
-	
-	/*
-	 * public DocFile addFile(DocFile docFile) { LOGGER.info(docFile); return
-	 * docFile; }
-	 */
 	@Reference
 	private FileValidator fileValidator;
 
 	private final Log LOGGER = LogFactoryUtil.getLog(DocFileLocalServiceImpl.class);
-
-	/*
-	 * @BeanReference(type = DocFile.class) private DocFile docFile;
-	 */
 }

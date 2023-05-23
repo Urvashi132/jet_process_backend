@@ -63,13 +63,6 @@ public class NoteDocumentLocalServiceImpl extends NoteDocumentLocalServiceBaseIm
 		return noteDocument;
 	}
 
-	/*
-	 * public NoteDocument deleteNoteDocumentById(long id) throws PortalException {
-	 * NoteDocument docFile = deleteNoteDocument(id); return docFile; }
-	 * 
-	 * public NoteDocument getNoteDocumentById(long id) throws PortalException {
-	 * return getNoteDocument(id); }
-	 */
 	public List<NoteDocument> getNoteDocuments() throws PortalException {
 		List<NoteDocument> noteDocumentList = getNoteDocuments(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 		return noteDocumentList;
