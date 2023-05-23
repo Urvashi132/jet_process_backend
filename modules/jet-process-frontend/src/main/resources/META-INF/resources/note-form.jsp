@@ -17,8 +17,7 @@
 	<div class="row">
 		<div class="col" id="noteFormContainer">
 			<h3>Create Note</h3>
-			<form id="noteForm">
-			</form>
+			<form id="noteForm"></form>
 		</div>
 	</div>
 </div>
@@ -29,11 +28,15 @@
 
 <script>
 	$(document).ready(() => {
-		var jetform=JetForm({"id":"noteForm", "parentId":"noteFormContainer", "form":noteForm});
-		jetform.render(); 
 		$('#subject').closest("div").addClass("text-margin");
 		$('#content').closest("div").addClass("text-margin");
-		CKEDITOR.replace('content');	
+		var jetform=JetForm({"id":"noteForm", "parentId":"noteFormContainer", "form":noteForm});
+		jetform.render(); 
+		
+		setTimeout(function(){
+			CKEDITOR.replace('content');}, 2000);
+		
+		//CKEDITOR.replace('content'); 
 		var m = new Date().getMonth()+1;
 		$('#createdOn').val(new Date().getDate()+"/"+m+"/"+new Date().getFullYear());
 		$('#createdOn').attr("disabled",true);

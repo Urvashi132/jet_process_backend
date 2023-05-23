@@ -25,7 +25,7 @@ var noteList = {
 
 	}, {
 		"type" : "text",
-		"name" : "modifiedDate",
+		"name" : "createDate",
 		"label" : "Created On"
 
 	} ],

@@ -85,14 +85,12 @@ public class NoteDocumentRsModelResourceImpl extends BaseNoteDocumentRsModelReso
 		noteDocumentRsModel.setNoteDocumentNo(noteDocument.getNoteDocumentNumber());
 		noteDocumentRsModel.setSubject(noteDocument.getSubject());
 		noteDocumentRsModel.setSubjectCategoryId(noteDocument.getSubjectCategoryId());
-		noteDocumentRsModel.setModifiedDate(noteDocument.getModifiedDate());
+		noteDocumentRsModel.setCreateDate(noteDocument.getCreateDate());
 		return noteDocumentRsModel;
 	}
 
 	private NoteDocumentRsModel getNoteDocumentByIdRsModel(NoteDocument noteDocument, Note note) {
-		NoteDocumentRsModel noteDocumentRsModel = new NoteDocumentRsModel();
-		noteDocumentRsModel.setSubject(noteDocument.getSubject());
-		noteDocumentRsModel.setSubjectCategoryId(noteDocument.getSubjectCategoryId());
+		NoteDocumentRsModel noteDocumentRsModel = getNoteDocumentRsModel(noteDocument);
 		noteDocumentRsModel.setContent(note.getContent());
 		return noteDocumentRsModel;
 	}

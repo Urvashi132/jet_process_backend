@@ -78,6 +78,34 @@ public class FileRsModel implements Serializable {
 	protected Long categoryId;
 
 	@Schema
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	@JsonIgnore
+	public void setCreateDate(
+		UnsafeSupplier<Date, Exception> createDateUnsafeSupplier) {
+
+		try {
+			createDate = createDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Date createDate;
+
+	@Schema
 	public Long getFileCodeId() {
 		return fileCodeId;
 	}
@@ -214,34 +242,6 @@ public class FileRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long id;
-
-	@Schema
-	public Date getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-	@JsonIgnore
-	public void setModifiedDate(
-		UnsafeSupplier<Date, Exception> modifiedDateUnsafeSupplier) {
-
-		try {
-			modifiedDate = modifiedDateUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Date modifiedDate;
 
 	@Schema
 	public String getNature() {
@@ -475,6 +475,20 @@ public class FileRsModel implements Serializable {
 			sb.append(categoryId);
 		}
 
+		if (createDate != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"createDate\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(createDate));
+
+			sb.append("\"");
+		}
+
 		if (fileCodeId != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -527,20 +541,6 @@ public class FileRsModel implements Serializable {
 			sb.append("\"id\": ");
 
 			sb.append(id);
-		}
-
-		if (modifiedDate != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"modifiedDate\": ");
-
-			sb.append("\"");
-
-			sb.append(liferayToJSONDateFormat.format(modifiedDate));
-
-			sb.append("\"");
 		}
 
 		if (nature != null) {

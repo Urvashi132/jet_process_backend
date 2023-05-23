@@ -254,7 +254,7 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(id: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(id: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, createDate}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public FileRsModel docFileById(@GraphQLName("id") Long id)
@@ -283,7 +283,7 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentId(id: ___){id, groupId, noteDocumentNo, subject, subjectCategoryId, content, createdBy, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentId(id: ___){id, groupId, noteDocumentNo, subject, subjectCategoryId, content, createdBy, createDate}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public NoteDocumentRsModel noteDocumentId(@GraphQLName("id") Long id)
@@ -345,17 +345,17 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(receiptId: ___){receiptId, groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, organization, city, userPostId, viewPdfUrl, docfileId, nature, currentlyWith, attachStatus, currentState, errorCode, status, errorMessage}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptById(id: ___){id, groupId, type, deliveryModeId, receivedOn, letterDate, referenceNo, modeNo, receiptNo, categoryId, subject, remarks, name, designation, mobile, email, address, stateId, pincode, organization, city, userPostId, viewPdfUrl, docfileId, nature, createdOn, currentlyWith, attachStatus, currentState, errorCode, status, errorMessage}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public ReceiptRsModel receiptById(@GraphQLName("receiptId") Long receiptId)
+	public ReceiptRsModel receiptById(@GraphQLName("id") Long id)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
 			_receiptRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			receiptRsModelResource -> receiptRsModelResource.getReceiptById(
-				receiptId));
+				id));
 	}
 
 	/**

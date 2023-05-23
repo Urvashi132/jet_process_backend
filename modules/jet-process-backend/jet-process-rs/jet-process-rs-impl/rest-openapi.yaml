@@ -44,7 +44,7 @@ components:
         userPostId:
           format: int64
           type: integer   
-        modifiedDate:
+        createDate:
           format: date-time
           type : string
       type: object
@@ -261,7 +261,7 @@ components:
         createdBy:  
           format: int64
           type: integer
-        modifiedDate:
+        createDate:
           format: date-time
           type : string
       type: object

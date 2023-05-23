@@ -11,6 +11,10 @@ var fileList = {
 		"id" : true,
 	}, {
 		"type" : "select",
+		"name" : "type",
+		"label" : "Type",
+	}, {
+		"type" : "select",
 		"name" : "nature",
 		"label" : "Nature",
 	}, {
@@ -18,13 +22,24 @@ var fileList = {
 		"name" : "fileNo",
 		"label" : "File No",
 	}, {
-		"type" : "select",
-		"name" : "categoryId",
-		"label" : "Category",
-	}, {
 		"type" : "textarea",
 		"name" : "subject",
 		"label" : "Subject",
+		"searchable" : false,
+	}, {
+		"type" : "select",
+		"name" : "categoryId",
+		"label" : "Category",
+		"provider" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filecategory?p_auth=" + Liferay.authToken,
+			"value" : "id",
+			"label" : "name",
+			"dataNode" : "items"
+		}
+	}, {
+		"type" : "date",
+		"name" : "createDate",
+		"label" : "created On",
 		"searchable" : false,
 	}, {
 		"type" : "textarea",

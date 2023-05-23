@@ -138,14 +138,14 @@ public class Mutation {
 	}
 
 	@GraphQLField
-	public boolean deleteReceiptById(@GraphQLName("receiptId") Long receiptId)
+	public boolean deleteReceiptById(@GraphQLName("id") Long id)
 		throws Exception {
 
 		_applyVoidComponentServiceObjects(
 			_receiptRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			receiptRsModelResource -> receiptRsModelResource.deleteReceiptById(
-				receiptId));
+				id));
 
 		return true;
 	}
@@ -164,7 +164,7 @@ public class Mutation {
 
 	@GraphQLField
 	public ReceiptRsModel updateReceipt(
-			@GraphQLName("receiptId") Long receiptId,
+			@GraphQLName("id") Long id,
 			@GraphQLName("receiptRsModel") ReceiptRsModel receiptRsModel)
 		throws Exception {
 
@@ -172,7 +172,7 @@ public class Mutation {
 			_receiptRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			receiptRsModelResource -> receiptRsModelResource.updateReceipt(
-				receiptId, receiptRsModel));
+				id, receiptRsModel));
 	}
 
 	private <T, R, E1 extends Throwable, E2 extends Throwable> R

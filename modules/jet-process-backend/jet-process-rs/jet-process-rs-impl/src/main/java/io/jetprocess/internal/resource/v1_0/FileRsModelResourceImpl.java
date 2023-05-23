@@ -64,7 +64,6 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	}
 
 	@Override
-
 	public void deleteDocFileById(@NotNull Long docFileId) throws Exception {
 		docFileLocalService.deleteDocFile(docFileId);
 	}
@@ -79,7 +78,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		FileRsModel createdDocFile = new FileRsModel();
 		createdDocFile.setId(docFile.getId());
 		createdDocFile.setGroupId(docFile.getGroupId());
-		createdDocFile.setModifiedDate(docFile.getModifiedDate());
+		createdDocFile.setCreateDate(docFile.getCreateDate());;
 		createdDocFile.setNature(docFile.getNature());
 		createdDocFile.setType(docFile.getType());
 		createdDocFile.setHeadId(docFile.getHeadId());

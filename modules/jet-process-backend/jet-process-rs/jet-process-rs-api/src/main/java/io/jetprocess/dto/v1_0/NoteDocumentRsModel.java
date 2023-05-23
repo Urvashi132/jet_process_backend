@@ -76,6 +76,34 @@ public class NoteDocumentRsModel implements Serializable {
 	protected String content;
 
 	@Schema
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	@JsonIgnore
+	public void setCreateDate(
+		UnsafeSupplier<Date, Exception> createDateUnsafeSupplier) {
+
+		try {
+			createDate = createDateUnsafeSupplier.get();
+		}
+		catch (RuntimeException re) {
+			throw re;
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@GraphQLField
+	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
+	protected Date createDate;
+
+	@Schema
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -156,34 +184,6 @@ public class NoteDocumentRsModel implements Serializable {
 	@GraphQLField
 	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
 	protected Long id;
-
-	@Schema
-	public Date getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-	@JsonIgnore
-	public void setModifiedDate(
-		UnsafeSupplier<Date, Exception> modifiedDateUnsafeSupplier) {
-
-		try {
-			modifiedDate = modifiedDateUnsafeSupplier.get();
-		}
-		catch (RuntimeException re) {
-			throw re;
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@GraphQLField
-	@JsonProperty(access = JsonProperty.Access.READ_WRITE)
-	protected Date modifiedDate;
 
 	@Schema
 	public String getNoteDocumentNo() {
@@ -313,6 +313,20 @@ public class NoteDocumentRsModel implements Serializable {
 			sb.append("\"");
 		}
 
+		if (createDate != null) {
+			if (sb.length() > 1) {
+				sb.append(", ");
+			}
+
+			sb.append("\"createDate\": ");
+
+			sb.append("\"");
+
+			sb.append(liferayToJSONDateFormat.format(createDate));
+
+			sb.append("\"");
+		}
+
 		if (createdBy != null) {
 			if (sb.length() > 1) {
 				sb.append(", ");
@@ -341,20 +355,6 @@ public class NoteDocumentRsModel implements Serializable {
 			sb.append("\"id\": ");
 
 			sb.append(id);
-		}
-
-		if (modifiedDate != null) {
-			if (sb.length() > 1) {
-				sb.append(", ");
-			}
-
-			sb.append("\"modifiedDate\": ");
-
-			sb.append("\"");
-
-			sb.append(liferayToJSONDateFormat.format(modifiedDate));
-
-			sb.append("\"");
 		}
 
 		if (noteDocumentNo != null) {

@@ -120,7 +120,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "modifiedDate": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createDate": ___, "createdBy": ___, "groupId": ___, "id": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
@@ -144,7 +144,7 @@ public abstract class BaseNoteDocumentRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createdBy": ___, "groupId": ___, "id": ___, "modifiedDate": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'PUT' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocument' -d $'{"content": ___, "createDate": ___, "createdBy": ___, "groupId": ___, "id": ___, "noteDocumentNo": ___, "subject": ___, "subjectCategoryId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
