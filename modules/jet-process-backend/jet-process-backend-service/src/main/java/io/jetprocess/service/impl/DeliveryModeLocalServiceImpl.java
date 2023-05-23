@@ -15,7 +15,11 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 
+import java.util.List;
+
+import io.jetprocess.model.DeliveryMode;
 import io.jetprocess.service.base.DeliveryModeLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
@@ -29,4 +33,8 @@ import org.osgi.service.component.annotations.Component;
 )
 public class DeliveryModeLocalServiceImpl
 	extends DeliveryModeLocalServiceBaseImpl {
+	
+	public List<DeliveryMode> getDeliveryModeList(){
+		return getDeliveryModes(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	}
 }

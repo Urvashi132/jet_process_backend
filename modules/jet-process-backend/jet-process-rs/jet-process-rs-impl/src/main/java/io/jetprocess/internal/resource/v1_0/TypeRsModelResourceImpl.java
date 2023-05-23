@@ -2,7 +2,6 @@ package io.jetprocess.internal.resource.v1_0;
 
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
-import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class TypeRsModelResourceImpl extends BaseTypeRsModelResourceImpl {
 	@Override
 	public Page<TypeRsModel> getTypeList() throws Exception {
 		List<TypeRsModel> typeRsModelList = new ArrayList<>();
-		List<Type> typeList = typeLocalService.getTypes(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		List<Type> typeList = typeLocalService.getTypeList();
 		
 		typeList.stream().forEach(type -> {
 			typeRsModelList.add(getTypeModel(type));

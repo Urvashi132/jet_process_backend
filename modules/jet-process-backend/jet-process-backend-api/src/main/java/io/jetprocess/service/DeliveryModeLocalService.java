@@ -213,6 +213,9 @@ public interface DeliveryModeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public DeliveryMode getDeliveryMode(long id) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<DeliveryMode> getDeliveryModeList();
+
 	/**
 	 * Returns a range of all the delivery modes.
 	 *

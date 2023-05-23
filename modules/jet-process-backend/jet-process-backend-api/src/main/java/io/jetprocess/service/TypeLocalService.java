@@ -231,6 +231,9 @@ public interface TypeLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Type getType(long id) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Type> getTypeList();
+
 	/**
 	 * Returns a range of all the types.
 	 *

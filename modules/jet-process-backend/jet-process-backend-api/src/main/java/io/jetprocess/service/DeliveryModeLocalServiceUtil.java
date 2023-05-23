@@ -227,6 +227,10 @@ public class DeliveryModeLocalServiceUtil {
 		return getService().getDeliveryMode(id);
 	}
 
+	public static List<DeliveryMode> getDeliveryModeList() {
+		return getService().getDeliveryModeList();
+	}
+
 	/**
 	 * Returns a range of all the delivery modes.
 	 *

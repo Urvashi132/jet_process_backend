@@ -15,7 +15,11 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 
+import java.util.List;
+
+import io.jetprocess.model.Type;
 import io.jetprocess.service.base.TypeLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
@@ -28,4 +32,8 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class TypeLocalServiceImpl extends TypeLocalServiceBaseImpl {
+	
+	public List<Type> getTypeList(){
+		return getTypes(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	}
 }

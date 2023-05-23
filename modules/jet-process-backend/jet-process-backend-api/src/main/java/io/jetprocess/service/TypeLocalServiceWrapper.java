@@ -266,6 +266,11 @@ public class TypeLocalServiceWrapper
 		return _typeLocalService.getType(id);
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.Type> getTypeList() {
+		return _typeLocalService.getTypeList();
+	}
+
 	/**
 	 * Returns a range of all the types.
 	 *

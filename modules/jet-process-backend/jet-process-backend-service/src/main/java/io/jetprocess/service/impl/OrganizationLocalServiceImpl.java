@@ -36,7 +36,6 @@ public class OrganizationLocalServiceImpl
 	
 	
 	public List<Organization> getOrgnization(){
-		System.out.println("data------"+getOrganizations(QueryUtil.ALL_POS, QueryUtil.ALL_POS));
 		return getOrganizations(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 	}
 	

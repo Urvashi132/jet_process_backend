@@ -250,6 +250,10 @@ public class TypeLocalServiceUtil {
 		return getService().getType(id);
 	}
 
+	public static List<Type> getTypeList() {
+		return getService().getTypeList();
+	}
+
 	/**
 	 * Returns a range of all the types.
 	 *

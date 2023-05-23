@@ -37,7 +37,7 @@ public class OrganizationRsModelResourceImpl
 	@Override
 	public Page<OrganizationRsModel> getOrganizationList() throws Exception {
 		List<OrganizationRsModel> organizationRsModelList = new ArrayList<>();
-		List<Organization> organizationList = organizationLocalService.getOrganizations(QueryUtil.ALL_POS, QueryUtil.ALL_POS);		
+		List<Organization> organizationList = organizationLocalService.getOrgnization();
 		System.out.println("------"+organizationList);
 		organizationList.stream().forEach(oranization -> {
 			organizationRsModelList.add(getOranizationModel(oranization));

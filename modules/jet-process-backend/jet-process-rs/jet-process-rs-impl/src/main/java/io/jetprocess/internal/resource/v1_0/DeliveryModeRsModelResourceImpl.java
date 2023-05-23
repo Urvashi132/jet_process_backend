@@ -2,7 +2,6 @@ package io.jetprocess.internal.resource.v1_0;
 
 import com.liferay.petra.function.UnsafeBiConsumer;
 import com.liferay.petra.function.UnsafeConsumer;
-import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.ArrayList;
@@ -38,8 +37,7 @@ public class DeliveryModeRsModelResourceImpl
 	@Override
 	public Page<DeliveryModeRsModel> getDeliveryModeist() throws Exception {
 		List<DeliveryModeRsModel> deliveryModeRsList = new ArrayList<>();
-		List<DeliveryMode> deliveryModeList = deliveryModeLocalService
-				.getDeliveryModes(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		List<DeliveryMode> deliveryModeList = deliveryModeLocalService.getDeliveryModeList();
 		
 		deliveryModeList.stream().forEach(deliveryMode -> {
 			deliveryModeRsList.add(getDeliveryModeRsModel(deliveryMode));

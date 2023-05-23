@@ -246,6 +246,13 @@ public class DeliveryModeLocalServiceWrapper
 		return _deliveryModeLocalService.getDeliveryMode(id);
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.DeliveryMode>
+		getDeliveryModeList() {
+
+		return _deliveryModeLocalService.getDeliveryModeList();
+	}
+
 	/**
 	 * Returns a range of all the delivery modes.
 	 *
