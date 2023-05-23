@@ -155,11 +155,6 @@
 		</field>
 		<field name="primaryHeadId" type="long" />
 	</model>
-	<model name="io.jetprocess.model.State">
-		<field name="id" type="long" />
-		<field name="name" type="String" />
-		<field name="countryId" type="long" />
-	</model>
 	<model name="io.jetprocess.model.SubjectCategory">
 		<field name="id" type="long" />
 		<field name="name" type="String">

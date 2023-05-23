@@ -14,7 +14,6 @@
 	<import class="io.jetprocess.model.PrimaryHead" />
 	<import class="io.jetprocess.model.Receipt" />
 	<import class="io.jetprocess.model.SecondaryHead" />
-	<import class="io.jetprocess.model.State" />
 	<import class="io.jetprocess.model.SubjectCategory" />
 	<import class="io.jetprocess.model.TertiaryHead" />
 	<import class="io.jetprocess.model.Type" />
@@ -173,13 +172,6 @@
 		</id>
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="primaryHeadId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-	</class>
-	<class name="io.jetprocess.model.impl.StateImpl" table="JP_State">
-		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="id_" name="id" type="long">
-			<generator class="assigned" />
-		</id>
-		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="countryId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class name="io.jetprocess.model.impl.SubjectCategoryImpl" table="JP_SubjectCategory">
 		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" column="id_" name="id" type="long">
