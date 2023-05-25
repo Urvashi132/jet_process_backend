@@ -53,7 +53,10 @@ var noteForm = {
 							"col" : 6
 						} ]
 			},{
-				"type" : "group",
+				"type" : "textarea",
+				"name" : "content",
+				"label" : "Article Content",
+				/*"type" : "group",
 				"name" : "note",
 				"label" : "name",
 				"fields" : [ {
@@ -66,7 +69,7 @@ var noteForm = {
 							"type" : "javascript",
 						}]
 					}
-				}]
+				}]*/
 			}, {
 				"type" : "hidden",
 				"name" : "groupId",
@@ -98,10 +101,8 @@ var noteForm = {
 		"label" : "Cancel",
 		"applyTo" : "form",
 		"cssClass" : "btn-secondary",
-		"redirects" : {
-			"success" : {
-				"href" : ""
-			},
+		"handler" : {
+			"href" : ""
 		}
 	} ],
 	"providers" : {

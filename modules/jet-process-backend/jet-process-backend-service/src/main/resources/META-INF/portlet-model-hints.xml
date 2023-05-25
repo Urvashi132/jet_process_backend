@@ -62,6 +62,25 @@
 			<hint name="max-length">255</hint>
 		</field>
 	</model>
+	<model name="io.jetprocess.model.FileMovement">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="receiverId" type="long" />
+		<field name="senderId" type="long" />
+		<field name="fileId" type="long" />
+		<field name="priority" type="String" />
+		<field name="dueDate" type="Date" />
+		<field name="remark" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="active" type="boolean" />
+		<field name="movementType" type="long" />
+	</model>
 	<model name="io.jetprocess.model.Note">
 		<field name="uuid" type="String" />
 		<field name="id" type="long" />
@@ -96,6 +115,24 @@
 		<field name="subjectCategoryId" type="long" />
 		<field name="currentUser" type="long" />
 		<field name="currentState" type="int" />
+	</model>
+	<model name="io.jetprocess.model.NoteDocumentMovement">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="receiverId" type="long" />
+		<field name="senderId" type="long" />
+		<field name="noteDocumentId" type="long" />
+		<field name="remarks" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="active" type="boolean" />
+		<field name="movementType" type="long" />
 	</model>
 	<model name="io.jetprocess.model.Organization">
 		<field name="id" type="long" />
@@ -147,6 +184,25 @@
 		<field name="currentlyWith" type="long" />
 		<field name="currentState" type="long" />
 		<field name="attachStatus" type="String" />
+	</model>
+	<model name="io.jetprocess.model.ReceiptMovement">
+		<field name="uuid" type="String" />
+		<field name="rmId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="receiverId" type="long" />
+		<field name="senderId" type="long" />
+		<field name="receiptId" type="long" />
+		<field name="priority" type="String" />
+		<field name="dueDate" type="Date" />
+		<field name="remark" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="active" type="boolean" />
+		<field name="movementType" type="long" />
 	</model>
 	<model name="io.jetprocess.model.SecondaryHead">
 		<field name="id" type="long" />

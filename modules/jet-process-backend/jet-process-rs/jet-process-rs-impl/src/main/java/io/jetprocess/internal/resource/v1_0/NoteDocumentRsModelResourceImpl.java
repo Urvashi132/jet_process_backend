@@ -43,10 +43,6 @@ public class NoteDocumentRsModelResourceImpl extends BaseNoteDocumentRsModelReso
 
 	@Override
 	public NoteDocumentRsModel createNotedocument(NoteDocumentRsModel noteDocumentRsModel) throws Exception {
-
-		System.out.println(noteDocumentRsModel.getSubject() + "   " + noteDocumentRsModel.getSubjectCategoryId() + "   "
-				+ noteDocumentRsModel.getCreatedBy() + "   " + noteDocumentRsModel.getContent());
-
 		mappingLocalService.addDocumentNoteMapping(noteDocumentRsModel.getSubject(),
 				noteDocumentRsModel.getSubjectCategoryId(), noteDocumentRsModel.getCreatedBy(),
 				noteDocumentRsModel.getContent());
@@ -71,15 +67,18 @@ public class NoteDocumentRsModelResourceImpl extends BaseNoteDocumentRsModelReso
 
 	@Override
 	public Page<NoteDocumentRsModel> getNoteDocumentList() throws Exception {
+		System.out.println("rs");
 		List<NoteDocumentRsModel> noteDocumentRsModelList = new ArrayList<>();
 		List<NoteDocument> noteDocumentList = noteDocumentLocalService.getNoteDocuments();
 		noteDocumentList.stream().forEach(noteDocument -> {
 			noteDocumentRsModelList.add(getNoteDocumentRsModel(noteDocument));
 		});
+		System.out.println(noteDocumentRsModelList);
 		return Page.of(noteDocumentRsModelList);
 	}
 
 	private NoteDocumentRsModel getNoteDocumentRsModel(NoteDocument noteDocument) {
+		System.out.println("d");
 		NoteDocumentRsModel noteDocumentRsModel = new NoteDocumentRsModel();
 		noteDocumentRsModel.setId(noteDocument.getId());
 		noteDocumentRsModel.setNoteDocumentNo(noteDocument.getNoteDocumentNumber());

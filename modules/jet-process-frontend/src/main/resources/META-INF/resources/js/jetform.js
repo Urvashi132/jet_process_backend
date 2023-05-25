@@ -112,7 +112,7 @@ JetForm.prototype.render = function() {
 	}
     
     _this.renderModal();
-    //console.log("Exiting JetForm.prototype.render");
+    console.log("Exiting JetForm.prototype.render");
 }
 
 JetForm.prototype.readFromQueryParam = function(){

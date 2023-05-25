@@ -54,10 +54,13 @@ import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
 import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
 import io.jetprocess.service.persistence.FileCategoryPersistence;
+import io.jetprocess.service.persistence.FileMovementPersistence;
+import io.jetprocess.service.persistence.NoteDocumentMovementPersistence;
 import io.jetprocess.service.persistence.NoteDocumentPersistence;
 import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
+import io.jetprocess.service.persistence.ReceiptMovementPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
 import io.jetprocess.service.persistence.SecondaryHeadPersistence;
 import io.jetprocess.service.persistence.SubjectCategoryPersistence;
@@ -608,6 +611,9 @@ public abstract class NoteLocalServiceBaseImpl
 	@Reference
 	protected FileCategoryPersistence fileCategoryPersistence;
 
+	@Reference
+	protected FileMovementPersistence fileMovementPersistence;
+
 	protected NoteLocalService noteLocalService;
 
 	@Reference
@@ -617,6 +623,9 @@ public abstract class NoteLocalServiceBaseImpl
 	protected NoteDocumentPersistence noteDocumentPersistence;
 
 	@Reference
+	protected NoteDocumentMovementPersistence noteDocumentMovementPersistence;
+
+	@Reference
 	protected OrganizationPersistence organizationPersistence;
 
 	@Reference
@@ -624,6 +633,9 @@ public abstract class NoteLocalServiceBaseImpl
 
 	@Reference
 	protected ReceiptPersistence receiptPersistence;
+
+	@Reference
+	protected ReceiptMovementPersistence receiptMovementPersistence;
 
 	@Reference
 	protected SecondaryHeadPersistence secondaryHeadPersistence;

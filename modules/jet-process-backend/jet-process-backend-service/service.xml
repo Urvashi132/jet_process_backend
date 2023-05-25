@@ -288,6 +288,97 @@
 		</order>
 	</entity>
 
+	<!-- FileMovement Entity -->
+	<entity name="FileMovement" local-service="true"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="receiverId" type="long" />
+		<column name="senderId" type="long" />
+		<column name="fileId" type="long" />
+		<column name="priority" type="String" />
+		<column name="dueDate" type="Date" />
+		<column name="remark" type="String" />
+		<column name="active" type="boolean" />
+		<column name="movementType" type="long" />
+
+		<finder name="fileId" return-type="Collection">
+			<finder-column name="fileId"></finder-column>
+		</finder>
+
+	</entity>
+
+	<!-- ReceiptMovement Entity -->
+	<entity name="ReceiptMovement" local-service="true"
+		remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+		<column name="rmId" primary="true" type="long" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="receiverId" type="long" />
+		<column name="senderId" type="long" />
+		<column name="receiptId" type="long" />
+		<column name="priority" type="String" />
+		<column name="dueDate" type="Date" />
+		<column name="remark" type="String" />
+		<column name="active" type="boolean" />
+		<column name="movementType" type="long" />
+
+		<finder name="receiptId" return-type="Collection">
+			<finder-column name="receiptId"></finder-column>
+		</finder>
+
+	</entity>
+
+	<!-- Document Note Movement -->
+	<entity local-service="true" name="NoteDocumentMovement"
+		uuid="true" remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="receiverId" type="long" />
+		<column name="senderId" type="long" />
+		<column name="noteDocumentId" type="long" />
+		<column name="remarks" type="String" />
+		<column name="active" type="boolean" />
+		<column name="movementType" type="long" />
+	</entity>
+
+
 	<exceptions>
 		<exception>FileValidation</exception>
 		<exception>ReceiptValidation</exception>

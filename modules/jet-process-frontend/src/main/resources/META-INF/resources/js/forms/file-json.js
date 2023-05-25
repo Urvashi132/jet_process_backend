@@ -302,11 +302,6 @@ var fileForm = {
 		"label" : "Cancel",
 		"applyTo" : "form",
 		"cssClass" : "btn-secondary",
-		"redirects" : {
-			"success" : {
-				"href" : ""
-			},
-		},
 		"handler" : {
 			"href" : ""
 		}
@@ -327,7 +322,7 @@ var fileForm = {
 			"requestParams" : {}
 		},
 		"update" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken+ "&id={id}",
 			"method" : "put",
 			"queryParams" : {
 				"id" : "#id"

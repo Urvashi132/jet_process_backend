@@ -57,6 +57,24 @@ create table JP_FileCategory (
 	name VARCHAR(255) null
 );
 
+create table JP_FileMovement (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	createDate DATE null,
+	modifiedDate DATE null,
+	receiverId LONG,
+	senderId LONG,
+	fileId LONG,
+	priority VARCHAR(75) null,
+	dueDate DATE null,
+	remark VARCHAR(500) null,
+	active_ BOOLEAN,
+	movementType LONG
+);
+
 create table JP_Note (
 	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
@@ -86,6 +104,23 @@ create table JP_NoteDocument (
 	subjectCategoryId LONG,
 	currentUser LONG,
 	currentState INTEGER
+);
+
+create table JP_NoteDocumentMovement (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	receiverId LONG,
+	senderId LONG,
+	noteDocumentId LONG,
+	remarks VARCHAR(500) null,
+	active_ BOOLEAN,
+	movementType LONG
 );
 
 create table JP_Organization (
@@ -134,6 +169,24 @@ create table JP_Receipt (
 	currentlyWith LONG,
 	currentState LONG,
 	attachStatus VARCHAR(75) null
+);
+
+create table JP_ReceiptMovement (
+	uuid_ VARCHAR(75) null,
+	rmId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	createDate DATE null,
+	modifiedDate DATE null,
+	receiverId LONG,
+	senderId LONG,
+	receiptId LONG,
+	priority VARCHAR(75) null,
+	dueDate DATE null,
+	remark VARCHAR(500) null,
+	active_ BOOLEAN,
+	movementType LONG
 );
 
 create table JP_SecondaryHead (

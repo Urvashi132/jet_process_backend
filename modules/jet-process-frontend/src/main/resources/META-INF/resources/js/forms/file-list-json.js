@@ -71,7 +71,25 @@ var fileList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger",
-	} ],
+	}, {
+		"name" : "send",
+		"type" : "button",
+		"label" : "Send",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
+		}
+	}, {
+		"name" : "movement",
+		"type" : "button",
+		"label" : "Movement",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
+		}
+	}],
 	"providers" : {
 		"collection" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfiles?p_auth="	+ Liferay.authToken,
