@@ -9,7 +9,9 @@ import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
+import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
@@ -39,8 +41,12 @@ public class ServletDataImpl implements ServletData {
 
 	@Activate
 	public void activate(BundleContext bundleContext) {
+		Mutation.setFileMovementRsModelResourceComponentServiceObjects(
+			_fileMovementRsModelResourceComponentServiceObjects);
 		Mutation.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Mutation.setNoteDocMovementRsModelResourceComponentServiceObjects(
+			_noteDocMovementRsModelResourceComponentServiceObjects);
 		Mutation.setNoteDocumentRsModelResourceComponentServiceObjects(
 			_noteDocumentRsModelResourceComponentServiceObjects);
 		Mutation.setReceiptRsModelResourceComponentServiceObjects(
@@ -56,8 +62,12 @@ public class ServletDataImpl implements ServletData {
 			_deliveryModeRsModelResourceComponentServiceObjects);
 		Query.setFileCategoryRsModelResourceComponentServiceObjects(
 			_fileCategoryRsModelResourceComponentServiceObjects);
+		Query.setFileMovementRsModelResourceComponentServiceObjects(
+			_fileMovementRsModelResourceComponentServiceObjects);
 		Query.setFileRsModelResourceComponentServiceObjects(
 			_fileRsModelResourceComponentServiceObjects);
+		Query.setNoteDocMovementRsModelResourceComponentServiceObjects(
+			_noteDocMovementRsModelResourceComponentServiceObjects);
 		Query.setNoteDocumentRsModelResourceComponentServiceObjects(
 			_noteDocumentRsModelResourceComponentServiceObjects);
 		Query.setOrganizationRsModelResourceComponentServiceObjects(
@@ -94,8 +104,16 @@ public class ServletDataImpl implements ServletData {
 	}
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<FileMovementRsModelResource>
+		_fileMovementRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<NoteDocMovementRsModelResource>
+		_noteDocMovementRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<NoteDocumentRsModelResource>

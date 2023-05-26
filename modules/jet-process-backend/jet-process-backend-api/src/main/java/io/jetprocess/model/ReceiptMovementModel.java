@@ -251,19 +251,19 @@ public interface ReceiptMovementModel
 	public void setDueDate(Date dueDate);
 
 	/**
-	 * Returns the remark of this receipt movement.
+	 * Returns the remarks of this receipt movement.
 	 *
-	 * @return the remark of this receipt movement
+	 * @return the remarks of this receipt movement
 	 */
 	@AutoEscape
-	public String getRemark();
+	public String getRemarks();
 
 	/**
-	 * Sets the remark of this receipt movement.
+	 * Sets the remarks of this receipt movement.
 	 *
-	 * @param remark the remark of this receipt movement
+	 * @param remarks the remarks of this receipt movement
 	 */
-	public void setRemark(String remark);
+	public void setRemarks(String remarks);
 
 	/**
 	 * Returns the active of this receipt movement.

@@ -55,7 +55,7 @@ public class ReceiptMovementWrapper
 		attributes.put("receiptId", getReceiptId());
 		attributes.put("priority", getPriority());
 		attributes.put("dueDate", getDueDate());
-		attributes.put("remark", getRemark());
+		attributes.put("remarks", getRemarks());
 		attributes.put("active", isActive());
 		attributes.put("movementType", getMovementType());
 
@@ -136,10 +136,10 @@ public class ReceiptMovementWrapper
 			setDueDate(dueDate);
 		}
 
-		String remark = (String)attributes.get("remark");
+		String remarks = (String)attributes.get("remarks");
 
-		if (remark != null) {
-			setRemark(remark);
+		if (remarks != null) {
+			setRemarks(remarks);
 		}
 
 		Boolean active = (Boolean)attributes.get("active");
@@ -271,13 +271,13 @@ public class ReceiptMovementWrapper
 	}
 
 	/**
-	 * Returns the remark of this receipt movement.
+	 * Returns the remarks of this receipt movement.
 	 *
-	 * @return the remark of this receipt movement
+	 * @return the remarks of this receipt movement
 	 */
 	@Override
-	public String getRemark() {
-		return model.getRemark();
+	public String getRemarks() {
+		return model.getRemarks();
 	}
 
 	/**
@@ -456,13 +456,13 @@ public class ReceiptMovementWrapper
 	}
 
 	/**
-	 * Sets the remark of this receipt movement.
+	 * Sets the remarks of this receipt movement.
 	 *
-	 * @param remark the remark of this receipt movement
+	 * @param remarks the remarks of this receipt movement
 	 */
 	@Override
-	public void setRemark(String remark) {
-		model.setRemark(remark);
+	public void setRemarks(String remarks) {
+		model.setRemarks(remarks);
 	}
 
 	/**

@@ -57,8 +57,8 @@ public class ReceiptMovementTable extends BaseTable<ReceiptMovementTable> {
 		"priority", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<ReceiptMovementTable, Date> dueDate = createColumn(
 		"dueDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<ReceiptMovementTable, String> remark = createColumn(
-		"remark", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<ReceiptMovementTable, String> remarks = createColumn(
+		"remarks", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<ReceiptMovementTable, Boolean> active = createColumn(
 		"active_", Boolean.class, Types.BOOLEAN, Column.FLAG_DEFAULT);
 	public final Column<ReceiptMovementTable, Long> movementType = createColumn(

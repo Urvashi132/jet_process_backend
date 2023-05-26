@@ -537,8 +537,8 @@ public class FileMovementUtil {
 	 * @param fileId the file ID
 	 * @return the matching file movements
 	 */
-	public static List<FileMovement> findByfileId(long fileId) {
-		return getPersistence().findByfileId(fileId);
+	public static List<FileMovement> findByFileId(long fileId) {
+		return getPersistence().findByFileId(fileId);
 	}
 
 	/**
@@ -553,10 +553,10 @@ public class FileMovementUtil {
 	 * @param end the upper bound of the range of file movements (not inclusive)
 	 * @return the range of matching file movements
 	 */
-	public static List<FileMovement> findByfileId(
+	public static List<FileMovement> findByFileId(
 		long fileId, int start, int end) {
 
-		return getPersistence().findByfileId(fileId, start, end);
+		return getPersistence().findByFileId(fileId, start, end);
 	}
 
 	/**
@@ -572,11 +572,11 @@ public class FileMovementUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching file movements
 	 */
-	public static List<FileMovement> findByfileId(
+	public static List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		OrderByComparator<FileMovement> orderByComparator) {
 
-		return getPersistence().findByfileId(
+		return getPersistence().findByFileId(
 			fileId, start, end, orderByComparator);
 	}
 
@@ -594,12 +594,12 @@ public class FileMovementUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching file movements
 	 */
-	public static List<FileMovement> findByfileId(
+	public static List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		OrderByComparator<FileMovement> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByfileId(
+		return getPersistence().findByFileId(
 			fileId, start, end, orderByComparator, useFinderCache);
 	}
 
@@ -611,11 +611,11 @@ public class FileMovementUtil {
 	 * @return the first matching file movement
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
-	public static FileMovement findByfileId_First(
+	public static FileMovement findByFileId_First(
 			long fileId, OrderByComparator<FileMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchFileMovementException {
 
-		return getPersistence().findByfileId_First(fileId, orderByComparator);
+		return getPersistence().findByFileId_First(fileId, orderByComparator);
 	}
 
 	/**
@@ -625,10 +625,10 @@ public class FileMovementUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
-	public static FileMovement fetchByfileId_First(
+	public static FileMovement fetchByFileId_First(
 		long fileId, OrderByComparator<FileMovement> orderByComparator) {
 
-		return getPersistence().fetchByfileId_First(fileId, orderByComparator);
+		return getPersistence().fetchByFileId_First(fileId, orderByComparator);
 	}
 
 	/**
@@ -639,11 +639,11 @@ public class FileMovementUtil {
 	 * @return the last matching file movement
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
-	public static FileMovement findByfileId_Last(
+	public static FileMovement findByFileId_Last(
 			long fileId, OrderByComparator<FileMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchFileMovementException {
 
-		return getPersistence().findByfileId_Last(fileId, orderByComparator);
+		return getPersistence().findByFileId_Last(fileId, orderByComparator);
 	}
 
 	/**
@@ -653,10 +653,10 @@ public class FileMovementUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
-	public static FileMovement fetchByfileId_Last(
+	public static FileMovement fetchByFileId_Last(
 		long fileId, OrderByComparator<FileMovement> orderByComparator) {
 
-		return getPersistence().fetchByfileId_Last(fileId, orderByComparator);
+		return getPersistence().fetchByFileId_Last(fileId, orderByComparator);
 	}
 
 	/**
@@ -668,12 +668,12 @@ public class FileMovementUtil {
 	 * @return the previous, current, and next file movement
 	 * @throws NoSuchFileMovementException if a file movement with the primary key could not be found
 	 */
-	public static FileMovement[] findByfileId_PrevAndNext(
+	public static FileMovement[] findByFileId_PrevAndNext(
 			long id, long fileId,
 			OrderByComparator<FileMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchFileMovementException {
 
-		return getPersistence().findByfileId_PrevAndNext(
+		return getPersistence().findByFileId_PrevAndNext(
 			id, fileId, orderByComparator);
 	}
 
@@ -682,8 +682,8 @@ public class FileMovementUtil {
 	 *
 	 * @param fileId the file ID
 	 */
-	public static void removeByfileId(long fileId) {
-		getPersistence().removeByfileId(fileId);
+	public static void removeByFileId(long fileId) {
+		getPersistence().removeByFileId(fileId);
 	}
 
 	/**
@@ -692,8 +692,8 @@ public class FileMovementUtil {
 	 * @param fileId the file ID
 	 * @return the number of matching file movements
 	 */
-	public static int countByfileId(long fileId) {
-		return getPersistence().countByfileId(fileId);
+	public static int countByFileId(long fileId) {
+		return getPersistence().countByFileId(fileId);
 	}
 
 	/**

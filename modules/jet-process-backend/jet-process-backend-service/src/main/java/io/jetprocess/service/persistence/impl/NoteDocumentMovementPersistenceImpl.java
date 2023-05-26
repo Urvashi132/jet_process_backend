@@ -1477,6 +1477,517 @@ public class NoteDocumentMovementPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"noteDocumentMovement.companyId = ?";
 
+	private FinderPath _finderPathWithPaginationFindByNoteDocumentId;
+	private FinderPath _finderPathWithoutPaginationFindByNoteDocumentId;
+	private FinderPath _finderPathCountByNoteDocumentId;
+
+	/**
+	 * Returns all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @return the matching note document movements
+	 */
+	@Override
+	public List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId) {
+
+		return findByNoteDocumentId(
+			noteDocumentId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @return the range of matching note document movements
+	 */
+	@Override
+	public List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end) {
+
+		return findByNoteDocumentId(noteDocumentId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching note document movements
+	 */
+	@Override
+	public List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		return findByNoteDocumentId(
+			noteDocumentId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching note document movements
+	 */
+	@Override
+	public List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end,
+		OrderByComparator<NoteDocumentMovement> orderByComparator,
+		boolean useFinderCache) {
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath = _finderPathWithoutPaginationFindByNoteDocumentId;
+				finderArgs = new Object[] {noteDocumentId};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath = _finderPathWithPaginationFindByNoteDocumentId;
+			finderArgs = new Object[] {
+				noteDocumentId, start, end, orderByComparator
+			};
+		}
+
+		List<NoteDocumentMovement> list = null;
+
+		if (useFinderCache) {
+			list = (List<NoteDocumentMovement>)finderCache.getResult(
+				finderPath, finderArgs);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (NoteDocumentMovement noteDocumentMovement : list) {
+					if (noteDocumentId !=
+							noteDocumentMovement.getNoteDocumentId()) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					3 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(3);
+			}
+
+			sb.append(_SQL_SELECT_NOTEDOCUMENTMOVEMENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_NOTEDOCUMENTID_NOTEDOCUMENTID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(NoteDocumentMovementModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(noteDocumentId);
+
+				list = (List<NoteDocumentMovement>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a matching note document movement could not be found
+	 */
+	@Override
+	public NoteDocumentMovement findByNoteDocumentId_First(
+			long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws NoSuchNoteDocumentMovementException {
+
+		NoteDocumentMovement noteDocumentMovement = fetchByNoteDocumentId_First(
+			noteDocumentId, orderByComparator);
+
+		if (noteDocumentMovement != null) {
+			return noteDocumentMovement;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("noteDocumentId=");
+		sb.append(noteDocumentId);
+
+		sb.append("}");
+
+		throw new NoSuchNoteDocumentMovementException(sb.toString());
+	}
+
+	/**
+	 * Returns the first note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching note document movement, or <code>null</code> if a matching note document movement could not be found
+	 */
+	@Override
+	public NoteDocumentMovement fetchByNoteDocumentId_First(
+		long noteDocumentId,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		List<NoteDocumentMovement> list = findByNoteDocumentId(
+			noteDocumentId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a matching note document movement could not be found
+	 */
+	@Override
+	public NoteDocumentMovement findByNoteDocumentId_Last(
+			long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws NoSuchNoteDocumentMovementException {
+
+		NoteDocumentMovement noteDocumentMovement = fetchByNoteDocumentId_Last(
+			noteDocumentId, orderByComparator);
+
+		if (noteDocumentMovement != null) {
+			return noteDocumentMovement;
+		}
+
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("noteDocumentId=");
+		sb.append(noteDocumentId);
+
+		sb.append("}");
+
+		throw new NoSuchNoteDocumentMovementException(sb.toString());
+	}
+
+	/**
+	 * Returns the last note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching note document movement, or <code>null</code> if a matching note document movement could not be found
+	 */
+	@Override
+	public NoteDocumentMovement fetchByNoteDocumentId_Last(
+		long noteDocumentId,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		int count = countByNoteDocumentId(noteDocumentId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<NoteDocumentMovement> list = findByNoteDocumentId(
+			noteDocumentId, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the note document movements before and after the current note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param id the primary key of the current note document movement
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a note document movement with the primary key could not be found
+	 */
+	@Override
+	public NoteDocumentMovement[] findByNoteDocumentId_PrevAndNext(
+			long id, long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws NoSuchNoteDocumentMovementException {
+
+		NoteDocumentMovement noteDocumentMovement = findByPrimaryKey(id);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			NoteDocumentMovement[] array = new NoteDocumentMovementImpl[3];
+
+			array[0] = getByNoteDocumentId_PrevAndNext(
+				session, noteDocumentMovement, noteDocumentId,
+				orderByComparator, true);
+
+			array[1] = noteDocumentMovement;
+
+			array[2] = getByNoteDocumentId_PrevAndNext(
+				session, noteDocumentMovement, noteDocumentId,
+				orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected NoteDocumentMovement getByNoteDocumentId_PrevAndNext(
+		Session session, NoteDocumentMovement noteDocumentMovement,
+		long noteDocumentId,
+		OrderByComparator<NoteDocumentMovement> orderByComparator,
+		boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(3);
+		}
+
+		sb.append(_SQL_SELECT_NOTEDOCUMENTMOVEMENT_WHERE);
+
+		sb.append(_FINDER_COLUMN_NOTEDOCUMENTID_NOTEDOCUMENTID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(NoteDocumentMovementModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(noteDocumentId);
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(
+						noteDocumentMovement)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<NoteDocumentMovement> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the note document movements where noteDocumentId = &#63; from the database.
+	 *
+	 * @param noteDocumentId the note document ID
+	 */
+	@Override
+	public void removeByNoteDocumentId(long noteDocumentId) {
+		for (NoteDocumentMovement noteDocumentMovement :
+				findByNoteDocumentId(
+					noteDocumentId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+					null)) {
+
+			remove(noteDocumentMovement);
+		}
+	}
+
+	/**
+	 * Returns the number of note document movements where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @return the number of matching note document movements
+	 */
+	@Override
+	public int countByNoteDocumentId(long noteDocumentId) {
+		FinderPath finderPath = _finderPathCountByNoteDocumentId;
+
+		Object[] finderArgs = new Object[] {noteDocumentId};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(2);
+
+			sb.append(_SQL_COUNT_NOTEDOCUMENTMOVEMENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_NOTEDOCUMENTID_NOTEDOCUMENTID_2);
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(noteDocumentId);
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_NOTEDOCUMENTID_NOTEDOCUMENTID_2 =
+		"noteDocumentMovement.noteDocumentId = ?";
+
 	public NoteDocumentMovementPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
@@ -2131,6 +2642,24 @@ public class NoteDocumentMovementPersistenceImpl
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUuid_C",
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
+
+		_finderPathWithPaginationFindByNoteDocumentId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByNoteDocumentId",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				Integer.class.getName(), OrderByComparator.class.getName()
+			},
+			new String[] {"noteDocumentId"}, true);
+
+		_finderPathWithoutPaginationFindByNoteDocumentId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByNoteDocumentId",
+			new String[] {Long.class.getName()},
+			new String[] {"noteDocumentId"}, true);
+
+		_finderPathCountByNoteDocumentId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByNoteDocumentId",
+			new String[] {Long.class.getName()},
+			new String[] {"noteDocumentId"}, false);
 
 		_setNoteDocumentMovementUtilPersistence(this);
 	}

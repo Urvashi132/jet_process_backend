@@ -37,6 +37,7 @@ import io.jetprocess.model.FileMovement;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -294,6 +295,9 @@ public interface FileMovementLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<FileMovement> getListByFileId(long fileId);
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -307,6 +311,11 @@ public interface FileMovementLocalService
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
+		throws PortalException;
+
+	public FileMovement saveFileMovement(
+			long receiverId, long senderId, long fileId, String priority,
+			Date dueDate, String remarks)
 		throws PortalException;
 
 	/**

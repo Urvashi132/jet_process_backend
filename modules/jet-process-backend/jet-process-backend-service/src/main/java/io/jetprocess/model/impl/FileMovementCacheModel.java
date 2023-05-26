@@ -89,8 +89,8 @@ public class FileMovementCacheModel
 		sb.append(priority);
 		sb.append(", dueDate=");
 		sb.append(dueDate);
-		sb.append(", remark=");
-		sb.append(remark);
+		sb.append(", remarks=");
+		sb.append(remarks);
 		sb.append(", active=");
 		sb.append(active);
 		sb.append(", movementType=");
@@ -148,11 +148,11 @@ public class FileMovementCacheModel
 			fileMovementImpl.setDueDate(new Date(dueDate));
 		}
 
-		if (remark == null) {
-			fileMovementImpl.setRemark("");
+		if (remarks == null) {
+			fileMovementImpl.setRemarks("");
 		}
 		else {
-			fileMovementImpl.setRemark(remark);
+			fileMovementImpl.setRemarks(remarks);
 		}
 
 		fileMovementImpl.setActive(active);
@@ -184,7 +184,7 @@ public class FileMovementCacheModel
 		fileId = objectInput.readLong();
 		priority = objectInput.readUTF();
 		dueDate = objectInput.readLong();
-		remark = objectInput.readUTF();
+		remarks = objectInput.readUTF();
 
 		active = objectInput.readBoolean();
 
@@ -225,11 +225,11 @@ public class FileMovementCacheModel
 
 		objectOutput.writeLong(dueDate);
 
-		if (remark == null) {
+		if (remarks == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(remark);
+			objectOutput.writeUTF(remarks);
 		}
 
 		objectOutput.writeBoolean(active);
@@ -249,7 +249,7 @@ public class FileMovementCacheModel
 	public long fileId;
 	public String priority;
 	public long dueDate;
-	public String remark;
+	public String remarks;
 	public boolean active;
 	public long movementType;
 

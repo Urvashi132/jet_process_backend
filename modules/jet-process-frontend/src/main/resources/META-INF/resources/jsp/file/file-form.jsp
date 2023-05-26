@@ -1,4 +1,4 @@
-<%@include file="init.jsp"%>
+<%@include file="../../init.jsp"%>
 <style>
 .text-margin {
 	margin: 0px 14px 9px;
@@ -6,11 +6,11 @@
 </style>
 
 <portlet:renderURL var="list">
-	<portlet:param name="mvcPath" value="/file-list.jsp" />
+	<portlet:param name="mvcPath" value="/jsp/file/file-list.jsp" />
 </portlet:renderURL>
 
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/file-json.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/file-form.js"%>'></script>
 
 <div class="container">
 	<div class="row">

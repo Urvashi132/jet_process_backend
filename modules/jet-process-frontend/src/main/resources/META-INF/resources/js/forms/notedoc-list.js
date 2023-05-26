@@ -53,6 +53,24 @@ var noteList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger",
+	}, {
+		"name" : "send",
+		"type" : "button",
+		"label" : "Send",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
+		}
+	}, {
+		"name" : "movement",
+		"type" : "button",
+		"label" : "Movement",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+		"handler" : {
+			"href" : ""
+		}
 	} ],
 	"providers" : {
 		"collection" : {

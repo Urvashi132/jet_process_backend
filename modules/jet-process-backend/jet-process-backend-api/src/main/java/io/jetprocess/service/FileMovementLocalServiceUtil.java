@@ -325,6 +325,10 @@ public class FileMovementLocalServiceUtil {
 		return getService().getIndexableActionableDynamicQuery();
 	}
 
+	public static List<FileMovement> getListByFileId(long fileId) {
+		return getService().getListByFileId(fileId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -341,6 +345,15 @@ public class FileMovementLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static FileMovement saveFileMovement(
+			long receiverId, long senderId, long fileId, String priority,
+			java.util.Date dueDate, String remarks)
+		throws PortalException {
+
+		return getService().saveFileMovement(
+			receiverId, senderId, fileId, priority, dueDate, remarks);
 	}
 
 	/**

@@ -17,15 +17,15 @@ public class ViewHelper {
 		if (parameter.equals("dashboard")) {
 			page = "/dashboard.jsp";
 		} else if (parameter.equals("file")) {
-			page = "/file-list.jsp";
+			page = "/jsp/file/file-list.jsp";
 		}
 
 		else if (parameter.equals("receipt")) {
-			page = "/receipt-list.jsp";
+			page = "/jsp/receipt/receipt-list.jsp";
 		}
 
 		else if (parameter.equals("note")) {
-			page = "/note-list.jsp";
+			page = "/jsp/note-document/notedoc-list.jsp";
 		}
 
 		

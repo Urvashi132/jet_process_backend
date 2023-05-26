@@ -45,7 +45,7 @@ public class FileMovementSoap implements Serializable {
 		soapModel.setFileId(model.getFileId());
 		soapModel.setPriority(model.getPriority());
 		soapModel.setDueDate(model.getDueDate());
-		soapModel.setRemark(model.getRemark());
+		soapModel.setRemarks(model.getRemarks());
 		soapModel.setActive(model.isActive());
 		soapModel.setMovementType(model.getMovementType());
 
@@ -197,12 +197,12 @@ public class FileMovementSoap implements Serializable {
 		_dueDate = dueDate;
 	}
 
-	public String getRemark() {
-		return _remark;
+	public String getRemarks() {
+		return _remarks;
 	}
 
-	public void setRemark(String remark) {
-		_remark = remark;
+	public void setRemarks(String remarks) {
+		_remarks = remarks;
 	}
 
 	public boolean getActive() {
@@ -237,7 +237,7 @@ public class FileMovementSoap implements Serializable {
 	private long _fileId;
 	private String _priority;
 	private Date _dueDate;
-	private String _remark;
+	private String _remarks;
 	private boolean _active;
 	private long _movementType;
 

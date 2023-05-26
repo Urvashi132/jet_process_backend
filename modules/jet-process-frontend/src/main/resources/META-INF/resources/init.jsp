@@ -11,4 +11,5 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <portlet:defineObjects />
 
+<script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 <%@include file="/cdns.jsp"%>

@@ -395,7 +395,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param fileId the file ID
 	 * @return the matching file movements
 	 */
-	public java.util.List<FileMovement> findByfileId(long fileId);
+	public java.util.List<FileMovement> findByFileId(long fileId);
 
 	/**
 	 * Returns a range of all the file movements where fileId = &#63;.
@@ -409,7 +409,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param end the upper bound of the range of file movements (not inclusive)
 	 * @return the range of matching file movements
 	 */
-	public java.util.List<FileMovement> findByfileId(
+	public java.util.List<FileMovement> findByFileId(
 		long fileId, int start, int end);
 
 	/**
@@ -425,7 +425,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching file movements
 	 */
-	public java.util.List<FileMovement> findByfileId(
+	public java.util.List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 			orderByComparator);
@@ -444,7 +444,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching file movements
 	 */
-	public java.util.List<FileMovement> findByfileId(
+	public java.util.List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 			orderByComparator,
@@ -458,7 +458,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @return the first matching file movement
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
-	public FileMovement findByfileId_First(
+	public FileMovement findByFileId_First(
 			long fileId,
 			com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 				orderByComparator)
@@ -471,7 +471,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
-	public FileMovement fetchByfileId_First(
+	public FileMovement fetchByFileId_First(
 		long fileId,
 		com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 			orderByComparator);
@@ -484,7 +484,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @return the last matching file movement
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
-	public FileMovement findByfileId_Last(
+	public FileMovement findByFileId_Last(
 			long fileId,
 			com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 				orderByComparator)
@@ -497,7 +497,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
-	public FileMovement fetchByfileId_Last(
+	public FileMovement fetchByFileId_Last(
 		long fileId,
 		com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 			orderByComparator);
@@ -511,7 +511,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @return the previous, current, and next file movement
 	 * @throws NoSuchFileMovementException if a file movement with the primary key could not be found
 	 */
-	public FileMovement[] findByfileId_PrevAndNext(
+	public FileMovement[] findByFileId_PrevAndNext(
 			long id, long fileId,
 			com.liferay.portal.kernel.util.OrderByComparator<FileMovement>
 				orderByComparator)
@@ -522,7 +522,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 *
 	 * @param fileId the file ID
 	 */
-	public void removeByfileId(long fileId);
+	public void removeByFileId(long fileId);
 
 	/**
 	 * Returns the number of file movements where fileId = &#63;.
@@ -530,7 +530,7 @@ public interface FileMovementPersistence extends BasePersistence<FileMovement> {
 	 * @param fileId the file ID
 	 * @return the number of matching file movements
 	 */
-	public int countByfileId(long fileId);
+	public int countByFileId(long fileId);
 
 	/**
 	 * Caches the file movement in the entity cache if it is enabled.

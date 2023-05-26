@@ -1,10 +1,17 @@
-<%@include file="init.jsp"%>
+<%@include file="../../init.jsp"%>
 
 <portlet:renderURL var="fileCreation">
-	<portlet:param name="mvcPath" value="/file-form.jsp" />
+	<portlet:param name="mvcPath" value="/jsp/file/file-form.jsp" />
 </portlet:renderURL>
+<portlet:renderURL var="send">
+	<portlet:param name="mvcPath" value="/jsp/file/file-send.jsp" />
+</portlet:renderURL>
+<portlet:renderURL var="movement">
+	<portlet:param name="mvcPath" value="/jsp/file/file-movement.jsp" />
+</portlet:renderURL>
+
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/file-list-json.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/file-list.js"%>'></script>
 
 <div class="container">
 	<div id="fileListContainer"></div>
@@ -14,14 +21,13 @@
 	servletContext="<%=application%>" />
 <script>
 	$(document).ready(() => {
-		// fileList.fields[0].name = "<portlet:namespace/>id"; 
 		fileList.actions[0].handler.href = '<%=fileCreation%>';
 		fileList.actions[1].handler.href = '<%=fileCreation%>';
+		fileList.actions[3].handler.href = '<%=send%>';
+		fileList.actions[4].handler.href = '<%=movement%>';
 		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
-		console.log(id);
 		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileList});
 		jetList.setDataKey(id);
-		console.log(jetList);
 		jetList.render();
 	});
 </script>

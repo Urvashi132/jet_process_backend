@@ -55,7 +55,7 @@ public class FileMovementWrapper
 		attributes.put("fileId", getFileId());
 		attributes.put("priority", getPriority());
 		attributes.put("dueDate", getDueDate());
-		attributes.put("remark", getRemark());
+		attributes.put("remarks", getRemarks());
 		attributes.put("active", isActive());
 		attributes.put("movementType", getMovementType());
 
@@ -136,10 +136,10 @@ public class FileMovementWrapper
 			setDueDate(dueDate);
 		}
 
-		String remark = (String)attributes.get("remark");
+		String remarks = (String)attributes.get("remarks");
 
-		if (remark != null) {
-			setRemark(remark);
+		if (remarks != null) {
+			setRemarks(remarks);
 		}
 
 		Boolean active = (Boolean)attributes.get("active");
@@ -281,13 +281,13 @@ public class FileMovementWrapper
 	}
 
 	/**
-	 * Returns the remark of this file movement.
+	 * Returns the remarks of this file movement.
 	 *
-	 * @return the remark of this file movement
+	 * @return the remarks of this file movement
 	 */
 	@Override
-	public String getRemark() {
-		return model.getRemark();
+	public String getRemarks() {
+		return model.getRemarks();
 	}
 
 	/**
@@ -466,13 +466,13 @@ public class FileMovementWrapper
 	}
 
 	/**
-	 * Sets the remark of this file movement.
+	 * Sets the remarks of this file movement.
 	 *
-	 * @param remark the remark of this file movement
+	 * @param remarks the remarks of this file movement
 	 */
 	@Override
-	public void setRemark(String remark) {
-		model.setRemark(remark);
+	public void setRemarks(String remarks) {
+		model.setRemarks(remarks);
 	}
 
 	/**

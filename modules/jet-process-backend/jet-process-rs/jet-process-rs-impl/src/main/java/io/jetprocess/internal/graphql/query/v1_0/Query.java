@@ -16,7 +16,9 @@ import io.jetprocess.dto.v1_0.CategoryRsModel;
 import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
 import io.jetprocess.dto.v1_0.FileCategoryRsModel;
+import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
@@ -31,7 +33,9 @@ import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
+import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
@@ -101,12 +105,28 @@ public class Query {
 			fileCategoryRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setFileMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<FileMovementRsModelResource>
+			fileMovementRsModelResourceComponentServiceObjects) {
+
+		_fileMovementRsModelResourceComponentServiceObjects =
+			fileMovementRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setFileRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<FileRsModelResource>
 			fileRsModelResourceComponentServiceObjects) {
 
 		_fileRsModelResourceComponentServiceObjects =
 			fileRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setNoteDocMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<NoteDocMovementRsModelResource>
+			noteDocMovementRsModelResourceComponentServiceObjects) {
+
+		_noteDocMovementRsModelResourceComponentServiceObjects =
+			noteDocMovementRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setNoteDocumentRsModelResourceComponentServiceObjects(
@@ -254,6 +274,22 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {fileMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public FileMovementRsModelPage fileMovementList(@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_fileMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			fileMovementRsModelResource -> new FileMovementRsModelPage(
+				fileMovementRsModelResource.getFileMovementList(id)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {docFileById(id: ___){id, groupId, nature, type, headId, fileCodeId, subject, fileNo, categoryId, remarks, reference, year, userPostId, createDate}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
@@ -278,6 +314,24 @@ public class Query {
 			this::_populateResourceContext,
 			fileRsModelResource -> new FileRsModelPage(
 				fileRsModelResource.getDocFileList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public NoteDocMovementRsModelPage noteDocumentMovementList(
+			@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_noteDocMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocMovementRsModelResource -> new NoteDocMovementRsModelPage(
+				noteDocMovementRsModelResource.getNoteDocumentMovementList(
+					id)));
 	}
 
 	/**
@@ -618,6 +672,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("FileMovementRsModelPage")
+	public class FileMovementRsModelPage {
+
+		public FileMovementRsModelPage(Page fileMovementRsModelPage) {
+			actions = fileMovementRsModelPage.getActions();
+
+			items = fileMovementRsModelPage.getItems();
+			lastPage = fileMovementRsModelPage.getLastPage();
+			page = fileMovementRsModelPage.getPage();
+			pageSize = fileMovementRsModelPage.getPageSize();
+			totalCount = fileMovementRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<FileMovementRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("FileRsModelPage")
 	public class FileRsModelPage {
 
@@ -636,6 +723,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<FileRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("NoteDocMovementRsModelPage")
+	public class NoteDocMovementRsModelPage {
+
+		public NoteDocMovementRsModelPage(Page noteDocMovementRsModelPage) {
+			actions = noteDocMovementRsModelPage.getActions();
+
+			items = noteDocMovementRsModelPage.getItems();
+			lastPage = noteDocMovementRsModelPage.getLastPage();
+			page = noteDocMovementRsModelPage.getPage();
+			pageSize = noteDocMovementRsModelPage.getPageSize();
+			totalCount = noteDocMovementRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<NoteDocMovementRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -1048,6 +1168,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			FileMovementRsModelResource fileMovementRsModelResource)
+		throws Exception {
+
+		fileMovementRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		fileMovementRsModelResource.setContextCompany(_company);
+		fileMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		fileMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		fileMovementRsModelResource.setContextUriInfo(_uriInfo);
+		fileMovementRsModelResource.setContextUser(_user);
+		fileMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		fileMovementRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
@@ -1059,6 +1195,23 @@ public class Query {
 		fileRsModelResource.setContextUser(_user);
 		fileRsModelResource.setGroupLocalService(_groupLocalService);
 		fileRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			NoteDocMovementRsModelResource noteDocMovementRsModelResource)
+		throws Exception {
+
+		noteDocMovementRsModelResource.setContextAcceptLanguage(
+			_acceptLanguage);
+		noteDocMovementRsModelResource.setContextCompany(_company);
+		noteDocMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		noteDocMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		noteDocMovementRsModelResource.setContextUriInfo(_uriInfo);
+		noteDocMovementRsModelResource.setContextUser(_user);
+		noteDocMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		noteDocMovementRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -1213,8 +1366,12 @@ public class Query {
 		_deliveryModeRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileCategoryRsModelResource>
 		_fileCategoryRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<FileMovementRsModelResource>
+		_fileMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<NoteDocMovementRsModelResource>
+		_noteDocMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<OrganizationRsModelResource>

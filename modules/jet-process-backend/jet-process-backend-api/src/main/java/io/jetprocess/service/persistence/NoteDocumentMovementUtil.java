@@ -543,6 +543,182 @@ public class NoteDocumentMovementUtil {
 	}
 
 	/**
+	 * Returns all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @return the matching note document movements
+	 */
+	public static List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId) {
+
+		return getPersistence().findByNoteDocumentId(noteDocumentId);
+	}
+
+	/**
+	 * Returns a range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @return the range of matching note document movements
+	 */
+	public static List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end) {
+
+		return getPersistence().findByNoteDocumentId(
+			noteDocumentId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching note document movements
+	 */
+	public static List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		return getPersistence().findByNoteDocumentId(
+			noteDocumentId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the note document movements where noteDocumentId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>NoteDocumentMovementModelImpl</code>.
+	 * </p>
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param start the lower bound of the range of note document movements
+	 * @param end the upper bound of the range of note document movements (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching note document movements
+	 */
+	public static List<NoteDocumentMovement> findByNoteDocumentId(
+		long noteDocumentId, int start, int end,
+		OrderByComparator<NoteDocumentMovement> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByNoteDocumentId(
+			noteDocumentId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a matching note document movement could not be found
+	 */
+	public static NoteDocumentMovement findByNoteDocumentId_First(
+			long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws io.jetprocess.exception.NoSuchNoteDocumentMovementException {
+
+		return getPersistence().findByNoteDocumentId_First(
+			noteDocumentId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching note document movement, or <code>null</code> if a matching note document movement could not be found
+	 */
+	public static NoteDocumentMovement fetchByNoteDocumentId_First(
+		long noteDocumentId,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		return getPersistence().fetchByNoteDocumentId_First(
+			noteDocumentId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a matching note document movement could not be found
+	 */
+	public static NoteDocumentMovement findByNoteDocumentId_Last(
+			long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws io.jetprocess.exception.NoSuchNoteDocumentMovementException {
+
+		return getPersistence().findByNoteDocumentId_Last(
+			noteDocumentId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching note document movement, or <code>null</code> if a matching note document movement could not be found
+	 */
+	public static NoteDocumentMovement fetchByNoteDocumentId_Last(
+		long noteDocumentId,
+		OrderByComparator<NoteDocumentMovement> orderByComparator) {
+
+		return getPersistence().fetchByNoteDocumentId_Last(
+			noteDocumentId, orderByComparator);
+	}
+
+	/**
+	 * Returns the note document movements before and after the current note document movement in the ordered set where noteDocumentId = &#63;.
+	 *
+	 * @param id the primary key of the current note document movement
+	 * @param noteDocumentId the note document ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next note document movement
+	 * @throws NoSuchNoteDocumentMovementException if a note document movement with the primary key could not be found
+	 */
+	public static NoteDocumentMovement[] findByNoteDocumentId_PrevAndNext(
+			long id, long noteDocumentId,
+			OrderByComparator<NoteDocumentMovement> orderByComparator)
+		throws io.jetprocess.exception.NoSuchNoteDocumentMovementException {
+
+		return getPersistence().findByNoteDocumentId_PrevAndNext(
+			id, noteDocumentId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the note document movements where noteDocumentId = &#63; from the database.
+	 *
+	 * @param noteDocumentId the note document ID
+	 */
+	public static void removeByNoteDocumentId(long noteDocumentId) {
+		getPersistence().removeByNoteDocumentId(noteDocumentId);
+	}
+
+	/**
+	 * Returns the number of note document movements where noteDocumentId = &#63;.
+	 *
+	 * @param noteDocumentId the note document ID
+	 * @return the number of matching note document movements
+	 */
+	public static int countByNoteDocumentId(long noteDocumentId) {
+		return getPersistence().countByNoteDocumentId(noteDocumentId);
+	}
+
+	/**
 	 * Caches the note document movement in the entity cache if it is enabled.
 	 *
 	 * @param noteDocumentMovement the note document movement

@@ -275,6 +275,47 @@ components:
           type: string
       type: object
       
+    FileMovementRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        receiverId:
+          format: int64
+          type: integer
+        senderId:
+          format: int64
+          type: integer
+        fileId:
+          format: int64
+          type: integer
+        priority:
+          type: string
+        dueDate:
+          format: date-time
+          type : string
+        remarks:
+          type: string
+      type: object
+      
+    NoteDocMovementRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        receiverId:
+          format: int64
+          type: integer
+        senderId:
+          format: int64
+          type: integer
+        noteDocumentId:
+          format: int64
+          type: integer
+        remarks:
+          type: string
+      type: object
+      
 paths:
   /docfile:
     post:
@@ -819,3 +860,93 @@ paths:
                   $ref: '#/components/schemas/SubjectCategoryRsModel'
           description: ''
       tags: ["SubjectCategoryRsModel"]
+      
+  /filemovement:
+    post:
+      operationId: createFileMovement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileMovementRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/FileMovementRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/FileMovementRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/FileMovementRsModel'
+          description: ''
+      tags: ["FileMovementRsModel"]
+    get:
+      operationId: getFileMovementList
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/FileMovementRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/FileMovementRsModel'
+          description: ''
+      tags: ["FileMovementRsModel"]
+      
+  /notedocumentmovement:
+    post:
+      operationId: createNotedocMovement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NoteDocMovementRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/NoteDocMovementRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/NoteDocMovementRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/NoteDocMovementRsModel'
+          description: ''
+      tags: ["NoteDocMovementRsModel"]
+    get:
+      operationId: getNoteDocumentMovementList
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NoteDocMovementRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NoteDocMovementRsModel'
+          description: ''
+      tags: ["NoteDocMovementRsModel"]

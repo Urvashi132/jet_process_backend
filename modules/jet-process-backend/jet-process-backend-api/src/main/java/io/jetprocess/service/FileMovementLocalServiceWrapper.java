@@ -359,6 +359,13 @@ public class FileMovementLocalServiceWrapper
 		return _fileMovementLocalService.getIndexableActionableDynamicQuery();
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.FileMovement> getListByFileId(
+		long fileId) {
+
+		return _fileMovementLocalService.getListByFileId(fileId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -378,6 +385,16 @@ public class FileMovementLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _fileMovementLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public io.jetprocess.model.FileMovement saveFileMovement(
+			long receiverId, long senderId, long fileId, String priority,
+			java.util.Date dueDate, String remarks)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _fileMovementLocalService.saveFileMovement(
+			receiverId, senderId, fileId, priority, dueDate, remarks);
 	}
 
 	/**

@@ -226,6 +226,10 @@ public interface NoteDocumentMovementLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<NoteDocumentMovement> getListByNoteDocumentId(
+		long noteDocumentId);
+
 	/**
 	 * Returns the note document movement with the primary key.
 	 *
@@ -313,6 +317,10 @@ public interface NoteDocumentMovementLocalService
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
+		throws PortalException;
+
+	public NoteDocumentMovement saveNoteDocumentMovement(
+			long receiverId, long senderId, long noteDocumentId, String remarks)
 		throws PortalException;
 
 	/**

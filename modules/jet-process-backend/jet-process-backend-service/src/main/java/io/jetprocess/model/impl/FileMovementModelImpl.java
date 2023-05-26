@@ -84,7 +84,7 @@ public class FileMovementModelImpl
 		{"modifiedDate", Types.TIMESTAMP}, {"receiverId", Types.BIGINT},
 		{"senderId", Types.BIGINT}, {"fileId", Types.BIGINT},
 		{"priority", Types.VARCHAR}, {"dueDate", Types.TIMESTAMP},
-		{"remark", Types.VARCHAR}, {"active_", Types.BOOLEAN},
+		{"remarks", Types.VARCHAR}, {"active_", Types.BOOLEAN},
 		{"movementType", Types.BIGINT}
 	};
 
@@ -104,13 +104,13 @@ public class FileMovementModelImpl
 		TABLE_COLUMNS_MAP.put("fileId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("priority", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("dueDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("remark", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("active_", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("movementType", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_FileMovement (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,fileId LONG,priority VARCHAR(75) null,dueDate DATE null,remark VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
+		"create table JP_FileMovement (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,fileId LONG,priority VARCHAR(75) null,dueDate DATE null,remarks VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_FileMovement";
 
@@ -197,7 +197,7 @@ public class FileMovementModelImpl
 		model.setFileId(soapModel.getFileId());
 		model.setPriority(soapModel.getPriority());
 		model.setDueDate(soapModel.getDueDate());
-		model.setRemark(soapModel.getRemark());
+		model.setRemarks(soapModel.getRemarks());
 		model.setActive(soapModel.isActive());
 		model.setMovementType(soapModel.getMovementType());
 
@@ -396,10 +396,10 @@ public class FileMovementModelImpl
 		attributeSetterBiConsumers.put(
 			"dueDate",
 			(BiConsumer<FileMovement, Date>)FileMovement::setDueDate);
-		attributeGetterFunctions.put("remark", FileMovement::getRemark);
+		attributeGetterFunctions.put("remarks", FileMovement::getRemarks);
 		attributeSetterBiConsumers.put(
-			"remark",
-			(BiConsumer<FileMovement, String>)FileMovement::setRemark);
+			"remarks",
+			(BiConsumer<FileMovement, String>)FileMovement::setRemarks);
 		attributeGetterFunctions.put("active", FileMovement::getActive);
 		attributeSetterBiConsumers.put(
 			"active",
@@ -667,22 +667,22 @@ public class FileMovementModelImpl
 
 	@JSON
 	@Override
-	public String getRemark() {
-		if (_remark == null) {
+	public String getRemarks() {
+		if (_remarks == null) {
 			return "";
 		}
 		else {
-			return _remark;
+			return _remarks;
 		}
 	}
 
 	@Override
-	public void setRemark(String remark) {
+	public void setRemarks(String remarks) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_remark = remark;
+		_remarks = remarks;
 	}
 
 	@JSON
@@ -795,7 +795,7 @@ public class FileMovementModelImpl
 		fileMovementImpl.setFileId(getFileId());
 		fileMovementImpl.setPriority(getPriority());
 		fileMovementImpl.setDueDate(getDueDate());
-		fileMovementImpl.setRemark(getRemark());
+		fileMovementImpl.setRemarks(getRemarks());
 		fileMovementImpl.setActive(isActive());
 		fileMovementImpl.setMovementType(getMovementType());
 
@@ -828,8 +828,8 @@ public class FileMovementModelImpl
 			this.<String>getColumnOriginalValue("priority"));
 		fileMovementImpl.setDueDate(
 			this.<Date>getColumnOriginalValue("dueDate"));
-		fileMovementImpl.setRemark(
-			this.<String>getColumnOriginalValue("remark"));
+		fileMovementImpl.setRemarks(
+			this.<String>getColumnOriginalValue("remarks"));
 		fileMovementImpl.setActive(
 			this.<Boolean>getColumnOriginalValue("active_"));
 		fileMovementImpl.setMovementType(
@@ -969,12 +969,12 @@ public class FileMovementModelImpl
 			fileMovementCacheModel.dueDate = Long.MIN_VALUE;
 		}
 
-		fileMovementCacheModel.remark = getRemark();
+		fileMovementCacheModel.remarks = getRemarks();
 
-		String remark = fileMovementCacheModel.remark;
+		String remarks = fileMovementCacheModel.remarks;
 
-		if ((remark != null) && (remark.length() == 0)) {
-			fileMovementCacheModel.remark = null;
+		if ((remarks != null) && (remarks.length() == 0)) {
+			fileMovementCacheModel.remarks = null;
 		}
 
 		fileMovementCacheModel.active = isActive();
@@ -1084,7 +1084,7 @@ public class FileMovementModelImpl
 	private long _fileId;
 	private String _priority;
 	private Date _dueDate;
-	private String _remark;
+	private String _remarks;
 	private boolean _active;
 	private long _movementType;
 
@@ -1129,7 +1129,7 @@ public class FileMovementModelImpl
 		_columnOriginalValues.put("fileId", _fileId);
 		_columnOriginalValues.put("priority", _priority);
 		_columnOriginalValues.put("dueDate", _dueDate);
-		_columnOriginalValues.put("remark", _remark);
+		_columnOriginalValues.put("remarks", _remarks);
 		_columnOriginalValues.put("active_", _active);
 		_columnOriginalValues.put("movementType", _movementType);
 	}
@@ -1181,7 +1181,7 @@ public class FileMovementModelImpl
 
 		columnBitmasks.put("dueDate", 2048L);
 
-		columnBitmasks.put("remark", 4096L);
+		columnBitmasks.put("remarks", 4096L);
 
 		columnBitmasks.put("active_", 8192L);
 

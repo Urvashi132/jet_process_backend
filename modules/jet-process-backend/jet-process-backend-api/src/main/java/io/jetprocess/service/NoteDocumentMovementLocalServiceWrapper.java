@@ -276,6 +276,14 @@ public class NoteDocumentMovementLocalServiceWrapper
 			getIndexableActionableDynamicQuery();
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.NoteDocumentMovement>
+		getListByNoteDocumentId(long noteDocumentId) {
+
+		return _noteDocumentMovementLocalService.getListByNoteDocumentId(
+			noteDocumentId);
+	}
+
 	/**
 	 * Returns the note document movement with the primary key.
 	 *
@@ -396,6 +404,15 @@ public class NoteDocumentMovementLocalServiceWrapper
 
 		return _noteDocumentMovementLocalService.getPersistedModel(
 			primaryKeyObj);
+	}
+
+	@Override
+	public io.jetprocess.model.NoteDocumentMovement saveNoteDocumentMovement(
+			long receiverId, long senderId, long noteDocumentId, String remarks)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _noteDocumentMovementLocalService.saveNoteDocumentMovement(
+			receiverId, senderId, noteDocumentId, remarks);
 	}
 
 	/**

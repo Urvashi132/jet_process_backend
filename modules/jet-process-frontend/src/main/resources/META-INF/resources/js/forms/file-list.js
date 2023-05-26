@@ -52,7 +52,7 @@ var fileList = {
 		"type" : "button",
 		"label" : "Add",
 		"applyTo" : "list",
-		"cssClass" : "btn-danger",
+		"cssClass" : "btn-primary",
 		"handler" : {
 			"href" : ""
 		}
@@ -61,7 +61,7 @@ var fileList = {
 		"type" : "button",
 		"label" : "Edit",
 		"applyTo" : "row",
-		"cssClass" : "btn-danger",
+		"cssClass" : "btn-primary",
 		"handler" : {
 			"href" : ""
 		}
@@ -76,7 +76,7 @@ var fileList = {
 		"type" : "button",
 		"label" : "Send",
 		"applyTo" : "row",
-		"cssClass" : "btn-danger",
+		"cssClass" : "btn-primary",
 		"handler" : {
 			"href" : ""
 		}
@@ -85,7 +85,7 @@ var fileList = {
 		"type" : "button",
 		"label" : "Movement",
 		"applyTo" : "row",
-		"cssClass" : "btn-danger",
+		"cssClass" : "btn-primary",
 		"handler" : {
 			"href" : ""
 		}

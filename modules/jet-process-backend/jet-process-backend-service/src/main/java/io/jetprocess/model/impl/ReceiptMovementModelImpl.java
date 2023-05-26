@@ -84,7 +84,7 @@ public class ReceiptMovementModelImpl
 		{"modifiedDate", Types.TIMESTAMP}, {"receiverId", Types.BIGINT},
 		{"senderId", Types.BIGINT}, {"receiptId", Types.BIGINT},
 		{"priority", Types.VARCHAR}, {"dueDate", Types.TIMESTAMP},
-		{"remark", Types.VARCHAR}, {"active_", Types.BOOLEAN},
+		{"remarks", Types.VARCHAR}, {"active_", Types.BOOLEAN},
 		{"movementType", Types.BIGINT}
 	};
 
@@ -104,13 +104,13 @@ public class ReceiptMovementModelImpl
 		TABLE_COLUMNS_MAP.put("receiptId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("priority", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("dueDate", Types.TIMESTAMP);
-		TABLE_COLUMNS_MAP.put("remark", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("remarks", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("active_", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("movementType", Types.BIGINT);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_ReceiptMovement (uuid_ VARCHAR(75) null,rmId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,receiptId LONG,priority VARCHAR(75) null,dueDate DATE null,remark VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
+		"create table JP_ReceiptMovement (uuid_ VARCHAR(75) null,rmId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,receiptId LONG,priority VARCHAR(75) null,dueDate DATE null,remarks VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_ReceiptMovement";
 
@@ -198,7 +198,7 @@ public class ReceiptMovementModelImpl
 		model.setReceiptId(soapModel.getReceiptId());
 		model.setPriority(soapModel.getPriority());
 		model.setDueDate(soapModel.getDueDate());
-		model.setRemark(soapModel.getRemark());
+		model.setRemarks(soapModel.getRemarks());
 		model.setActive(soapModel.isActive());
 		model.setMovementType(soapModel.getMovementType());
 
@@ -409,10 +409,10 @@ public class ReceiptMovementModelImpl
 		attributeSetterBiConsumers.put(
 			"dueDate",
 			(BiConsumer<ReceiptMovement, Date>)ReceiptMovement::setDueDate);
-		attributeGetterFunctions.put("remark", ReceiptMovement::getRemark);
+		attributeGetterFunctions.put("remarks", ReceiptMovement::getRemarks);
 		attributeSetterBiConsumers.put(
-			"remark",
-			(BiConsumer<ReceiptMovement, String>)ReceiptMovement::setRemark);
+			"remarks",
+			(BiConsumer<ReceiptMovement, String>)ReceiptMovement::setRemarks);
 		attributeGetterFunctions.put("active", ReceiptMovement::getActive);
 		attributeSetterBiConsumers.put(
 			"active",
@@ -682,22 +682,22 @@ public class ReceiptMovementModelImpl
 
 	@JSON
 	@Override
-	public String getRemark() {
-		if (_remark == null) {
+	public String getRemarks() {
+		if (_remarks == null) {
 			return "";
 		}
 		else {
-			return _remark;
+			return _remarks;
 		}
 	}
 
 	@Override
-	public void setRemark(String remark) {
+	public void setRemarks(String remarks) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_remark = remark;
+		_remarks = remarks;
 	}
 
 	@JSON
@@ -810,7 +810,7 @@ public class ReceiptMovementModelImpl
 		receiptMovementImpl.setReceiptId(getReceiptId());
 		receiptMovementImpl.setPriority(getPriority());
 		receiptMovementImpl.setDueDate(getDueDate());
-		receiptMovementImpl.setRemark(getRemark());
+		receiptMovementImpl.setRemarks(getRemarks());
 		receiptMovementImpl.setActive(isActive());
 		receiptMovementImpl.setMovementType(getMovementType());
 
@@ -846,8 +846,8 @@ public class ReceiptMovementModelImpl
 			this.<String>getColumnOriginalValue("priority"));
 		receiptMovementImpl.setDueDate(
 			this.<Date>getColumnOriginalValue("dueDate"));
-		receiptMovementImpl.setRemark(
-			this.<String>getColumnOriginalValue("remark"));
+		receiptMovementImpl.setRemarks(
+			this.<String>getColumnOriginalValue("remarks"));
 		receiptMovementImpl.setActive(
 			this.<Boolean>getColumnOriginalValue("active_"));
 		receiptMovementImpl.setMovementType(
@@ -987,12 +987,12 @@ public class ReceiptMovementModelImpl
 			receiptMovementCacheModel.dueDate = Long.MIN_VALUE;
 		}
 
-		receiptMovementCacheModel.remark = getRemark();
+		receiptMovementCacheModel.remarks = getRemarks();
 
-		String remark = receiptMovementCacheModel.remark;
+		String remarks = receiptMovementCacheModel.remarks;
 
-		if ((remark != null) && (remark.length() == 0)) {
-			receiptMovementCacheModel.remark = null;
+		if ((remarks != null) && (remarks.length() == 0)) {
+			receiptMovementCacheModel.remarks = null;
 		}
 
 		receiptMovementCacheModel.active = isActive();
@@ -1102,7 +1102,7 @@ public class ReceiptMovementModelImpl
 	private long _receiptId;
 	private String _priority;
 	private Date _dueDate;
-	private String _remark;
+	private String _remarks;
 	private boolean _active;
 	private long _movementType;
 
@@ -1147,7 +1147,7 @@ public class ReceiptMovementModelImpl
 		_columnOriginalValues.put("receiptId", _receiptId);
 		_columnOriginalValues.put("priority", _priority);
 		_columnOriginalValues.put("dueDate", _dueDate);
-		_columnOriginalValues.put("remark", _remark);
+		_columnOriginalValues.put("remarks", _remarks);
 		_columnOriginalValues.put("active_", _active);
 		_columnOriginalValues.put("movementType", _movementType);
 	}
@@ -1198,7 +1198,7 @@ public class ReceiptMovementModelImpl
 
 		columnBitmasks.put("dueDate", 2048L);
 
-		columnBitmasks.put("remark", 4096L);
+		columnBitmasks.put("remarks", 4096L);
 
 		columnBitmasks.put("active_", 8192L);
 

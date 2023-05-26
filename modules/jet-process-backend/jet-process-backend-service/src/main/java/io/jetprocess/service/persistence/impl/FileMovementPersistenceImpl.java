@@ -1457,9 +1457,9 @@ public class FileMovementPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"fileMovement.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByfileId;
-	private FinderPath _finderPathWithoutPaginationFindByfileId;
-	private FinderPath _finderPathCountByfileId;
+	private FinderPath _finderPathWithPaginationFindByFileId;
+	private FinderPath _finderPathWithoutPaginationFindByFileId;
+	private FinderPath _finderPathCountByFileId;
 
 	/**
 	 * Returns all the file movements where fileId = &#63;.
@@ -1468,8 +1468,8 @@ public class FileMovementPersistenceImpl
 	 * @return the matching file movements
 	 */
 	@Override
-	public List<FileMovement> findByfileId(long fileId) {
-		return findByfileId(fileId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<FileMovement> findByFileId(long fileId) {
+		return findByFileId(fileId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
@@ -1485,8 +1485,8 @@ public class FileMovementPersistenceImpl
 	 * @return the range of matching file movements
 	 */
 	@Override
-	public List<FileMovement> findByfileId(long fileId, int start, int end) {
-		return findByfileId(fileId, start, end, null);
+	public List<FileMovement> findByFileId(long fileId, int start, int end) {
+		return findByFileId(fileId, start, end, null);
 	}
 
 	/**
@@ -1503,11 +1503,11 @@ public class FileMovementPersistenceImpl
 	 * @return the ordered range of matching file movements
 	 */
 	@Override
-	public List<FileMovement> findByfileId(
+	public List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		OrderByComparator<FileMovement> orderByComparator) {
 
-		return findByfileId(fileId, start, end, orderByComparator, true);
+		return findByFileId(fileId, start, end, orderByComparator, true);
 	}
 
 	/**
@@ -1525,7 +1525,7 @@ public class FileMovementPersistenceImpl
 	 * @return the ordered range of matching file movements
 	 */
 	@Override
-	public List<FileMovement> findByfileId(
+	public List<FileMovement> findByFileId(
 		long fileId, int start, int end,
 		OrderByComparator<FileMovement> orderByComparator,
 		boolean useFinderCache) {
@@ -1537,12 +1537,12 @@ public class FileMovementPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByfileId;
+				finderPath = _finderPathWithoutPaginationFindByFileId;
 				finderArgs = new Object[] {fileId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByfileId;
+			finderPath = _finderPathWithPaginationFindByFileId;
 			finderArgs = new Object[] {fileId, start, end, orderByComparator};
 		}
 
@@ -1628,11 +1628,11 @@ public class FileMovementPersistenceImpl
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
 	@Override
-	public FileMovement findByfileId_First(
+	public FileMovement findByFileId_First(
 			long fileId, OrderByComparator<FileMovement> orderByComparator)
 		throws NoSuchFileMovementException {
 
-		FileMovement fileMovement = fetchByfileId_First(
+		FileMovement fileMovement = fetchByFileId_First(
 			fileId, orderByComparator);
 
 		if (fileMovement != null) {
@@ -1659,10 +1659,10 @@ public class FileMovementPersistenceImpl
 	 * @return the first matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
 	@Override
-	public FileMovement fetchByfileId_First(
+	public FileMovement fetchByFileId_First(
 		long fileId, OrderByComparator<FileMovement> orderByComparator) {
 
-		List<FileMovement> list = findByfileId(fileId, 0, 1, orderByComparator);
+		List<FileMovement> list = findByFileId(fileId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1680,11 +1680,11 @@ public class FileMovementPersistenceImpl
 	 * @throws NoSuchFileMovementException if a matching file movement could not be found
 	 */
 	@Override
-	public FileMovement findByfileId_Last(
+	public FileMovement findByFileId_Last(
 			long fileId, OrderByComparator<FileMovement> orderByComparator)
 		throws NoSuchFileMovementException {
 
-		FileMovement fileMovement = fetchByfileId_Last(
+		FileMovement fileMovement = fetchByFileId_Last(
 			fileId, orderByComparator);
 
 		if (fileMovement != null) {
@@ -1711,16 +1711,16 @@ public class FileMovementPersistenceImpl
 	 * @return the last matching file movement, or <code>null</code> if a matching file movement could not be found
 	 */
 	@Override
-	public FileMovement fetchByfileId_Last(
+	public FileMovement fetchByFileId_Last(
 		long fileId, OrderByComparator<FileMovement> orderByComparator) {
 
-		int count = countByfileId(fileId);
+		int count = countByFileId(fileId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<FileMovement> list = findByfileId(
+		List<FileMovement> list = findByFileId(
 			fileId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -1740,7 +1740,7 @@ public class FileMovementPersistenceImpl
 	 * @throws NoSuchFileMovementException if a file movement with the primary key could not be found
 	 */
 	@Override
-	public FileMovement[] findByfileId_PrevAndNext(
+	public FileMovement[] findByFileId_PrevAndNext(
 			long id, long fileId,
 			OrderByComparator<FileMovement> orderByComparator)
 		throws NoSuchFileMovementException {
@@ -1754,12 +1754,12 @@ public class FileMovementPersistenceImpl
 
 			FileMovement[] array = new FileMovementImpl[3];
 
-			array[0] = getByfileId_PrevAndNext(
+			array[0] = getByFileId_PrevAndNext(
 				session, fileMovement, fileId, orderByComparator, true);
 
 			array[1] = fileMovement;
 
-			array[2] = getByfileId_PrevAndNext(
+			array[2] = getByFileId_PrevAndNext(
 				session, fileMovement, fileId, orderByComparator, false);
 
 			return array;
@@ -1772,7 +1772,7 @@ public class FileMovementPersistenceImpl
 		}
 	}
 
-	protected FileMovement getByfileId_PrevAndNext(
+	protected FileMovement getByFileId_PrevAndNext(
 		Session session, FileMovement fileMovement, long fileId,
 		OrderByComparator<FileMovement> orderByComparator, boolean previous) {
 
@@ -1886,9 +1886,9 @@ public class FileMovementPersistenceImpl
 	 * @param fileId the file ID
 	 */
 	@Override
-	public void removeByfileId(long fileId) {
+	public void removeByFileId(long fileId) {
 		for (FileMovement fileMovement :
-				findByfileId(
+				findByFileId(
 					fileId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 
 			remove(fileMovement);
@@ -1902,8 +1902,8 @@ public class FileMovementPersistenceImpl
 	 * @return the number of matching file movements
 	 */
 	@Override
-	public int countByfileId(long fileId) {
-		FinderPath finderPath = _finderPathCountByfileId;
+	public int countByFileId(long fileId) {
+		FinderPath finderPath = _finderPathCountByFileId;
 
 		Object[] finderArgs = new Object[] {fileId};
 
@@ -2573,20 +2573,20 @@ public class FileMovementPersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
 
-		_finderPathWithPaginationFindByfileId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByfileId",
+		_finderPathWithPaginationFindByFileId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByFileId",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				Integer.class.getName(), OrderByComparator.class.getName()
 			},
 			new String[] {"fileId"}, true);
 
-		_finderPathWithoutPaginationFindByfileId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByfileId",
+		_finderPathWithoutPaginationFindByFileId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByFileId",
 			new String[] {Long.class.getName()}, new String[] {"fileId"}, true);
 
-		_finderPathCountByfileId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByfileId",
+		_finderPathCountByFileId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFileId",
 			new String[] {Long.class.getName()}, new String[] {"fileId"},
 			false);
 

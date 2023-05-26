@@ -75,7 +75,7 @@
 		<field name="fileId" type="long" />
 		<field name="priority" type="String" />
 		<field name="dueDate" type="Date" />
-		<field name="remark" type="String">
+		<field name="remarks" type="String">
 			<hint name="max-length">500</hint>
 		</field>
 		<field name="active" type="boolean" />
@@ -198,7 +198,7 @@
 		<field name="receiptId" type="long" />
 		<field name="priority" type="String" />
 		<field name="dueDate" type="Date" />
-		<field name="remark" type="String">
+		<field name="remarks" type="String">
 			<hint name="max-length">500</hint>
 		</field>
 		<field name="active" type="boolean" />

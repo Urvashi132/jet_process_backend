@@ -42,17 +42,13 @@ public class DocumentNoteMappingLocalServiceImpl extends DocumentNoteMappingLoca
 		List<String> error = noteDocumentValidator.validate(subject, subjectCategoryId, content);
 		if (!error.isEmpty()) {
 		} else {
-
 			long id = counterLocalService.increment(DocumentNoteMapping.class.getName());
 			documentNoteMapping = createDocumentNoteMapping(id);
-
 			// get note id
 			Note note = noteLocalService.createNote(content, createdBy);
-
 			// get note document id
 			NoteDocument noteDocument = noteDocumentLocalService.createNoteDocument(subject, subjectCategoryId,
 					createdBy);
-
 			documentNoteMapping.setNoteId(note.getId());
 			documentNoteMapping.setNoteDocumentId(noteDocument.getId());
 			addDocumentNoteMapping(documentNoteMapping);
@@ -67,14 +63,11 @@ public class DocumentNoteMappingLocalServiceImpl extends DocumentNoteMappingLoca
 		if (!error.isEmpty()) {
 		} else {
 			documentNoteMapping = getDocumentNoteMapping(id);
-
 			// get note id
 			Note note = noteLocalService.updateNote(documentNoteMapping.getNoteId(), content);
-
 			// get note document id
 			NoteDocument noteDocument = noteDocumentLocalService
 					.updateNoteDocument(documentNoteMapping.getNoteDocumentId(), subject, subjectCategoryId);
-
 			documentNoteMapping.setNoteId(note.getId());
 			documentNoteMapping.setNoteDocumentId(noteDocument.getId());
 			updateDocumentNoteMapping(documentNoteMapping);
@@ -84,14 +77,11 @@ public class DocumentNoteMappingLocalServiceImpl extends DocumentNoteMappingLoca
 
 	public void deleteDocumentNoteMappingById(long id) throws PortalException {
 		DocumentNoteMapping documentNoteMapping = getDocumentNoteMapping(id);
-
 		// get note id
 		noteLocalService.deleteNote(documentNoteMapping.getNoteId());
-
 		// get note document id
 		noteDocumentLocalService.deleteNoteDocument(documentNoteMapping.getNoteDocumentId());
-
-		super.deleteDocumentNoteMapping(id);
+		deleteDocumentNoteMapping(id);
 	}
 
 	@Reference

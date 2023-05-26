@@ -251,19 +251,19 @@ public interface FileMovementModel
 	public void setDueDate(Date dueDate);
 
 	/**
-	 * Returns the remark of this file movement.
+	 * Returns the remarks of this file movement.
 	 *
-	 * @return the remark of this file movement
+	 * @return the remarks of this file movement
 	 */
 	@AutoEscape
-	public String getRemark();
+	public String getRemarks();
 
 	/**
-	 * Sets the remark of this file movement.
+	 * Sets the remarks of this file movement.
 	 *
-	 * @param remark the remark of this file movement
+	 * @param remarks the remarks of this file movement
 	 */
-	public void setRemark(String remark);
+	public void setRemarks(String remarks);
 
 	/**
 	 * Returns the active of this file movement.

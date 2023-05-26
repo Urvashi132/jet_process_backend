@@ -249,6 +249,12 @@ public class NoteDocumentMovementLocalServiceUtil {
 		return getService().getIndexableActionableDynamicQuery();
 	}
 
+	public static List<NoteDocumentMovement> getListByNoteDocumentId(
+		long noteDocumentId) {
+
+		return getService().getListByNoteDocumentId(noteDocumentId);
+	}
+
 	/**
 	 * Returns the note document movement with the primary key.
 	 *
@@ -354,6 +360,14 @@ public class NoteDocumentMovementLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static NoteDocumentMovement saveNoteDocumentMovement(
+			long receiverId, long senderId, long noteDocumentId, String remarks)
+		throws PortalException {
+
+		return getService().saveNoteDocumentMovement(
+			receiverId, senderId, noteDocumentId, remarks);
 	}
 
 	/**

@@ -70,7 +70,7 @@ create table JP_FileMovement (
 	fileId LONG,
 	priority VARCHAR(75) null,
 	dueDate DATE null,
-	remark VARCHAR(500) null,
+	remarks VARCHAR(500) null,
 	active_ BOOLEAN,
 	movementType LONG
 );
@@ -184,7 +184,7 @@ create table JP_ReceiptMovement (
 	receiptId LONG,
 	priority VARCHAR(75) null,
 	dueDate DATE null,
-	remark VARCHAR(500) null,
+	remarks VARCHAR(500) null,
 	active_ BOOLEAN,
 	movementType LONG
 );

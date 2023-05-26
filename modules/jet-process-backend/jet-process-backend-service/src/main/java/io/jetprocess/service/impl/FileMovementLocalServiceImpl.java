@@ -15,18 +15,55 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import io.jetprocess.service.base.FileMovementLocalServiceBaseImpl;
+import java.util.Date;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
+import io.jetprocess.model.DocFile;
+import io.jetprocess.model.FileMovement;
+import io.jetprocess.service.DocFileLocalService;
+import io.jetprocess.service.base.FileMovementLocalServiceBaseImpl;
 
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=io.jetprocess.model.FileMovement",
-	service = AopService.class
-)
-public class FileMovementLocalServiceImpl
-	extends FileMovementLocalServiceBaseImpl {
+@Component(property = "model.class.name=io.jetprocess.model.FileMovement", service = AopService.class)
+public class FileMovementLocalServiceImpl extends FileMovementLocalServiceBaseImpl {
+
+	public FileMovement saveFileMovement(long receiverId, long senderId, long fileId, String priority, Date dueDate,
+			String remarks) throws PortalException {
+		LOGGER.info("service");
+		long id = counterLocalService.increment(FileMovement.class.getName());
+		FileMovement fileMovement = fileMovementLocalService.createFileMovement(id);
+		fileMovement.setId(id);
+		fileMovement.setReceiverId(receiverId);
+		fileMovement.setSenderId(senderId);
+		fileMovement.setFileId(fileId);
+		fileMovement.setRemarks(remarks);
+		fileMovement.setPriority(priority);
+		fileMovement.setDueDate(dueDate);
+		fileMovement = addFileMovement(fileMovement);
+		DocFile docFile = docFileLocalService.getDocFile(fileId);
+		docFile.setCurrentState(2);
+		docFile.setCurrentUser(receiverId);
+		docFileLocalService.updateDocFile(docFile);
+		return fileMovement;
+	}
+
+	public List<FileMovement> getListByFileId(long fileId) {
+		LOGGER.info("service");
+		return fileMovementPersistence.findByFileId(fileId);
+	}
+
+	@Reference
+	private DocFileLocalService docFileLocalService;
+
+	private final Log LOGGER = LogFactoryUtil.getLog(FileMovementLocalServiceImpl.class);
+
 }

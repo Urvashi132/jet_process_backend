@@ -1967,3 +1967,18 @@ function log(message){
 function error(message){
 	//console.log(message);
 }
+
+
+
+
+//FOR SEND FUNCTION AND MOVEMENT FUNCTION
+function sendOnClick(event){
+	 event.preventDefault();
+	 invokeUrl(event);
+}
+
+function movementOnClick(event){
+	 event.preventDefault();
+	 invokeUrl(event);
+}
+

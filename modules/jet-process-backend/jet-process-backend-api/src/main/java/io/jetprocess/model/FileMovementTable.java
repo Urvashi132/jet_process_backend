@@ -56,8 +56,8 @@ public class FileMovementTable extends BaseTable<FileMovementTable> {
 		"priority", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<FileMovementTable, Date> dueDate = createColumn(
 		"dueDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
-	public final Column<FileMovementTable, String> remark = createColumn(
-		"remark", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<FileMovementTable, String> remarks = createColumn(
+		"remarks", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<FileMovementTable, Boolean> active = createColumn(
 		"active_", Boolean.class, Types.BOOLEAN, Column.FLAG_DEFAULT);
 	public final Column<FileMovementTable, Long> movementType = createColumn(

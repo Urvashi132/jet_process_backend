@@ -9,10 +9,14 @@ import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
+import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
+import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
+import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
+import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 
@@ -34,12 +38,28 @@ import org.osgi.service.component.ComponentServiceObjects;
 @Generated("")
 public class Mutation {
 
+	public static void setFileMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<FileMovementRsModelResource>
+			fileMovementRsModelResourceComponentServiceObjects) {
+
+		_fileMovementRsModelResourceComponentServiceObjects =
+			fileMovementRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setFileRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<FileRsModelResource>
 			fileRsModelResourceComponentServiceObjects) {
 
 		_fileRsModelResourceComponentServiceObjects =
 			fileRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setNoteDocMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<NoteDocMovementRsModelResource>
+			noteDocMovementRsModelResourceComponentServiceObjects) {
+
+		_noteDocMovementRsModelResourceComponentServiceObjects =
+			noteDocMovementRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setNoteDocumentRsModelResourceComponentServiceObjects(
@@ -56,6 +76,20 @@ public class Mutation {
 
 		_receiptRsModelResourceComponentServiceObjects =
 			receiptRsModelResourceComponentServiceObjects;
+	}
+
+	@GraphQLField
+	public FileMovementRsModel createFileMovement(
+			@GraphQLName("fileMovementRsModel") FileMovementRsModel
+				fileMovementRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_fileMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			fileMovementRsModelResource ->
+				fileMovementRsModelResource.createFileMovement(
+					fileMovementRsModel));
 	}
 
 	@GraphQLField
@@ -93,6 +127,20 @@ public class Mutation {
 			this::_populateResourceContext,
 			fileRsModelResource -> fileRsModelResource.updateDocFile(
 				id, fileRsModel));
+	}
+
+	@GraphQLField
+	public NoteDocMovementRsModel createNotedocMovement(
+			@GraphQLName("noteDocMovementRsModel") NoteDocMovementRsModel
+				noteDocMovementRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_noteDocMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			noteDocMovementRsModelResource ->
+				noteDocMovementRsModelResource.createNotedocMovement(
+					noteDocMovementRsModel));
 	}
 
 	@GraphQLField
@@ -214,6 +262,22 @@ public class Mutation {
 	}
 
 	private void _populateResourceContext(
+			FileMovementRsModelResource fileMovementRsModelResource)
+		throws Exception {
+
+		fileMovementRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		fileMovementRsModelResource.setContextCompany(_company);
+		fileMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		fileMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		fileMovementRsModelResource.setContextUriInfo(_uriInfo);
+		fileMovementRsModelResource.setContextUser(_user);
+		fileMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		fileMovementRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileRsModelResource fileRsModelResource)
 		throws Exception {
 
@@ -225,6 +289,23 @@ public class Mutation {
 		fileRsModelResource.setContextUser(_user);
 		fileRsModelResource.setGroupLocalService(_groupLocalService);
 		fileRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			NoteDocMovementRsModelResource noteDocMovementRsModelResource)
+		throws Exception {
+
+		noteDocMovementRsModelResource.setContextAcceptLanguage(
+			_acceptLanguage);
+		noteDocMovementRsModelResource.setContextCompany(_company);
+		noteDocMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		noteDocMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		noteDocMovementRsModelResource.setContextUriInfo(_uriInfo);
+		noteDocMovementRsModelResource.setContextUser(_user);
+		noteDocMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		noteDocMovementRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -259,8 +340,12 @@ public class Mutation {
 		receiptRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
+	private static ComponentServiceObjects<FileMovementRsModelResource>
+		_fileMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>
 		_fileRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<NoteDocMovementRsModelResource>
+		_noteDocMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptRsModelResource>

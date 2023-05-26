@@ -310,11 +310,11 @@
 		<column name="fileId" type="long" />
 		<column name="priority" type="String" />
 		<column name="dueDate" type="Date" />
-		<column name="remark" type="String" />
+		<column name="remarks" type="String" />
 		<column name="active" type="boolean" />
 		<column name="movementType" type="long" />
 
-		<finder name="fileId" return-type="Collection">
+		<finder name="FileId" return-type="Collection">
 			<finder-column name="fileId"></finder-column>
 		</finder>
 
@@ -342,7 +342,7 @@
 		<column name="receiptId" type="long" />
 		<column name="priority" type="String" />
 		<column name="dueDate" type="Date" />
-		<column name="remark" type="String" />
+		<column name="remarks" type="String" />
 		<column name="active" type="boolean" />
 		<column name="movementType" type="long" />
 
@@ -376,6 +376,10 @@
 		<column name="remarks" type="String" />
 		<column name="active" type="boolean" />
 		<column name="movementType" type="long" />
+		
+		<finder name="NoteDocumentId" return-type="Collection">
+			<finder-column name="noteDocumentId"></finder-column>
+		</finder>
 	</entity>
 
 

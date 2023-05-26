@@ -1,5 +1,4 @@
-<script src="//cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
-<%@include file="init.jsp"%>
+<%@include file="../../init.jsp"%>
 <style>
 .text-margin {
 	margin: 0px 14px 9px;
@@ -7,11 +6,11 @@
 </style>
 
 <portlet:renderURL var="list">
-	<portlet:param name="mvcPath" value="/note-list.jsp" />
+	<portlet:param name="mvcPath" value="/jsp/note-document/notedoc-list.jsp" />
 </portlet:renderURL>
 
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/note-json.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/note-form.js"%>'></script>
 
 <div class="container">
 	<div class="row">

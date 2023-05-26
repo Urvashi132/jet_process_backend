@@ -76,7 +76,11 @@ public class OpenAPIResourceImpl {
 
 			add(FileCategoryRsModelResourceImpl.class);
 
+			add(FileMovementRsModelResourceImpl.class);
+
 			add(FileRsModelResourceImpl.class);
+
+			add(NoteDocMovementRsModelResourceImpl.class);
 
 			add(NoteDocumentRsModelResourceImpl.class);
 
