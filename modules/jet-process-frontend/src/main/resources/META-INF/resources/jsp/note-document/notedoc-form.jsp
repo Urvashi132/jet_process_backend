@@ -10,13 +10,13 @@
 </portlet:renderURL>
 
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/note-form.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/notedoc-form.js"%>'></script>
 
 <div class="container">
 	<div class="row">
-		<div class="col" id="noteFormContainer">
+		<div class="col" id="noteDocFormContainer">
 			<h3>Create Note</h3>
-			<form id="noteForm"></form>
+			<form id="noteDocForm"></form>
 		</div>
 	</div>
 </div>
@@ -25,17 +25,17 @@
 <script>
 
 	$(document).ready(() => {
-		let content = noteForm.fields[2].name;
-		noteForm.actions[1].handler.href = '<%=list%>';
+		let content = noteDocForm.fields[2].name;
+		noteDocForm.actions[1].handler.href = '<%=list%>';
 		$('#subject').closest("div").addClass("text-margin");
 		$('#content').closest("div").addClass("text-margin");
-		var jetform=JetForm({"id":"noteForm", "parentId":"noteFormContainer", "form":noteForm});
+		var jetform=JetForm({"id":"noteDocForm", "parentId":"noteDocFormContainer", "form":noteDocForm});
 		jetform.render(); 
 		
-		/* setTimeout(function(){
-		CKEDITOR.replace('content');}, 2000); */
+		setTimeout(function(){
+		CKEDITOR.replace('content');}, 2000); 
 				 
-		CKEDITOR.replace(content); 
+		/* CKEDITOR.replace(content);  */
 
 		var m = new Date().getMonth()+1;
 		$('#createDate').val(new Date().getDate()+"/"+m+"/"+new Date().getFullYear());

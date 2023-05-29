@@ -1,6 +1,6 @@
-var noteForm = {
-	"id" : "noteForm",
-	"parentId" : "noteFormContainer",
+var noteDocForm = {
+	"id" : "noteDocForm",
+	"parentId" : "noteDocFormContainer",
 	"title" : "Create Note",
 	"subtitle" : "Note",
 	"namespace" : "",
@@ -53,23 +53,17 @@ var noteForm = {
 							"col" : 6
 						} ]
 			},{
-				"type" : "textarea",
+				/*"type" : "textarea",
 				"name" : "content",
-				"label" : "Article Content",
-				/*"type" : "group",
+				"label" : "Article Content",*/
+				"type" : "group",
 				"name" : "note",
 				"label" : "name",
 				"fields" : [ {
 					"type" : "textarea",
 					"name" : "content",
-					"label" : "Article Content",
-					"events" : {
-						"click" : [{
-							"receiver" : "contentEditor",
-							"type" : "javascript",
-						}]
-					}
-				}]*/
+					"label" : "Article Content"
+				}]
 			}, {
 				"type" : "hidden",
 				"name" : "groupId",

@@ -23,14 +23,19 @@
 </liferay-util:include>
 
 <script>
-$(document).ready(() => {
-	<%-- fileForm.actions[0].redirects.success.href = '<%=list%>';
-	 --%>
-	var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
-	var jetform=JetForm({"id":"fileSend", "parentId":"fileSendContainer", "form":fileSend});
-	console.log("id from jsp page"+id);
-	jetform.setDataKey(id);
-	jetform.render();
 
-});
+ var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
+	
+	$(document).ready(() => {
+		fileSend.actions[0].redirects.success.href = '<%=list%>';
+		fileSend.actions[1].handler.href = '<%=list%>';
+		 
+		var jetform=JetForm({"id":"fileSend", "parentId":"fileSendContainer", "form":fileSend});
+		jetform.render();
+		
+	/* 	let searchParams = new URLSearchParams(window.location.search);
+		let id = searchParams.get('id');
+		$("#fileId").attr("required" , true);
+		$("#fileId").val("9"); */
+	});
 </script>

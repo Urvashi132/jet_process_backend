@@ -11,22 +11,22 @@
 </portlet:renderURL>
 
 <script type="text/javascript"
-	src='<%=request.getContextPath() + "/js/forms/note-list.js"%>'></script>
+	src='<%=request.getContextPath() + "/js/forms/notedoc-list.js"%>'></script>
 
 <div class="container">
-	<div id="noteListContainer"></div>
+	<div id="noteDocListContainer"></div>
 </div>
 
 <liferay-util:include page="/templates/jetform-template.jsp"
 	servletContext="<%=application%>" />
 <script>
 	$(document).ready(() => {
-		noteList.actions[0].handler.href = '<%=noteDoc%>';
-		noteList.actions[1].handler.href = '<%=noteDoc%>';
-		noteList.actions[2].handler.href = '<%=noteDoc%>';
-		noteList.actions[3].handler.href = '<%=noteDoc%>';
+		noteDocList.actions[0].handler.href = '<%=noteDoc%>';
+		noteDocList.actions[1].handler.href = '<%=noteDoc%>';
+		noteDocList.actions[3].handler.href = '<%=send%>';
+		noteDocList.actions[4].handler.href = '<%=movement%>';
 		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
-		var jetList=JetList({"id":"noteList", "parentId":"noteListContainer", "form":noteList});
+		var jetList=JetList({"id":"noteDocList", "parentId":"noteDocListContainer", "form":noteDocList});
 		jetList.setDataKey(id);
 		jetList.render();
 	});

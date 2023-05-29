@@ -1,6 +1,6 @@
-var noteList = {
-	"id" : "noteList",
-	"parentId" : "noteListContainer",
+var noteDocList = {
+	"id" : "noteDocList",
+	"parentId" : "noteDocListContainer",
 	"title" : "Note Document List",
 	"subtitle" : "Note",
 	"namespace" : "",
