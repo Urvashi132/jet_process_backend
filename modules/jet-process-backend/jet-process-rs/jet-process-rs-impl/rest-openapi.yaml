@@ -296,6 +296,9 @@ components:
           type : string
         remarks:
           type: string
+        createDate:
+          format: date-time
+          type : string
       type: object
       
     NoteDocMovementRsModel:
@@ -314,6 +317,9 @@ components:
           type: integer
         remarks:
           type: string
+        createDate:
+          format: date-time
+          type : string
       type: object
       
 paths:

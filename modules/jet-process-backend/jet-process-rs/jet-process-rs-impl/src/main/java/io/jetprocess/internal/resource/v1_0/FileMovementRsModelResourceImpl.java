@@ -62,6 +62,7 @@ public class FileMovementRsModelResourceImpl extends BaseFileMovementRsModelReso
 		movementRsModel.setPriority(fileMovement.getPriority());
 		movementRsModel.setDueDate(fileMovement.getDueDate());
 		movementRsModel.setRemarks(fileMovement.getRemarks());
+		movementRsModel.setCreateDate(fileMovement.getCreateDate());
 		return movementRsModel;
 	}
 

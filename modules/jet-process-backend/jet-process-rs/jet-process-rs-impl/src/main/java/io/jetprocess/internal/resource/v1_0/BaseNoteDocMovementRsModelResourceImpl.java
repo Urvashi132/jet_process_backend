@@ -89,7 +89,7 @@ public abstract class BaseNoteDocMovementRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement' -d $'{"id": ___, "noteDocumentId": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement' -d $'{"createDate": ___, "id": ___, "noteDocumentId": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {

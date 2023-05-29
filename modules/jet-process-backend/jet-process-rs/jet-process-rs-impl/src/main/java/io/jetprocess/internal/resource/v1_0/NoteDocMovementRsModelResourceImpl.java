@@ -47,7 +47,7 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 	@Override
 	public NoteDocMovementRsModel createNotedocMovement(NoteDocMovementRsModel noteDocMovementRsModel)
 			throws Exception {
-		
+		LOGGER.info("create method rest api called");
 		movementLocalService.saveNoteDocumentMovement(noteDocMovementRsModel.getReceiverId(),
 				noteDocMovementRsModel.getSenderId(), noteDocMovementRsModel.getNoteDocumentId(),
 				noteDocMovementRsModel.getRemarks());
@@ -61,6 +61,7 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 		movementRsModel.setSenderId(noteDocumentMovement.getSenderId());
 		movementRsModel.setNoteDocumentId(noteDocumentMovement.getNoteDocumentId());
 		movementRsModel.setRemarks(noteDocumentMovement.getRemarks());
+		movementRsModel.setCreateDate(noteDocumentMovement.getCreateDate());
 		return movementRsModel;
 	}
 

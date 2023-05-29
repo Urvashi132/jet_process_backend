@@ -89,7 +89,7 @@ public abstract class BaseFileMovementRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/filemovement' -d $'{"dueDate": ___, "fileId": ___, "id": ___, "priority": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/filemovement' -d $'{"createDate": ___, "dueDate": ___, "fileId": ___, "id": ___, "priority": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
