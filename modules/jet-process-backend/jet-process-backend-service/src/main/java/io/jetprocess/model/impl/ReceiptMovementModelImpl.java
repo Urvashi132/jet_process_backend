@@ -78,7 +78,7 @@ public class ReceiptMovementModelImpl
 	public static final String TABLE_NAME = "JP_ReceiptMovement";
 
 	public static final Object[][] TABLE_COLUMNS = {
-		{"uuid_", Types.VARCHAR}, {"rmId", Types.BIGINT},
+		{"uuid_", Types.VARCHAR}, {"id_", Types.BIGINT},
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"createDate", Types.TIMESTAMP},
 		{"modifiedDate", Types.TIMESTAMP}, {"receiverId", Types.BIGINT},
@@ -93,7 +93,7 @@ public class ReceiptMovementModelImpl
 
 	static {
 		TABLE_COLUMNS_MAP.put("uuid_", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("rmId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("id_", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("groupId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("userId", Types.BIGINT);
@@ -110,15 +110,15 @@ public class ReceiptMovementModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_ReceiptMovement (uuid_ VARCHAR(75) null,rmId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,receiptId LONG,priority VARCHAR(75) null,dueDate DATE null,remarks VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
+		"create table JP_ReceiptMovement (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,receiverId LONG,senderId LONG,receiptId LONG,priority VARCHAR(75) null,dueDate DATE null,remarks VARCHAR(500) null,active_ BOOLEAN,movementType LONG)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_ReceiptMovement";
 
 	public static final String ORDER_BY_JPQL =
-		" ORDER BY receiptMovement.rmId ASC";
+		" ORDER BY receiptMovement.id ASC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY JP_ReceiptMovement.rmId ASC";
+		" ORDER BY JP_ReceiptMovement.id_ ASC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -155,7 +155,7 @@ public class ReceiptMovementModelImpl
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long RMID_COLUMN_BITMASK = 16L;
+	public static final long ID_COLUMN_BITMASK = 16L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -187,7 +187,7 @@ public class ReceiptMovementModelImpl
 		ReceiptMovement model = new ReceiptMovementImpl();
 
 		model.setUuid(soapModel.getUuid());
-		model.setRmId(soapModel.getRmId());
+		model.setId(soapModel.getId());
 		model.setGroupId(soapModel.getGroupId());
 		model.setCompanyId(soapModel.getCompanyId());
 		model.setUserId(soapModel.getUserId());
@@ -235,17 +235,17 @@ public class ReceiptMovementModelImpl
 
 	@Override
 	public long getPrimaryKey() {
-		return _rmId;
+		return _id;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setRmId(primaryKey);
+		setId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _rmId;
+		return _id;
 	}
 
 	@Override
@@ -359,10 +359,9 @@ public class ReceiptMovementModelImpl
 		attributeSetterBiConsumers.put(
 			"uuid",
 			(BiConsumer<ReceiptMovement, String>)ReceiptMovement::setUuid);
-		attributeGetterFunctions.put("rmId", ReceiptMovement::getRmId);
+		attributeGetterFunctions.put("id", ReceiptMovement::getId);
 		attributeSetterBiConsumers.put(
-			"rmId",
-			(BiConsumer<ReceiptMovement, Long>)ReceiptMovement::setRmId);
+			"id", (BiConsumer<ReceiptMovement, Long>)ReceiptMovement::setId);
 		attributeGetterFunctions.put("groupId", ReceiptMovement::getGroupId);
 		attributeSetterBiConsumers.put(
 			"groupId",
@@ -461,17 +460,17 @@ public class ReceiptMovementModelImpl
 
 	@JSON
 	@Override
-	public long getRmId() {
-		return _rmId;
+	public long getId() {
+		return _id;
 	}
 
 	@Override
-	public void setRmId(long rmId) {
+	public void setId(long id) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_rmId = rmId;
+		_id = id;
 	}
 
 	@JSON
@@ -799,7 +798,7 @@ public class ReceiptMovementModelImpl
 		ReceiptMovementImpl receiptMovementImpl = new ReceiptMovementImpl();
 
 		receiptMovementImpl.setUuid(getUuid());
-		receiptMovementImpl.setRmId(getRmId());
+		receiptMovementImpl.setId(getId());
 		receiptMovementImpl.setGroupId(getGroupId());
 		receiptMovementImpl.setCompanyId(getCompanyId());
 		receiptMovementImpl.setUserId(getUserId());
@@ -825,7 +824,7 @@ public class ReceiptMovementModelImpl
 
 		receiptMovementImpl.setUuid(
 			this.<String>getColumnOriginalValue("uuid_"));
-		receiptMovementImpl.setRmId(this.<Long>getColumnOriginalValue("rmId"));
+		receiptMovementImpl.setId(this.<Long>getColumnOriginalValue("id_"));
 		receiptMovementImpl.setGroupId(
 			this.<Long>getColumnOriginalValue("groupId"));
 		receiptMovementImpl.setCompanyId(
@@ -938,7 +937,7 @@ public class ReceiptMovementModelImpl
 			receiptMovementCacheModel.uuid = null;
 		}
 
-		receiptMovementCacheModel.rmId = getRmId();
+		receiptMovementCacheModel.id = getId();
 
 		receiptMovementCacheModel.groupId = getGroupId();
 
@@ -1090,7 +1089,7 @@ public class ReceiptMovementModelImpl
 	}
 
 	private String _uuid;
-	private long _rmId;
+	private long _id;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
@@ -1136,7 +1135,7 @@ public class ReceiptMovementModelImpl
 		_columnOriginalValues = new HashMap<String, Object>();
 
 		_columnOriginalValues.put("uuid_", _uuid);
-		_columnOriginalValues.put("rmId", _rmId);
+		_columnOriginalValues.put("id_", _id);
 		_columnOriginalValues.put("groupId", _groupId);
 		_columnOriginalValues.put("companyId", _companyId);
 		_columnOriginalValues.put("userId", _userId);
@@ -1158,6 +1157,7 @@ public class ReceiptMovementModelImpl
 		Map<String, String> attributeNames = new HashMap<>();
 
 		attributeNames.put("uuid_", "uuid");
+		attributeNames.put("id_", "id");
 		attributeNames.put("active_", "active");
 
 		_attributeNames = Collections.unmodifiableMap(attributeNames);
@@ -1176,7 +1176,7 @@ public class ReceiptMovementModelImpl
 
 		columnBitmasks.put("uuid_", 1L);
 
-		columnBitmasks.put("rmId", 2L);
+		columnBitmasks.put("id_", 2L);
 
 		columnBitmasks.put("groupId", 4L);
 

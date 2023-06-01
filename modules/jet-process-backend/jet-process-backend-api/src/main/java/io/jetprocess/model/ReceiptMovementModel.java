@@ -76,18 +76,18 @@ public interface ReceiptMovementModel
 	public void setUuid(String uuid);
 
 	/**
-	 * Returns the rm ID of this receipt movement.
+	 * Returns the ID of this receipt movement.
 	 *
-	 * @return the rm ID of this receipt movement
+	 * @return the ID of this receipt movement
 	 */
-	public long getRmId();
+	public long getId();
 
 	/**
-	 * Sets the rm ID of this receipt movement.
+	 * Sets the ID of this receipt movement.
 	 *
-	 * @param rmId the rm ID of this receipt movement
+	 * @param id the ID of this receipt movement
 	 */
-	public void setRmId(long rmId);
+	public void setId(long id);
 
 	/**
 	 * Returns the group ID of this receipt movement.

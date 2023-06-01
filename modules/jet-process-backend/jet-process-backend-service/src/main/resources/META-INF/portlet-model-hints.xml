@@ -187,7 +187,7 @@
 	</model>
 	<model name="io.jetprocess.model.ReceiptMovement">
 		<field name="uuid" type="String" />
-		<field name="rmId" type="long" />
+		<field name="id" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />

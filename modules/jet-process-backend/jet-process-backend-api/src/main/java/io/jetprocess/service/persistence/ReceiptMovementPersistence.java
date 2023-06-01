@@ -158,14 +158,14 @@ public interface ReceiptMovementPersistence
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	public ReceiptMovement[] findByUuid_PrevAndNext(
-			long rmId, String uuid,
+			long id, String uuid,
 			com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 				orderByComparator)
 		throws NoSuchReceiptMovementException;
@@ -360,7 +360,7 @@ public interface ReceiptMovementPersistence
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -368,7 +368,7 @@ public interface ReceiptMovementPersistence
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	public ReceiptMovement[] findByUuid_C_PrevAndNext(
-			long rmId, String uuid, long companyId,
+			long id, String uuid, long companyId,
 			com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 				orderByComparator)
 		throws NoSuchReceiptMovementException;
@@ -396,7 +396,7 @@ public interface ReceiptMovementPersistence
 	 * @param receiptId the receipt ID
 	 * @return the matching receipt movements
 	 */
-	public java.util.List<ReceiptMovement> findByreceiptId(long receiptId);
+	public java.util.List<ReceiptMovement> findByReceiptId(long receiptId);
 
 	/**
 	 * Returns a range of all the receipt movements where receiptId = &#63;.
@@ -410,7 +410,7 @@ public interface ReceiptMovementPersistence
 	 * @param end the upper bound of the range of receipt movements (not inclusive)
 	 * @return the range of matching receipt movements
 	 */
-	public java.util.List<ReceiptMovement> findByreceiptId(
+	public java.util.List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end);
 
 	/**
@@ -426,7 +426,7 @@ public interface ReceiptMovementPersistence
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching receipt movements
 	 */
-	public java.util.List<ReceiptMovement> findByreceiptId(
+	public java.util.List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 			orderByComparator);
@@ -445,7 +445,7 @@ public interface ReceiptMovementPersistence
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching receipt movements
 	 */
-	public java.util.List<ReceiptMovement> findByreceiptId(
+	public java.util.List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 			orderByComparator,
@@ -459,7 +459,7 @@ public interface ReceiptMovementPersistence
 	 * @return the first matching receipt movement
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
-	public ReceiptMovement findByreceiptId_First(
+	public ReceiptMovement findByReceiptId_First(
 			long receiptId,
 			com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 				orderByComparator)
@@ -472,7 +472,7 @@ public interface ReceiptMovementPersistence
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
-	public ReceiptMovement fetchByreceiptId_First(
+	public ReceiptMovement fetchByReceiptId_First(
 		long receiptId,
 		com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 			orderByComparator);
@@ -485,7 +485,7 @@ public interface ReceiptMovementPersistence
 	 * @return the last matching receipt movement
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
-	public ReceiptMovement findByreceiptId_Last(
+	public ReceiptMovement findByReceiptId_Last(
 			long receiptId,
 			com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 				orderByComparator)
@@ -498,7 +498,7 @@ public interface ReceiptMovementPersistence
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
-	public ReceiptMovement fetchByreceiptId_Last(
+	public ReceiptMovement fetchByReceiptId_Last(
 		long receiptId,
 		com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 			orderByComparator);
@@ -506,14 +506,14 @@ public interface ReceiptMovementPersistence
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where receiptId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param receiptId the receipt ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public ReceiptMovement[] findByreceiptId_PrevAndNext(
-			long rmId, long receiptId,
+	public ReceiptMovement[] findByReceiptId_PrevAndNext(
+			long id, long receiptId,
 			com.liferay.portal.kernel.util.OrderByComparator<ReceiptMovement>
 				orderByComparator)
 		throws NoSuchReceiptMovementException;
@@ -523,7 +523,7 @@ public interface ReceiptMovementPersistence
 	 *
 	 * @param receiptId the receipt ID
 	 */
-	public void removeByreceiptId(long receiptId);
+	public void removeByReceiptId(long receiptId);
 
 	/**
 	 * Returns the number of receipt movements where receiptId = &#63;.
@@ -531,7 +531,7 @@ public interface ReceiptMovementPersistence
 	 * @param receiptId the receipt ID
 	 * @return the number of matching receipt movements
 	 */
-	public int countByreceiptId(long receiptId);
+	public int countByReceiptId(long receiptId);
 
 	/**
 	 * Caches the receipt movement in the entity cache if it is enabled.
@@ -550,19 +550,19 @@ public interface ReceiptMovementPersistence
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
-	public ReceiptMovement create(long rmId);
+	public ReceiptMovement create(long id);
 
 	/**
 	 * Removes the receipt movement with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public ReceiptMovement remove(long rmId)
+	public ReceiptMovement remove(long id)
 		throws NoSuchReceiptMovementException;
 
 	public ReceiptMovement updateImpl(ReceiptMovement receiptMovement);
@@ -570,20 +570,20 @@ public interface ReceiptMovementPersistence
 	/**
 	 * Returns the receipt movement with the primary key or throws a <code>NoSuchReceiptMovementException</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public ReceiptMovement findByPrimaryKey(long rmId)
+	public ReceiptMovement findByPrimaryKey(long id)
 		throws NoSuchReceiptMovementException;
 
 	/**
 	 * Returns the receipt movement with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement, or <code>null</code> if a receipt movement with the primary key could not be found
 	 */
-	public ReceiptMovement fetchByPrimaryKey(long rmId);
+	public ReceiptMovement fetchByPrimaryKey(long id);
 
 	/**
 	 * Returns all the receipt movements.

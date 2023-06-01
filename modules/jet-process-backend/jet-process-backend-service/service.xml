@@ -325,7 +325,7 @@
 		remote-service="true" uuid="true">
 
 		<!-- PK fields -->
-		<column name="rmId" primary="true" type="long" />
+		<column name="id" primary="true" type="long" />
 
 		<!-- Group instance -->
 		<column name="groupId" type="long" />
@@ -346,7 +346,7 @@
 		<column name="active" type="boolean" />
 		<column name="movementType" type="long" />
 
-		<finder name="receiptId" return-type="Collection">
+		<finder name="ReceiptId" return-type="Collection">
 			<finder-column name="receiptId"></finder-column>
 		</finder>
 

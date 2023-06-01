@@ -49,7 +49,7 @@ public class ReceiptMovementCacheModel
 		ReceiptMovementCacheModel receiptMovementCacheModel =
 			(ReceiptMovementCacheModel)object;
 
-		if (rmId == receiptMovementCacheModel.rmId) {
+		if (id == receiptMovementCacheModel.id) {
 			return true;
 		}
 
@@ -58,7 +58,7 @@ public class ReceiptMovementCacheModel
 
 	@Override
 	public int hashCode() {
-		return HashUtil.hash(0, rmId);
+		return HashUtil.hash(0, id);
 	}
 
 	@Override
@@ -67,8 +67,8 @@ public class ReceiptMovementCacheModel
 
 		sb.append("{uuid=");
 		sb.append(uuid);
-		sb.append(", rmId=");
-		sb.append(rmId);
+		sb.append(", id=");
+		sb.append(id);
 		sb.append(", groupId=");
 		sb.append(groupId);
 		sb.append(", companyId=");
@@ -111,7 +111,7 @@ public class ReceiptMovementCacheModel
 			receiptMovementImpl.setUuid(uuid);
 		}
 
-		receiptMovementImpl.setRmId(rmId);
+		receiptMovementImpl.setId(id);
 		receiptMovementImpl.setGroupId(groupId);
 		receiptMovementImpl.setCompanyId(companyId);
 		receiptMovementImpl.setUserId(userId);
@@ -167,7 +167,7 @@ public class ReceiptMovementCacheModel
 	public void readExternal(ObjectInput objectInput) throws IOException {
 		uuid = objectInput.readUTF();
 
-		rmId = objectInput.readLong();
+		id = objectInput.readLong();
 
 		groupId = objectInput.readLong();
 
@@ -200,7 +200,7 @@ public class ReceiptMovementCacheModel
 			objectOutput.writeUTF(uuid);
 		}
 
-		objectOutput.writeLong(rmId);
+		objectOutput.writeLong(id);
 
 		objectOutput.writeLong(groupId);
 
@@ -238,7 +238,7 @@ public class ReceiptMovementCacheModel
 	}
 
 	public String uuid;
-	public long rmId;
+	public long id;
 	public long groupId;
 	public long companyId;
 	public long userId;

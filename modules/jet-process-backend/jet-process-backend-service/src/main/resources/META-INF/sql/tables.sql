@@ -173,7 +173,7 @@ create table JP_Receipt (
 
 create table JP_ReceiptMovement (
 	uuid_ VARCHAR(75) null,
-	rmId LONG not null primary key,
+	id_ LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
 	userId LONG,

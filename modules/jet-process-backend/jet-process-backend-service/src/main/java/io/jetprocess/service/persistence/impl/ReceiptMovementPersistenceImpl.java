@@ -389,7 +389,7 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
@@ -397,13 +397,13 @@ public class ReceiptMovementPersistenceImpl
 	 */
 	@Override
 	public ReceiptMovement[] findByUuid_PrevAndNext(
-			long rmId, String uuid,
+			long id, String uuid,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws NoSuchReceiptMovementException {
 
 		uuid = Objects.toString(uuid, "");
 
-		ReceiptMovement receiptMovement = findByPrimaryKey(rmId);
+		ReceiptMovement receiptMovement = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -1201,7 +1201,7 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -1210,13 +1210,13 @@ public class ReceiptMovementPersistenceImpl
 	 */
 	@Override
 	public ReceiptMovement[] findByUuid_C_PrevAndNext(
-			long rmId, String uuid, long companyId,
+			long id, String uuid, long companyId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws NoSuchReceiptMovementException {
 
 		uuid = Objects.toString(uuid, "");
 
-		ReceiptMovement receiptMovement = findByPrimaryKey(rmId);
+		ReceiptMovement receiptMovement = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -1463,9 +1463,9 @@ public class ReceiptMovementPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"receiptMovement.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByreceiptId;
-	private FinderPath _finderPathWithoutPaginationFindByreceiptId;
-	private FinderPath _finderPathCountByreceiptId;
+	private FinderPath _finderPathWithPaginationFindByReceiptId;
+	private FinderPath _finderPathWithoutPaginationFindByReceiptId;
+	private FinderPath _finderPathCountByReceiptId;
 
 	/**
 	 * Returns all the receipt movements where receiptId = &#63;.
@@ -1474,8 +1474,8 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the matching receipt movements
 	 */
 	@Override
-	public List<ReceiptMovement> findByreceiptId(long receiptId) {
-		return findByreceiptId(
+	public List<ReceiptMovement> findByReceiptId(long receiptId) {
+		return findByReceiptId(
 			receiptId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -1492,10 +1492,10 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the range of matching receipt movements
 	 */
 	@Override
-	public List<ReceiptMovement> findByreceiptId(
+	public List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end) {
 
-		return findByreceiptId(receiptId, start, end, null);
+		return findByReceiptId(receiptId, start, end, null);
 	}
 
 	/**
@@ -1512,11 +1512,11 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the ordered range of matching receipt movements
 	 */
 	@Override
-	public List<ReceiptMovement> findByreceiptId(
+	public List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		return findByreceiptId(receiptId, start, end, orderByComparator, true);
+		return findByReceiptId(receiptId, start, end, orderByComparator, true);
 	}
 
 	/**
@@ -1534,7 +1534,7 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the ordered range of matching receipt movements
 	 */
 	@Override
-	public List<ReceiptMovement> findByreceiptId(
+	public List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		OrderByComparator<ReceiptMovement> orderByComparator,
 		boolean useFinderCache) {
@@ -1546,12 +1546,12 @@ public class ReceiptMovementPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByreceiptId;
+				finderPath = _finderPathWithoutPaginationFindByReceiptId;
 				finderArgs = new Object[] {receiptId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByreceiptId;
+			finderPath = _finderPathWithPaginationFindByReceiptId;
 			finderArgs = new Object[] {
 				receiptId, start, end, orderByComparator
 			};
@@ -1639,12 +1639,12 @@ public class ReceiptMovementPersistenceImpl
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
 	@Override
-	public ReceiptMovement findByreceiptId_First(
+	public ReceiptMovement findByReceiptId_First(
 			long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws NoSuchReceiptMovementException {
 
-		ReceiptMovement receiptMovement = fetchByreceiptId_First(
+		ReceiptMovement receiptMovement = fetchByReceiptId_First(
 			receiptId, orderByComparator);
 
 		if (receiptMovement != null) {
@@ -1671,10 +1671,10 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the first matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
 	@Override
-	public ReceiptMovement fetchByreceiptId_First(
+	public ReceiptMovement fetchByReceiptId_First(
 		long receiptId, OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		List<ReceiptMovement> list = findByreceiptId(
+		List<ReceiptMovement> list = findByReceiptId(
 			receiptId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -1693,12 +1693,12 @@ public class ReceiptMovementPersistenceImpl
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
 	@Override
-	public ReceiptMovement findByreceiptId_Last(
+	public ReceiptMovement findByReceiptId_Last(
 			long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws NoSuchReceiptMovementException {
 
-		ReceiptMovement receiptMovement = fetchByreceiptId_Last(
+		ReceiptMovement receiptMovement = fetchByReceiptId_Last(
 			receiptId, orderByComparator);
 
 		if (receiptMovement != null) {
@@ -1725,16 +1725,16 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the last matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
 	@Override
-	public ReceiptMovement fetchByreceiptId_Last(
+	public ReceiptMovement fetchByReceiptId_Last(
 		long receiptId, OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		int count = countByreceiptId(receiptId);
+		int count = countByReceiptId(receiptId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<ReceiptMovement> list = findByreceiptId(
+		List<ReceiptMovement> list = findByReceiptId(
 			receiptId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -1747,19 +1747,19 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where receiptId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param receiptId the receipt ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public ReceiptMovement[] findByreceiptId_PrevAndNext(
-			long rmId, long receiptId,
+	public ReceiptMovement[] findByReceiptId_PrevAndNext(
+			long id, long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws NoSuchReceiptMovementException {
 
-		ReceiptMovement receiptMovement = findByPrimaryKey(rmId);
+		ReceiptMovement receiptMovement = findByPrimaryKey(id);
 
 		Session session = null;
 
@@ -1768,12 +1768,12 @@ public class ReceiptMovementPersistenceImpl
 
 			ReceiptMovement[] array = new ReceiptMovementImpl[3];
 
-			array[0] = getByreceiptId_PrevAndNext(
+			array[0] = getByReceiptId_PrevAndNext(
 				session, receiptMovement, receiptId, orderByComparator, true);
 
 			array[1] = receiptMovement;
 
-			array[2] = getByreceiptId_PrevAndNext(
+			array[2] = getByReceiptId_PrevAndNext(
 				session, receiptMovement, receiptId, orderByComparator, false);
 
 			return array;
@@ -1786,7 +1786,7 @@ public class ReceiptMovementPersistenceImpl
 		}
 	}
 
-	protected ReceiptMovement getByreceiptId_PrevAndNext(
+	protected ReceiptMovement getByReceiptId_PrevAndNext(
 		Session session, ReceiptMovement receiptMovement, long receiptId,
 		OrderByComparator<ReceiptMovement> orderByComparator,
 		boolean previous) {
@@ -1902,9 +1902,9 @@ public class ReceiptMovementPersistenceImpl
 	 * @param receiptId the receipt ID
 	 */
 	@Override
-	public void removeByreceiptId(long receiptId) {
+	public void removeByReceiptId(long receiptId) {
 		for (ReceiptMovement receiptMovement :
-				findByreceiptId(
+				findByReceiptId(
 					receiptId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 
 			remove(receiptMovement);
@@ -1918,8 +1918,8 @@ public class ReceiptMovementPersistenceImpl
 	 * @return the number of matching receipt movements
 	 */
 	@Override
-	public int countByreceiptId(long receiptId) {
-		FinderPath finderPath = _finderPathCountByreceiptId;
+	public int countByReceiptId(long receiptId) {
+		FinderPath finderPath = _finderPathCountByReceiptId;
 
 		Object[] finderArgs = new Object[] {receiptId};
 
@@ -1967,6 +1967,7 @@ public class ReceiptMovementPersistenceImpl
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
 
 		dbColumnNames.put("uuid", "uuid_");
+		dbColumnNames.put("id", "id_");
 		dbColumnNames.put("active", "active_");
 
 		setDBColumnNames(dbColumnNames);
@@ -2084,15 +2085,15 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
 	@Override
-	public ReceiptMovement create(long rmId) {
+	public ReceiptMovement create(long id) {
 		ReceiptMovement receiptMovement = new ReceiptMovementImpl();
 
 		receiptMovement.setNew(true);
-		receiptMovement.setPrimaryKey(rmId);
+		receiptMovement.setPrimaryKey(id);
 
 		String uuid = PortalUUIDUtil.generate();
 
@@ -2106,15 +2107,15 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Removes the receipt movement with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public ReceiptMovement remove(long rmId)
+	public ReceiptMovement remove(long id)
 		throws NoSuchReceiptMovementException {
 
-		return remove((Serializable)rmId);
+		return remove((Serializable)id);
 	}
 
 	/**
@@ -2306,26 +2307,26 @@ public class ReceiptMovementPersistenceImpl
 	/**
 	 * Returns the receipt movement with the primary key or throws a <code>NoSuchReceiptMovementException</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public ReceiptMovement findByPrimaryKey(long rmId)
+	public ReceiptMovement findByPrimaryKey(long id)
 		throws NoSuchReceiptMovementException {
 
-		return findByPrimaryKey((Serializable)rmId);
+		return findByPrimaryKey((Serializable)id);
 	}
 
 	/**
 	 * Returns the receipt movement with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement, or <code>null</code> if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public ReceiptMovement fetchByPrimaryKey(long rmId) {
-		return fetchByPrimaryKey((Serializable)rmId);
+	public ReceiptMovement fetchByPrimaryKey(long id) {
+		return fetchByPrimaryKey((Serializable)id);
 	}
 
 	/**
@@ -2521,7 +2522,7 @@ public class ReceiptMovementPersistenceImpl
 
 	@Override
 	protected String getPKDBName() {
-		return "rmId";
+		return "id_";
 	}
 
 	@Override
@@ -2601,21 +2602,21 @@ public class ReceiptMovementPersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
 
-		_finderPathWithPaginationFindByreceiptId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByreceiptId",
+		_finderPathWithPaginationFindByReceiptId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByReceiptId",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				Integer.class.getName(), OrderByComparator.class.getName()
 			},
 			new String[] {"receiptId"}, true);
 
-		_finderPathWithoutPaginationFindByreceiptId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByreceiptId",
+		_finderPathWithoutPaginationFindByReceiptId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByReceiptId",
 			new String[] {Long.class.getName()}, new String[] {"receiptId"},
 			true);
 
-		_finderPathCountByreceiptId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByreceiptId",
+		_finderPathCountByReceiptId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByReceiptId",
 			new String[] {Long.class.getName()}, new String[] {"receiptId"},
 			false);
 
@@ -2701,7 +2702,7 @@ public class ReceiptMovementPersistenceImpl
 		ReceiptMovementPersistenceImpl.class);
 
 	private static final Set<String> _badColumnNames = SetUtil.fromArray(
-		new String[] {"uuid", "active"});
+		new String[] {"uuid", "id", "active"});
 
 	@Override
 	protected FinderCache getFinderCache() {

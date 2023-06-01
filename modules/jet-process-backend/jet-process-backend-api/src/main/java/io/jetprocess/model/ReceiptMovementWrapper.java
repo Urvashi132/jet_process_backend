@@ -44,7 +44,7 @@ public class ReceiptMovementWrapper
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
 		attributes.put("uuid", getUuid());
-		attributes.put("rmId", getRmId());
+		attributes.put("id", getId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
@@ -70,10 +70,10 @@ public class ReceiptMovementWrapper
 			setUuid(uuid);
 		}
 
-		Long rmId = (Long)attributes.get("rmId");
+		Long id = (Long)attributes.get("id");
 
-		if (rmId != null) {
-			setRmId(rmId);
+		if (id != null) {
+			setId(id);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -211,6 +211,16 @@ public class ReceiptMovementWrapper
 	}
 
 	/**
+	 * Returns the ID of this receipt movement.
+	 *
+	 * @return the ID of this receipt movement
+	 */
+	@Override
+	public long getId() {
+		return model.getId();
+	}
+
+	/**
 	 * Returns the modified date of this receipt movement.
 	 *
 	 * @return the modified date of this receipt movement
@@ -278,16 +288,6 @@ public class ReceiptMovementWrapper
 	@Override
 	public String getRemarks() {
 		return model.getRemarks();
-	}
-
-	/**
-	 * Returns the rm ID of this receipt movement.
-	 *
-	 * @return the rm ID of this receipt movement
-	 */
-	@Override
-	public long getRmId() {
-		return model.getRmId();
 	}
 
 	/**
@@ -396,6 +396,16 @@ public class ReceiptMovementWrapper
 	}
 
 	/**
+	 * Sets the ID of this receipt movement.
+	 *
+	 * @param id the ID of this receipt movement
+	 */
+	@Override
+	public void setId(long id) {
+		model.setId(id);
+	}
+
+	/**
 	 * Sets the modified date of this receipt movement.
 	 *
 	 * @param modifiedDate the modified date of this receipt movement
@@ -463,16 +473,6 @@ public class ReceiptMovementWrapper
 	@Override
 	public void setRemarks(String remarks) {
 		model.setRemarks(remarks);
-	}
-
-	/**
-	 * Sets the rm ID of this receipt movement.
-	 *
-	 * @param rmId the rm ID of this receipt movement
-	 */
-	@Override
-	public void setRmId(long rmId) {
-		model.setRmId(rmId);
 	}
 
 	/**

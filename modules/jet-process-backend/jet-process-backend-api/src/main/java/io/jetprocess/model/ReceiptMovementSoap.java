@@ -34,7 +34,7 @@ public class ReceiptMovementSoap implements Serializable {
 		ReceiptMovementSoap soapModel = new ReceiptMovementSoap();
 
 		soapModel.setUuid(model.getUuid());
-		soapModel.setRmId(model.getRmId());
+		soapModel.setId(model.getId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setUserId(model.getUserId());
@@ -100,11 +100,11 @@ public class ReceiptMovementSoap implements Serializable {
 	}
 
 	public long getPrimaryKey() {
-		return _rmId;
+		return _id;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setRmId(pk);
+		setId(pk);
 	}
 
 	public String getUuid() {
@@ -115,12 +115,12 @@ public class ReceiptMovementSoap implements Serializable {
 		_uuid = uuid;
 	}
 
-	public long getRmId() {
-		return _rmId;
+	public long getId() {
+		return _id;
 	}
 
-	public void setRmId(long rmId) {
-		_rmId = rmId;
+	public void setId(long id) {
+		_id = id;
 	}
 
 	public long getGroupId() {
@@ -232,7 +232,7 @@ public class ReceiptMovementSoap implements Serializable {
 	}
 
 	private String _uuid;
-	private long _rmId;
+	private long _id;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;

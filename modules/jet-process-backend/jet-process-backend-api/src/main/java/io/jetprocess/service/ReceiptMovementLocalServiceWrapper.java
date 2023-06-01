@@ -64,14 +64,12 @@ public class ReceiptMovementLocalServiceWrapper
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
 	@Override
-	public io.jetprocess.model.ReceiptMovement createReceiptMovement(
-		long rmId) {
-
-		return _receiptMovementLocalService.createReceiptMovement(rmId);
+	public io.jetprocess.model.ReceiptMovement createReceiptMovement(long id) {
+		return _receiptMovementLocalService.createReceiptMovement(id);
 	}
 
 	/**
@@ -93,15 +91,15 @@ public class ReceiptMovementLocalServiceWrapper
 	 * <strong>Important:</strong> Inspect ReceiptMovementLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.ReceiptMovement deleteReceiptMovement(long rmId)
+	public io.jetprocess.model.ReceiptMovement deleteReceiptMovement(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _receiptMovementLocalService.deleteReceiptMovement(rmId);
+		return _receiptMovementLocalService.deleteReceiptMovement(id);
 	}
 
 	/**
@@ -226,8 +224,8 @@ public class ReceiptMovementLocalServiceWrapper
 	}
 
 	@Override
-	public io.jetprocess.model.ReceiptMovement fetchReceiptMovement(long rmId) {
-		return _receiptMovementLocalService.fetchReceiptMovement(rmId);
+	public io.jetprocess.model.ReceiptMovement fetchReceiptMovement(long id) {
+		return _receiptMovementLocalService.fetchReceiptMovement(id);
 	}
 
 	/**
@@ -270,6 +268,13 @@ public class ReceiptMovementLocalServiceWrapper
 			getIndexableActionableDynamicQuery();
 	}
 
+	@Override
+	public java.util.List<io.jetprocess.model.ReceiptMovement>
+		getListByReceiptId(long receiptId) {
+
+		return _receiptMovementLocalService.getListByReceiptId(receiptId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -294,15 +299,15 @@ public class ReceiptMovementLocalServiceWrapper
 	/**
 	 * Returns the receipt movement with the primary key.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public io.jetprocess.model.ReceiptMovement getReceiptMovement(long rmId)
+	public io.jetprocess.model.ReceiptMovement getReceiptMovement(long id)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _receiptMovementLocalService.getReceiptMovement(rmId);
+		return _receiptMovementLocalService.getReceiptMovement(id);
 	}
 
 	/**
@@ -385,6 +390,16 @@ public class ReceiptMovementLocalServiceWrapper
 	@Override
 	public int getReceiptMovementsCount() {
 		return _receiptMovementLocalService.getReceiptMovementsCount();
+	}
+
+	@Override
+	public io.jetprocess.model.ReceiptMovement saveReceiptMovement(
+			long receiverId, long senderId, long receiptId, String priority,
+			java.util.Date dueDate, String remarks)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _receiptMovementLocalService.saveReceiptMovement(
+			receiverId, senderId, receiptId, priority, dueDate, remarks);
 	}
 
 	/**

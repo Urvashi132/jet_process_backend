@@ -35,8 +35,8 @@ public class ReceiptMovementTable extends BaseTable<ReceiptMovementTable> {
 
 	public final Column<ReceiptMovementTable, String> uuid = createColumn(
 		"uuid_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<ReceiptMovementTable, Long> rmId = createColumn(
-		"rmId", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
+	public final Column<ReceiptMovementTable, Long> id = createColumn(
+		"id_", Long.class, Types.BIGINT, Column.FLAG_PRIMARY);
 	public final Column<ReceiptMovementTable, Long> groupId = createColumn(
 		"groupId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<ReceiptMovementTable, Long> companyId = createColumn(

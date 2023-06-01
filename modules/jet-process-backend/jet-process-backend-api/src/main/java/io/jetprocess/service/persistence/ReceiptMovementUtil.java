@@ -250,19 +250,19 @@ public class ReceiptMovementUtil {
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	public static ReceiptMovement[] findByUuid_PrevAndNext(
-			long rmId, String uuid,
+			long id, String uuid,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
 		return getPersistence().findByUuid_PrevAndNext(
-			rmId, uuid, orderByComparator);
+			id, uuid, orderByComparator);
 	}
 
 	/**
@@ -496,7 +496,7 @@ public class ReceiptMovementUtil {
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where uuid = &#63; and companyId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param uuid the uuid
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
@@ -504,12 +504,12 @@ public class ReceiptMovementUtil {
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
 	public static ReceiptMovement[] findByUuid_C_PrevAndNext(
-			long rmId, String uuid, long companyId,
+			long id, String uuid, long companyId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
 		return getPersistence().findByUuid_C_PrevAndNext(
-			rmId, uuid, companyId, orderByComparator);
+			id, uuid, companyId, orderByComparator);
 	}
 
 	/**
@@ -539,8 +539,8 @@ public class ReceiptMovementUtil {
 	 * @param receiptId the receipt ID
 	 * @return the matching receipt movements
 	 */
-	public static List<ReceiptMovement> findByreceiptId(long receiptId) {
-		return getPersistence().findByreceiptId(receiptId);
+	public static List<ReceiptMovement> findByReceiptId(long receiptId) {
+		return getPersistence().findByReceiptId(receiptId);
 	}
 
 	/**
@@ -555,10 +555,10 @@ public class ReceiptMovementUtil {
 	 * @param end the upper bound of the range of receipt movements (not inclusive)
 	 * @return the range of matching receipt movements
 	 */
-	public static List<ReceiptMovement> findByreceiptId(
+	public static List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end) {
 
-		return getPersistence().findByreceiptId(receiptId, start, end);
+		return getPersistence().findByReceiptId(receiptId, start, end);
 	}
 
 	/**
@@ -574,11 +574,11 @@ public class ReceiptMovementUtil {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching receipt movements
 	 */
-	public static List<ReceiptMovement> findByreceiptId(
+	public static List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		return getPersistence().findByreceiptId(
+		return getPersistence().findByReceiptId(
 			receiptId, start, end, orderByComparator);
 	}
 
@@ -596,12 +596,12 @@ public class ReceiptMovementUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching receipt movements
 	 */
-	public static List<ReceiptMovement> findByreceiptId(
+	public static List<ReceiptMovement> findByReceiptId(
 		long receiptId, int start, int end,
 		OrderByComparator<ReceiptMovement> orderByComparator,
 		boolean useFinderCache) {
 
-		return getPersistence().findByreceiptId(
+		return getPersistence().findByReceiptId(
 			receiptId, start, end, orderByComparator, useFinderCache);
 	}
 
@@ -613,12 +613,12 @@ public class ReceiptMovementUtil {
 	 * @return the first matching receipt movement
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
-	public static ReceiptMovement findByreceiptId_First(
+	public static ReceiptMovement findByReceiptId_First(
 			long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
-		return getPersistence().findByreceiptId_First(
+		return getPersistence().findByReceiptId_First(
 			receiptId, orderByComparator);
 	}
 
@@ -629,10 +629,10 @@ public class ReceiptMovementUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
-	public static ReceiptMovement fetchByreceiptId_First(
+	public static ReceiptMovement fetchByReceiptId_First(
 		long receiptId, OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		return getPersistence().fetchByreceiptId_First(
+		return getPersistence().fetchByReceiptId_First(
 			receiptId, orderByComparator);
 	}
 
@@ -644,12 +644,12 @@ public class ReceiptMovementUtil {
 	 * @return the last matching receipt movement
 	 * @throws NoSuchReceiptMovementException if a matching receipt movement could not be found
 	 */
-	public static ReceiptMovement findByreceiptId_Last(
+	public static ReceiptMovement findByReceiptId_Last(
 			long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
-		return getPersistence().findByreceiptId_Last(
+		return getPersistence().findByReceiptId_Last(
 			receiptId, orderByComparator);
 	}
 
@@ -660,29 +660,29 @@ public class ReceiptMovementUtil {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching receipt movement, or <code>null</code> if a matching receipt movement could not be found
 	 */
-	public static ReceiptMovement fetchByreceiptId_Last(
+	public static ReceiptMovement fetchByReceiptId_Last(
 		long receiptId, OrderByComparator<ReceiptMovement> orderByComparator) {
 
-		return getPersistence().fetchByreceiptId_Last(
+		return getPersistence().fetchByReceiptId_Last(
 			receiptId, orderByComparator);
 	}
 
 	/**
 	 * Returns the receipt movements before and after the current receipt movement in the ordered set where receiptId = &#63;.
 	 *
-	 * @param rmId the primary key of the current receipt movement
+	 * @param id the primary key of the current receipt movement
 	 * @param receiptId the receipt ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement[] findByreceiptId_PrevAndNext(
-			long rmId, long receiptId,
+	public static ReceiptMovement[] findByReceiptId_PrevAndNext(
+			long id, long receiptId,
 			OrderByComparator<ReceiptMovement> orderByComparator)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
-		return getPersistence().findByreceiptId_PrevAndNext(
-			rmId, receiptId, orderByComparator);
+		return getPersistence().findByReceiptId_PrevAndNext(
+			id, receiptId, orderByComparator);
 	}
 
 	/**
@@ -690,8 +690,8 @@ public class ReceiptMovementUtil {
 	 *
 	 * @param receiptId the receipt ID
 	 */
-	public static void removeByreceiptId(long receiptId) {
-		getPersistence().removeByreceiptId(receiptId);
+	public static void removeByReceiptId(long receiptId) {
+		getPersistence().removeByReceiptId(receiptId);
 	}
 
 	/**
@@ -700,8 +700,8 @@ public class ReceiptMovementUtil {
 	 * @param receiptId the receipt ID
 	 * @return the number of matching receipt movements
 	 */
-	public static int countByreceiptId(long receiptId) {
-		return getPersistence().countByreceiptId(receiptId);
+	public static int countByReceiptId(long receiptId) {
+		return getPersistence().countByReceiptId(receiptId);
 	}
 
 	/**
@@ -725,24 +725,24 @@ public class ReceiptMovementUtil {
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
-	public static ReceiptMovement create(long rmId) {
-		return getPersistence().create(rmId);
+	public static ReceiptMovement create(long id) {
+		return getPersistence().create(id);
 	}
 
 	/**
 	 * Removes the receipt movement with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement remove(long rmId)
+	public static ReceiptMovement remove(long id)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
-		return getPersistence().remove(rmId);
+		return getPersistence().remove(id);
 	}
 
 	public static ReceiptMovement updateImpl(ReceiptMovement receiptMovement) {
@@ -752,24 +752,24 @@ public class ReceiptMovementUtil {
 	/**
 	 * Returns the receipt movement with the primary key or throws a <code>NoSuchReceiptMovementException</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws NoSuchReceiptMovementException if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement findByPrimaryKey(long rmId)
+	public static ReceiptMovement findByPrimaryKey(long id)
 		throws io.jetprocess.exception.NoSuchReceiptMovementException {
 
-		return getPersistence().findByPrimaryKey(rmId);
+		return getPersistence().findByPrimaryKey(id);
 	}
 
 	/**
 	 * Returns the receipt movement with the primary key or returns <code>null</code> if it could not be found.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement, or <code>null</code> if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement fetchByPrimaryKey(long rmId) {
-		return getPersistence().fetchByPrimaryKey(rmId);
+	public static ReceiptMovement fetchByPrimaryKey(long id) {
+		return getPersistence().fetchByPrimaryKey(id);
 	}
 
 	/**

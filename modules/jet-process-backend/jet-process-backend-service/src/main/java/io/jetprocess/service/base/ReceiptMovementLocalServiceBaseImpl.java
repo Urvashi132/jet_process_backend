@@ -121,13 +121,13 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
 	@Override
 	@Transactional(enabled = false)
-	public ReceiptMovement createReceiptMovement(long rmId) {
-		return receiptMovementPersistence.create(rmId);
+	public ReceiptMovement createReceiptMovement(long id) {
+		return receiptMovementPersistence.create(id);
 	}
 
 	/**
@@ -137,16 +137,16 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 	 * <strong>Important:</strong> Inspect ReceiptMovementLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
-	public ReceiptMovement deleteReceiptMovement(long rmId)
+	public ReceiptMovement deleteReceiptMovement(long id)
 		throws PortalException {
 
-		return receiptMovementPersistence.remove(rmId);
+		return receiptMovementPersistence.remove(id);
 	}
 
 	/**
@@ -267,8 +267,8 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 	}
 
 	@Override
-	public ReceiptMovement fetchReceiptMovement(long rmId) {
-		return receiptMovementPersistence.fetchByPrimaryKey(rmId);
+	public ReceiptMovement fetchReceiptMovement(long id) {
+		return receiptMovementPersistence.fetchByPrimaryKey(id);
 	}
 
 	/**
@@ -288,15 +288,13 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 	/**
 	 * Returns the receipt movement with the primary key.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Override
-	public ReceiptMovement getReceiptMovement(long rmId)
-		throws PortalException {
-
-		return receiptMovementPersistence.findByPrimaryKey(rmId);
+	public ReceiptMovement getReceiptMovement(long id) throws PortalException {
+		return receiptMovementPersistence.findByPrimaryKey(id);
 	}
 
 	@Override
@@ -308,7 +306,7 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(ReceiptMovement.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("rmId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return actionableDynamicQuery;
 	}
@@ -325,7 +323,7 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 		indexableActionableDynamicQuery.setClassLoader(getClassLoader());
 		indexableActionableDynamicQuery.setModelClass(ReceiptMovement.class);
 
-		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("rmId");
+		indexableActionableDynamicQuery.setPrimaryKeyPropertyName("id");
 
 		return indexableActionableDynamicQuery;
 	}
@@ -337,7 +335,7 @@ public abstract class ReceiptMovementLocalServiceBaseImpl
 		actionableDynamicQuery.setClassLoader(getClassLoader());
 		actionableDynamicQuery.setModelClass(ReceiptMovement.class);
 
-		actionableDynamicQuery.setPrimaryKeyPropertyName("rmId");
+		actionableDynamicQuery.setPrimaryKeyPropertyName("id");
 	}
 
 	@Override

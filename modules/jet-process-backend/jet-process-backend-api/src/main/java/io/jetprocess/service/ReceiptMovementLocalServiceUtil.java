@@ -75,11 +75,11 @@ public class ReceiptMovementLocalServiceUtil {
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
-	public static ReceiptMovement createReceiptMovement(long rmId) {
-		return getService().createReceiptMovement(rmId);
+	public static ReceiptMovement createReceiptMovement(long id) {
+		return getService().createReceiptMovement(id);
 	}
 
 	/**
@@ -99,14 +99,14 @@ public class ReceiptMovementLocalServiceUtil {
 	 * <strong>Important:</strong> Inspect ReceiptMovementLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement deleteReceiptMovement(long rmId)
+	public static ReceiptMovement deleteReceiptMovement(long id)
 		throws PortalException {
 
-		return getService().deleteReceiptMovement(rmId);
+		return getService().deleteReceiptMovement(id);
 	}
 
 	/**
@@ -210,8 +210,8 @@ public class ReceiptMovementLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery, projection);
 	}
 
-	public static ReceiptMovement fetchReceiptMovement(long rmId) {
-		return getService().fetchReceiptMovement(rmId);
+	public static ReceiptMovement fetchReceiptMovement(long id) {
+		return getService().fetchReceiptMovement(id);
 	}
 
 	/**
@@ -248,6 +248,10 @@ public class ReceiptMovementLocalServiceUtil {
 		return getService().getIndexableActionableDynamicQuery();
 	}
 
+	public static List<ReceiptMovement> getListByReceiptId(long receiptId) {
+		return getService().getListByReceiptId(receiptId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -269,14 +273,14 @@ public class ReceiptMovementLocalServiceUtil {
 	/**
 	 * Returns the receipt movement with the primary key.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
-	public static ReceiptMovement getReceiptMovement(long rmId)
+	public static ReceiptMovement getReceiptMovement(long id)
 		throws PortalException {
 
-		return getService().getReceiptMovement(rmId);
+		return getService().getReceiptMovement(id);
 	}
 
 	/**
@@ -350,6 +354,15 @@ public class ReceiptMovementLocalServiceUtil {
 	 */
 	public static int getReceiptMovementsCount() {
 		return getService().getReceiptMovementsCount();
+	}
+
+	public static ReceiptMovement saveReceiptMovement(
+			long receiverId, long senderId, long receiptId, String priority,
+			java.util.Date dueDate, String remarks)
+		throws PortalException {
+
+		return getService().saveReceiptMovement(
+			receiverId, senderId, receiptId, priority, dueDate, remarks);
 	}
 
 	/**

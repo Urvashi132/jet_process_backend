@@ -36,12 +36,12 @@ public interface ReceiptMovement extends PersistedModel, ReceiptMovementModel {
 	 *
 	 * Never modify this interface directly. Add methods to <code>io.jetprocess.model.impl.ReceiptMovementImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<ReceiptMovement, Long> RM_ID_ACCESSOR =
+	public static final Accessor<ReceiptMovement, Long> ID_ACCESSOR =
 		new Accessor<ReceiptMovement, Long>() {
 
 			@Override
 			public Long get(ReceiptMovement receiptMovement) {
-				return receiptMovement.getRmId();
+				return receiptMovement.getId();
 			}
 
 			@Override

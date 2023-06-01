@@ -82,7 +82,7 @@ JetForm.prototype.render = function() {
 	//console.log("Entering JetForm.prototype.render");
 	var _this = this;
 	var form = _this.form;
-	
+	console.log(form);
 	if($('#'+form.parentId).parents('.modal').length>0){
 		_this.form.modal = true;
 	}
@@ -1171,6 +1171,7 @@ function JetList (config) {
 
 JetList.prototype.setDataKey = function(value) {
 	var form = this.form;
+	console.log(form);
 	setDataKey(form, value);
 }
 
@@ -1733,7 +1734,7 @@ function callAjax(form, field, action, provider, successFunc, failureFunc){
 		//console.log("before appendQueryParam(url, queryParams) "+url);
 		url = appendQueryParam(url, queryParams);
 		
-		//console.log("final url "+url);
+		console.log("final url "+url);
 		$.ajax({
 	         url: url,
 	         type: method,

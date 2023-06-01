@@ -37,6 +37,7 @@ import io.jetprocess.model.ReceiptMovement;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -87,11 +88,11 @@ public interface ReceiptMovementLocalService
 	/**
 	 * Creates a new receipt movement with the primary key. Does not add the receipt movement to the database.
 	 *
-	 * @param rmId the primary key for the new receipt movement
+	 * @param id the primary key for the new receipt movement
 	 * @return the new receipt movement
 	 */
 	@Transactional(enabled = false)
-	public ReceiptMovement createReceiptMovement(long rmId);
+	public ReceiptMovement createReceiptMovement(long id);
 
 	/**
 	 * @throws PortalException
@@ -107,12 +108,12 @@ public interface ReceiptMovementLocalService
 	 * <strong>Important:</strong> Inspect ReceiptMovementLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement that was removed
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public ReceiptMovement deleteReceiptMovement(long rmId)
+	public ReceiptMovement deleteReceiptMovement(long id)
 		throws PortalException;
 
 	/**
@@ -202,7 +203,7 @@ public interface ReceiptMovementLocalService
 		DynamicQuery dynamicQuery, Projection projection);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ReceiptMovement fetchReceiptMovement(long rmId);
+	public ReceiptMovement fetchReceiptMovement(long id);
 
 	/**
 	 * Returns the receipt movement matching the UUID and group.
@@ -225,6 +226,9 @@ public interface ReceiptMovementLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<ReceiptMovement> getListByReceiptId(long receiptId);
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -243,12 +247,12 @@ public interface ReceiptMovementLocalService
 	/**
 	 * Returns the receipt movement with the primary key.
 	 *
-	 * @param rmId the primary key of the receipt movement
+	 * @param id the primary key of the receipt movement
 	 * @return the receipt movement
 	 * @throws PortalException if a receipt movement with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public ReceiptMovement getReceiptMovement(long rmId) throws PortalException;
+	public ReceiptMovement getReceiptMovement(long id) throws PortalException;
 
 	/**
 	 * Returns the receipt movement matching the UUID and group.
@@ -310,6 +314,11 @@ public interface ReceiptMovementLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getReceiptMovementsCount();
+
+	public ReceiptMovement saveReceiptMovement(
+			long receiverId, long senderId, long receiptId, String priority,
+			Date dueDate, String remarks)
+		throws PortalException;
 
 	/**
 	 * Updates the receipt movement in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
