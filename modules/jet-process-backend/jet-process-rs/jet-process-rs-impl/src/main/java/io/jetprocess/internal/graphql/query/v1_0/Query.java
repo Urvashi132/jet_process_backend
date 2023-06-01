@@ -22,6 +22,7 @@ import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
+import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.dto.v1_0.SecondaryHeadRsModel;
 import io.jetprocess.dto.v1_0.StateRsModel;
@@ -39,6 +40,7 @@ import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.StateRsModelResource;
@@ -151,6 +153,14 @@ public class Query {
 
 		_primaryHeadRsModelResourceComponentServiceObjects =
 			primaryHeadRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setReceiptMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<ReceiptMovementRsModelResource>
+			receiptMovementRsModelResourceComponentServiceObjects) {
+
+		_receiptMovementRsModelResourceComponentServiceObjects =
+			receiptMovementRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setReceiptRsModelResourceComponentServiceObjects(
@@ -394,6 +404,23 @@ public class Query {
 			primaryHeadRsModelResource -> new PrimaryHeadRsModelPage(
 				primaryHeadRsModelResource.getPrimaryHeadByBasicHeadId(
 					basicHeadId)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public ReceiptMovementRsModelPage receiptMovementList(
+			@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_receiptMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptMovementRsModelResource -> new ReceiptMovementRsModelPage(
+				receiptMovementRsModelResource.getReceiptMovementList(id)));
 	}
 
 	/**
@@ -870,6 +897,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("ReceiptMovementRsModelPage")
+	public class ReceiptMovementRsModelPage {
+
+		public ReceiptMovementRsModelPage(Page receiptMovementRsModelPage) {
+			actions = receiptMovementRsModelPage.getActions();
+
+			items = receiptMovementRsModelPage.getItems();
+			lastPage = receiptMovementRsModelPage.getLastPage();
+			page = receiptMovementRsModelPage.getPage();
+			pageSize = receiptMovementRsModelPage.getPageSize();
+			totalCount = receiptMovementRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<ReceiptMovementRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("ReceiptRsModelPage")
 	public class ReceiptRsModelPage {
 
@@ -1263,6 +1323,23 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			ReceiptMovementRsModelResource receiptMovementRsModelResource)
+		throws Exception {
+
+		receiptMovementRsModelResource.setContextAcceptLanguage(
+			_acceptLanguage);
+		receiptMovementRsModelResource.setContextCompany(_company);
+		receiptMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		receiptMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		receiptMovementRsModelResource.setContextUriInfo(_uriInfo);
+		receiptMovementRsModelResource.setContextUser(_user);
+		receiptMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		receiptMovementRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			ReceiptRsModelResource receiptRsModelResource)
 		throws Exception {
 
@@ -1378,6 +1455,8 @@ public class Query {
 		_organizationRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<PrimaryHeadRsModelResource>
 		_primaryHeadRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<ReceiptMovementRsModelResource>
+		_receiptMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptRsModelResource>
 		_receiptRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<SecondaryHeadRsModelResource>

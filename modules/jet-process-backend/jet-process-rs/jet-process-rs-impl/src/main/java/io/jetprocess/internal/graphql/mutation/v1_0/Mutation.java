@@ -13,11 +13,13 @@ import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
+import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
 import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 
 import java.util.function.BiFunction;
@@ -68,6 +70,14 @@ public class Mutation {
 
 		_noteDocumentRsModelResourceComponentServiceObjects =
 			noteDocumentRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setReceiptMovementRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<ReceiptMovementRsModelResource>
+			receiptMovementRsModelResourceComponentServiceObjects) {
+
+		_receiptMovementRsModelResourceComponentServiceObjects =
+			receiptMovementRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setReceiptRsModelResourceComponentServiceObjects(
@@ -183,6 +193,20 @@ public class Mutation {
 			noteDocumentRsModelResource ->
 				noteDocumentRsModelResource.updateNoteDocument(
 					id, noteDocumentRsModel));
+	}
+
+	@GraphQLField
+	public ReceiptMovementRsModel createReceiptMovement(
+			@GraphQLName("receiptMovementRsModel") ReceiptMovementRsModel
+				receiptMovementRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_receiptMovementRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			receiptMovementRsModelResource ->
+				receiptMovementRsModelResource.createReceiptMovement(
+					receiptMovementRsModel));
 	}
 
 	@GraphQLField
@@ -325,6 +349,23 @@ public class Mutation {
 	}
 
 	private void _populateResourceContext(
+			ReceiptMovementRsModelResource receiptMovementRsModelResource)
+		throws Exception {
+
+		receiptMovementRsModelResource.setContextAcceptLanguage(
+			_acceptLanguage);
+		receiptMovementRsModelResource.setContextCompany(_company);
+		receiptMovementRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		receiptMovementRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		receiptMovementRsModelResource.setContextUriInfo(_uriInfo);
+		receiptMovementRsModelResource.setContextUser(_user);
+		receiptMovementRsModelResource.setGroupLocalService(_groupLocalService);
+		receiptMovementRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			ReceiptRsModelResource receiptRsModelResource)
 		throws Exception {
 
@@ -348,6 +389,8 @@ public class Mutation {
 		_noteDocMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<ReceiptMovementRsModelResource>
+		_receiptMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptRsModelResource>
 		_receiptRsModelResourceComponentServiceObjects;
 

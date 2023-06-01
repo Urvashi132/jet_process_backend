@@ -15,6 +15,7 @@ import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
+import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 import io.jetprocess.resource.v1_0.SecondaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.StateRsModelResource;
@@ -49,6 +50,8 @@ public class ServletDataImpl implements ServletData {
 			_noteDocMovementRsModelResourceComponentServiceObjects);
 		Mutation.setNoteDocumentRsModelResourceComponentServiceObjects(
 			_noteDocumentRsModelResourceComponentServiceObjects);
+		Mutation.setReceiptMovementRsModelResourceComponentServiceObjects(
+			_receiptMovementRsModelResourceComponentServiceObjects);
 		Mutation.setReceiptRsModelResourceComponentServiceObjects(
 			_receiptRsModelResourceComponentServiceObjects);
 
@@ -74,6 +77,8 @@ public class ServletDataImpl implements ServletData {
 			_organizationRsModelResourceComponentServiceObjects);
 		Query.setPrimaryHeadRsModelResourceComponentServiceObjects(
 			_primaryHeadRsModelResourceComponentServiceObjects);
+		Query.setReceiptMovementRsModelResourceComponentServiceObjects(
+			_receiptMovementRsModelResourceComponentServiceObjects);
 		Query.setReceiptRsModelResourceComponentServiceObjects(
 			_receiptRsModelResourceComponentServiceObjects);
 		Query.setSecondaryHeadRsModelResourceComponentServiceObjects(
@@ -118,6 +123,10 @@ public class ServletDataImpl implements ServletData {
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<ReceiptMovementRsModelResource>
+		_receiptMovementRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<ReceiptRsModelResource>

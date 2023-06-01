@@ -321,7 +321,33 @@ components:
           format: date-time
           type : string
       type: object
-      
+
+    ReceiptMovementRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        receiverId:
+          format: int64
+          type: integer
+        senderId:
+          format: int64
+          type: integer
+        receiptId:
+          format: int64
+          type: integer
+        priority:
+          type: string
+        dueDate:
+          format: date-time
+          type : string
+        remarks:
+          type: string
+        createDate:
+          format: date-time
+          type : string
+      type: object
+       
 paths:
   /docfile:
     post:
@@ -956,3 +982,48 @@ paths:
                   $ref: '#/components/schemas/NoteDocMovementRsModel'
           description: ''
       tags: ["NoteDocMovementRsModel"]
+      
+  /receiptmovement:
+    post:
+      operationId: createReceiptMovement
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReceiptMovementRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ReceiptMovementRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ReceiptMovementRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/ReceiptMovementRsModel'
+          description: ''
+      tags: ["ReceiptMovementRsModel"]
+    get:
+      operationId: getReceiptMovementList
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReceiptMovementRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReceiptMovementRsModel'
+          description: ''
+      tags: ["ReceiptMovementRsModel"]

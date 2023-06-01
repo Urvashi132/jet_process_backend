@@ -88,6 +88,8 @@ public class OpenAPIResourceImpl {
 
 			add(PrimaryHeadRsModelResourceImpl.class);
 
+			add(ReceiptMovementRsModelResourceImpl.class);
+
 			add(ReceiptRsModelResourceImpl.class);
 
 			add(SecondaryHeadRsModelResourceImpl.class);
