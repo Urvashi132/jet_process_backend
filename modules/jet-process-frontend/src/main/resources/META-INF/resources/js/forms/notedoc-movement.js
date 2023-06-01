@@ -39,7 +39,7 @@ var noteDocMovement = {
 	}],
 	"providers" : {
 		"collection" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?id={id}&p_auth="	+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth="	+ Liferay.authToken,
 			"dataNode" : "items",
 			"queryParams" : {
 				"id" : "#id"

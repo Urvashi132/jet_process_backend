@@ -25,9 +25,9 @@
 		fileList.actions[1].handler.href = '<%=fileCreation%>';
 		fileList.actions[3].handler.href = '<%=send%>';
 		fileList.actions[4].handler.href = '<%=movement%>';
-		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
+<%-- 		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
+		jetList.setDataKey(id); --%>
 		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileList});
-		jetList.setDataKey(id);
 		jetList.render();
 	});
 </script>

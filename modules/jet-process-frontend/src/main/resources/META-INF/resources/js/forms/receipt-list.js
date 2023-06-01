@@ -72,6 +72,24 @@ var receiptList = {
 			/*"handler": {
 				"script": "delete(event)"
 			}*/
+		}, {
+			"name" : "send",
+			"type" : "button",
+			"label" : "Send",
+			"applyTo" : "row",
+			"cssClass" : "btn-primary",
+			"handler" : {
+				"href" : ""
+			}
+		}, {
+			"name" : "movement",
+			"type" : "button",
+			"label" : "Movement",
+			"applyTo" : "row",
+			"cssClass" : "btn-primary",
+			"handler" : {
+				"href" : ""
+			}
 		}
 	],
 	"providers": {

@@ -15,7 +15,7 @@ var noteDocSend = {
 		"label" : "User",
 		"col" : 12
 	}, {
-		"type" : "hidden",
+		"type" : "text",
 		"name" : "senderId",
 		"value" : "1",
 	}, {
@@ -68,6 +68,13 @@ var noteDocSend = {
 		"create" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth=" + Liferay.authToken,
 			"method" : "post",
+		},
+		"selector" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth=" + Liferay.authToken,
+			"method" : "get",
+			"queryParams" : {
+				"id" : "#id"
+			}
 		}
 	}
 };
