@@ -62,7 +62,7 @@ public abstract class BaseNoteDocMovementRsModelResourceImpl
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "id"
+				name = "noteDocumentId"
 			)
 		}
 	)
@@ -79,8 +79,9 @@ public abstract class BaseNoteDocMovementRsModelResourceImpl
 	@Override
 	public Page<NoteDocMovementRsModel> getNoteDocumentMovementList(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
-			@javax.validation.constraints.NotNull @javax.ws.rs.QueryParam("id")
-			Long id)
+			@javax.validation.constraints.NotNull
+			@javax.ws.rs.QueryParam("noteDocumentId")
+			Long noteDocumentId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());

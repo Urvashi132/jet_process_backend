@@ -34,11 +34,12 @@ public class FileMovementRsModelResourceImpl extends BaseFileMovementRsModelReso
 
 	}
 
+	
 	@Override
-	public Page<FileMovementRsModel> getFileMovementList(@NotNull Long id) throws Exception {
+	public Page<FileMovementRsModel> getFileMovementList(@NotNull Long fileId) throws Exception {
 		LOGGER.info("rest api");
 		List<FileMovementRsModel> list = new ArrayList<>();
-		List<FileMovement> fileMovements = movementLocalService.getListByFileId(id);
+		List<FileMovement> fileMovements = movementLocalService.getListByFileId(fileId);
 		fileMovements.stream().forEach(movement -> {
 			list.add(getFileMovementRsModel(movement));
 		});

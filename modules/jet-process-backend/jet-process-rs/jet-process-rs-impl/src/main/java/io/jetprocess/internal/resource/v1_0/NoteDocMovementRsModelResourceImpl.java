@@ -35,9 +35,9 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 	}
 
 	@Override
-	public Page<NoteDocMovementRsModel> getNoteDocumentMovementList(@NotNull Long id) throws Exception {
+	public Page<NoteDocMovementRsModel> getNoteDocumentMovementList(@NotNull Long noteDocumentId) throws Exception {
 		List<NoteDocMovementRsModel> movementRsModelList = new ArrayList<>();
-		List<NoteDocumentMovement> movementList = movementLocalService.getListByNoteDocumentId(id);
+		List<NoteDocumentMovement> movementList = movementLocalService.getListByNoteDocumentId(noteDocumentId);
 		movementList.stream().forEach(movement -> {
 			movementRsModelList.add(getNoteDocMovementRsModel(movement));
 		});

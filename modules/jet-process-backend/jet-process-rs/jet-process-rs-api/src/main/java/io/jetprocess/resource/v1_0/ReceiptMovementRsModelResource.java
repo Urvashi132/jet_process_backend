@@ -10,7 +10,7 @@ import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.pagination.Page;
 
-import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
+import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,18 +36,17 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @Generated("")
 @ProviderType
-public interface NoteDocMovementRsModelResource {
+public interface ReceiptMovementRsModelResource {
 
 	public static Builder builder() {
 		return FactoryHolder.factory.create();
 	}
 
-	public Page<NoteDocMovementRsModel> getNoteDocumentMovementList(
-			Long noteDocumentId)
+	public Page<ReceiptMovementRsModel> getReceiptMovementList(Long receiptId)
 		throws Exception;
 
-	public NoteDocMovementRsModel createNotedocMovement(
-			NoteDocMovementRsModel noteDocMovementRsModel)
+	public ReceiptMovementRsModel createReceiptMovement(
+			ReceiptMovementRsModel receiptMovementRsModel)
 		throws Exception;
 
 	public default void setContextAcceptLanguage(
@@ -107,7 +106,7 @@ public interface NoteDocMovementRsModelResource {
 	@ProviderType
 	public interface Builder {
 
-		public NoteDocMovementRsModelResource build();
+		public ReceiptMovementRsModelResource build();
 
 		public Builder checkPermissions(boolean checkPermissions);
 

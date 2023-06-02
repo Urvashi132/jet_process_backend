@@ -24,8 +24,8 @@ import com.liferay.portal.vulcan.resource.EntityModelResource;
 import com.liferay.portal.vulcan.util.ActionUtil;
 import com.liferay.portal.vulcan.util.TransformUtil;
 
-import io.jetprocess.dto.v1_0.FileMovementRsModel;
-import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
+import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
+import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 
 import java.io.Serializable;
 
@@ -49,39 +49,39 @@ import javax.ws.rs.core.UriInfo;
  */
 @Generated("")
 @javax.ws.rs.Path("/v1.0")
-public abstract class BaseFileMovementRsModelResourceImpl
-	implements EntityModelResource, FileMovementRsModelResource,
-			   VulcanBatchEngineTaskItemDelegate<FileMovementRsModel> {
+public abstract class BaseReceiptMovementRsModelResourceImpl
+	implements EntityModelResource, ReceiptMovementRsModelResource,
+			   VulcanBatchEngineTaskItemDelegate<ReceiptMovementRsModel> {
 
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/filemovement'  -u 'test@liferay.com:test'
+	 * curl -X 'GET' 'http://localhost:8080/o/jet-process-rs/v1.0/receiptmovement'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.Parameters(
 		value = {
 			@io.swagger.v3.oas.annotations.Parameter(
 				in = io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY,
-				name = "fileId"
+				name = "receiptId"
 			)
 		}
 	)
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
 			@io.swagger.v3.oas.annotations.tags.Tag(
-				name = "FileMovementRsModel"
+				name = "ReceiptMovementRsModel"
 			)
 		}
 	)
 	@javax.ws.rs.GET
-	@javax.ws.rs.Path("/filemovement")
+	@javax.ws.rs.Path("/receiptmovement")
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public Page<FileMovementRsModel> getFileMovementList(
+	public Page<ReceiptMovementRsModel> getReceiptMovementList(
 			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
 			@javax.validation.constraints.NotNull
-			@javax.ws.rs.QueryParam("fileId")
-			Long fileId)
+			@javax.ws.rs.QueryParam("receiptId")
+			Long receiptId)
 		throws Exception {
 
 		return Page.of(Collections.emptyList());
@@ -90,38 +90,40 @@ public abstract class BaseFileMovementRsModelResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/filemovement' -d $'{"createDate": ___, "dueDate": ___, "fileId": ___, "id": ___, "priority": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/jet-process-rs/v1.0/receiptmovement' -d $'{"createDate": ___, "dueDate": ___, "id": ___, "priority": ___, "receiptId": ___, "receiverId": ___, "remarks": ___, "senderId": ___}' --header 'Content-Type: application/json' -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {
 			@io.swagger.v3.oas.annotations.tags.Tag(
-				name = "FileMovementRsModel"
+				name = "ReceiptMovementRsModel"
 			)
 		}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/filemovement")
+	@javax.ws.rs.Path("/receiptmovement")
 	@javax.ws.rs.POST
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
-	public FileMovementRsModel createFileMovement(
-			FileMovementRsModel fileMovementRsModel)
+	public ReceiptMovementRsModel createReceiptMovement(
+			ReceiptMovementRsModel receiptMovementRsModel)
 		throws Exception {
 
-		return new FileMovementRsModel();
+		return new ReceiptMovementRsModel();
 	}
 
 	@Override
 	@SuppressWarnings("PMD.UnusedLocalVariable")
 	public void create(
-			java.util.Collection<FileMovementRsModel> fileMovementRsModels,
+			java.util.Collection<ReceiptMovementRsModel>
+				receiptMovementRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
 
 	@Override
 	public void delete(
-			java.util.Collection<FileMovementRsModel> fileMovementRsModels,
+			java.util.Collection<ReceiptMovementRsModel>
+				receiptMovementRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
@@ -142,7 +144,7 @@ public abstract class BaseFileMovementRsModelResourceImpl
 	}
 
 	@Override
-	public Page<FileMovementRsModel> read(
+	public Page<ReceiptMovementRsModel> read(
 			Filter filter, Pagination pagination, Sort[] sorts,
 			Map<String, Serializable> parameters, String search)
 		throws Exception {
@@ -174,7 +176,8 @@ public abstract class BaseFileMovementRsModelResourceImpl
 
 	@Override
 	public void update(
-			java.util.Collection<FileMovementRsModel> fileMovementRsModels,
+			java.util.Collection<ReceiptMovementRsModel>
+				receiptMovementRsModels,
 			Map<String, Serializable> parameters)
 		throws Exception {
 	}
@@ -347,6 +350,6 @@ public abstract class BaseFileMovementRsModelResourceImpl
 		vulcanBatchEngineImportTaskResource;
 
 	private static final com.liferay.portal.kernel.log.Log _log =
-		LogFactoryUtil.getLog(BaseFileMovementRsModelResourceImpl.class);
+		LogFactoryUtil.getLog(BaseReceiptMovementRsModelResourceImpl.class);
 
 }

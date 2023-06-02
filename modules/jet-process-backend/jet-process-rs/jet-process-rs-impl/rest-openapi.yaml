@@ -919,7 +919,7 @@ paths:
       operationId: getFileMovementList
       parameters:
         - in: "query"
-          name: id
+          name: fileId
           required: true
           schema:
             format: int64
@@ -964,7 +964,7 @@ paths:
       operationId: getNoteDocumentMovementList
       parameters:
         - in: "query"
-          name: id
+          name: noteDocumentId
           required: true
           schema:
             format: int64
@@ -1009,7 +1009,7 @@ paths:
       operationId: getReceiptMovementList
       parameters:
         - in: "query"
-          name: id
+          name: receiptId
           required: true
           schema:
             format: int64

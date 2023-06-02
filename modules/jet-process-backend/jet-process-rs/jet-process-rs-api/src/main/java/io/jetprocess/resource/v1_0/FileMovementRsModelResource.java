@@ -42,7 +42,7 @@ public interface FileMovementRsModelResource {
 		return FactoryHolder.factory.create();
 	}
 
-	public Page<FileMovementRsModel> getFileMovementList(Long id)
+	public Page<FileMovementRsModel> getFileMovementList(Long fileId)
 		throws Exception;
 
 	public FileMovementRsModel createFileMovement(

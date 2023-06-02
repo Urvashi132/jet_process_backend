@@ -284,17 +284,18 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {fileMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {fileMovementList(fileId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
-	public FileMovementRsModelPage fileMovementList(@GraphQLName("id") Long id)
+	public FileMovementRsModelPage fileMovementList(
+			@GraphQLName("fileId") Long fileId)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
 			_fileMovementRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			fileMovementRsModelResource -> new FileMovementRsModelPage(
-				fileMovementRsModelResource.getFileMovementList(id)));
+				fileMovementRsModelResource.getFileMovementList(fileId)));
 	}
 
 	/**
@@ -329,11 +330,11 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {noteDocumentMovementList(noteDocumentId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public NoteDocMovementRsModelPage noteDocumentMovementList(
-			@GraphQLName("id") Long id)
+			@GraphQLName("noteDocumentId") Long noteDocumentId)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
@@ -341,7 +342,7 @@ public class Query {
 			this::_populateResourceContext,
 			noteDocMovementRsModelResource -> new NoteDocMovementRsModelPage(
 				noteDocMovementRsModelResource.getNoteDocumentMovementList(
-					id)));
+					noteDocumentId)));
 	}
 
 	/**
@@ -409,18 +410,19 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptMovementList(id: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {receiptMovementList(receiptId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField
 	public ReceiptMovementRsModelPage receiptMovementList(
-			@GraphQLName("id") Long id)
+			@GraphQLName("receiptId") Long receiptId)
 		throws Exception {
 
 		return _applyComponentServiceObjects(
 			_receiptMovementRsModelResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			receiptMovementRsModelResource -> new ReceiptMovementRsModelPage(
-				receiptMovementRsModelResource.getReceiptMovementList(id)));
+				receiptMovementRsModelResource.getReceiptMovementList(
+					receiptId)));
 	}
 
 	/**
