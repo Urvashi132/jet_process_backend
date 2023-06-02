@@ -21,11 +21,8 @@ var portletNamespace='<portlet:namespace/>';
 <!-- body  -->
 <body>
 	<div class="container">
-
 		<div class="row">
-
-
-			<div class="col-md-9" id="receiptListContainer"></div>
+			<div class="col" id="receiptListContainer"></div>
 		</div>
 	</div>
 
@@ -38,12 +35,23 @@ var portletNamespace='<portlet:namespace/>';
 var id="<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>";
 receiptList.actions[0].handler.href = '<%=receiptCreation%>';
 receiptList.actions[1].handler.href = '<%=receiptCreation%>';
-receiptList.actions[3].handler.href = '<%=send%>';
 receiptList.actions[4].handler.href = '<%=movement%>';
 	$(document).ready(() => {
 		var jetList=JetList({"id":"receiptList", "parentId":"receiptListContainer", "form":receiptList});
 		jetList.setDataKey(id);
 		jetList.render();
 	});
+	//FOR SEND FUNCTION AND MOVEMENT FUNCTION
+	function sendOnClick(event){
+		event.preventDefault();
+		var target = getEventTarget(event);
+		var dataKey = $(target).attr('datakey');
+		localStorage.setItem("receirId", dataKey);  
+		window.location.href='<%=send%>';
+	}
+	
+	function movementOnClick(event){
+		 invokeUrl(event);
+	}
 </script>
 </html>

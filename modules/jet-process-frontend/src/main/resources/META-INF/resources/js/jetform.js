@@ -36,10 +36,132 @@ function loadTemplates(){
 		    form_actions : '#jf-form-actions-template',
 		    link : '#jf-link-template',
 		    modal : '#jf-modal-template',
-		    confirm : '#jf-confirm-template'
+		    confirm : '#jf-confirm-template',
+		    drag_drop: '#jf-file-drag-drop-template',
+		    time:'#jf-time-template'
 		};
 	}
 }
+
+var arr = [];
+
+$(document).ready(function() {
+  $(document).on('dragover', '.dropzone-wrapper', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("dragover leave drag area..");
+  });
+
+  $(document).on('dragleave', '.dropzone-wrapper', function(e) {
+    console.log("leave drag area..");
+  });
+
+  $(document).on('drop', '.dropzone-wrapper', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("drop drag area.." + e.originalEvent.dataTransfer.files[0].name);
+
+    console.log(e.originalEvent.dataTransfer.files[0].name);
+
+    let files = e.originalEvent.dataTransfer.files;
+    handleFileSubmit(files);
+  });
+});
+
+function removeFile(fileId, index) {
+  alert(fileId, index);
+  if (index > -1) {
+    arr.splice(index, 1);
+    console.log(arr.length);
+    $.ajax({
+      type: "DELETE",
+      url: 'http://localhost:9000/api/v1/documentManager/' + fileId,
+      contentType: false,
+      processData: false,
+    })
+      .done(function(data) {
+        $('#' + index).remove();
+        displayFile();
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+  }
+}
+
+function displayFile() {
+  $('#addFile').empty();
+  console.log("+++++++++++++++=")
+  console.log(arr)
+  let allFileId = "";
+  arr.map((fileObj, key) => {
+    allFileId += fileObj.id;
+   	console.log(allFileId)
+    console.log("-----", fileObj);
+    let btnTag = "<div class='btn btn-sm btn-primary ms-2 mt-2' id='" + key + "' >" + fileObj.fileName.name + "<span style='float: right; font-size: 25px;  margin-right: -10%; cursor:pointer' onclick='removeFile(" + fileObj.id + ',' + key + ")'>&times;</span></div>";
+    $('#addFile').append(btnTag);
+  });
+
+  console.log("+++++++++++")
+  console.log("")
+  $('#docId').val(allFileId);
+}
+
+
+function handleFiles(files) {
+  handleFileSubmit(files);
+}
+
+function handleFileSubmit(files) {
+  let formD = new FormData();
+  if (files.length === 1) {
+    formD.append('documentImage', files[0]);
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:9000/api/v1/documentManager/upload',
+      contentType: false,
+      processData: false,
+      data: formD
+    })
+      .done(function(data) {
+        var getid = data.id;
+        console.log('id' + getid)
+        console.log(data)
+        console.log(formD.get('documentImage'))
+        arr.push({ id: data.id, fileName: formD.get('documentImage') });
+        displayFile();
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+  } else {
+    let formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('documentImage', files[i]);
+    }
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:9000/api/v1/documentManager/upload-multiple',
+      contentType: false,
+      processData: false,
+      data: formData
+    })
+      .done(function(data) {
+        data.map((data, index) => {
+          arr.push({ id: data.id, fileName: files[index] });
+          var testid = data.id;
+          console.log('id' + id)
+        })
+        displayFile();
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+  }
+}
+
+/*--------------------*/
+
 
 function JetForm (config) {
 	//console.log("Entering JetForm (config)");
@@ -82,7 +204,7 @@ JetForm.prototype.render = function() {
 	//console.log("Entering JetForm.prototype.render");
 	var _this = this;
 	var form = _this.form;
-	console.log(form);
+	
 	if($('#'+form.parentId).parents('.modal').length>0){
 		_this.form.modal = true;
 	}
@@ -112,7 +234,7 @@ JetForm.prototype.render = function() {
 	}
     
     _this.renderModal();
-    console.log("Exiting JetForm.prototype.render");
+    //console.log("Exiting JetForm.prototype.render");
 }
 
 JetForm.prototype.readFromQueryParam = function(){
@@ -497,12 +619,13 @@ function findAction (event){
 }
 
 function submitForm(event) {
-	//console.log("Entering submitForm");
+	console.log("Entering submitForm");
 	
 	event.preventDefault();
 	var target = getEventTarget(event);
 	var _this = window[$(target).attr('formId')];
 	var form = _this.form;
+	console.log(form)
 	
 	if(!$('#'+form.id).valid()){
 		return;	
@@ -526,7 +649,7 @@ function submitForm(event) {
     
     var formData = $('#'+form.id).toJSON();
     
-    //console.log(form);
+    console.log(formData);
     
     if(form.providers != undefined){
 		//console.log(form.providers);
@@ -1171,7 +1294,6 @@ function JetList (config) {
 
 JetList.prototype.setDataKey = function(value) {
 	var form = this.form;
-	console.log(form);
 	setDataKey(form, value);
 }
 
@@ -1734,7 +1856,7 @@ function callAjax(form, field, action, provider, successFunc, failureFunc){
 		//console.log("before appendQueryParam(url, queryParams) "+url);
 		url = appendQueryParam(url, queryParams);
 		
-		console.log("final url "+url);
+		//console.log("final url "+url);
 		$.ajax({
 	         url: url,
 	         type: method,
@@ -1968,18 +2090,3 @@ function log(message){
 function error(message){
 	//console.log(message);
 }
-
-
-
-
-//FOR SEND FUNCTION AND MOVEMENT FUNCTION
-function sendOnClick(event){
-	 event.preventDefault();
-	 invokeUrl(event);
-}
-
-function movementOnClick(event){
-	 event.preventDefault();
-	 invokeUrl(event);
-}
-

@@ -11,17 +11,16 @@ var noteDocSend = {
 		"id" : true,
 	}, {
 		"type" : "text",
+		"name" : "noteDocumentId",
+	}, {
+		"type" : "text",
 		"name" : "receiverId",
 		"label" : "User",
 		"col" : 12
 	}, {
-		"type" : "text",
+		"type" : "hidden",
 		"name" : "senderId",
 		"value" : "1",
-	}, {
-		"type" : "hidden",
-		"name" : "noteDocumentId",
-		"value" : "301",
 	}, {
 		"type" : "textarea",
 		"name" : "remarks",
@@ -35,8 +34,7 @@ var noteDocSend = {
 				"maxlength" : "Remarks should be maximum 500 charater."
 			}
 		}
-	}],
-
+	} ],
 	"actions" : [ {
 		"name" : "save",
 		"type" : "submit",
@@ -66,15 +64,8 @@ var noteDocSend = {
 	} ],
 	"providers" : {
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth="	+ Liferay.authToken,
 			"method" : "post",
-		},
-		"selector" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/notedocumentmovement?p_auth=" + Liferay.authToken,
-			"method" : "get",
-			"queryParams" : {
-				"id" : "#id"
-			}
 		}
 	}
 };

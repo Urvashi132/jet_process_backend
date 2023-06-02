@@ -23,11 +23,22 @@
 	$(document).ready(() => {
 		noteDocList.actions[0].handler.href = '<%=noteDoc%>';
 		noteDocList.actions[1].handler.href = '<%=noteDoc%>';
-		noteDocList.actions[3].handler.href = '<%=send%>';
 		noteDocList.actions[4].handler.href = '<%=movement%>';
-		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
 		var jetList=JetList({"id":"noteDocList", "parentId":"noteDocListContainer", "form":noteDocList});
-		jetList.setDataKey(id);
 		jetList.render();
 	});
+	
+	//FOR SEND FUNCTION AND MOVEMENT FUNCTION
+	function sendOnClick(event){
+		event.preventDefault();
+		var target = getEventTarget(event);
+		var dataKey = $(target).attr('datakey');
+		localStorage.setItem("noteDocumentId", dataKey);  
+		window.location.href='<%=send%>';
+	}
+	
+	function movementOnClick(event){
+		 event.preventDefault();
+		 invokeUrl(event);
+	}
 </script>
