@@ -38,10 +38,7 @@ $(document).ready(() => {
 	fileForm.actions[0].redirects.success.href = '<%=list%>';
 	fileForm.actions[1].handler.href = '<%=list%>';
 	
-	var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
 	var jetform=JetForm({"id":"fileForm", "parentId":"fileFormContainer", "form":fileForm});
-	console.log("id from jsp page"+id);
-	jetform.setDataKey(id);
 	jetform.render();
 
 	$('#groupId').val(Liferay.ThemeDisplay.getScopeGroupId());

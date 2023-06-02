@@ -19,15 +19,27 @@
 
 <liferay-util:include page="/templates/jetform-template.jsp"
 	servletContext="<%=application%>" />
+
 <script>
 	$(document).ready(() => {
 		fileList.actions[0].handler.href = '<%=fileCreation%>';
 		fileList.actions[1].handler.href = '<%=fileCreation%>';
-		fileList.actions[3].handler.href = '<%=send%>';
 		fileList.actions[4].handler.href = '<%=movement%>';
-<%-- 		var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
-		jetList.setDataKey(id); --%>
 		var jetList=JetList({"id":"fileList", "parentId":"fileListContainer", "form":fileList});
 		jetList.render();
 	});
+	
+	//FOR SEND FUNCTION AND MOVEMENT FUNCTION
+	function sendOnClick(event){
+		event.preventDefault();
+		var target = getEventTarget(event);
+		var dataKey = $(target).attr('datakey');
+		localStorage.setItem("fileId", dataKey);  
+		window.location.href='<%=send%>';
+	}
+	
+	function movementOnClick(event){
+		 event.preventDefault();
+		 invokeUrl(event);
+	}
 </script>

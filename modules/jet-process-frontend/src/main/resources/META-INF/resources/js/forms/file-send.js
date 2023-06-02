@@ -2,23 +2,17 @@ var fileSend = {
 	"id" : "fileSend",
 	"parentId" : "fileSendContainer",
 	"title" : "Send File",
-	"subtitle" : "File Send",
+	"subtitle" : "",
 	"namespace" : "",
 	"enctype" : "multipart/form-data",
 	"fields" : [ {
 		"type" : "hidden",
 		"name" : "id",
-		"id" : true
-	},
-	{
-		"type" : "text",
+		"id" : true,
+	}, {
+		"type" : "hidden",
 		"name" : "fileId",
-		"label":"File id",
-		"value":"2"
-	},
-	
-	
-	 {
+	}, {
 		"type" : "group",
 		"name" : "sendGroup",
 		"label" : "name",
@@ -27,7 +21,7 @@ var fileSend = {
 			"type" : "text",
 			"name" : "receiverId",
 			"label" : "User",
-		 /*"required" : true,*/ 
+			/* "required" : true, */
 			"col" : 12
 		}, {
 			"type" : "select",
@@ -68,11 +62,11 @@ var fileSend = {
 				}
 			}
 		} ]
-	},{
+	}, {
 		"type" : "hidden",
 		"name" : "senderId",
 		"value" : "1",
-	}],
+	} ],
 
 	"actions" : [ {
 		"name" : "save",
@@ -105,13 +99,6 @@ var fileSend = {
 		"create" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filemovement?p_auth=" + Liferay.authToken,
 			"method" : "post",
-		},
-		"selector" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filemovement?p_auth=" + Liferay.authToken,
-			"method" : "get",
-			"queryParams" : {
-				"id" : "#id"
-			}
 		}
 	}
 };

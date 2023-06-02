@@ -9,12 +9,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col" id="fileSendContainer">
-			<h3>Send File</h3>
-			<div class="border p-3 m-1">
-				<form id="fileSend"></form>
-			</div>
-		</div>
+		<div class="col" id="fileSendContainer"></div>
 	</div>
 </div>
 
@@ -23,19 +18,12 @@
 </liferay-util:include>
 
 <script>
-
- var id='<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>';
-	
 	$(document).ready(() => {
 		fileSend.actions[0].redirects.success.href = '<%=list%>';
 		fileSend.actions[1].handler.href = '<%=list%>';
-		 
 		var jetform=JetForm({"id":"fileSend", "parentId":"fileSendContainer", "form":fileSend});
 		jetform.render();
-		
-	/* 	let searchParams = new URLSearchParams(window.location.search);
-		let id = searchParams.get('id');
-		$("#fileId").attr("required" , true);
-		$("#fileId").val("9"); */
+		var id=localStorage.getItem("fileId");  
+		$('#fileId').val(id);
 	});
 </script>

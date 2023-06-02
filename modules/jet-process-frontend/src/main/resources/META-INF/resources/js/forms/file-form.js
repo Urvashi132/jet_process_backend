@@ -5,14 +5,12 @@ var fileForm = {
 	"subtitle" : "New File Creation",
 	"namespace" : "",
 	"enctype" : "multipart/form-data",
-	"fields" : [
-			{
+	"fields" : [ {
 				"type" : "hidden",
 				"name" : "id",
 				"id" : true,
 				"listable" : false
-			},
-			{
+			}, {
 				"type" : "group",
 				"name" : "fileType",
 				"label" : "name",
@@ -66,8 +64,7 @@ var fileForm = {
 						}]
 					}
 				} ]
-			},
-			{
+			}, {
 				"type" : "group",
 				"name" : "fileNumberGroup",
 				"label" : "name",
