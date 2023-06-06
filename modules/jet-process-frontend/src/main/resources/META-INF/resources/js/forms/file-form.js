@@ -270,7 +270,7 @@ var fileForm = {
 				"name" : "groupId",
 				"listable" : false
 			}, {
-				"type" : "text",
+				"type" : "hidden",
 				"name" : "userPostId",
 				"value" : "0",
 				"listable" : false

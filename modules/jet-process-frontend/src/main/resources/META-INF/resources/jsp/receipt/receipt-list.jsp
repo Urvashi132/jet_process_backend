@@ -18,6 +18,9 @@ var portletNamespace='<portlet:namespace/>';
 <portlet:renderURL var="movement">
 	<portlet:param name="mvcPath" value="/jsp/receipt/receipt-movement.jsp" />
 </portlet:renderURL>
+<portlet:renderURL var="draft">
+	<portlet:param name="mvcPath" value="/jsp/receipt/draft-list.jsp" />
+</portlet:renderURL>
 <!-- body  -->
 <body>
 	<div class="container">
@@ -52,6 +55,14 @@ receiptList.actions[4].handler.href = '<%=movement%>';
 	
 	function movementOnClick(event){
 		 invokeUrl(event);
+	}
+	
+	function draftOnClick(event){
+		event.preventDefault();
+		var target = getEventTarget(event);
+		var dataKey = $(target).attr('datakey');
+		localStorage.setItem("receirId", dataKey);  
+		window.location.href='<%=draft%>';
 	}
 </script>
 </html>
