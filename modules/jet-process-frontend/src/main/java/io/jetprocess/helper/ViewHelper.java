@@ -23,9 +23,17 @@ public class ViewHelper {
 		else if (parameter.equals("receipt")) {
 			page = "/jsp/receipt/receipt-list.jsp";
 		}
+		
 
 		else if (parameter.equals("note")) {
 			page = "/jsp/note-document/notedoc-list.jsp";
+		}
+		else if (parameter.equals("draft")) {
+			page = "/jsp/receipt/draft-list.jsp";
+		}
+		
+		else if (parameter.equals("dispatch")) {
+			page = "/jsp/dispatch/dispatch-list.jsp";
 		}
 
 		
