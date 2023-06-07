@@ -38,6 +38,10 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
 		LOGGER.info(fileRsModel);
+		/*
+		 * Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel,
+		 * FileRsModel.class); docFileLocalService.addDocFile(docFile);
+		 */
 		DocFile createDocFile = docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
 				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
@@ -50,7 +54,9 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	public FileRsModel updateDocFile(@NotNull Long docFileId, FileRsModel fileRsModel) throws Exception {
 		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getId(), fileRsModel.getSubject(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference());
-		return getFileRsModel(docFile);
+		Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+//		docFileLocalService.editDocFile(docFileId, (DocFile)object);
+		return (FileRsModel) object;
 	}
 
 	@Override
@@ -58,7 +64,9 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		List<FileRsModel> fileRsModelList = new ArrayList<>();
 		List<DocFile> docFileList = docFileLocalService.getDocFiles();
 		docFileList.stream().forEach(docFile -> {
-			fileRsModelList.add(getFileRsModel(docFile));
+			FileRsModel fileRsModel = new FileRsModel();
+			Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+			fileRsModelList.add((FileRsModel) object);
 		});
 		return Page.of(fileRsModelList);
 	}
@@ -71,26 +79,9 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel getDocFileById(@NotNull Long docFileId) throws Exception {
 		DocFile docFile = docFileLocalService.getDocFile(docFileId);
-		return getFileRsModel(docFile);
-	}
-
-	private FileRsModel getFileRsModel(DocFile docFile) {
-		FileRsModel createdDocFile = new FileRsModel();
-		createdDocFile.setId(docFile.getId());
-		createdDocFile.setGroupId(docFile.getGroupId());
-		createdDocFile.setCreateDate(docFile.getCreateDate());;
-		createdDocFile.setNature(docFile.getNature());
-		createdDocFile.setType(docFile.getType());
-		createdDocFile.setHeadId(docFile.getHeadId());
-		createdDocFile.setFileCodeId(docFile.getFileCodeId());
-		createdDocFile.setSubject(docFile.getSubject());
-		createdDocFile.setFileNo(docFile.getFileNo());
-		createdDocFile.setCategoryId(docFile.getCategoryId());
-		createdDocFile.setRemarks(docFile.getRemarks());
-		createdDocFile.setReference(docFile.getReference());
-		createdDocFile.setYear(docFile.getYear());
-		createdDocFile.setUserPostId(docFile.getUserPostId());
-		return createdDocFile;
+		FileRsModel fileRsModel = new FileRsModel();
+		Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+		return (FileRsModel) object;
 	}
 
 	@Reference

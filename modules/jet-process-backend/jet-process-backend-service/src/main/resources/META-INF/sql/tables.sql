@@ -52,6 +52,47 @@ create table JP_DocumentNoteMapping (
 	noteId LONG
 );
 
+create table JP_Draft (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	nature VARCHAR(75) null,
+	receiptId LONG,
+	replyTypeId LONG,
+	categoryId LONG,
+	subject VARCHAR(500) null,
+	content TEXT null,
+	dispatch BOOLEAN,
+	status VARCHAR(75) null,
+	approvedBy VARCHAR(75) null
+);
+
+create table JP_DraftRecipient (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	draftId LONG,
+	organizationId LONG,
+	name VARCHAR(75) null,
+	designation VARCHAR(75) null,
+	email VARCHAR(75) null,
+	mobile VARCHAR(75) null,
+	address VARCHAR(75) null,
+	stateId LONG,
+	cityId VARCHAR(75) null,
+	pinCode VARCHAR(75) null
+);
+
 create table JP_FileCategory (
 	id_ LONG not null primary key,
 	name VARCHAR(255) null

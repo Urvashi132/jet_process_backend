@@ -112,6 +112,19 @@ public class DocFileLocalServiceImpl extends DocFileLocalServiceBaseImpl {
 		System.out.println(docFileList);
 		return docFileList;
 	}
+	
+	public DocFile addDocFile(DocFile docFile) {
+		long id = counterLocalService.increment(DocFile.class.getName());
+		docFile = createDocFile(id);
+		docFile = super.addDocFile(docFile);
+		return docFile;
+	}
+	
+	public DocFile editDocFile(long id,DocFile docFile) throws PortalException {
+		docFile = getDocFile(id);
+		docFile = super.updateDocFile(docFile);
+		return docFile;
+	}
 
 	@Reference
 	private FileValidator fileValidator;

@@ -4,6 +4,13 @@ create unique index IX_DFC24937 on JP_DocFile (uuid_[$COLUMN_LENGTH:75$], groupI
 create index IX_356DE002 on JP_DocumentNoteMapping (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_89927F04 on JP_DocumentNoteMapping (uuid_[$COLUMN_LENGTH:75$], groupId);
 
+create index IX_7B75582 on JP_Draft (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_2BB5484 on JP_Draft (uuid_[$COLUMN_LENGTH:75$], groupId);
+
+create index IX_BB730F75 on JP_DraftRecipient (draftId);
+create index IX_E68AB76B on JP_DraftRecipient (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_87A01CAD on JP_DraftRecipient (uuid_[$COLUMN_LENGTH:75$], groupId);
+
 create index IX_68166EF5 on JP_FileMovement (fileId);
 create index IX_5E54EAFE on JP_FileMovement (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_15781900 on JP_FileMovement (uuid_[$COLUMN_LENGTH:75$], groupId);

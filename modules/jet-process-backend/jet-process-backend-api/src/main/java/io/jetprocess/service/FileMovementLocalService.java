@@ -221,6 +221,9 @@ public interface FileMovementLocalService
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
 		PortletDataContext portletDataContext);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public FileMovement getFileMovement();
+
 	/**
 	 * Returns the file movement with the primary key.
 	 *

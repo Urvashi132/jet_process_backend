@@ -55,7 +55,13 @@ public class FileMovementLocalServiceImpl extends FileMovementLocalServiceBaseIm
 		docFileLocalService.updateDocFile(docFile);
 		return fileMovement;
 	}
-
+	
+	public FileMovement getFileMovement() {
+		long id = counterLocalService.increment(FileMovement.class.getName());
+		FileMovement fileMovement = fileMovementLocalService.createFileMovement(id);
+		return fileMovement;
+		}
+	
 	public List<FileMovement> getListByFileId(long fileId) {
 		LOGGER.info("service");
 		return fileMovementPersistence.findByFileId(fileId);

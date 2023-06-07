@@ -257,6 +257,11 @@ public class FileMovementLocalServiceWrapper
 			portletDataContext);
 	}
 
+	@Override
+	public io.jetprocess.model.FileMovement getFileMovement() {
+		return _fileMovementLocalService.getFileMovement();
+	}
+
 	/**
 	 * Returns the file movement with the primary key.
 	 *

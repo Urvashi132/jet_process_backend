@@ -376,12 +376,75 @@
 		<column name="remarks" type="String" />
 		<column name="active" type="boolean" />
 		<column name="movementType" type="long" />
-		
+
 		<finder name="NoteDocumentId" return-type="Collection">
 			<finder-column name="noteDocumentId"></finder-column>
 		</finder>
 	</entity>
 
+	<!-- Draft -->
+	<entity local-service="true" name="Draft" uuid="true"
+		remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="nature" type="String" />
+		<column name="receiptId" type="long" />
+		<column name="replyTypeId" type="long" />
+		<column name="categoryId" type="long" />
+		<column name="subject" type="String" />
+		<column name="content" type="String" />
+		<column name="dispatch" type="boolean" />
+		<column name="status" type="String" />
+		<column name="approvedBy" type="String" />
+
+	</entity>
+
+	<!-- Draft Recipient -->
+	<entity local-service="true" name="DraftRecipient"
+		uuid="true" remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="draftId" type="long" />
+		<column name="organizationId" type="long" />
+		<column name="name" type="String" />
+		<column name="designation" type="String" />
+		<column name="email" type="String" />
+		<column name="mobile" type="String" />
+		<column name="address" type="String" />
+		<column name="stateId" type="long" />
+		<column name="cityId" type="String" />
+		<column name="pinCode" type="String" />
+
+		<finder name="DraftId" return-type="Collection">
+			<finder-column name="draftId"></finder-column>
+		</finder>
+	</entity>
 
 	<exceptions>
 		<exception>FileValidation</exception>

@@ -56,6 +56,49 @@
 		<field name="noteDocumentId" type="long" />
 		<field name="noteId" type="long" />
 	</model>
+	<model name="io.jetprocess.model.Draft">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nature" type="String" />
+		<field name="receiptId" type="long" />
+		<field name="replyTypeId" type="long" />
+		<field name="categoryId" type="long" />
+		<field name="subject" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="content" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="dispatch" type="boolean" />
+		<field name="status" type="String" />
+		<field name="approvedBy" type="String" />
+	</model>
+	<model name="io.jetprocess.model.DraftRecipient">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="draftId" type="long" />
+		<field name="organizationId" type="long" />
+		<field name="name" type="String" />
+		<field name="designation" type="String" />
+		<field name="email" type="String" />
+		<field name="mobile" type="String" />
+		<field name="address" type="String" />
+		<field name="stateId" type="long" />
+		<field name="cityId" type="String" />
+		<field name="pinCode" type="String" />
+	</model>
 	<model name="io.jetprocess.model.FileCategory">
 		<field name="id" type="long" />
 		<field name="name" type="String">

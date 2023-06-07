@@ -47,6 +47,8 @@ import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
 import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
+import io.jetprocess.service.persistence.DraftPersistence;
+import io.jetprocess.service.persistence.DraftRecipientPersistence;
 import io.jetprocess.service.persistence.FileCategoryPersistence;
 import io.jetprocess.service.persistence.FileMovementPersistence;
 import io.jetprocess.service.persistence.NoteDocumentMovementPersistence;
@@ -479,6 +481,12 @@ public abstract class TypeLocalServiceBaseImpl
 
 	@Reference
 	protected DocumentNoteMappingPersistence documentNoteMappingPersistence;
+
+	@Reference
+	protected DraftPersistence draftPersistence;
+
+	@Reference
+	protected DraftRecipientPersistence draftRecipientPersistence;
 
 	@Reference
 	protected FileCategoryPersistence fileCategoryPersistence;
