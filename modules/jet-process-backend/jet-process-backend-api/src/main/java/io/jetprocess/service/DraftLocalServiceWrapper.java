@@ -45,6 +45,13 @@ public class DraftLocalServiceWrapper
 		return _draftLocalService.addDraft(draft);
 	}
 
+	@Override
+	public io.jetprocess.model.Draft createDraft(
+		io.jetprocess.model.Draft draft) {
+
+		return _draftLocalService.createDraft(draft);
+	}
+
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -268,6 +275,11 @@ public class DraftLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _draftLocalService.getDraftByUuidAndGroupId(uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<io.jetprocess.model.Draft> getDrafts() {
+		return _draftLocalService.getDrafts();
 	}
 
 	/**

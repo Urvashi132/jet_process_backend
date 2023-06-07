@@ -62,6 +62,10 @@ public class DraftRecipientLocalServiceUtil {
 		return getService().addDraftRecipient(draftRecipient);
 	}
 
+	public static DraftRecipient createDraft(DraftRecipient draftRecipient) {
+		return getService().createDraft(draftRecipient);
+	}
+
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -315,6 +319,10 @@ public class DraftRecipientLocalServiceUtil {
 	 */
 	public static int getDraftRecipientsCount() {
 		return getService().getDraftRecipientsCount();
+	}
+
+	public static List<DraftRecipient> getDrafts(long draftId) {
+		return getService().getDrafts(draftId);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery

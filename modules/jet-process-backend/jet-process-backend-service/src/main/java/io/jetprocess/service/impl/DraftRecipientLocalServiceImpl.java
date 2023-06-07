@@ -15,10 +15,15 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import io.jetprocess.service.base.DraftRecipientLocalServiceBaseImpl;
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
+
+import io.jetprocess.model.DraftRecipient;
+import io.jetprocess.service.base.DraftRecipientLocalServiceBaseImpl;
 
 /**
  * @author Brian Wing Shun Chan
@@ -29,4 +34,19 @@ import org.osgi.service.component.annotations.Component;
 )
 public class DraftRecipientLocalServiceImpl
 	extends DraftRecipientLocalServiceBaseImpl {
+	
+private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.class);
+	
+	public DraftRecipient createDraft(DraftRecipient draftRecipient) {
+		long id = counterLocalService.increment();
+		draftRecipient = createDraftRecipient(id);
+		draftRecipient = addDraftRecipient(draftRecipient);
+		LOGGER.info(draftRecipient);
+		return draftRecipient;
+	}
+	
+	public List<DraftRecipient> getDrafts(long draftId){
+		List<DraftRecipient> findByDraftId = draftRecipientPersistence.findByDraftId(draftId);
+		return findByDraftId;
+	}
 }

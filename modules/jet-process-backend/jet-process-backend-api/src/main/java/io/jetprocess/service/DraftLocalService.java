@@ -78,6 +78,8 @@ public interface DraftLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Draft addDraft(Draft draft);
 
+	public Draft createDraft(Draft draft);
+
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -236,6 +238,9 @@ public interface DraftLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Draft getDraftByUuidAndGroupId(String uuid, long groupId)
 		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Draft> getDrafts();
 
 	/**
 	 * Returns a range of all the drafts.

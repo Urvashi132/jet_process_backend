@@ -50,6 +50,13 @@ public class DraftRecipientLocalServiceWrapper
 		return _draftRecipientLocalService.addDraftRecipient(draftRecipient);
 	}
 
+	@Override
+	public io.jetprocess.model.DraftRecipient createDraft(
+		io.jetprocess.model.DraftRecipient draftRecipient) {
+
+		return _draftRecipientLocalService.createDraft(draftRecipient);
+	}
+
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -341,6 +348,13 @@ public class DraftRecipientLocalServiceWrapper
 	@Override
 	public int getDraftRecipientsCount() {
 		return _draftRecipientLocalService.getDraftRecipientsCount();
+	}
+
+	@Override
+	public java.util.List<io.jetprocess.model.DraftRecipient> getDrafts(
+		long draftId) {
+
+		return _draftRecipientLocalService.getDrafts(draftId);
 	}
 
 	@Override

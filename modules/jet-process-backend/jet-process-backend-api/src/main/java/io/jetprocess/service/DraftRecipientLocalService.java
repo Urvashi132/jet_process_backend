@@ -78,6 +78,8 @@ public interface DraftRecipientLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public DraftRecipient addDraftRecipient(DraftRecipient draftRecipient);
 
+	public DraftRecipient createDraft(DraftRecipient draftRecipient);
+
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -286,6 +288,9 @@ public interface DraftRecipientLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getDraftRecipientsCount();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<DraftRecipient> getDrafts(long draftId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(

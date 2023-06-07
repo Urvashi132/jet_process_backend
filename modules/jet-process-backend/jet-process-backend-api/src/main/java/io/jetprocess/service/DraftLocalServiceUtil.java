@@ -60,6 +60,10 @@ public class DraftLocalServiceUtil {
 		return getService().addDraft(draft);
 	}
 
+	public static Draft createDraft(Draft draft) {
+		return getService().createDraft(draft);
+	}
+
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -248,6 +252,10 @@ public class DraftLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getDraftByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static List<Draft> getDrafts() {
+		return getService().getDrafts();
 	}
 
 	/**
