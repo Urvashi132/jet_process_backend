@@ -204,6 +204,21 @@ public interface DraftModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
+	 * Returns the draft no of this draft.
+	 *
+	 * @return the draft no of this draft
+	 */
+	@AutoEscape
+	public String getDraftNo();
+
+	/**
+	 * Sets the draft no of this draft.
+	 *
+	 * @param draftNo the draft no of this draft
+	 */
+	public void setDraftNo(String draftNo);
+
+	/**
 	 * Returns the nature of this draft.
 	 *
 	 * @return the nature of this draft

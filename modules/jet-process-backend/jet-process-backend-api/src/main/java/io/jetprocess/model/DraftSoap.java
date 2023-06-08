@@ -41,6 +41,7 @@ public class DraftSoap implements Serializable {
 		soapModel.setUserName(model.getUserName());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
+		soapModel.setDraftNo(model.getDraftNo());
 		soapModel.setNature(model.getNature());
 		soapModel.setReceiptId(model.getReceiptId());
 		soapModel.setReplyTypeId(model.getReplyTypeId());
@@ -166,6 +167,14 @@ public class DraftSoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
+	public String getDraftNo() {
+		return _draftNo;
+	}
+
+	public void setDraftNo(String draftNo) {
+		_draftNo = draftNo;
+	}
+
 	public String getNature() {
 		return _nature;
 	}
@@ -250,6 +259,7 @@ public class DraftSoap implements Serializable {
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
+	private String _draftNo;
 	private String _nature;
 	private long _receiptId;
 	private long _replyTypeId;

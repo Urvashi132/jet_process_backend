@@ -59,7 +59,7 @@ public class DraftRecipientWrapper
 		attributes.put("mobile", getMobile());
 		attributes.put("address", getAddress());
 		attributes.put("stateId", getStateId());
-		attributes.put("cityId", getCityId());
+		attributes.put("city", getCity());
 		attributes.put("pinCode", getPinCode());
 
 		return attributes;
@@ -163,10 +163,10 @@ public class DraftRecipientWrapper
 			setStateId(stateId);
 		}
 
-		String cityId = (String)attributes.get("cityId");
+		String city = (String)attributes.get("city");
 
-		if (cityId != null) {
-			setCityId(cityId);
+		if (city != null) {
+			setCity(city);
 		}
 
 		String pinCode = (String)attributes.get("pinCode");
@@ -192,13 +192,13 @@ public class DraftRecipientWrapper
 	}
 
 	/**
-	 * Returns the city ID of this draft recipient.
+	 * Returns the city of this draft recipient.
 	 *
-	 * @return the city ID of this draft recipient
+	 * @return the city of this draft recipient
 	 */
 	@Override
-	public String getCityId() {
-		return model.getCityId();
+	public String getCity() {
+		return model.getCity();
 	}
 
 	/**
@@ -397,13 +397,13 @@ public class DraftRecipientWrapper
 	}
 
 	/**
-	 * Sets the city ID of this draft recipient.
+	 * Sets the city of this draft recipient.
 	 *
-	 * @param cityId the city ID of this draft recipient
+	 * @param city the city of this draft recipient
 	 */
 	@Override
-	public void setCityId(String cityId) {
-		model.setCityId(cityId);
+	public void setCity(String city) {
+		model.setCity(city);
 	}
 
 	/**

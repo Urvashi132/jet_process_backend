@@ -15,6 +15,8 @@ import io.jetprocess.dto.v1_0.BasicHeadRsModel;
 import io.jetprocess.dto.v1_0.CategoryRsModel;
 import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
+import io.jetprocess.dto.v1_0.DraftRecipientRsModel;
+import io.jetprocess.dto.v1_0.DraftRsModel;
 import io.jetprocess.dto.v1_0.FileCategoryRsModel;
 import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
@@ -33,6 +35,8 @@ import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
+import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
@@ -97,6 +101,22 @@ public class Query {
 
 		_deliveryModeRsModelResourceComponentServiceObjects =
 			deliveryModeRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setDraftRecipientRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DraftRecipientRsModelResource>
+			draftRecipientRsModelResourceComponentServiceObjects) {
+
+		_draftRecipientRsModelResourceComponentServiceObjects =
+			draftRecipientRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setDraftRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DraftRsModelResource>
+			draftRsModelResourceComponentServiceObjects) {
+
+		_draftRsModelResourceComponentServiceObjects =
+			draftRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setFileCategoryRsModelResourceComponentServiceObjects(
@@ -265,6 +285,66 @@ public class Query {
 			this::_populateResourceContext,
 			deliveryModeRsModelResource -> new DeliveryModeRsModelPage(
 				deliveryModeRsModelResource.getDeliveryModeist()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {draftRecipientById(id: ___){id, draftId, organizationId, name, designation, mobile, email, address, stateId, city, pincode}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DraftRecipientRsModel draftRecipientById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRecipientRsModelResource ->
+				draftRecipientRsModelResource.getDraftRecipientById(id));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {draftRecipientList(draftId: ___){items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DraftRecipientRsModelPage draftRecipientList(
+			@GraphQLName("draftId") Long draftId)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRecipientRsModelResource -> new DraftRecipientRsModelPage(
+				draftRecipientRsModelResource.getDraftRecipientList(draftId)));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {draftById(id: ___){id, draftNo, nature, receiptId, replyTypeId, categoryId, subject, content, status, approvedBy, modifiedDate}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DraftRsModel draftById(@GraphQLName("id") Long id) throws Exception {
+		return _applyComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRsModelResource -> draftRsModelResource.getDraftById(id));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {draftList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DraftRsModelPage draftList() throws Exception {
+		return _applyComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRsModelResource -> new DraftRsModelPage(
+				draftRsModelResource.getDraftList()));
 	}
 
 	/**
@@ -653,6 +733,72 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<DeliveryModeRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("DraftRecipientRsModelPage")
+	public class DraftRecipientRsModelPage {
+
+		public DraftRecipientRsModelPage(Page draftRecipientRsModelPage) {
+			actions = draftRecipientRsModelPage.getActions();
+
+			items = draftRecipientRsModelPage.getItems();
+			lastPage = draftRecipientRsModelPage.getLastPage();
+			page = draftRecipientRsModelPage.getPage();
+			pageSize = draftRecipientRsModelPage.getPageSize();
+			totalCount = draftRecipientRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<DraftRecipientRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("DraftRsModelPage")
+	public class DraftRsModelPage {
+
+		public DraftRsModelPage(Page draftRsModelPage) {
+			actions = draftRsModelPage.getActions();
+
+			items = draftRsModelPage.getItems();
+			lastPage = draftRsModelPage.getLastPage();
+			page = draftRsModelPage.getPage();
+			pageSize = draftRsModelPage.getPageSize();
+			totalCount = draftRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<DraftRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -1214,6 +1360,37 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			DraftRecipientRsModelResource draftRecipientRsModelResource)
+		throws Exception {
+
+		draftRecipientRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		draftRecipientRsModelResource.setContextCompany(_company);
+		draftRecipientRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		draftRecipientRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		draftRecipientRsModelResource.setContextUriInfo(_uriInfo);
+		draftRecipientRsModelResource.setContextUser(_user);
+		draftRecipientRsModelResource.setGroupLocalService(_groupLocalService);
+		draftRecipientRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			DraftRsModelResource draftRsModelResource)
+		throws Exception {
+
+		draftRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		draftRsModelResource.setContextCompany(_company);
+		draftRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		draftRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		draftRsModelResource.setContextUriInfo(_uriInfo);
+		draftRsModelResource.setContextUser(_user);
+		draftRsModelResource.setGroupLocalService(_groupLocalService);
+		draftRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileCategoryRsModelResource fileCategoryRsModelResource)
 		throws Exception {
 
@@ -1443,6 +1620,10 @@ public class Query {
 		_countryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DeliveryModeRsModelResource>
 		_deliveryModeRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<DraftRecipientRsModelResource>
+		_draftRecipientRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<DraftRsModelResource>
+		_draftRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileCategoryRsModelResource>
 		_fileCategoryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileMovementRsModelResource>

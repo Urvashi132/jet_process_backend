@@ -97,8 +97,8 @@ public class DraftRecipientCacheModel
 		sb.append(address);
 		sb.append(", stateId=");
 		sb.append(stateId);
-		sb.append(", cityId=");
-		sb.append(cityId);
+		sb.append(", city=");
+		sb.append(city);
 		sb.append(", pinCode=");
 		sb.append(pinCode);
 		sb.append("}");
@@ -183,11 +183,11 @@ public class DraftRecipientCacheModel
 
 		draftRecipientImpl.setStateId(stateId);
 
-		if (cityId == null) {
-			draftRecipientImpl.setCityId("");
+		if (city == null) {
+			draftRecipientImpl.setCity("");
 		}
 		else {
-			draftRecipientImpl.setCityId(cityId);
+			draftRecipientImpl.setCity(city);
 		}
 
 		if (pinCode == null) {
@@ -227,7 +227,7 @@ public class DraftRecipientCacheModel
 		address = objectInput.readUTF();
 
 		stateId = objectInput.readLong();
-		cityId = objectInput.readUTF();
+		city = objectInput.readUTF();
 		pinCode = objectInput.readUTF();
 	}
 
@@ -299,11 +299,11 @@ public class DraftRecipientCacheModel
 
 		objectOutput.writeLong(stateId);
 
-		if (cityId == null) {
+		if (city == null) {
 			objectOutput.writeUTF("");
 		}
 		else {
-			objectOutput.writeUTF(cityId);
+			objectOutput.writeUTF(city);
 		}
 
 		if (pinCode == null) {
@@ -330,7 +330,7 @@ public class DraftRecipientCacheModel
 	public String mobile;
 	public String address;
 	public long stateId;
-	public String cityId;
+	public String city;
 	public String pinCode;
 
 }

@@ -50,6 +50,7 @@ public class DraftWrapper
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
+		attributes.put("draftNo", getDraftNo());
 		attributes.put("nature", getNature());
 		attributes.put("receiptId", getReceiptId());
 		attributes.put("replyTypeId", getReplyTypeId());
@@ -111,6 +112,12 @@ public class DraftWrapper
 
 		if (modifiedDate != null) {
 			setModifiedDate(modifiedDate);
+		}
+
+		String draftNo = (String)attributes.get("draftNo");
+
+		if (draftNo != null) {
+			setDraftNo(draftNo);
 		}
 
 		String nature = (String)attributes.get("nature");
@@ -231,6 +238,16 @@ public class DraftWrapper
 	@Override
 	public boolean getDispatch() {
 		return model.getDispatch();
+	}
+
+	/**
+	 * Returns the draft no of this draft.
+	 *
+	 * @return the draft no of this draft
+	 */
+	@Override
+	public String getDraftNo() {
+		return model.getDraftNo();
 	}
 
 	/**
@@ -436,6 +453,16 @@ public class DraftWrapper
 	@Override
 	public void setDispatch(boolean dispatch) {
 		model.setDispatch(dispatch);
+	}
+
+	/**
+	 * Sets the draft no of this draft.
+	 *
+	 * @param draftNo the draft no of this draft
+	 */
+	@Override
+	public void setDraftNo(String draftNo) {
+		model.setDraftNo(draftNo);
 	}
 
 	/**

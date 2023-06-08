@@ -78,8 +78,6 @@ public interface DraftRecipientLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public DraftRecipient addDraftRecipient(DraftRecipient draftRecipient);
 
-	public DraftRecipient createDraft(DraftRecipient draftRecipient);
-
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -94,6 +92,8 @@ public interface DraftRecipientLocalService
 	 */
 	public PersistedModel createPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	public DraftRecipient createRecipient(DraftRecipient draftRecipient);
 
 	/**
 	 * Deletes the draft recipient from the database. Also notifies the appropriate model listeners.
@@ -326,5 +326,9 @@ public interface DraftRecipientLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public DraftRecipient updateDraftRecipient(DraftRecipient draftRecipient);
+
+	public DraftRecipient updateRecipient(
+			long id, DraftRecipient draftRecipient)
+		throws PortalException;
 
 }

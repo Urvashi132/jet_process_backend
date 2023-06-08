@@ -65,6 +65,7 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
+		<field name="draftNo" type="String" />
 		<field name="nature" type="String" />
 		<field name="receiptId" type="long" />
 		<field name="replyTypeId" type="long" />
@@ -96,7 +97,7 @@
 		<field name="mobile" type="String" />
 		<field name="address" type="String" />
 		<field name="stateId" type="long" />
-		<field name="cityId" type="String" />
+		<field name="city" type="String" />
 		<field name="pinCode" type="String" />
 	</model>
 	<model name="io.jetprocess.model.FileCategory">

@@ -50,13 +50,6 @@ public class DraftRecipientLocalServiceWrapper
 		return _draftRecipientLocalService.addDraftRecipient(draftRecipient);
 	}
 
-	@Override
-	public io.jetprocess.model.DraftRecipient createDraft(
-		io.jetprocess.model.DraftRecipient draftRecipient) {
-
-		return _draftRecipientLocalService.createDraft(draftRecipient);
-	}
-
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -77,6 +70,13 @@ public class DraftRecipientLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _draftRecipientLocalService.createPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public io.jetprocess.model.DraftRecipient createRecipient(
+		io.jetprocess.model.DraftRecipient draftRecipient) {
+
+		return _draftRecipientLocalService.createRecipient(draftRecipient);
 	}
 
 	/**
@@ -410,6 +410,14 @@ public class DraftRecipientLocalServiceWrapper
 		io.jetprocess.model.DraftRecipient draftRecipient) {
 
 		return _draftRecipientLocalService.updateDraftRecipient(draftRecipient);
+	}
+
+	@Override
+	public io.jetprocess.model.DraftRecipient updateRecipient(
+			long id, io.jetprocess.model.DraftRecipient draftRecipient)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _draftRecipientLocalService.updateRecipient(id, draftRecipient);
 	}
 
 	@Override

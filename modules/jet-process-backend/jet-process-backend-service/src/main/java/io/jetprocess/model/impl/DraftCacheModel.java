@@ -61,7 +61,7 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(35);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -79,6 +79,8 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
+		sb.append(", draftNo=");
+		sb.append(draftNo);
 		sb.append(", nature=");
 		sb.append(nature);
 		sb.append(", receiptId=");
@@ -137,6 +139,13 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 		}
 		else {
 			draftImpl.setModifiedDate(new Date(modifiedDate));
+		}
+
+		if (draftNo == null) {
+			draftImpl.setDraftNo("");
+		}
+		else {
+			draftImpl.setDraftNo(draftNo);
 		}
 
 		if (nature == null) {
@@ -201,6 +210,7 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
+		draftNo = objectInput.readUTF();
 		nature = objectInput.readUTF();
 
 		receiptId = objectInput.readLong();
@@ -242,6 +252,13 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
+
+		if (draftNo == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(draftNo);
+		}
 
 		if (nature == null) {
 			objectOutput.writeUTF("");
@@ -295,6 +312,7 @@ public class DraftCacheModel implements CacheModel<Draft>, Externalizable {
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
+	public String draftNo;
 	public String nature;
 	public long receiptId;
 	public long replyTypeId;

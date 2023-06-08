@@ -15,6 +15,7 @@
 package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
@@ -37,7 +38,7 @@ public class DraftRecipientLocalServiceImpl
 	
 private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.class);
 	
-	public DraftRecipient createDraft(DraftRecipient draftRecipient) {
+	public DraftRecipient createRecipient(DraftRecipient draftRecipient) {
 		long id = counterLocalService.increment();
 		draftRecipient = createDraftRecipient(id);
 		draftRecipient = addDraftRecipient(draftRecipient);
@@ -45,8 +46,16 @@ private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.
 		return draftRecipient;
 	}
 	
+	public DraftRecipient updateRecipient(long id, DraftRecipient draftRecipient) throws PortalException {
+		draftRecipient = getDraftRecipient(id);
+		draftRecipient = updateDraftRecipient(draftRecipient);
+		LOGGER.info(draftRecipient);
+		return draftRecipient;
+	}
+	
 	public List<DraftRecipient> getDrafts(long draftId){
 		List<DraftRecipient> findByDraftId = draftRecipientPersistence.findByDraftId(draftId);
+		LOGGER.info(findByDraftId);
 		return findByDraftId;
 	}
 }

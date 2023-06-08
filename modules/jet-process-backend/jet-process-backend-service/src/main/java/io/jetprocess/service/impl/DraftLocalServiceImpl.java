@@ -16,6 +16,7 @@ package io.jetprocess.service.impl;
 
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
@@ -40,12 +41,28 @@ public class DraftLocalServiceImpl extends DraftLocalServiceBaseImpl {
 	public Draft createDraft(Draft draft) {
 		long id = counterLocalService.increment();
 		draft = createDraft(id);
+		String draftNo = generateDraftNo(id);
+		draft.setDraftNo(draftNo);
 		draft = addDraft(draft);
 		LOGGER.info(draft);
 		return draft;
 	}
 	
-	public List<Draft> getDrafts(){
-		return draftLocalService.getDrafts(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	public Draft updateDraft(long id, Draft draft) throws PortalException {
+		draft = getDraft(id);
+		draft = updateDraft(draft);
+		LOGGER.info(draft);
+		return draft;
 	}
+	
+	public List<Draft> getDrafts(){
+		return getDrafts(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	}
+	
+	public String generateDraftNo(long id) {
+		String number = String.valueOf(id);
+		String dratNo = "DFA-" + number;
+		return dratNo;
+	}
+	
 }

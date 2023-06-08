@@ -81,11 +81,11 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
-		{"nature", Types.VARCHAR}, {"receiptId", Types.BIGINT},
-		{"replyTypeId", Types.BIGINT}, {"categoryId", Types.BIGINT},
-		{"subject", Types.VARCHAR}, {"content", Types.CLOB},
-		{"dispatch", Types.BOOLEAN}, {"status", Types.VARCHAR},
-		{"approvedBy", Types.VARCHAR}
+		{"draftNo", Types.VARCHAR}, {"nature", Types.VARCHAR},
+		{"receiptId", Types.BIGINT}, {"replyTypeId", Types.BIGINT},
+		{"categoryId", Types.BIGINT}, {"subject", Types.VARCHAR},
+		{"content", Types.CLOB}, {"dispatch", Types.BOOLEAN},
+		{"status", Types.VARCHAR}, {"approvedBy", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -100,6 +100,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("draftNo", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("nature", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("receiptId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("replyTypeId", Types.BIGINT);
@@ -112,7 +113,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_Draft (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nature VARCHAR(75) null,receiptId LONG,replyTypeId LONG,categoryId LONG,subject VARCHAR(500) null,content TEXT null,dispatch BOOLEAN,status VARCHAR(75) null,approvedBy VARCHAR(75) null)";
+		"create table JP_Draft (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,draftNo VARCHAR(75) null,nature VARCHAR(75) null,receiptId LONG,replyTypeId LONG,categoryId LONG,subject VARCHAR(500) null,content TEXT null,dispatch BOOLEAN,status VARCHAR(75) null,approvedBy VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_Draft";
 
@@ -188,6 +189,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		model.setUserName(soapModel.getUserName());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setDraftNo(soapModel.getDraftNo());
 		model.setNature(soapModel.getNature());
 		model.setReceiptId(soapModel.getReceiptId());
 		model.setReplyTypeId(soapModel.getReplyTypeId());
@@ -365,6 +367,9 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		attributeGetterFunctions.put("modifiedDate", Draft::getModifiedDate);
 		attributeSetterBiConsumers.put(
 			"modifiedDate", (BiConsumer<Draft, Date>)Draft::setModifiedDate);
+		attributeGetterFunctions.put("draftNo", Draft::getDraftNo);
+		attributeSetterBiConsumers.put(
+			"draftNo", (BiConsumer<Draft, String>)Draft::setDraftNo);
 		attributeGetterFunctions.put("nature", Draft::getNature);
 		attributeSetterBiConsumers.put(
 			"nature", (BiConsumer<Draft, String>)Draft::setNature);
@@ -577,6 +582,26 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		}
 
 		_modifiedDate = modifiedDate;
+	}
+
+	@JSON
+	@Override
+	public String getDraftNo() {
+		if (_draftNo == null) {
+			return "";
+		}
+		else {
+			return _draftNo;
+		}
+	}
+
+	@Override
+	public void setDraftNo(String draftNo) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_draftNo = draftNo;
 	}
 
 	@JSON
@@ -815,6 +840,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		draftImpl.setUserName(getUserName());
 		draftImpl.setCreateDate(getCreateDate());
 		draftImpl.setModifiedDate(getModifiedDate());
+		draftImpl.setDraftNo(getDraftNo());
 		draftImpl.setNature(getNature());
 		draftImpl.setReceiptId(getReceiptId());
 		draftImpl.setReplyTypeId(getReplyTypeId());
@@ -844,6 +870,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 			this.<Date>getColumnOriginalValue("createDate"));
 		draftImpl.setModifiedDate(
 			this.<Date>getColumnOriginalValue("modifiedDate"));
+		draftImpl.setDraftNo(this.<String>getColumnOriginalValue("draftNo"));
 		draftImpl.setNature(this.<String>getColumnOriginalValue("nature"));
 		draftImpl.setReceiptId(this.<Long>getColumnOriginalValue("receiptId"));
 		draftImpl.setReplyTypeId(
@@ -973,6 +1000,14 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		}
 		else {
 			draftCacheModel.modifiedDate = Long.MIN_VALUE;
+		}
+
+		draftCacheModel.draftNo = getDraftNo();
+
+		String draftNo = draftCacheModel.draftNo;
+
+		if ((draftNo != null) && (draftNo.length() == 0)) {
+			draftCacheModel.draftNo = null;
 		}
 
 		draftCacheModel.nature = getNature();
@@ -1120,6 +1155,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
+	private String _draftNo;
 	private String _nature;
 	private long _receiptId;
 	private long _replyTypeId;
@@ -1167,6 +1203,7 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 		_columnOriginalValues.put("userName", _userName);
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
+		_columnOriginalValues.put("draftNo", _draftNo);
 		_columnOriginalValues.put("nature", _nature);
 		_columnOriginalValues.put("receiptId", _receiptId);
 		_columnOriginalValues.put("replyTypeId", _replyTypeId);
@@ -1216,23 +1253,25 @@ public class DraftModelImpl extends BaseModelImpl<Draft> implements DraftModel {
 
 		columnBitmasks.put("modifiedDate", 128L);
 
-		columnBitmasks.put("nature", 256L);
+		columnBitmasks.put("draftNo", 256L);
 
-		columnBitmasks.put("receiptId", 512L);
+		columnBitmasks.put("nature", 512L);
 
-		columnBitmasks.put("replyTypeId", 1024L);
+		columnBitmasks.put("receiptId", 1024L);
 
-		columnBitmasks.put("categoryId", 2048L);
+		columnBitmasks.put("replyTypeId", 2048L);
 
-		columnBitmasks.put("subject", 4096L);
+		columnBitmasks.put("categoryId", 4096L);
 
-		columnBitmasks.put("content", 8192L);
+		columnBitmasks.put("subject", 8192L);
 
-		columnBitmasks.put("dispatch", 16384L);
+		columnBitmasks.put("content", 16384L);
 
-		columnBitmasks.put("status", 32768L);
+		columnBitmasks.put("dispatch", 32768L);
 
-		columnBitmasks.put("approvedBy", 65536L);
+		columnBitmasks.put("status", 65536L);
+
+		columnBitmasks.put("approvedBy", 131072L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

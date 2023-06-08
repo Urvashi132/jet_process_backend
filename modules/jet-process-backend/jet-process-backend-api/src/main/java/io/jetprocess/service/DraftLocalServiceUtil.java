@@ -223,6 +223,10 @@ public class DraftLocalServiceUtil {
 		return getService().fetchDraftByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static String generateDraftNo(long id) {
+		return getService().generateDraftNo(id);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -358,6 +362,12 @@ public class DraftLocalServiceUtil {
 	 */
 	public static Draft updateDraft(Draft draft) {
 		return getService().updateDraft(draft);
+	}
+
+	public static Draft updateDraft(long id, Draft draft)
+		throws PortalException {
+
+		return getService().updateDraft(id, draft);
 	}
 
 	public static DraftLocalService getService() {

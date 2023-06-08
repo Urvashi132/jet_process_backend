@@ -66,8 +66,8 @@ public class DraftRecipientTable extends BaseTable<DraftRecipientTable> {
 		"address", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<DraftRecipientTable, Long> stateId = createColumn(
 		"stateId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
-	public final Column<DraftRecipientTable, String> cityId = createColumn(
-		"cityId", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<DraftRecipientTable, String> city = createColumn(
+		"city", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<DraftRecipientTable, String> pinCode = createColumn(
 		"pinCode", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 

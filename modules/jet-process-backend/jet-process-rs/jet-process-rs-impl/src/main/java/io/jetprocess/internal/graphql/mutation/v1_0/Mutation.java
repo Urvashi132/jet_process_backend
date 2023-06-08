@@ -9,12 +9,16 @@ import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
+import io.jetprocess.dto.v1_0.DraftRecipientRsModel;
+import io.jetprocess.dto.v1_0.DraftRsModel;
 import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
+import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
+import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
@@ -39,6 +43,22 @@ import org.osgi.service.component.ComponentServiceObjects;
  */
 @Generated("")
 public class Mutation {
+
+	public static void setDraftRecipientRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DraftRecipientRsModelResource>
+			draftRecipientRsModelResourceComponentServiceObjects) {
+
+		_draftRecipientRsModelResourceComponentServiceObjects =
+			draftRecipientRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setDraftRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DraftRsModelResource>
+			draftRsModelResourceComponentServiceObjects) {
+
+		_draftRsModelResourceComponentServiceObjects =
+			draftRsModelResourceComponentServiceObjects;
+	}
 
 	public static void setFileMovementRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<FileMovementRsModelResource>
@@ -86,6 +106,85 @@ public class Mutation {
 
 		_receiptRsModelResourceComponentServiceObjects =
 			receiptRsModelResourceComponentServiceObjects;
+	}
+
+	@GraphQLField
+	public boolean deleteDraftRecipientById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRecipientRsModelResource ->
+				draftRecipientRsModelResource.deleteDraftRecipientById(id));
+
+		return true;
+	}
+
+	@GraphQLField
+	public DraftRecipientRsModel createDraftRecipient(
+			@GraphQLName("draftRecipientRsModel") DraftRecipientRsModel
+				draftRecipientRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRecipientRsModelResource ->
+				draftRecipientRsModelResource.createDraftRecipient(
+					draftRecipientRsModel));
+	}
+
+	@GraphQLField
+	public DraftRecipientRsModel updateDraftRecipient(
+			@GraphQLName("id") Long id,
+			@GraphQLName("draftRecipientRsModel") DraftRecipientRsModel
+				draftRecipientRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRecipientRsModelResource ->
+				draftRecipientRsModelResource.updateDraftRecipient(
+					id, draftRecipientRsModel));
+	}
+
+	@GraphQLField
+	public boolean deleteDraftById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRsModelResource -> draftRsModelResource.deleteDraftById(id));
+
+		return true;
+	}
+
+	@GraphQLField
+	public DraftRsModel createDraft(
+			@GraphQLName("draftRsModel") DraftRsModel draftRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRsModelResource -> draftRsModelResource.createDraft(
+				draftRsModel));
+	}
+
+	@GraphQLField
+	public DraftRsModel updateDraft(
+			@GraphQLName("id") Long id,
+			@GraphQLName("draftRsModel") DraftRsModel draftRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			draftRsModelResource -> draftRsModelResource.updateDraft(
+				id, draftRsModel));
 	}
 
 	@GraphQLField
@@ -286,6 +385,37 @@ public class Mutation {
 	}
 
 	private void _populateResourceContext(
+			DraftRecipientRsModelResource draftRecipientRsModelResource)
+		throws Exception {
+
+		draftRecipientRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		draftRecipientRsModelResource.setContextCompany(_company);
+		draftRecipientRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		draftRecipientRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		draftRecipientRsModelResource.setContextUriInfo(_uriInfo);
+		draftRecipientRsModelResource.setContextUser(_user);
+		draftRecipientRsModelResource.setGroupLocalService(_groupLocalService);
+		draftRecipientRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			DraftRsModelResource draftRsModelResource)
+		throws Exception {
+
+		draftRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		draftRsModelResource.setContextCompany(_company);
+		draftRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		draftRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		draftRsModelResource.setContextUriInfo(_uriInfo);
+		draftRsModelResource.setContextUser(_user);
+		draftRsModelResource.setGroupLocalService(_groupLocalService);
+		draftRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			FileMovementRsModelResource fileMovementRsModelResource)
 		throws Exception {
 
@@ -381,6 +511,10 @@ public class Mutation {
 		receiptRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
+	private static ComponentServiceObjects<DraftRecipientRsModelResource>
+		_draftRecipientRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<DraftRsModelResource>
+		_draftRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileMovementRsModelResource>
 		_fileMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<FileRsModelResource>

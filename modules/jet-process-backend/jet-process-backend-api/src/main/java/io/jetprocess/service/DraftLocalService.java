@@ -214,6 +214,8 @@ public interface DraftLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Draft fetchDraftByUuidAndGroupId(String uuid, long groupId);
 
+	public String generateDraftNo(long id);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -323,5 +325,7 @@ public interface DraftLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Draft updateDraft(Draft draft);
+
+	public Draft updateDraft(long id, Draft draft) throws PortalException;
 
 }

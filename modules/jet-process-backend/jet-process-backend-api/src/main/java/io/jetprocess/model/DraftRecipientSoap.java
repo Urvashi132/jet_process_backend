@@ -49,7 +49,7 @@ public class DraftRecipientSoap implements Serializable {
 		soapModel.setMobile(model.getMobile());
 		soapModel.setAddress(model.getAddress());
 		soapModel.setStateId(model.getStateId());
-		soapModel.setCityId(model.getCityId());
+		soapModel.setCity(model.getCity());
 		soapModel.setPinCode(model.getPinCode());
 
 		return soapModel;
@@ -237,12 +237,12 @@ public class DraftRecipientSoap implements Serializable {
 		_stateId = stateId;
 	}
 
-	public String getCityId() {
-		return _cityId;
+	public String getCity() {
+		return _city;
 	}
 
-	public void setCityId(String cityId) {
-		_cityId = cityId;
+	public void setCity(String city) {
+		_city = city;
 	}
 
 	public String getPinCode() {
@@ -269,7 +269,7 @@ public class DraftRecipientSoap implements Serializable {
 	private String _mobile;
 	private String _address;
 	private long _stateId;
-	private String _cityId;
+	private String _city;
 	private String _pinCode;
 
 }

@@ -400,6 +400,7 @@
 		<column name="modifiedDate" type="Date" />
 
 		<!-- Other fields -->
+		<column name="draftNo" type="String" />
 		<column name="nature" type="String" />
 		<column name="receiptId" type="long" />
 		<column name="replyTypeId" type="long" />
@@ -438,7 +439,7 @@
 		<column name="mobile" type="String" />
 		<column name="address" type="String" />
 		<column name="stateId" type="long" />
-		<column name="cityId" type="String" />
+		<column name="city" type="String" />
 		<column name="pinCode" type="String" />
 
 		<finder name="DraftId" return-type="Collection">

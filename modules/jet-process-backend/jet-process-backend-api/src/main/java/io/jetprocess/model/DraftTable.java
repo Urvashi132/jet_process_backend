@@ -49,6 +49,8 @@ public class DraftTable extends BaseTable<DraftTable> {
 		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<DraftTable, Date> modifiedDate = createColumn(
 		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
+	public final Column<DraftTable, String> draftNo = createColumn(
+		"draftNo", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<DraftTable, String> nature = createColumn(
 		"nature", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<DraftTable, Long> receiptId = createColumn(

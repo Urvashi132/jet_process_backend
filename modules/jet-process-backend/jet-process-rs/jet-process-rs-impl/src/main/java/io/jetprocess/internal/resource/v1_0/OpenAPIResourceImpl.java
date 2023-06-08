@@ -74,6 +74,10 @@ public class OpenAPIResourceImpl {
 
 			add(DeliveryModeRsModelResourceImpl.class);
 
+			add(DraftRecipientRsModelResourceImpl.class);
+
+			add(DraftRsModelResourceImpl.class);
+
 			add(FileCategoryRsModelResourceImpl.class);
 
 			add(FileMovementRsModelResourceImpl.class);

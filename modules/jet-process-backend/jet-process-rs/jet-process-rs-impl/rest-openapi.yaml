@@ -347,7 +347,68 @@ components:
           format: date-time
           type : string
       type: object
-       
+    
+    DraftRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        draftNo:
+          type: string
+        nature:
+          type: string
+        receiptId:
+          format: int64
+          type: integer
+        replyTypeId:
+          format: int64
+          type: integer
+        categoryId:
+          format: int64
+          type: integer
+        subject:
+          type: string
+        content:
+          type: string
+        status:
+          type: string
+        approvedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type : string
+      type: object
+        
+    DraftRecipientRsModel:
+      properties:
+        id:
+          format: int64
+          type: integer
+        draftId:
+          format: int64
+          type: integer
+        organizationId:
+          format: int64
+          type: integer
+        name:
+          type: string 
+        designation:
+          type: string
+        mobile:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        stateId:
+          format: int64
+          type: integer
+        city:
+         type: string
+        pincode:
+          type: string
+      type: object
+      
 paths:
   /docfile:
     post:
@@ -1027,3 +1088,217 @@ paths:
                   $ref: '#/components/schemas/ReceiptMovementRsModel'
           description: ''
       tags: ["ReceiptMovementRsModel"]
+  
+  /draft:
+    post:
+      operationId: createDraft
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DraftRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+          description: ''
+      tags: ["DraftRsModel"]
+    get:
+      operationId: getDraftById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+          description: ''
+      tags: ["DraftRsModel"]
+    delete:
+      operationId: deleteDraftById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["DraftRsModel"]
+    put:
+      operationId: updateDraft
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DraftRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRsModel'
+          description: ''
+      tags: ["DraftRsModel"]
+      
+  /drafts:
+    get:
+      operationId: getDraftList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DraftRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DraftRsModel'
+          description: ''
+      tags: ["DraftRsModel"]
+  
+  /draftrecipient:
+    post:
+      operationId: createDraftRecipient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftRecipientRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DraftRecipientRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+          description: ''
+      tags: ["DraftRecipientRsModel"]
+    get:
+      operationId: getDraftRecipientById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+          description: ''
+      tags: ["DraftRecipientRsModel"]
+    delete:
+      operationId: deleteDraftRecipientById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["DraftRecipientRsModel"]
+    put:
+      operationId: updateDraftRecipient
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DraftRecipientRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DraftRecipientRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+          description: ''
+      tags: ["DraftRecipientRsModel"]
+  /draftrecipients:
+    get:
+      operationId: getDraftRecipientList
+      parameters:
+        - in: "query"
+          name: draftId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DraftRecipientRsModel'
+          description: ''
+      tags: ["DraftRecipientRsModel"]

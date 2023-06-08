@@ -62,10 +62,6 @@ public class DraftRecipientLocalServiceUtil {
 		return getService().addDraftRecipient(draftRecipient);
 	}
 
-	public static DraftRecipient createDraft(DraftRecipient draftRecipient) {
-		return getService().createDraft(draftRecipient);
-	}
-
 	/**
 	 * Creates a new draft recipient with the primary key. Does not add the draft recipient to the database.
 	 *
@@ -84,6 +80,12 @@ public class DraftRecipientLocalServiceUtil {
 		throws PortalException {
 
 		return getService().createPersistedModel(primaryKeyObj);
+	}
+
+	public static DraftRecipient createRecipient(
+		DraftRecipient draftRecipient) {
+
+		return getService().createRecipient(draftRecipient);
 	}
 
 	/**
@@ -372,6 +374,13 @@ public class DraftRecipientLocalServiceUtil {
 		DraftRecipient draftRecipient) {
 
 		return getService().updateDraftRecipient(draftRecipient);
+	}
+
+	public static DraftRecipient updateRecipient(
+			long id, DraftRecipient draftRecipient)
+		throws PortalException {
+
+		return getService().updateRecipient(id, draftRecipient);
 	}
 
 	public static DraftRecipientLocalService getService() {

@@ -86,7 +86,7 @@ public class DraftRecipientModelImpl
 		{"name", Types.VARCHAR}, {"designation", Types.VARCHAR},
 		{"email", Types.VARCHAR}, {"mobile", Types.VARCHAR},
 		{"address", Types.VARCHAR}, {"stateId", Types.BIGINT},
-		{"cityId", Types.VARCHAR}, {"pinCode", Types.VARCHAR}
+		{"city", Types.VARCHAR}, {"pinCode", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -109,12 +109,12 @@ public class DraftRecipientModelImpl
 		TABLE_COLUMNS_MAP.put("mobile", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("address", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("stateId", Types.BIGINT);
-		TABLE_COLUMNS_MAP.put("cityId", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("city", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("pinCode", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table JP_DraftRecipient (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,draftId LONG,organizationId LONG,name VARCHAR(75) null,designation VARCHAR(75) null,email VARCHAR(75) null,mobile VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,cityId VARCHAR(75) null,pinCode VARCHAR(75) null)";
+		"create table JP_DraftRecipient (uuid_ VARCHAR(75) null,id_ LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,draftId LONG,organizationId LONG,name VARCHAR(75) null,designation VARCHAR(75) null,email VARCHAR(75) null,mobile VARCHAR(75) null,address VARCHAR(75) null,stateId LONG,city VARCHAR(75) null,pinCode VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table JP_DraftRecipient";
 
@@ -206,7 +206,7 @@ public class DraftRecipientModelImpl
 		model.setMobile(soapModel.getMobile());
 		model.setAddress(soapModel.getAddress());
 		model.setStateId(soapModel.getStateId());
-		model.setCityId(soapModel.getCityId());
+		model.setCity(soapModel.getCity());
 		model.setPinCode(soapModel.getPinCode());
 
 		return model;
@@ -429,10 +429,10 @@ public class DraftRecipientModelImpl
 		attributeSetterBiConsumers.put(
 			"stateId",
 			(BiConsumer<DraftRecipient, Long>)DraftRecipient::setStateId);
-		attributeGetterFunctions.put("cityId", DraftRecipient::getCityId);
+		attributeGetterFunctions.put("city", DraftRecipient::getCity);
 		attributeSetterBiConsumers.put(
-			"cityId",
-			(BiConsumer<DraftRecipient, String>)DraftRecipient::setCityId);
+			"city",
+			(BiConsumer<DraftRecipient, String>)DraftRecipient::setCity);
 		attributeGetterFunctions.put("pinCode", DraftRecipient::getPinCode);
 		attributeSetterBiConsumers.put(
 			"pinCode",
@@ -780,22 +780,22 @@ public class DraftRecipientModelImpl
 
 	@JSON
 	@Override
-	public String getCityId() {
-		if (_cityId == null) {
+	public String getCity() {
+		if (_city == null) {
 			return "";
 		}
 		else {
-			return _cityId;
+			return _city;
 		}
 	}
 
 	@Override
-	public void setCityId(String cityId) {
+	public void setCity(String city) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_cityId = cityId;
+		_city = city;
 	}
 
 	@JSON
@@ -896,7 +896,7 @@ public class DraftRecipientModelImpl
 		draftRecipientImpl.setMobile(getMobile());
 		draftRecipientImpl.setAddress(getAddress());
 		draftRecipientImpl.setStateId(getStateId());
-		draftRecipientImpl.setCityId(getCityId());
+		draftRecipientImpl.setCity(getCity());
 		draftRecipientImpl.setPinCode(getPinCode());
 
 		draftRecipientImpl.resetOriginalValues();
@@ -938,8 +938,7 @@ public class DraftRecipientModelImpl
 			this.<String>getColumnOriginalValue("address"));
 		draftRecipientImpl.setStateId(
 			this.<Long>getColumnOriginalValue("stateId"));
-		draftRecipientImpl.setCityId(
-			this.<String>getColumnOriginalValue("cityId"));
+		draftRecipientImpl.setCity(this.<String>getColumnOriginalValue("city"));
 		draftRecipientImpl.setPinCode(
 			this.<String>getColumnOriginalValue("pinCode"));
 
@@ -1108,12 +1107,12 @@ public class DraftRecipientModelImpl
 
 		draftRecipientCacheModel.stateId = getStateId();
 
-		draftRecipientCacheModel.cityId = getCityId();
+		draftRecipientCacheModel.city = getCity();
 
-		String cityId = draftRecipientCacheModel.cityId;
+		String city = draftRecipientCacheModel.city;
 
-		if ((cityId != null) && (cityId.length() == 0)) {
-			draftRecipientCacheModel.cityId = null;
+		if ((city != null) && (city.length() == 0)) {
+			draftRecipientCacheModel.city = null;
 		}
 
 		draftRecipientCacheModel.pinCode = getPinCode();
@@ -1231,7 +1230,7 @@ public class DraftRecipientModelImpl
 	private String _mobile;
 	private String _address;
 	private long _stateId;
-	private String _cityId;
+	private String _city;
 	private String _pinCode;
 
 	public <T> T getColumnValue(String columnName) {
@@ -1279,7 +1278,7 @@ public class DraftRecipientModelImpl
 		_columnOriginalValues.put("mobile", _mobile);
 		_columnOriginalValues.put("address", _address);
 		_columnOriginalValues.put("stateId", _stateId);
-		_columnOriginalValues.put("cityId", _cityId);
+		_columnOriginalValues.put("city", _city);
 		_columnOriginalValues.put("pinCode", _pinCode);
 	}
 
@@ -1337,7 +1336,7 @@ public class DraftRecipientModelImpl
 
 		columnBitmasks.put("stateId", 32768L);
 
-		columnBitmasks.put("cityId", 65536L);
+		columnBitmasks.put("city", 65536L);
 
 		columnBitmasks.put("pinCode", 131072L);
 

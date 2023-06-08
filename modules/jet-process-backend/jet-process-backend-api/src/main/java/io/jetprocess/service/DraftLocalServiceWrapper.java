@@ -241,6 +241,11 @@ public class DraftLocalServiceWrapper
 	}
 
 	@Override
+	public String generateDraftNo(long id) {
+		return _draftLocalService.generateDraftNo(id);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -398,6 +403,14 @@ public class DraftLocalServiceWrapper
 		io.jetprocess.model.Draft draft) {
 
 		return _draftLocalService.updateDraft(draft);
+	}
+
+	@Override
+	public io.jetprocess.model.Draft updateDraft(
+			long id, io.jetprocess.model.Draft draft)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _draftLocalService.updateDraft(id, draft);
 	}
 
 	@Override

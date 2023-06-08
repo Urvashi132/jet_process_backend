@@ -8,6 +8,8 @@ import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
+import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
 import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
@@ -42,6 +44,10 @@ public class ServletDataImpl implements ServletData {
 
 	@Activate
 	public void activate(BundleContext bundleContext) {
+		Mutation.setDraftRecipientRsModelResourceComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects);
+		Mutation.setDraftRsModelResourceComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects);
 		Mutation.setFileMovementRsModelResourceComponentServiceObjects(
 			_fileMovementRsModelResourceComponentServiceObjects);
 		Mutation.setFileRsModelResourceComponentServiceObjects(
@@ -63,6 +69,10 @@ public class ServletDataImpl implements ServletData {
 			_countryRsModelResourceComponentServiceObjects);
 		Query.setDeliveryModeRsModelResourceComponentServiceObjects(
 			_deliveryModeRsModelResourceComponentServiceObjects);
+		Query.setDraftRecipientRsModelResourceComponentServiceObjects(
+			_draftRecipientRsModelResourceComponentServiceObjects);
+		Query.setDraftRsModelResourceComponentServiceObjects(
+			_draftRsModelResourceComponentServiceObjects);
 		Query.setFileCategoryRsModelResourceComponentServiceObjects(
 			_fileCategoryRsModelResourceComponentServiceObjects);
 		Query.setFileMovementRsModelResourceComponentServiceObjects(
@@ -107,6 +117,14 @@ public class ServletDataImpl implements ServletData {
 	public Query getQuery() {
 		return new Query();
 	}
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<DraftRecipientRsModelResource>
+		_draftRecipientRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<DraftRsModelResource>
+		_draftRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<FileMovementRsModelResource>

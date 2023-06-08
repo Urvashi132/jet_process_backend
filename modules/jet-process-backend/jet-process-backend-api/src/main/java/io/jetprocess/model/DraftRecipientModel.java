@@ -322,19 +322,19 @@ public interface DraftRecipientModel
 	public void setStateId(long stateId);
 
 	/**
-	 * Returns the city ID of this draft recipient.
+	 * Returns the city of this draft recipient.
 	 *
-	 * @return the city ID of this draft recipient
+	 * @return the city of this draft recipient
 	 */
 	@AutoEscape
-	public String getCityId();
+	public String getCity();
 
 	/**
-	 * Sets the city ID of this draft recipient.
+	 * Sets the city of this draft recipient.
 	 *
-	 * @param cityId the city ID of this draft recipient
+	 * @param city the city of this draft recipient
 	 */
-	public void setCityId(String cityId);
+	public void setCity(String city);
 
 	/**
 	 * Returns the pin code of this draft recipient.

@@ -61,6 +61,7 @@ create table JP_Draft (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
+	draftNo VARCHAR(75) null,
 	nature VARCHAR(75) null,
 	receiptId LONG,
 	replyTypeId LONG,
@@ -89,7 +90,7 @@ create table JP_DraftRecipient (
 	mobile VARCHAR(75) null,
 	address VARCHAR(75) null,
 	stateId LONG,
-	cityId VARCHAR(75) null,
+	city VARCHAR(75) null,
 	pinCode VARCHAR(75) null
 );
 
