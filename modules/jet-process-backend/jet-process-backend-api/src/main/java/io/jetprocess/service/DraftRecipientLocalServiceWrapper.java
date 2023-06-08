@@ -351,13 +351,6 @@ public class DraftRecipientLocalServiceWrapper
 	}
 
 	@Override
-	public java.util.List<io.jetprocess.model.DraftRecipient> getDrafts(
-		long draftId) {
-
-		return _draftRecipientLocalService.getDrafts(draftId);
-	}
-
-	@Override
 	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
 		getExportActionableDynamicQuery(
 			com.liferay.exportimport.kernel.lar.PortletDataContext
@@ -393,6 +386,13 @@ public class DraftRecipientLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _draftRecipientLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public java.util.List<io.jetprocess.model.DraftRecipient> getRecipientList(
+		long draftId) {
+
+		return _draftRecipientLocalService.getRecipientList(draftId);
 	}
 
 	/**

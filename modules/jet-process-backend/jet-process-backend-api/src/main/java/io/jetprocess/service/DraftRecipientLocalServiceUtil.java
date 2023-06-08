@@ -323,10 +323,6 @@ public class DraftRecipientLocalServiceUtil {
 		return getService().getDraftRecipientsCount();
 	}
 
-	public static List<DraftRecipient> getDrafts(long draftId) {
-		return getService().getDrafts(draftId);
-	}
-
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
 		getExportActionableDynamicQuery(
 			com.liferay.exportimport.kernel.lar.PortletDataContext
@@ -358,6 +354,10 @@ public class DraftRecipientLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static List<DraftRecipient> getRecipientList(long draftId) {
+		return getService().getRecipientList(draftId);
 	}
 
 	/**

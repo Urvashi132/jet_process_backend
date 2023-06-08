@@ -290,9 +290,6 @@ public interface DraftRecipientLocalService
 	public int getDraftRecipientsCount();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<DraftRecipient> getDrafts(long draftId);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
 		PortletDataContext portletDataContext);
 
@@ -313,6 +310,9 @@ public interface DraftRecipientLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<DraftRecipient> getRecipientList(long draftId);
 
 	/**
 	 * Updates the draft recipient in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

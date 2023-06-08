@@ -53,7 +53,7 @@ private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.
 		return draftRecipient;
 	}
 	
-	public List<DraftRecipient> getDrafts(long draftId){
+	public List<DraftRecipient> getRecipientList(long draftId){
 		List<DraftRecipient> findByDraftId = draftRecipientPersistence.findByDraftId(draftId);
 		LOGGER.info(findByDraftId);
 		return findByDraftId;
