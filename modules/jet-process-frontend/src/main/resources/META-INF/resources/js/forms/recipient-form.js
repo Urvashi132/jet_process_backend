@@ -1,43 +1,103 @@
 var recipientForm = {
 	"id" : "recipientForm",
 	"parentId" : "recipientFormContainer",
-	"title" : "Add Recipient",
+	"title" : "",
 	"subtitle" : "",
 	"namespace" : "",
 	"enctype" : "multipart/form-data",
-	"fields" : [ {
-		"type" : "hidden",
-		"name" : "id",
-		"id" : true,
-	}, {
-		"type" : "text",
-		"name" : "name",
-		"label" : "Name",
-		"required" : "required",
-		"col" : 6,
-	}, {
-		"type" : "text",
-		"name" : "designation",
-		"label" : "Designation",
-		"col" : 6,
-	}, {
-		"type" : "textarea",
-		"name" : "address",
-		"label" : "Address",
-		"col" : 12,
-	}, {
-		"type" : "select",
-		"name" : "organization",
-		"label" : "Organization",
-		"required" : true,
-		"provider" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Organization?p_auth=" + Liferay.authToken,
-			"value" : "id",
-			"label" : "name",
-			"dataNode" : "items"
-		},
-		"col" : 12
-	}],
+	"fields" : [
+			{
+				"type" : "hidden",
+				"name" : "id",
+				"id" : true,
+			},
+			{
+				"type" : "select",
+				"name" : "organization",
+				"label" : "Organaization",
+				"required" : true,
+				"provider" : {
+					"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Organization?p_auth=" + Liferay.authToken,
+					"value" : "id",
+					"label" : "name",
+					"dataNode" : "items"
+				}
+			},
+			{
+				"type" : "text",
+				"name" : "name",
+				"label" : "Name",
+				"required" : true,
+			},
+			{
+				"type" : "text",
+				"name" : "designation",
+				"label" : "Designation",
+				"required" : true,
+			},
+			{
+				"type" : "text",
+				"name" : "email",
+				"label" : "Email",
+			},
+			{
+				"type" : "text",
+				"name" : "mobile",
+				"label" : "Mobile",
+			},
+			{
+				"type" : "textarea",
+				"name" : "address",
+				"label" : "Address",
+			},
+			{
+				"type" : "select",
+				"name" : "countryId",
+				"label" : "Country",
+				"tranzient" : true,
+				"provider" : {
+					"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Country?p_auth=" + Liferay.authToken,
+					"value" : "id",
+					"label" : "name",
+					"dataNode" : "items",
+				},
+				"events" : {
+					"change" : [ {
+						"receiver" : "stateId",
+						"type" : "field",
+						"trigger" : "refill"
+					} ]
+				}
+			},
+			{
+				"type" : "select",
+				"name" : "stateId",
+				"label" : "State",
+				"required" : true,
+				"provider" : {
+					"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/State?p_auth=" + Liferay.authToken,
+					"value" : "id",
+					"label" : "name",
+					"dataNode" : "items",
+					"queryParams" : [ {
+						"name" : "countryId",
+						"value" : "#countryId"
+					}, {
+						"name" : "deleted",
+						"value" : "0"
+					} ]
+				}
+			}, {
+				"type" : "text",
+				"name" : "city",
+				"label" : "City/District",
+				"required" : true,
+			}, {
+				"type" : "text",
+				"name" : "pincode",
+				"label" : "Pin Code",
+				"required" : true,
+			} ],
 	"actions" : [ {
 		"name" : "save",
 		"type" : "submit",
@@ -67,7 +127,8 @@ var recipientForm = {
 	} ],
 	"providers" : {
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/hgghhg?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/hgghhg?p_auth="
+					+ Liferay.authToken,
 			"method" : "post",
 		}
 	}

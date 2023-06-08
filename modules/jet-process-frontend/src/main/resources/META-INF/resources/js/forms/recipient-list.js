@@ -5,7 +5,7 @@ var recipientList = {
 	"subtitle" : "",
 	"namespace" : "",
 	"enctype" : "multipart/form-data",
-	"fields" : [{
+	"fields" : [ {
 		"type" : "hidden",
 		"name" : "id",
 		"id" : true,
@@ -29,36 +29,36 @@ var recipientList = {
 	"actions" : [ {
 		"name" : "add",
 		"type" : "button",
-		"label" : "Add Receipients",
+		"label" : "Add Recipients",
 		"applyTo" : "list",
 		"cssClass" : "btn-primary",
 		"handler" : {
-			"dialog" : ""
-		}},
-		 {
-			"name" : "edit",
-			"type" : "button",
-			"label" : "Edit",
-			"applyTo" : "row",
-			"cssClass" : "btn-primary",
-			"handler" : {
-				"href" : ""
-			}
-		}, {
-			"name" : "delete",
-			"type" : "button",
-			"label" : "Delete",
-			"applyTo" : "row",
-			"cssClass" : "btn-danger",
+			"script" : ""
 		}
-	],
+	}, {
+		"name" : "edit",
+		"type" : "button",
+		"label" : "Edit",
+		"applyTo" : "row",
+		"cssClass" : "btn-primary",
+		"handler" : {
+			"href" : ""
+		}
+	}, {
+		"name" : "delete",
+		"type" : "button",
+		"label" : "Delete",
+		"applyTo" : "row",
+		"cssClass" : "btn-danger",
+	} ],
 	"providers" : {
 		"collection" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="	+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
 			"dataNode" : "items"
 		},
 		"delete" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth="
+					+ Liferay.authToken,
 			"method" : "delete"
 		}
 	}
