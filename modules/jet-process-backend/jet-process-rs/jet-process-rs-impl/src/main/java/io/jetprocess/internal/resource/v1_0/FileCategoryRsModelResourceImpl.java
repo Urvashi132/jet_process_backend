@@ -26,27 +26,17 @@ public class FileCategoryRsModelResourceImpl extends BaseFileCategoryRsModelReso
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<FileCategoryRsModel>, UnsafeConsumer<FileCategoryRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public Page<FileCategoryRsModel> getFileCategoryList() throws Exception {
-
 		List<FileCategoryRsModel> fileCategoryRsModelList = new ArrayList<>();
 		List<FileCategory> fileCategories = fileCategoryLocalService.getFileCategoryList();
-
 		fileCategories.stream().forEach(fileCategory -> {
-			fileCategoryRsModelList.add(GetFileCategoryModel(fileCategory));
+			Object draftObj = ObjectMapperUtil.objectMapper(fileCategory, FileCategoryRsModel.class);
+			fileCategoryRsModelList.add((FileCategoryRsModel)draftObj);
 		});
 		return Page.of(fileCategoryRsModelList);
-	}
-
-	private FileCategoryRsModel GetFileCategoryModel(FileCategory fileCategory) {
-		FileCategoryRsModel fileCategoryRsModel = new FileCategoryRsModel();
-		fileCategoryRsModel.setId(fileCategory.getId());
-		fileCategoryRsModel.setName(fileCategory.getName());
-		return fileCategoryRsModel;
 	}
 
 	@Reference

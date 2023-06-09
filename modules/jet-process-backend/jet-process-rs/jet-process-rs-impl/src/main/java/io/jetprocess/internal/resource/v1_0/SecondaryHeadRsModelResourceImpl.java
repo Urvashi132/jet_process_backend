@@ -22,37 +22,24 @@ import io.jetprocess.service.SecondaryHeadLocalService;
 /**
  * @author Admin
  */
-@Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/secondary-head-rs-model.properties",
-	scope = ServiceScope.PROTOTYPE, service = SecondaryHeadRsModelResource.class
-)
-public class SecondaryHeadRsModelResourceImpl
-	extends BaseSecondaryHeadRsModelResourceImpl {
+@Component(properties = "OSGI-INF/liferay/rest/v1_0/secondary-head-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = SecondaryHeadRsModelResource.class)
+public class SecondaryHeadRsModelResourceImpl extends BaseSecondaryHeadRsModelResourceImpl {
 
-	@Override
-	public void setContextBatchUnsafeConsumer(
-			UnsafeBiConsumer<Collection<SecondaryHeadRsModel>, UnsafeConsumer<SecondaryHeadRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	@Override
 	public Page<SecondaryHeadRsModel> getSeondaryHeadByPrimaryHeadId(@NotNull Long primaryHeadId) throws Exception {
-
 		List<SecondaryHeadRsModel> secondaryHeadRsModelList = new ArrayList<>();
 		List<SecondaryHead> secondaryHeadList = secondaryHeadLocalService
 				.getSecondaryHeadByPrimaryHeadId(primaryHeadId);
 		secondaryHeadList.stream().forEach(secondary -> {
-			secondaryHeadRsModelList.add(getSecondaryHeadModel(secondary));
+			Object object = ObjectMapperUtil.objectMapper(secondary, SecondaryHeadRsModel.class);
+			secondaryHeadRsModelList.add((SecondaryHeadRsModel)object);
 		});
 		return Page.of(secondaryHeadRsModelList);
 	}
 
-	private SecondaryHeadRsModel getSecondaryHeadModel(SecondaryHead secondaryHead) {
-		SecondaryHeadRsModel createdSecondaryHead = new SecondaryHeadRsModel();
-		createdSecondaryHead.setId(secondaryHead.getId());
-		createdSecondaryHead.setName(secondaryHead.getName());
-		return createdSecondaryHead;
+	@Override
+	public void setContextBatchUnsafeConsumer(
+			UnsafeBiConsumer<Collection<SecondaryHeadRsModel>, UnsafeConsumer<SecondaryHeadRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 	}
 
 	@Reference

@@ -31,23 +31,17 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<FileRsModel>, UnsafeConsumer<FileRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public FileRsModel createDocFile(FileRsModel fileRsModel) throws Exception {
 		LOGGER.info(fileRsModel);
-		/*
-		 * Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel,
-		 * FileRsModel.class); docFileLocalService.addDocFile(docFile);
-		 */
-		DocFile createDocFile = docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(), fileRsModel.getType(),
-				fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(), fileRsModel.getFileNo(),
-				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference(),
-				fileRsModel.getYear(), fileRsModel.getUserPostId());
-		LOGGER.info(createDocFile);
-		return fileRsModel;
+		DocFile docFile = docFileLocalService.createDocFile(fileRsModel.getGroupId(), fileRsModel.getNature(),
+				fileRsModel.getType(), fileRsModel.getHeadId(), fileRsModel.getFileCodeId(), fileRsModel.getSubject(),
+				fileRsModel.getFileNo(), fileRsModel.getCategoryId(), fileRsModel.getRemarks(),
+				fileRsModel.getReference(), fileRsModel.getYear(), fileRsModel.getUserPostId());
+		Object object = ObjectMapperUtil.objectMapper(docFile, FileRsModel.class);
+		return (FileRsModel) object;
 	}
 
 	@Override
@@ -55,7 +49,6 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getId(), fileRsModel.getSubject(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference());
 		Object object = ObjectMapperUtil.objectMapper(docFile, FileRsModel.class);
-//		docFileLocalService.editDocFile(docFileId, (DocFile)object);
 		return (FileRsModel) object;
 	}
 

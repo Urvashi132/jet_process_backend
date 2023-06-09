@@ -24,28 +24,20 @@ import io.jetprocess.service.SubjectCategoryLocalService;
 public class SubjectCategoryRsModelResourceImpl extends BaseSubjectCategoryRsModelResourceImpl {
 
 	@Override
-	public void setContextBatchUnsafeConsumer(
-			UnsafeBiConsumer<Collection<SubjectCategoryRsModel>, UnsafeConsumer<SubjectCategoryRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public Page<SubjectCategoryRsModel> getSubjectCategoryList() throws Exception {
 		List<SubjectCategoryRsModel> subjectCategoryRsModelList = new ArrayList<>();
 		List<SubjectCategory> subjectCategoryList = subjectCategoryLocalService.getSubjectCategoryList();
 		System.out.println(subjectCategoryList);
 		subjectCategoryList.stream().forEach(subjectCategory -> {
-			subjectCategoryRsModelList.add(GetSubjectCategoryRsModel(subjectCategory));
+			Object object = ObjectMapperUtil.objectMapper(subjectCategory, SubjectCategoryRsModel.class);
+			subjectCategoryRsModelList.add((SubjectCategoryRsModel)object);
 		});
 		return Page.of(subjectCategoryRsModelList);
 	}
 
-	private SubjectCategoryRsModel GetSubjectCategoryRsModel(SubjectCategory subjectCategory) {
-		SubjectCategoryRsModel subjectCategoryRsModel = new SubjectCategoryRsModel();
-		subjectCategoryRsModel.setId(subjectCategory.getId());
-		subjectCategoryRsModel.setName(subjectCategory.getName());
-		return subjectCategoryRsModel;
+	@Override
+	public void setContextBatchUnsafeConsumer(
+			UnsafeBiConsumer<Collection<SubjectCategoryRsModel>, UnsafeConsumer<SubjectCategoryRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 	}
 
 	@Reference

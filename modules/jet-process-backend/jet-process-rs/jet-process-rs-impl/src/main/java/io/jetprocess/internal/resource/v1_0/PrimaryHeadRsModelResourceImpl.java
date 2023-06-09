@@ -20,38 +20,23 @@ import io.jetprocess.service.PrimaryHeadLocalService;
 /**
  * @author Admin
  */
-@Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/primary-head-rs-model.properties",
-	scope = ServiceScope.PROTOTYPE, service = PrimaryHeadRsModelResource.class
-)
-public class PrimaryHeadRsModelResourceImpl
-	extends BasePrimaryHeadRsModelResourceImpl {
+@Component(properties = "OSGI-INF/liferay/rest/v1_0/primary-head-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = PrimaryHeadRsModelResource.class)
+public class PrimaryHeadRsModelResourceImpl extends BasePrimaryHeadRsModelResourceImpl {
 
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<PrimaryHeadRsModel>, UnsafeConsumer<PrimaryHeadRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-		
 	}
-	
+
 	@Override
 	public Page<PrimaryHeadRsModel> getPrimaryHeadByBasicHeadId(Long basicHeadId) throws Exception {
-
 		List<PrimaryHeadRsModel> primaryHeadRsModelList = new ArrayList<>();
 		List<PrimaryHead> primaryHeadList = primaryHeadLocalService.getPrimaryHeadByBasicHead(basicHeadId);
 		primaryHeadList.stream().forEach(primaryHead -> {
-			primaryHeadRsModelList.add(getPrimaryHeadModel(primaryHead));
+			Object object = ObjectMapperUtil.objectMapper(primaryHead, PrimaryHeadRsModel.class);
+			primaryHeadRsModelList.add((PrimaryHeadRsModel) object);
 		});
 		return Page.of(primaryHeadRsModelList);
-
-	}
-
-	private PrimaryHeadRsModel getPrimaryHeadModel(PrimaryHead primaryHead) {
-		PrimaryHeadRsModel createdPrimaryHead = new PrimaryHeadRsModel();
-		createdPrimaryHead.setId(primaryHead.getId());
-		createdPrimaryHead.setName(primaryHead.getName());
-		
-		return createdPrimaryHead;
 	}
 
 	@Reference

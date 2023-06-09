@@ -37,7 +37,7 @@ public class DraftRecipientRsModelResourceImpl extends BaseDraftRecipientRsModel
 	public DraftRecipientRsModel getDraftRecipientById(@NotNull Long id) throws Exception {
 		DraftRecipient draftRecipient = draftRecipientLocalService.getDraftRecipient(id);
 		Object recipient = ObjectMapperUtil.objectMapper(draftRecipient, DraftRecipientRsModel.class);
-		return (DraftRecipientRsModel) recipient;
+		return (DraftRecipientRsModel)recipient;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class DraftRecipientRsModelResourceImpl extends BaseDraftRecipientRsModel
 				recipientRsModel.getEmail(), recipientRsModel.getMobile(), recipientRsModel.getAddress(),
 				recipientRsModel.getStateId(), recipientRsModel.getCity(), recipientRsModel.getPincode());
 		Object recipient = ObjectMapperUtil.objectMapper(draftRecipient, DraftRecipientRsModel.class);
-		return (DraftRecipientRsModel) recipient;
+		return (DraftRecipientRsModel)recipient;
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class DraftRecipientRsModelResourceImpl extends BaseDraftRecipientRsModel
 				recipientRsModel.getEmail(), recipientRsModel.getMobile(), recipientRsModel.getAddress(),
 				recipientRsModel.getStateId(), recipientRsModel.getCity(), recipientRsModel.getPincode());
 		Object recipient = ObjectMapperUtil.objectMapper(draftRecipient, DraftRecipientRsModel.class);
-		return (DraftRecipientRsModel) recipient;
+		return (DraftRecipientRsModel)recipient;
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class DraftRecipientRsModelResourceImpl extends BaseDraftRecipientRsModel
 		List<DraftRecipient> draftRecipients = draftRecipientLocalService.getRecipientList(draftId);
 		draftRecipients.stream().forEach(draftRecipient -> {
 			Object recipient = ObjectMapperUtil.objectMapper(draftRecipient, DraftRecipientRsModel.class);
-			recipientRsModels.add((DraftRecipientRsModel) recipient);
+			recipientRsModels.add((DraftRecipientRsModel)recipient);
 		});
 		return Page.of(recipientRsModels);
 	}

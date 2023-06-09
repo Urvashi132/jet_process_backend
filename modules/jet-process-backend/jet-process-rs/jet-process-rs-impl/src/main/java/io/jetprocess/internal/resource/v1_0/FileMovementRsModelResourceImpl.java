@@ -28,20 +28,13 @@ import io.jetprocess.service.FileMovementLocalService;
 public class FileMovementRsModelResourceImpl extends BaseFileMovementRsModelResourceImpl {
 
 	@Override
-	public void setContextBatchUnsafeConsumer(
-			UnsafeBiConsumer<Collection<FileMovementRsModel>, UnsafeConsumer<FileMovementRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	@Override
 	public Page<FileMovementRsModel> getFileMovementList(@NotNull Long fileId) throws Exception {
 		LOGGER.info("rest api");
 		List<FileMovementRsModel> list = new ArrayList<>();
 		List<FileMovement> fileMovements = movementLocalService.getListByFileId(fileId);
 		fileMovements.stream().forEach(movement -> {
-			list.add(getFileMovementRsModel(movement));
+			Object object = ObjectMapperUtil.objectMapper(movement, FileMovementRsModel.class);
+			list.add((FileMovementRsModel)object);
 		});
 		return Page.of(list);
 	}
@@ -49,22 +42,16 @@ public class FileMovementRsModelResourceImpl extends BaseFileMovementRsModelReso
 	@Override
 	public FileMovementRsModel createFileMovement(FileMovementRsModel fileMovementRsModel) throws Exception {
 		LOGGER.info("rest api");
-		movementLocalService.saveFileMovement(fileMovementRsModel.getReceiverId(), fileMovementRsModel.getSenderId(),
-				fileMovementRsModel.getFileId(), fileMovementRsModel.getPriority(), fileMovementRsModel.getDueDate(), fileMovementRsModel.getRemarks());
-		return fileMovementRsModel;
+		FileMovement fileMovement = movementLocalService.saveFileMovement(fileMovementRsModel.getReceiverId(),
+				fileMovementRsModel.getSenderId(), fileMovementRsModel.getFileId(), fileMovementRsModel.getPriority(),
+				fileMovementRsModel.getDueDate(), fileMovementRsModel.getRemarks());
+		Object object = ObjectMapperUtil.objectMapper(fileMovement, FileMovementRsModel.class);
+		return (FileMovementRsModel)object;
 	}
-	
-	private FileMovementRsModel getFileMovementRsModel(FileMovement fileMovement) {
-		FileMovementRsModel movementRsModel = new FileMovementRsModel();
-		movementRsModel.setId(fileMovement.getId());
-		movementRsModel.setReceiverId(fileMovement.getReceiverId());
-		movementRsModel.setSenderId(fileMovement.getSenderId());
-		movementRsModel.setFileId(fileMovement.getFileId());
-		movementRsModel.setPriority(fileMovement.getPriority());
-		movementRsModel.setDueDate(fileMovement.getDueDate());
-		movementRsModel.setRemarks(fileMovement.getRemarks());
-		movementRsModel.setCreateDate(fileMovement.getCreateDate());
-		return movementRsModel;
+
+	@Override
+	public void setContextBatchUnsafeConsumer(
+			UnsafeBiConsumer<Collection<FileMovementRsModel>, UnsafeConsumer<FileMovementRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 	}
 
 	private final Log LOGGER = LogFactoryUtil.getLog(FileMovementRsModel.class);

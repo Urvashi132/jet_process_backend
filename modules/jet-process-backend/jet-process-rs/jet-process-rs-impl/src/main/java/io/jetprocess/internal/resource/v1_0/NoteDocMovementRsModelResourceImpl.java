@@ -30,8 +30,6 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<NoteDocMovementRsModel>, UnsafeConsumer<NoteDocMovementRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -39,7 +37,8 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 		List<NoteDocMovementRsModel> movementRsModelList = new ArrayList<>();
 		List<NoteDocumentMovement> movementList = movementLocalService.getListByNoteDocumentId(noteDocumentId);
 		movementList.stream().forEach(movement -> {
-			movementRsModelList.add(getNoteDocMovementRsModel(movement));
+			Object draftObj = ObjectMapperUtil.objectMapper(movement, NoteDocMovementRsModel.class);
+			movementRsModelList.add((NoteDocMovementRsModel)draftObj);
 		});
 		return Page.of(movementRsModelList);
 	}
@@ -48,21 +47,11 @@ public class NoteDocMovementRsModelResourceImpl extends BaseNoteDocMovementRsMod
 	public NoteDocMovementRsModel createNotedocMovement(NoteDocMovementRsModel noteDocMovementRsModel)
 			throws Exception {
 		LOGGER.info("create method rest api called");
-		movementLocalService.saveNoteDocumentMovement(noteDocMovementRsModel.getReceiverId(),
+		NoteDocumentMovement movement = movementLocalService.saveNoteDocumentMovement(noteDocMovementRsModel.getReceiverId(),
 				noteDocMovementRsModel.getSenderId(), noteDocMovementRsModel.getNoteDocumentId(),
 				noteDocMovementRsModel.getRemarks());
-		return noteDocMovementRsModel;
-	}
-
-	private NoteDocMovementRsModel getNoteDocMovementRsModel(NoteDocumentMovement noteDocumentMovement) {
-		NoteDocMovementRsModel movementRsModel = new NoteDocMovementRsModel();
-		movementRsModel.setId(noteDocumentMovement.getId());
-		movementRsModel.setReceiverId(noteDocumentMovement.getReceiverId());
-		movementRsModel.setSenderId(noteDocumentMovement.getSenderId());
-		movementRsModel.setNoteDocumentId(noteDocumentMovement.getNoteDocumentId());
-		movementRsModel.setRemarks(noteDocumentMovement.getRemarks());
-		movementRsModel.setCreateDate(noteDocumentMovement.getCreateDate());
-		return movementRsModel;
+		Object draftObj = ObjectMapperUtil.objectMapper(movement, NoteDocMovementRsModel.class);
+		return (NoteDocMovementRsModel)draftObj;
 	}
 
 	@Reference

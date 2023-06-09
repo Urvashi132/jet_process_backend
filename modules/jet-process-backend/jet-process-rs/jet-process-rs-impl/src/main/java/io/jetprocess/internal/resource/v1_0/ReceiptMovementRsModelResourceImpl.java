@@ -22,27 +22,16 @@ import io.jetprocess.service.ReceiptMovementLocalService;
 /**
  * @author Admin
  */
-@Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/receipt-movement-rs-model.properties",
-	scope = ServiceScope.PROTOTYPE,
-	service = ReceiptMovementRsModelResource.class
-)
-public class ReceiptMovementRsModelResourceImpl
-	extends BaseReceiptMovementRsModelResourceImpl {
-
-	@Override
-	public void setContextBatchUnsafeConsumer(
-			UnsafeBiConsumer<Collection<ReceiptMovementRsModel>, UnsafeConsumer<ReceiptMovementRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-		
-	}
+@Component(properties = "OSGI-INF/liferay/rest/v1_0/receipt-movement-rs-model.properties", scope = ServiceScope.PROTOTYPE, service = ReceiptMovementRsModelResource.class)
+public class ReceiptMovementRsModelResourceImpl extends BaseReceiptMovementRsModelResourceImpl {
 
 	@Override
 	public Page<ReceiptMovementRsModel> getReceiptMovementList(@NotNull Long receiptId) throws Exception {
 		List<ReceiptMovementRsModel> list = new ArrayList<>();
 		List<ReceiptMovement> receiptMovements = movementLocalService.getListByReceiptId(receiptId);
 		receiptMovements.stream().forEach(movement -> {
-			list.add(getReceiptMovementRsModel(movement));
+			Object object = ObjectMapperUtil.objectMapper(movement, ReceiptMovementRsModel.class);
+			list.add((ReceiptMovementRsModel)object);
 		});
 		return Page.of(list);
 	}
@@ -50,24 +39,19 @@ public class ReceiptMovementRsModelResourceImpl
 	@Override
 	public ReceiptMovementRsModel createReceiptMovement(ReceiptMovementRsModel receiptMovementRsModel)
 			throws Exception {
-		movementLocalService.saveReceiptMovement(receiptMovementRsModel.getReceiverId(), receiptMovementRsModel.getSenderId(),
-				receiptMovementRsModel.getReceiptId(), receiptMovementRsModel.getPriority(), receiptMovementRsModel.getDueDate(),
+		ReceiptMovement movement = movementLocalService.saveReceiptMovement(receiptMovementRsModel.getReceiverId(),
+				receiptMovementRsModel.getSenderId(), receiptMovementRsModel.getReceiptId(),
+				receiptMovementRsModel.getPriority(), receiptMovementRsModel.getDueDate(),
 				receiptMovementRsModel.getRemarks());
-		return receiptMovementRsModel;
+		Object object = ObjectMapperUtil.objectMapper(movement, ReceiptMovementRsModel.class);
+		return (ReceiptMovementRsModel)object;
 	}
-	
-	private ReceiptMovementRsModel getReceiptMovementRsModel(ReceiptMovement receiptMovement) {
-		ReceiptMovementRsModel movementRsModel = new ReceiptMovementRsModel();
-		movementRsModel.setId(receiptMovement.getId());
-		movementRsModel.setReceiverId(receiptMovement.getReceiverId());
-		movementRsModel.setSenderId(receiptMovement.getSenderId());
-		movementRsModel.setReceiptId(receiptMovement.getReceiptId());
-		movementRsModel.setPriority(receiptMovement.getPriority());
-		movementRsModel.setDueDate(receiptMovement.getDueDate());
-		movementRsModel.setRemarks(receiptMovement.getRemarks());
-		movementRsModel.setCreateDate(receiptMovement.getCreateDate());
-		return movementRsModel;
+
+	@Override
+	public void setContextBatchUnsafeConsumer(
+			UnsafeBiConsumer<Collection<ReceiptMovementRsModel>, UnsafeConsumer<ReceiptMovementRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
 	}
+
 	@Reference
 	private ReceiptMovementLocalService movementLocalService;
 }

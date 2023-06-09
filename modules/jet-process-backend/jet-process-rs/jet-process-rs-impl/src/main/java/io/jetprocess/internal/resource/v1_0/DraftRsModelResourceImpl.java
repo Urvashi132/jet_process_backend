@@ -41,7 +41,7 @@ public class DraftRsModelResourceImpl extends BaseDraftRsModelResourceImpl {
 	public DraftRsModel getDraftById(@NotNull Long id) throws Exception {
 		Draft draft = draftLocalService.getDraft(id);
 		Object draftObj = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
-		return (DraftRsModel) draftObj;
+		return (DraftRsModel)draftObj;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class DraftRsModelResourceImpl extends BaseDraftRsModelResourceImpl {
 				draftRsModel.getReplyTypeId(), draftRsModel.getCategoryId(), draftRsModel.getSubject(),
 				draftRsModel.getContent());
 		Object draftObj = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
-		return (DraftRsModel) draftObj;
+		return (DraftRsModel)draftObj;
 	}
 
 	@Override
@@ -58,8 +58,8 @@ public class DraftRsModelResourceImpl extends BaseDraftRsModelResourceImpl {
 		Draft draft = draftLocalService.updateDraft(draftRsModel.getId(), draftRsModel.getNature(),
 				draftRsModel.getReceiptId(), draftRsModel.getReplyTypeId(), draftRsModel.getCategoryId(),
 				draftRsModel.getSubject(), draftRsModel.getContent());
-		Object draftObj = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
-		return (DraftRsModel) draftObj;
+		Object object = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
+		return (DraftRsModel)object;
 	}
 
 	@Override
@@ -67,8 +67,8 @@ public class DraftRsModelResourceImpl extends BaseDraftRsModelResourceImpl {
 		List<DraftRsModel> draftRsModels = new ArrayList<>();
 		List<Draft> drafts = draftLocalService.getDrafts();
 		drafts.stream().forEach(draft -> {
-			Object draftObj = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
-			draftRsModels.add((DraftRsModel) draftObj);
+			Object object = ObjectMapperUtil.objectMapper(draft, DraftRsModel.class);
+			draftRsModels.add((DraftRsModel)object);
 		});
 		return Page.of(draftRsModels);
 	}

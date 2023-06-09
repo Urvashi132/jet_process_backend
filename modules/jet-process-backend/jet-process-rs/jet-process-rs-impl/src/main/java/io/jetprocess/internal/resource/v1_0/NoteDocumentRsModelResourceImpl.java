@@ -32,8 +32,6 @@ public class NoteDocumentRsModelResourceImpl extends BaseNoteDocumentRsModelReso
 	@Override
 	public void setContextBatchUnsafeConsumer(
 			UnsafeBiConsumer<Collection<NoteDocumentRsModel>, UnsafeConsumer<NoteDocumentRsModel, Exception>, Exception> contextBatchUnsafeConsumer) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
