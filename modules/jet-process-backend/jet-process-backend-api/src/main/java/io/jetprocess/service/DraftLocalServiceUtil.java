@@ -60,10 +60,6 @@ public class DraftLocalServiceUtil {
 		return getService().addDraft(draft);
 	}
 
-	public static Draft createDraft(Draft draft) {
-		return getService().createDraft(draft);
-	}
-
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -72,6 +68,14 @@ public class DraftLocalServiceUtil {
 	 */
 	public static Draft createDraft(long id) {
 		return getService().createDraft(id);
+	}
+
+	public static Draft createDraft(
+		String nature, long receiptId, long replyTypeId, long categoryId,
+		String subject, String content) {
+
+		return getService().createDraft(
+			nature, receiptId, replyTypeId, categoryId, subject, content);
 	}
 
 	/**
@@ -364,10 +368,13 @@ public class DraftLocalServiceUtil {
 		return getService().updateDraft(draft);
 	}
 
-	public static Draft updateDraft(long id, Draft draft)
+	public static Draft updateDraft(
+			long id, String nature, long receiptId, long replyTypeId,
+			long categoryId, String subject, String content)
 		throws PortalException {
 
-		return getService().updateDraft(id, draft);
+		return getService().updateDraft(
+			id, nature, receiptId, replyTypeId, categoryId, subject, content);
 	}
 
 	public static DraftLocalService getService() {

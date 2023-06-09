@@ -45,13 +45,6 @@ public class DraftLocalServiceWrapper
 		return _draftLocalService.addDraft(draft);
 	}
 
-	@Override
-	public io.jetprocess.model.Draft createDraft(
-		io.jetprocess.model.Draft draft) {
-
-		return _draftLocalService.createDraft(draft);
-	}
-
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -61,6 +54,15 @@ public class DraftLocalServiceWrapper
 	@Override
 	public io.jetprocess.model.Draft createDraft(long id) {
 		return _draftLocalService.createDraft(id);
+	}
+
+	@Override
+	public io.jetprocess.model.Draft createDraft(
+		String nature, long receiptId, long replyTypeId, long categoryId,
+		String subject, String content) {
+
+		return _draftLocalService.createDraft(
+			nature, receiptId, replyTypeId, categoryId, subject, content);
 	}
 
 	/**
@@ -407,10 +409,12 @@ public class DraftLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.Draft updateDraft(
-			long id, io.jetprocess.model.Draft draft)
+			long id, String nature, long receiptId, long replyTypeId,
+			long categoryId, String subject, String content)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _draftLocalService.updateDraft(id, draft);
+		return _draftLocalService.updateDraft(
+			id, nature, receiptId, replyTypeId, categoryId, subject, content);
 	}
 
 	@Override

@@ -125,8 +125,7 @@ var draftForm = {
 	} ],
 	"providers" : {
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filemovement?p_auth="
-					+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filemovement?p_auth=" + Liferay.authToken,
 			"method" : "post",
 		}
 	}

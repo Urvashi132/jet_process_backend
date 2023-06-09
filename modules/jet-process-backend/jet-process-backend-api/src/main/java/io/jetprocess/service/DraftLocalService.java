@@ -78,8 +78,6 @@ public interface DraftLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Draft addDraft(Draft draft);
 
-	public Draft createDraft(Draft draft);
-
 	/**
 	 * Creates a new draft with the primary key. Does not add the draft to the database.
 	 *
@@ -88,6 +86,10 @@ public interface DraftLocalService
 	 */
 	@Transactional(enabled = false)
 	public Draft createDraft(long id);
+
+	public Draft createDraft(
+		String nature, long receiptId, long replyTypeId, long categoryId,
+		String subject, String content);
 
 	/**
 	 * @throws PortalException
@@ -326,6 +328,9 @@ public interface DraftLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Draft updateDraft(Draft draft);
 
-	public Draft updateDraft(long id, Draft draft) throws PortalException;
+	public Draft updateDraft(
+			long id, String nature, long receiptId, long replyTypeId,
+			long categoryId, String subject, String content)
+		throws PortalException;
 
 }

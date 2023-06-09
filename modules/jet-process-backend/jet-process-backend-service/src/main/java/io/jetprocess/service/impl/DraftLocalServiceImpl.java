@@ -30,39 +30,53 @@ import io.jetprocess.service.base.DraftLocalServiceBaseImpl;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=io.jetprocess.model.Draft",
-	service = AopService.class
-)
+@Component(property = "model.class.name=io.jetprocess.model.Draft", service = AopService.class)
 public class DraftLocalServiceImpl extends DraftLocalServiceBaseImpl {
-	
+
 	private final Log LOGGER = LogFactoryUtil.getLog(DraftLocalServiceImpl.class);
-	
-	public Draft createDraft(Draft draft) {
+
+	public Draft createDraft(String nature, long receiptId, long replyTypeId, long categoryId, String subject,
+			String content) {
 		long id = counterLocalService.increment();
-		draft = createDraft(id);
+		Draft draft = createDraft(id);
 		String draftNo = generateDraftNo(id);
 		draft.setDraftNo(draftNo);
+		draft.setNature(nature);
+		draft.setReceiptId(receiptId);
+		draft.setReplyTypeId(replyTypeId);
+		draft.setCategoryId(categoryId);
+		draft.setSubject(subject);
+		draft.setContent(content);
 		draft = addDraft(draft);
 		LOGGER.info(draft);
 		return draft;
 	}
-	
-	public Draft updateDraft(long id, Draft draft) throws PortalException {
-		draft = getDraft(id);
+
+	public Draft updateDraft(long id, String nature, long receiptId, long replyTypeId, long categoryId, String subject,
+			String content) throws PortalException {
+		Draft draft = getDraft(id);
+		draft.setNature(nature);
+		draft.setReceiptId(receiptId);
+		draft.setReplyTypeId(replyTypeId);
+		draft.setCategoryId(categoryId);
+		draft.setSubject(subject);
+		draft.setContent(content);
 		draft = updateDraft(draft);
 		LOGGER.info(draft);
 		return draft;
 	}
-	
-	public List<Draft> getDrafts(){
-		return getDrafts(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+
+	public List<Draft> getDrafts() {
+		LOGGER.info("list");
+		List<Draft> drafts = getDrafts(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		LOGGER.info(drafts);
+		return drafts;
 	}
-	
+
 	public String generateDraftNo(long id) {
 		String number = String.valueOf(id);
 		String dratNo = "DFA-" + number;
 		return dratNo;
 	}
-	
+
 }
