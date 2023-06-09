@@ -93,7 +93,10 @@ public interface DraftRecipientLocalService
 	public PersistedModel createPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
 
-	public DraftRecipient createRecipient(DraftRecipient draftRecipient);
+	public DraftRecipient createRecipient(
+		long draftId, long organizationId, String name, String designation,
+		String email, String mobile, String address, long stateId, String city,
+		String pinCode);
 
 	/**
 	 * Deletes the draft recipient from the database. Also notifies the appropriate model listeners.
@@ -328,7 +331,9 @@ public interface DraftRecipientLocalService
 	public DraftRecipient updateDraftRecipient(DraftRecipient draftRecipient);
 
 	public DraftRecipient updateRecipient(
-			long id, DraftRecipient draftRecipient)
+			long id, long organizationId, String name, String designation,
+			String email, String mobile, String address, long stateId,
+			String city, String pinCode)
 		throws PortalException;
 
 }

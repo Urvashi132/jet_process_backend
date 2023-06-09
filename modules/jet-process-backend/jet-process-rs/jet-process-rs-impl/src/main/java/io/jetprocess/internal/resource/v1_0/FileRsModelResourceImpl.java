@@ -54,7 +54,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	public FileRsModel updateDocFile(@NotNull Long docFileId, FileRsModel fileRsModel) throws Exception {
 		DocFile docFile = docFileLocalService.updateDocFile(fileRsModel.getId(), fileRsModel.getSubject(),
 				fileRsModel.getCategoryId(), fileRsModel.getRemarks(), fileRsModel.getReference());
-		Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+		Object object = ObjectMapperUtil.objectMapper(docFile, FileRsModel.class);
 //		docFileLocalService.editDocFile(docFileId, (DocFile)object);
 		return (FileRsModel) object;
 	}
@@ -64,8 +64,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 		List<FileRsModel> fileRsModelList = new ArrayList<>();
 		List<DocFile> docFileList = docFileLocalService.getDocFiles();
 		docFileList.stream().forEach(docFile -> {
-			FileRsModel fileRsModel = new FileRsModel();
-			Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+			Object object = ObjectMapperUtil.objectMapper(docFile, FileRsModel.class);
 			fileRsModelList.add((FileRsModel) object);
 		});
 		return Page.of(fileRsModelList);
@@ -79,8 +78,7 @@ public class FileRsModelResourceImpl extends BaseFileRsModelResourceImpl {
 	@Override
 	public FileRsModel getDocFileById(@NotNull Long docFileId) throws Exception {
 		DocFile docFile = docFileLocalService.getDocFile(docFileId);
-		FileRsModel fileRsModel = new FileRsModel();
-		Object object = ObjectMapperUtil.objectMapper(docFile, fileRsModel, FileRsModel.class);
+		Object object = ObjectMapperUtil.objectMapper(docFile, FileRsModel.class);
 		return (FileRsModel) object;
 	}
 

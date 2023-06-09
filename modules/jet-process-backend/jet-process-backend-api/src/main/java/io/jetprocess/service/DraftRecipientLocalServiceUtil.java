@@ -83,9 +83,13 @@ public class DraftRecipientLocalServiceUtil {
 	}
 
 	public static DraftRecipient createRecipient(
-		DraftRecipient draftRecipient) {
+		long draftId, long organizationId, String name, String designation,
+		String email, String mobile, String address, long stateId, String city,
+		String pinCode) {
 
-		return getService().createRecipient(draftRecipient);
+		return getService().createRecipient(
+			draftId, organizationId, name, designation, email, mobile, address,
+			stateId, city, pinCode);
 	}
 
 	/**
@@ -377,10 +381,14 @@ public class DraftRecipientLocalServiceUtil {
 	}
 
 	public static DraftRecipient updateRecipient(
-			long id, DraftRecipient draftRecipient)
+			long id, long organizationId, String name, String designation,
+			String email, String mobile, String address, long stateId,
+			String city, String pinCode)
 		throws PortalException {
 
-		return getService().updateRecipient(id, draftRecipient);
+		return getService().updateRecipient(
+			id, organizationId, name, designation, email, mobile, address,
+			stateId, city, pinCode);
 	}
 
 	public static DraftRecipientLocalService getService() {

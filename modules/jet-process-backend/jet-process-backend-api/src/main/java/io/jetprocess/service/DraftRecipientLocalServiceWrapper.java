@@ -74,9 +74,13 @@ public class DraftRecipientLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.DraftRecipient createRecipient(
-		io.jetprocess.model.DraftRecipient draftRecipient) {
+		long draftId, long organizationId, String name, String designation,
+		String email, String mobile, String address, long stateId, String city,
+		String pinCode) {
 
-		return _draftRecipientLocalService.createRecipient(draftRecipient);
+		return _draftRecipientLocalService.createRecipient(
+			draftId, organizationId, name, designation, email, mobile, address,
+			stateId, city, pinCode);
 	}
 
 	/**
@@ -414,10 +418,14 @@ public class DraftRecipientLocalServiceWrapper
 
 	@Override
 	public io.jetprocess.model.DraftRecipient updateRecipient(
-			long id, io.jetprocess.model.DraftRecipient draftRecipient)
+			long id, long organizationId, String name, String designation,
+			String email, String mobile, String address, long stateId,
+			String city, String pinCode)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _draftRecipientLocalService.updateRecipient(id, draftRecipient);
+		return _draftRecipientLocalService.updateRecipient(
+			id, organizationId, name, designation, email, mobile, address,
+			stateId, city, pinCode);
 	}
 
 	@Override

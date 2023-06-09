@@ -29,31 +29,48 @@ import io.jetprocess.service.base.DraftRecipientLocalServiceBaseImpl;
 /**
  * @author Brian Wing Shun Chan
  */
-@Component(
-	property = "model.class.name=io.jetprocess.model.DraftRecipient",
-	service = AopService.class
-)
-public class DraftRecipientLocalServiceImpl
-	extends DraftRecipientLocalServiceBaseImpl {
-	
-private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.class);
-	
-	public DraftRecipient createRecipient(DraftRecipient draftRecipient) {
+@Component(property = "model.class.name=io.jetprocess.model.DraftRecipient", service = AopService.class)
+public class DraftRecipientLocalServiceImpl extends DraftRecipientLocalServiceBaseImpl {
+
+	private final Log LOGGER = LogFactoryUtil.getLog(DraftRecipientLocalServiceImpl.class);
+
+	public DraftRecipient createRecipient(long draftId, long organizationId, String name, String designation,
+			String email, String mobile, String address, long stateId, String city, String pinCode) {
 		long id = counterLocalService.increment();
-		draftRecipient = createDraftRecipient(id);
+		DraftRecipient draftRecipient = createDraftRecipient(id);
+		draftRecipient.setDraftId(draftId);
+		draftRecipient.setOrganizationId(organizationId);
+		draftRecipient.setName(name);
+		draftRecipient.setDesignation(designation);
+		draftRecipient.setEmail(email);
+		draftRecipient.setMobile(mobile);
+		draftRecipient.setAddress(address);
+		draftRecipient.setStateId(stateId);
+		draftRecipient.setCity(city);
+		draftRecipient.setPinCode(pinCode);
 		draftRecipient = addDraftRecipient(draftRecipient);
 		LOGGER.info(draftRecipient);
 		return draftRecipient;
 	}
-	
-	public DraftRecipient updateRecipient(long id, DraftRecipient draftRecipient) throws PortalException {
-		draftRecipient = getDraftRecipient(id);
+
+	public DraftRecipient updateRecipient(long id, long organizationId, String name, String designation,
+			String email, String mobile, String address, long stateId, String city, String pinCode) throws PortalException {
+		DraftRecipient	draftRecipient = getDraftRecipient(id);
+		draftRecipient.setOrganizationId(organizationId);
+		draftRecipient.setName(name);
+		draftRecipient.setDesignation(designation);
+		draftRecipient.setEmail(email);
+		draftRecipient.setMobile(mobile);
+		draftRecipient.setAddress(address);
+		draftRecipient.setStateId(stateId);
+		draftRecipient.setCity(city);
+		draftRecipient.setPinCode(pinCode);
 		draftRecipient = updateDraftRecipient(draftRecipient);
 		LOGGER.info(draftRecipient);
 		return draftRecipient;
 	}
-	
-	public List<DraftRecipient> getRecipientList(long draftId){
+
+	public List<DraftRecipient> getRecipientList(long draftId) {
 		List<DraftRecipient> findByDraftId = draftRecipientPersistence.findByDraftId(draftId);
 		LOGGER.info(findByDraftId);
 		return findByDraftId;
