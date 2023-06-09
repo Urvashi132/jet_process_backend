@@ -90,15 +90,6 @@ var receiptList = {
 			"handler" : {
 				"href" : ""
 			}
-		}, {
-			"name" : "draft",
-			"type" : "button",
-			"label" : "Draft",
-			"applyTo" : "row",
-			"cssClass" : "btn-primary",
-			"handler" : {
-				"href" : ""
-			}
 		}
 	],
 	"providers": {

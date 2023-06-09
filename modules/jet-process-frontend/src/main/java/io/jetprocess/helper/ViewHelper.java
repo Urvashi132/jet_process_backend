@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 public class ViewHelper {
 
 	public static String getDisplayPage(RenderRequest renderRequest) {
-
 		HttpServletRequest httpRequest = PortalUtil
 				.getOriginalServletRequest(PortalUtil.getHttpServletRequest(renderRequest));
 		String parameter = httpRequest.getParameter("view");
@@ -18,30 +17,17 @@ public class ViewHelper {
 			page = "/dashboard.jsp";
 		} else if (parameter.equals("file")) {
 			page = "/jsp/file/file-list.jsp";
-		}
-
-		else if (parameter.equals("receipt")) {
+		} else if (parameter.equals("receipt")) {
 			page = "/jsp/receipt/receipt-list.jsp";
-		}
-		
-
-		else if (parameter.equals("note")) {
+		} else if (parameter.equals("note")) {
 			page = "/jsp/note-document/notedoc-list.jsp";
-		}
-		else if (parameter.equals("draft")) {
-			page = "/jsp/receipt/draft-list.jsp";
-		}
-		
-		else if (parameter.equals("dispatch")) {
+		} else if (parameter.equals("draft")) {
+			page = "/jsp/draft/draft-list.jsp";
+		} else if (parameter.equals("dispatch")) {
 			page = "/jsp/dispatch/dispatch-list.jsp";
-		}
-
-		
-		else if(parameter.isEmpty() || Validator.isNull(parameter)){
+		} else if (parameter.isEmpty() || Validator.isNull(parameter)) {
 			page = "/dashboard.jsp";
 		}
-
 		return page;
 	}
-
 }

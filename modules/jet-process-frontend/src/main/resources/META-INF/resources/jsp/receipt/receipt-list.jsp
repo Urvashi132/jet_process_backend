@@ -18,9 +18,7 @@ var portletNamespace='<portlet:namespace/>';
 <portlet:renderURL var="movement">
 	<portlet:param name="mvcPath" value="/jsp/receipt/receipt-movement.jsp" />
 </portlet:renderURL>
-<portlet:renderURL var="draft">
-	<portlet:param name="mvcPath" value="/jsp/receipt/draft-list.jsp" />
-</portlet:renderURL>
+
 <!-- body  -->
 <body>
 	<div class="container">
@@ -38,7 +36,6 @@ var portletNamespace='<portlet:namespace/>';
 var id="<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>";
 receiptList.actions[0].handler.href = '<%=receiptCreation%>';
 receiptList.actions[1].handler.href = '<%=receiptCreation%>';
-receiptList.actions[4].handler.href = '<%=movement%>';
 	$(document).ready(() => {
 		var jetList=JetList({"id":"receiptList", "parentId":"receiptListContainer", "form":receiptList});
 		jetList.setDataKey(id);
@@ -55,14 +52,6 @@ receiptList.actions[4].handler.href = '<%=movement%>';
 	
 	function movementOnClick(event){
 		 invokeUrl(event);
-	}
-	
-	function draftOnClick(event){
-		event.preventDefault();
-		var target = getEventTarget(event);
-		var dataKey = $(target).attr('datakey');
-		localStorage.setItem("receirId", dataKey);  
-		window.location.href='<%=draft%>';
 	}
 </script>
 </html>
