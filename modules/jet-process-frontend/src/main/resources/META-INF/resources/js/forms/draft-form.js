@@ -13,17 +13,6 @@ var draftForm = {
 			},
 			{
 				"type" : "group",
-				"name" : "onlineEditor",
-				"label" : "name",
-				
-				"fields" : [ {
-					"type" : "textarea",
-					"name" : "content",
-					"label" : "Content"
-				} ]
-			},
-			{
-				"type" : "group",
 				"name" : "draftDetails",
 				"label" : "name",
 				"fields" : [
@@ -59,7 +48,8 @@ var draftForm = {
 							"required" : true,
 							"col" : 6,
 							"provider" : {
-								"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filecategory?p_auth=" + Liferay.authToken,
+								"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filecategory?p_auth="
+										+ Liferay.authToken,
 								"value" : "id",
 								"label" : "name",
 								"dataNode" : "items"
@@ -72,7 +62,8 @@ var draftForm = {
 							"required" : true,
 							"col" : 6,
 							"provider" : {
-								"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filecategory?p_auth=" + Liferay.authToken,
+								"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filecategory?p_auth="
+										+ Liferay.authToken,
 								"value" : "id",
 								"label" : "name",
 								"dataNode" : "items"
@@ -95,6 +86,16 @@ var draftForm = {
 								}
 							}
 						} ]
+			}, {
+				"type" : "group",
+				"name" : "onlineEditor",
+				"label" : "name",
+
+				"fields" : [ {
+					"type" : "textarea",
+					"name" : "content",
+					"label" : "Content"
+				} ]
 			} ],
 	"actions" : [ {
 		"name" : "save",
@@ -124,9 +125,23 @@ var draftForm = {
 		}
 	} ],
 	"providers" : {
+		"selector" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth=" + Liferay.authToken,
+			"method" : "get",
+			"queryParams" : {
+				"id" : "#id"
+			}
+		},
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/filemovement?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth="+ Liferay.authToken,
 			"method" : "post",
+		},
+		"update" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth=" + Liferay.authToken,
+			"method" : "put",
+			"queryParams" : {
+				"id" : "#id"
+			}
 		}
 	}
 };

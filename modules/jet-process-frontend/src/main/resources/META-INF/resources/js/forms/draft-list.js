@@ -54,14 +54,24 @@ var draftList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger"
-	} ],
+	},{
+		"name": "recipientList",
+		"type": "button",
+		"label": "Recipient List",
+		"applyTo": "row",
+		"cssClass": "btn-primary",
+		"handler": {
+			"href": ""
+		}
+	}
+	],
 	"providers" : {
 		"collection" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/drafts?p_auth=" + Liferay.authToken,
 			"dataNode" : "items"
 		},
 		"delete" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth=" + Liferay.authToken,
 			"method" : "delete"
 		}
 	}

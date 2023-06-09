@@ -126,10 +126,23 @@ var recipientForm = {
 		}
 	} ],
 	"providers" : {
+		"selector" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipient?p_auth=" + Liferay.authToken,
+			"method" : "get",
+			"queryParams" : {
+				"id" : "#id"
+			}
+		},
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/hgghhg?p_auth="
-					+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipient?p_auth="+ Liferay.authToken,
 			"method" : "post",
+		},
+		"update" : {
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipient?p_auth=" + Liferay.authToken,
+			"method" : "put",
+			"queryParams" : {
+				"id" : "#id"
+			}
 		}
 	}
 };

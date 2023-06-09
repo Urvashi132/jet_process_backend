@@ -35,7 +35,16 @@ var recipientList = {
 		"handler" : {
 			"script" : ""
 		}
-	}, {
+	},{
+		"name" : "draftList",
+		"type" : "button",
+		"label" : "Draft List",
+		"applyTo" : "list",
+		"cssClass" : "btn-primary",
+		"handler" : {
+			"href" : ""
+		}
+	},{
 		"name" : "edit",
 		"type" : "button",
 		"label" : "Edit",
@@ -50,15 +59,14 @@ var recipientList = {
 		"label" : "Delete",
 		"applyTo" : "row",
 		"cssClass" : "btn-danger",
-	} ],
+	}],
 	"providers" : {
 		"collection" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/Receipt?p_auth="+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipients?p_auth="+ Liferay.authToken,
 			"dataNode" : "items"
 		},
 		"delete" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/docfile?p_auth="
-					+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipient?p_auth=" + Liferay.authToken,
 			"method" : "delete"
 		}
 	}

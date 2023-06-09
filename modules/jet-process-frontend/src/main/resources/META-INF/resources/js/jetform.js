@@ -571,7 +571,7 @@ function findAction (event){
 }
 
 function submitForm(event) {
-	//console.log("Entering submitForm");
+	console.log("Entering submitForm");
 	
 	event.preventDefault();
 	var target = getEventTarget(event);
@@ -596,30 +596,41 @@ function submitForm(event) {
 //    var action=_this.findAction(event);
     
  //   var handler=action.handler;
-    ////console.log(handler);
+//    console.log(handler);
     
     var formData = $('#'+form.id).toJSON();
     
     console.log(formData);
     
     if(form.providers != undefined){
-		//console.log(form.providers);
-	    var provider;
+//		console.log(form.providers);
+	    var update = false;
+    	var provider;
 	    
 	    if(form.idField == undefined || form.idField.value == undefined || form.idField.value == ''){
 	    	provider= form.providers.create;
 	    }else{
-	    	provider= form.providers.update;
+	    	provider = form.providers.update;
+	    	update = true;
 	    }
 	    
-	    //console.log(provider);
+	    console.log(provider);
 	    if(provider != undefined && provider.ajax != undefined){
 		    // make AJAX request
 		    var url = provider.ajax;
 			var method = (provider.method != undefined ? provider.method : "GET");
+			if(update){
+				if(url.indexOf("?")>0){
+					url+="&"+ form.idField.name+"="+form.idField.value;
+				}else{
+					url+="?"+ form.idField.name+"="+form.idField.value;
+				}
+			}
 			//var dataType = (provider.dataType != undefined ? provider.dataType : "json");
 			//var contentType = (provider.contentType != undefined ? provider.contentType : "application/json");
-			
+			console.log(url);
+			console.log(method);
+			console.log(JSON.stringify(formData));
 		    $.ajax({
 		        url: url,
 		        type: method,

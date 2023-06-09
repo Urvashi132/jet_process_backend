@@ -9,7 +9,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col" id="recipientFormContainer"></div>
+		<div class="col border" id="recipientFormContainer"></div>
 	</div>
 </div>
 
