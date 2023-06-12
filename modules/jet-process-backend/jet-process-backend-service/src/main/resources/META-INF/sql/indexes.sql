@@ -1,3 +1,6 @@
+create index IX_9C0082D on JP_Dispatch (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_6E16B5EF on JP_Dispatch (uuid_[$COLUMN_LENGTH:75$], groupId);
+
 create index IX_BED3E975 on JP_DocFile (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_DFC24937 on JP_DocFile (uuid_[$COLUMN_LENGTH:75$], groupId);
 
@@ -24,6 +27,9 @@ create unique index IX_779D1962 on JP_NoteDocument (uuid_[$COLUMN_LENGTH:75$], g
 create index IX_6C1A6997 on JP_NoteDocumentMovement (noteDocumentId);
 create index IX_A0423C2F on JP_NoteDocumentMovement (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_3A0271 on JP_NoteDocumentMovement (uuid_[$COLUMN_LENGTH:75$], groupId);
+
+create index IX_8A22383E on JP_Postal (uuid_[$COLUMN_LENGTH:75$], companyId);
+create unique index IX_92B7B640 on JP_Postal (uuid_[$COLUMN_LENGTH:75$], groupId);
 
 create index IX_EAFA084A on JP_PrimaryHead (basicHeadId);
 

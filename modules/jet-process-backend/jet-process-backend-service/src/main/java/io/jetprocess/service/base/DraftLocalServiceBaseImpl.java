@@ -51,6 +51,7 @@ import io.jetprocess.service.DraftLocalServiceUtil;
 import io.jetprocess.service.persistence.BasicHeadPersistence;
 import io.jetprocess.service.persistence.CategoryPersistence;
 import io.jetprocess.service.persistence.DeliveryModePersistence;
+import io.jetprocess.service.persistence.DispatchPersistence;
 import io.jetprocess.service.persistence.DocFilePersistence;
 import io.jetprocess.service.persistence.DocumentNoteMappingPersistence;
 import io.jetprocess.service.persistence.DraftPersistence;
@@ -61,6 +62,7 @@ import io.jetprocess.service.persistence.NoteDocumentMovementPersistence;
 import io.jetprocess.service.persistence.NoteDocumentPersistence;
 import io.jetprocess.service.persistence.NotePersistence;
 import io.jetprocess.service.persistence.OrganizationPersistence;
+import io.jetprocess.service.persistence.PostalPersistence;
 import io.jetprocess.service.persistence.PrimaryHeadPersistence;
 import io.jetprocess.service.persistence.ReceiptMovementPersistence;
 import io.jetprocess.service.persistence.ReceiptPersistence;
@@ -607,6 +609,9 @@ public abstract class DraftLocalServiceBaseImpl
 	protected DeliveryModePersistence deliveryModePersistence;
 
 	@Reference
+	protected DispatchPersistence dispatchPersistence;
+
+	@Reference
 	protected DocFilePersistence docFilePersistence;
 
 	@Reference
@@ -637,6 +642,9 @@ public abstract class DraftLocalServiceBaseImpl
 
 	@Reference
 	protected OrganizationPersistence organizationPersistence;
+
+	@Reference
+	protected PostalPersistence postalPersistence;
 
 	@Reference
 	protected PrimaryHeadPersistence primaryHeadPersistence;

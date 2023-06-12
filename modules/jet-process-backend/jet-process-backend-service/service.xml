@@ -447,6 +447,67 @@
 		</finder>
 	</entity>
 
+     <entity local-service="true" name="Dispatch"
+		uuid="true" remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />	
+		
+		<column name="dispatchNo" type="String" />
+        <column name="dispatchBy" type="String" />
+        <column name="deliveryMode" type="String" />
+        <column name="address" type="String" />
+        <column name="subject" type="String" />
+        <column name="dispathOn" type="String" />
+        <column name="dispatchType" type="String" />
+        <column name="issueNo" type="String" />
+        <column name="receiptentId" type="long" />
+        <column name="draftId" type="long" />
+		
+	</entity>
+	
+	  <entity local-service="true" name="Postal"
+		uuid="true" remote-service="true">
+
+		<!-- PK fields -->
+		<column name="id" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />	
+		
+		<column name="postalMode" type="String" />
+        <column name="postalCharge" type="String" />
+        <column name="medium" type="String" />
+        <column name="weight" type="String" />
+        <column name="modeNo" type="long" />
+        <column name="peonBookNo" type="String" />
+        <column name="peonName" type="String" />
+        <column name="outDate" type="Date" />
+        <column name="deliveryDate" type="Date" />
+        <column name="deliveryStatus" type="String" />
+		
+	</entity>
+    
+   
+
+
 	<exceptions>
 		<exception>FileValidation</exception>
 		<exception>ReceiptValidation</exception>

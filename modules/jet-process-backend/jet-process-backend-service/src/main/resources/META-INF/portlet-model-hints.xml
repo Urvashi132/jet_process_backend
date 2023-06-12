@@ -16,6 +16,26 @@
 		<field name="id" type="long" />
 		<field name="name" type="String" />
 	</model>
+	<model name="io.jetprocess.model.Dispatch">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dispatchNo" type="String" />
+		<field name="dispatchBy" type="String" />
+		<field name="deliveryMode" type="String" />
+		<field name="address" type="String" />
+		<field name="subject" type="String" />
+		<field name="dispathOn" type="String" />
+		<field name="dispatchType" type="String" />
+		<field name="issueNo" type="String" />
+		<field name="receiptentId" type="long" />
+		<field name="draftId" type="long" />
+	</model>
 	<model name="io.jetprocess.model.DocFile">
 		<field name="uuid" type="String" />
 		<field name="id" type="long" />
@@ -181,6 +201,26 @@
 	<model name="io.jetprocess.model.Organization">
 		<field name="id" type="long" />
 		<field name="name" type="String" />
+	</model>
+	<model name="io.jetprocess.model.Postal">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="postalMode" type="String" />
+		<field name="postalCharge" type="String" />
+		<field name="medium" type="String" />
+		<field name="weight" type="String" />
+		<field name="modeNo" type="long" />
+		<field name="peonBookNo" type="String" />
+		<field name="peonName" type="String" />
+		<field name="outDate" type="Date" />
+		<field name="deliveryDate" type="Date" />
+		<field name="deliveryStatus" type="String" />
 	</model>
 	<model name="io.jetprocess.model.PrimaryHead">
 		<field name="id" type="long" />

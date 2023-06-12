@@ -408,6 +408,58 @@ components:
         pincode:
           type: string
       type: object
+    DispatchRsModel:
+      properties:
+       dispatchedBy:
+        type : string
+       deliveryMode:
+        type: string
+       address:
+        type: string
+       subject:
+        type: string
+       dispatchedOn:
+        type: string
+       dispatchedType:
+        type: string
+       issueNumber:
+        type: string
+       receiptentId:
+        format: int64
+        type:  integer
+       draftId:
+        format: int64
+        type: integer
+      type: object
+    PostalRsModel:
+      properties:
+       postalMode:
+        type: string
+       postalCharge:
+        type: string
+       medium:
+        type: string
+       weight:
+        type: string
+       modeNumber:
+        type: string
+       peonBookNo:
+        type: string
+       peonName:
+        type: string
+       outDate:
+        format: date-time
+        type : string
+       deliveryDate:
+        format: date-time
+        type : string  
+      type: object
+       
+      
+      
+      
+      
+      
       
 paths:
   /docfile:
@@ -1302,3 +1354,209 @@ paths:
                   $ref: '#/components/schemas/DraftRecipientRsModel'
           description: ''
       tags: ["DraftRecipientRsModel"]
+      
+  /dispatch:
+    post:
+      operationId: createDispatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DispatchRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DispatchRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+          description: ''
+      tags: ["DispatchRsModel"]    
+    get:
+      operationId: getDispatchById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+          description: ''
+      tags: ["DispatchRsModel"]
+    delete:
+      operationId: deleteDispatchyId
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["DispatchRsModel"]
+    put:
+      operationId: updateDispatch
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DispatchRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DispatchRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/DispatchRsModel'
+          description: ''
+      tags: ["DispatchRsModel"]  
+  /dispatches:
+    get:
+      operationId: getDispatchList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DispatchRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DispatchRsModel'
+          description: ''
+      tags: ["DispatchRsModel"] 
+  /postal:
+    post:
+      operationId: createPostal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostalRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PostalRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+          description: ''
+      tags: ["PostalRsModel"]    
+    get:
+      operationId: getPostalById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+          description: ''
+      tags: ["PostalRsModel"]
+    delete:
+      operationId: deletePostalById
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json: {}
+            application/xml: {}
+          description: ''
+      tags: ["PostalRsModel"]
+    put:
+      operationId: updatePostal
+      parameters:
+        - in: "query"
+          name: id
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostalRsModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PostalRsModel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+            application/xml:
+              schema:
+                  $ref: '#/components/schemas/PostalRsModel'
+          description: ''
+      tags: ["PostalRsModel"]  
+  /postals:
+    get:
+      operationId: getPostalList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PostalRsModel'
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PostalRsModel'
+          description: ''
+      tags: ["PostalRsModel"]     
+          
