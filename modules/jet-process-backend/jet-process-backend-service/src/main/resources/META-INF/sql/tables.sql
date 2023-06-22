@@ -14,6 +14,27 @@ create table JP_DeliveryMode (
 	name VARCHAR(75) null
 );
 
+create table JP_Dispatch (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	dispatchNo VARCHAR(75) null,
+	dispatchBy VARCHAR(75) null,
+	deliveryMode VARCHAR(75) null,
+	address VARCHAR(75) null,
+	subject VARCHAR(75) null,
+	dispathOn VARCHAR(75) null,
+	dispatchType VARCHAR(75) null,
+	issueNo VARCHAR(75) null,
+	receiptentId LONG,
+	draftId LONG
+);
+
 create table JP_DocFile (
 	uuid_ VARCHAR(75) null,
 	id_ LONG not null primary key,
@@ -168,6 +189,27 @@ create table JP_NoteDocumentMovement (
 create table JP_Organization (
 	id_ LONG not null primary key,
 	name VARCHAR(75) null
+);
+
+create table JP_Postal (
+	uuid_ VARCHAR(75) null,
+	id_ LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	postalMode VARCHAR(75) null,
+	postalCharge VARCHAR(75) null,
+	medium VARCHAR(75) null,
+	weight VARCHAR(75) null,
+	modeNo LONG,
+	peonBookNo VARCHAR(75) null,
+	peonName VARCHAR(75) null,
+	outDate DATE null,
+	deliveryDate DATE null,
+	deliveryStatus VARCHAR(75) null
 );
 
 create table JP_PrimaryHead (

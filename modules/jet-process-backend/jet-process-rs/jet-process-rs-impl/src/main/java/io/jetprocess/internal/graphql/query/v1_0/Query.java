@@ -15,6 +15,7 @@ import io.jetprocess.dto.v1_0.BasicHeadRsModel;
 import io.jetprocess.dto.v1_0.CategoryRsModel;
 import io.jetprocess.dto.v1_0.CountryRsModel;
 import io.jetprocess.dto.v1_0.DeliveryModeRsModel;
+import io.jetprocess.dto.v1_0.DispatchRsModel;
 import io.jetprocess.dto.v1_0.DraftRecipientRsModel;
 import io.jetprocess.dto.v1_0.DraftRsModel;
 import io.jetprocess.dto.v1_0.FileCategoryRsModel;
@@ -23,6 +24,7 @@ import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
 import io.jetprocess.dto.v1_0.OrganizationRsModel;
+import io.jetprocess.dto.v1_0.PostalRsModel;
 import io.jetprocess.dto.v1_0.PrimaryHeadRsModel;
 import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
@@ -35,6 +37,7 @@ import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.DispatchRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
@@ -43,6 +46,7 @@ import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
+import io.jetprocess.resource.v1_0.PostalRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
@@ -101,6 +105,14 @@ public class Query {
 
 		_deliveryModeRsModelResourceComponentServiceObjects =
 			deliveryModeRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setDispatchRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DispatchRsModelResource>
+			dispatchRsModelResourceComponentServiceObjects) {
+
+		_dispatchRsModelResourceComponentServiceObjects =
+			dispatchRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setDraftRecipientRsModelResourceComponentServiceObjects(
@@ -165,6 +177,14 @@ public class Query {
 
 		_organizationRsModelResourceComponentServiceObjects =
 			organizationRsModelResourceComponentServiceObjects;
+	}
+
+	public static void setPostalRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<PostalRsModelResource>
+			postalRsModelResourceComponentServiceObjects) {
+
+		_postalRsModelResourceComponentServiceObjects =
+			postalRsModelResourceComponentServiceObjects;
 	}
 
 	public static void setPrimaryHeadRsModelResourceComponentServiceObjects(
@@ -285,6 +305,36 @@ public class Query {
 			this::_populateResourceContext,
 			deliveryModeRsModelResource -> new DeliveryModeRsModelPage(
 				deliveryModeRsModelResource.getDeliveryModeist()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {dispatchById(id: ___){dispatchedBy, deliveryMode, address, subject, dispatchedOn, dispatchedType, issueNumber, receiptentId, draftId}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DispatchRsModel dispatchById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			dispatchRsModelResource -> dispatchRsModelResource.getDispatchById(
+				id));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {dispatchList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public DispatchRsModelPage dispatchList() throws Exception {
+		return _applyComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			dispatchRsModelResource -> new DispatchRsModelPage(
+				dispatchRsModelResource.getDispatchList()));
 	}
 
 	/**
@@ -467,6 +517,35 @@ public class Query {
 			this::_populateResourceContext,
 			organizationRsModelResource -> new OrganizationRsModelPage(
 				organizationRsModelResource.getOrganizationList()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {postalById(id: ___){postalMode, postalCharge, medium, weight, modeNumber, peonBookNo, peonName, outDate, deliveryDate}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public PostalRsModel postalById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			postalRsModelResource -> postalRsModelResource.getPostalById(id));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {postalList{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public PostalRsModelPage postalList() throws Exception {
+		return _applyComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			postalRsModelResource -> new PostalRsModelPage(
+				postalRsModelResource.getPostalList()));
 	}
 
 	/**
@@ -748,6 +827,39 @@ public class Query {
 
 	}
 
+	@GraphQLName("DispatchRsModelPage")
+	public class DispatchRsModelPage {
+
+		public DispatchRsModelPage(Page dispatchRsModelPage) {
+			actions = dispatchRsModelPage.getActions();
+
+			items = dispatchRsModelPage.getItems();
+			lastPage = dispatchRsModelPage.getLastPage();
+			page = dispatchRsModelPage.getPage();
+			pageSize = dispatchRsModelPage.getPageSize();
+			totalCount = dispatchRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<DispatchRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
 	@GraphQLName("DraftRecipientRsModelPage")
 	public class DraftRecipientRsModelPage {
 
@@ -997,6 +1109,39 @@ public class Query {
 
 		@GraphQLField
 		protected java.util.Collection<OrganizationRsModel> items;
+
+		@GraphQLField
+		protected long lastPage;
+
+		@GraphQLField
+		protected long page;
+
+		@GraphQLField
+		protected long pageSize;
+
+		@GraphQLField
+		protected long totalCount;
+
+	}
+
+	@GraphQLName("PostalRsModelPage")
+	public class PostalRsModelPage {
+
+		public PostalRsModelPage(Page postalRsModelPage) {
+			actions = postalRsModelPage.getActions();
+
+			items = postalRsModelPage.getItems();
+			lastPage = postalRsModelPage.getLastPage();
+			page = postalRsModelPage.getPage();
+			pageSize = postalRsModelPage.getPageSize();
+			totalCount = postalRsModelPage.getTotalCount();
+		}
+
+		@GraphQLField
+		protected Map<String, Map> actions;
+
+		@GraphQLField
+		protected java.util.Collection<PostalRsModel> items;
 
 		@GraphQLField
 		protected long lastPage;
@@ -1360,6 +1505,22 @@ public class Query {
 	}
 
 	private void _populateResourceContext(
+			DispatchRsModelResource dispatchRsModelResource)
+		throws Exception {
+
+		dispatchRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		dispatchRsModelResource.setContextCompany(_company);
+		dispatchRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		dispatchRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		dispatchRsModelResource.setContextUriInfo(_uriInfo);
+		dispatchRsModelResource.setContextUser(_user);
+		dispatchRsModelResource.setGroupLocalService(_groupLocalService);
+		dispatchRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			DraftRecipientRsModelResource draftRecipientRsModelResource)
 		throws Exception {
 
@@ -1483,6 +1644,21 @@ public class Query {
 		organizationRsModelResource.setContextUser(_user);
 		organizationRsModelResource.setGroupLocalService(_groupLocalService);
 		organizationRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
+			PostalRsModelResource postalRsModelResource)
+		throws Exception {
+
+		postalRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		postalRsModelResource.setContextCompany(_company);
+		postalRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		postalRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		postalRsModelResource.setContextUriInfo(_uriInfo);
+		postalRsModelResource.setContextUser(_user);
+		postalRsModelResource.setGroupLocalService(_groupLocalService);
+		postalRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -1620,6 +1796,8 @@ public class Query {
 		_countryRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DeliveryModeRsModelResource>
 		_deliveryModeRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<DispatchRsModelResource>
+		_dispatchRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DraftRecipientRsModelResource>
 		_draftRecipientRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DraftRsModelResource>
@@ -1636,6 +1814,8 @@ public class Query {
 		_noteDocumentRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<OrganizationRsModelResource>
 		_organizationRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<PostalRsModelResource>
+		_postalRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<PrimaryHeadRsModelResource>
 		_primaryHeadRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptMovementRsModelResource>

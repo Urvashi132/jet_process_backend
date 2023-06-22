@@ -9,20 +9,24 @@ import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
+import io.jetprocess.dto.v1_0.DispatchRsModel;
 import io.jetprocess.dto.v1_0.DraftRecipientRsModel;
 import io.jetprocess.dto.v1_0.DraftRsModel;
 import io.jetprocess.dto.v1_0.FileMovementRsModel;
 import io.jetprocess.dto.v1_0.FileRsModel;
 import io.jetprocess.dto.v1_0.NoteDocMovementRsModel;
 import io.jetprocess.dto.v1_0.NoteDocumentRsModel;
+import io.jetprocess.dto.v1_0.PostalRsModel;
 import io.jetprocess.dto.v1_0.ReceiptMovementRsModel;
 import io.jetprocess.dto.v1_0.ReceiptRsModel;
+import io.jetprocess.resource.v1_0.DispatchRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileMovementRsModelResource;
 import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
+import io.jetprocess.resource.v1_0.PostalRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
 
@@ -43,6 +47,14 @@ import org.osgi.service.component.ComponentServiceObjects;
  */
 @Generated("")
 public class Mutation {
+
+	public static void setDispatchRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<DispatchRsModelResource>
+			dispatchRsModelResourceComponentServiceObjects) {
+
+		_dispatchRsModelResourceComponentServiceObjects =
+			dispatchRsModelResourceComponentServiceObjects;
+	}
 
 	public static void setDraftRecipientRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<DraftRecipientRsModelResource>
@@ -92,6 +104,14 @@ public class Mutation {
 			noteDocumentRsModelResourceComponentServiceObjects;
 	}
 
+	public static void setPostalRsModelResourceComponentServiceObjects(
+		ComponentServiceObjects<PostalRsModelResource>
+			postalRsModelResourceComponentServiceObjects) {
+
+		_postalRsModelResourceComponentServiceObjects =
+			postalRsModelResourceComponentServiceObjects;
+	}
+
 	public static void setReceiptMovementRsModelResourceComponentServiceObjects(
 		ComponentServiceObjects<ReceiptMovementRsModelResource>
 			receiptMovementRsModelResourceComponentServiceObjects) {
@@ -106,6 +126,44 @@ public class Mutation {
 
 		_receiptRsModelResourceComponentServiceObjects =
 			receiptRsModelResourceComponentServiceObjects;
+	}
+
+	@GraphQLField
+	public boolean deleteDispatchyId(@GraphQLName("id") Long id)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			dispatchRsModelResource ->
+				dispatchRsModelResource.deleteDispatchyId(id));
+
+		return true;
+	}
+
+	@GraphQLField
+	public DispatchRsModel createDispatch(
+			@GraphQLName("dispatchRsModel") DispatchRsModel dispatchRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			dispatchRsModelResource -> dispatchRsModelResource.createDispatch(
+				dispatchRsModel));
+	}
+
+	@GraphQLField
+	public DispatchRsModel updateDispatch(
+			@GraphQLName("id") Long id,
+			@GraphQLName("dispatchRsModel") DispatchRsModel dispatchRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			dispatchRsModelResource -> dispatchRsModelResource.updateDispatch(
+				id, dispatchRsModel));
 	}
 
 	@GraphQLField
@@ -295,6 +353,44 @@ public class Mutation {
 	}
 
 	@GraphQLField
+	public boolean deletePostalById(@GraphQLName("id") Long id)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			postalRsModelResource -> postalRsModelResource.deletePostalById(
+				id));
+
+		return true;
+	}
+
+	@GraphQLField
+	public PostalRsModel createPostal(
+			@GraphQLName("postalRsModel") PostalRsModel postalRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			postalRsModelResource -> postalRsModelResource.createPostal(
+				postalRsModel));
+	}
+
+	@GraphQLField
+	public PostalRsModel updatePostal(
+			@GraphQLName("id") Long id,
+			@GraphQLName("postalRsModel") PostalRsModel postalRsModel)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			postalRsModelResource -> postalRsModelResource.updatePostal(
+				id, postalRsModel));
+	}
+
+	@GraphQLField
 	public ReceiptMovementRsModel createReceiptMovement(
 			@GraphQLName("receiptMovementRsModel") ReceiptMovementRsModel
 				receiptMovementRsModel)
@@ -382,6 +478,22 @@ public class Mutation {
 		finally {
 			componentServiceObjects.ungetService(resource);
 		}
+	}
+
+	private void _populateResourceContext(
+			DispatchRsModelResource dispatchRsModelResource)
+		throws Exception {
+
+		dispatchRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		dispatchRsModelResource.setContextCompany(_company);
+		dispatchRsModelResource.setContextHttpServletRequest(
+			_httpServletRequest);
+		dispatchRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		dispatchRsModelResource.setContextUriInfo(_uriInfo);
+		dispatchRsModelResource.setContextUser(_user);
+		dispatchRsModelResource.setGroupLocalService(_groupLocalService);
+		dispatchRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -479,6 +591,21 @@ public class Mutation {
 	}
 
 	private void _populateResourceContext(
+			PostalRsModelResource postalRsModelResource)
+		throws Exception {
+
+		postalRsModelResource.setContextAcceptLanguage(_acceptLanguage);
+		postalRsModelResource.setContextCompany(_company);
+		postalRsModelResource.setContextHttpServletRequest(_httpServletRequest);
+		postalRsModelResource.setContextHttpServletResponse(
+			_httpServletResponse);
+		postalRsModelResource.setContextUriInfo(_uriInfo);
+		postalRsModelResource.setContextUser(_user);
+		postalRsModelResource.setGroupLocalService(_groupLocalService);
+		postalRsModelResource.setRoleLocalService(_roleLocalService);
+	}
+
+	private void _populateResourceContext(
 			ReceiptMovementRsModelResource receiptMovementRsModelResource)
 		throws Exception {
 
@@ -511,6 +638,8 @@ public class Mutation {
 		receiptRsModelResource.setRoleLocalService(_roleLocalService);
 	}
 
+	private static ComponentServiceObjects<DispatchRsModelResource>
+		_dispatchRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DraftRecipientRsModelResource>
 		_draftRecipientRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<DraftRsModelResource>
@@ -523,6 +652,8 @@ public class Mutation {
 		_noteDocMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
+	private static ComponentServiceObjects<PostalRsModelResource>
+		_postalRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptMovementRsModelResource>
 		_receiptMovementRsModelResourceComponentServiceObjects;
 	private static ComponentServiceObjects<ReceiptRsModelResource>

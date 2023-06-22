@@ -8,6 +8,7 @@ import io.jetprocess.resource.v1_0.BasicHeadRsModelResource;
 import io.jetprocess.resource.v1_0.CategoryRsModelResource;
 import io.jetprocess.resource.v1_0.CountryRsModelResource;
 import io.jetprocess.resource.v1_0.DeliveryModeRsModelResource;
+import io.jetprocess.resource.v1_0.DispatchRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRecipientRsModelResource;
 import io.jetprocess.resource.v1_0.DraftRsModelResource;
 import io.jetprocess.resource.v1_0.FileCategoryRsModelResource;
@@ -16,6 +17,7 @@ import io.jetprocess.resource.v1_0.FileRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocMovementRsModelResource;
 import io.jetprocess.resource.v1_0.NoteDocumentRsModelResource;
 import io.jetprocess.resource.v1_0.OrganizationRsModelResource;
+import io.jetprocess.resource.v1_0.PostalRsModelResource;
 import io.jetprocess.resource.v1_0.PrimaryHeadRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptMovementRsModelResource;
 import io.jetprocess.resource.v1_0.ReceiptRsModelResource;
@@ -44,6 +46,8 @@ public class ServletDataImpl implements ServletData {
 
 	@Activate
 	public void activate(BundleContext bundleContext) {
+		Mutation.setDispatchRsModelResourceComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects);
 		Mutation.setDraftRecipientRsModelResourceComponentServiceObjects(
 			_draftRecipientRsModelResourceComponentServiceObjects);
 		Mutation.setDraftRsModelResourceComponentServiceObjects(
@@ -56,6 +60,8 @@ public class ServletDataImpl implements ServletData {
 			_noteDocMovementRsModelResourceComponentServiceObjects);
 		Mutation.setNoteDocumentRsModelResourceComponentServiceObjects(
 			_noteDocumentRsModelResourceComponentServiceObjects);
+		Mutation.setPostalRsModelResourceComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects);
 		Mutation.setReceiptMovementRsModelResourceComponentServiceObjects(
 			_receiptMovementRsModelResourceComponentServiceObjects);
 		Mutation.setReceiptRsModelResourceComponentServiceObjects(
@@ -69,6 +75,8 @@ public class ServletDataImpl implements ServletData {
 			_countryRsModelResourceComponentServiceObjects);
 		Query.setDeliveryModeRsModelResourceComponentServiceObjects(
 			_deliveryModeRsModelResourceComponentServiceObjects);
+		Query.setDispatchRsModelResourceComponentServiceObjects(
+			_dispatchRsModelResourceComponentServiceObjects);
 		Query.setDraftRecipientRsModelResourceComponentServiceObjects(
 			_draftRecipientRsModelResourceComponentServiceObjects);
 		Query.setDraftRsModelResourceComponentServiceObjects(
@@ -85,6 +93,8 @@ public class ServletDataImpl implements ServletData {
 			_noteDocumentRsModelResourceComponentServiceObjects);
 		Query.setOrganizationRsModelResourceComponentServiceObjects(
 			_organizationRsModelResourceComponentServiceObjects);
+		Query.setPostalRsModelResourceComponentServiceObjects(
+			_postalRsModelResourceComponentServiceObjects);
 		Query.setPrimaryHeadRsModelResourceComponentServiceObjects(
 			_primaryHeadRsModelResourceComponentServiceObjects);
 		Query.setReceiptMovementRsModelResourceComponentServiceObjects(
@@ -119,6 +129,10 @@ public class ServletDataImpl implements ServletData {
 	}
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<DispatchRsModelResource>
+		_dispatchRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<DraftRecipientRsModelResource>
 		_draftRecipientRsModelResourceComponentServiceObjects;
 
@@ -141,6 +155,10 @@ public class ServletDataImpl implements ServletData {
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<NoteDocumentRsModelResource>
 		_noteDocumentRsModelResourceComponentServiceObjects;
+
+	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
+	private ComponentServiceObjects<PostalRsModelResource>
+		_postalRsModelResourceComponentServiceObjects;
 
 	@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<ReceiptMovementRsModelResource>
