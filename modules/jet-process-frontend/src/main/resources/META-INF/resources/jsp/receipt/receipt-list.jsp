@@ -36,6 +36,7 @@ var portletNamespace='<portlet:namespace/>';
 var id="<%=request.getParameter("id") != null ? request.getParameter("id") : ""%>";
 receiptList.actions[0].handler.href = '<%=receiptCreation%>';
 receiptList.actions[1].handler.href = '<%=receiptCreation%>';
+receiptList.actions[4].handler.href = '<%=movement%>';
 	$(document).ready(() => {
 		var jetList=JetList({"id":"receiptList", "parentId":"receiptListContainer", "form":receiptList});
 		jetList.setDataKey(id);
