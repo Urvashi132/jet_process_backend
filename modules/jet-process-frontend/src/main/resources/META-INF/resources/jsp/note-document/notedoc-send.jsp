@@ -24,7 +24,7 @@ $(document).ready(() => {
 	noteDocSend.actions[1].handler.href = '<%=list%>';
 	var jetform=JetForm({"id":"noteDocSend", "parentId":"noteDocSendContainer", "form":noteDocSend});
 	jetform.render();
-	var id=localStorage.getItem("noteDocumentId");  
-	$('#noteDocumentId').val(id);
+	/* var id=localStorage.getItem("noteDocumentId");  
+	$('#noteDocumentId').val(id); */
 });
 </script>

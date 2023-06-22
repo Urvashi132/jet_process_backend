@@ -9,7 +9,11 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col border" id="recipientFormContainer"></div>
+		<div class="col m-2" id="recipientFormContainer">
+		<form id="recipientForm">
+		<div class="row" id="organizationDetails"></div>
+		</form>
+		</div>
 	</div>
 </div>
 

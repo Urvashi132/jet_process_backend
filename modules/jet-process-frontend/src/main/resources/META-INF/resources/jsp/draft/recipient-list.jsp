@@ -14,7 +14,7 @@
 	src='<%=request.getContextPath() + "/js/forms/recipient-list.js"%>'></script>
 
 <div class="container">
-	<div class="row">	
+	<div class="row">
 		<div id="recipientListContainer"></div>
 	</div>
 </div>
@@ -25,6 +25,11 @@
 
 <script>
 $(document).ready(() => {
+	 <% String id= request.getParameter("id");
+	 out.println(id);
+	 %>
+	 var id="<%=request.getParameter("id")!=null? request.getParameter("id"):""%>";
+	console.log(id);
 	recipientList.actions[0].handler.script = 'openLiferayPopup';
 	recipientList.actions[1].handler.href = '<%=list%>';
 	var jetList=JetList({"id":"recipientList", "parentId":"recipientListContainer", "form":recipientList});
@@ -43,7 +48,11 @@ function openLiferayPopup(){
 	var title ='Add Recipient';
 	var width = 640;
 	LiferayUtilOpenWindow(dialogId, title, url, true, 440, true, width);
-}
+	
+	$('.close').on('click', ()=>{
+		closePopup(dialogId);
+	})
+}	
 
 function LiferayUtilOpenWindow(id, title, uri, centered, height, modal, width){
 	Liferay.Util.openWindow({
@@ -52,11 +61,16 @@ function LiferayUtilOpenWindow(id, title, uri, centered, height, modal, width){
 			height: height,
 			modal: modal,
 			width: width,
-			destroyOnClose: true
 		},
 		id: id,
 		title: title,
 		uri: uri
 	});
+}
+
+function closePopup(dialogId){
+	alert("second");
+	var dialog = Liferay.Util.Window.getById(dialogId);
+	dialog.destroy();
 }
 </aui:script>

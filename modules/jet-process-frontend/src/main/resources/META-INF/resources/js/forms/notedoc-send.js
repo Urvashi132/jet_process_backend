@@ -13,9 +13,16 @@ var noteDocSend = {
 		"type" : "text",
 		"name" : "noteDocumentId",
 	}, {
-		"type" : "text",
+		"type" : "select",
 		"name" : "receiverId",
 		"label" : "User",
+		"required" : true,
+		"provider" : {
+			"ajax" : "http://localhost:8080/o/headless-admin-user/v1.0/sites/51506/user-accounts?p_auth=" + Liferay.authToken,
+			"value" : "id",
+			"label" : "name",
+			"dataNode" : "items"
+		},
 		"col" : 12
 	}, {
 		"type" : "hidden",

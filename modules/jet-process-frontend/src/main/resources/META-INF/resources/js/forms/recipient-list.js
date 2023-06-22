@@ -63,7 +63,8 @@ var recipientList = {
 	"providers" : {
 		"collection" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipients?p_auth="+ Liferay.authToken,
-			"dataNode" : "items"
+			"dataNode" : "items",
+			"requestParams":"id"	
 		},
 		"delete" : {
 			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draftrecipient?p_auth=" + Liferay.authToken,

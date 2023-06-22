@@ -126,18 +126,18 @@ var draftForm = {
 	} ],
 	"providers" : {
 		"selector" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft" + Liferay.authToken,
 			"method" : "get",
 			"queryParams" : {
 				"id" : "#id"
 			}
 		},
 		"create" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth="+ Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft" + Liferay.authToken,
 			"method" : "post",
 		},
 		"update" : {
-			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft?p_auth=" + Liferay.authToken,
+			"ajax" : "http://localhost:8080/o/jet-process-rs/v1.0/draft" + Liferay.authToken,
 			"method" : "put",
 			"queryParams" : {
 				"id" : "#id"

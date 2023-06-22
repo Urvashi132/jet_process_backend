@@ -26,15 +26,16 @@
 
 	$(document).ready(() => {
 		let content = noteDocForm.fields[2].name;
+		noteDocForm.actions[0].redirects.success.href = '<%=list%>';
 		noteDocForm.actions[1].handler.href = '<%=list%>';
 		$('#subject').closest("div").addClass("text-margin");
 		$('#content').closest("div").addClass("text-margin");
 		var jetform=JetForm({"id":"noteDocForm", "parentId":"noteDocFormContainer", "form":noteDocForm});
 		jetform.render(); 
 		
-		setTimeout(function(){
+		/* setTimeout(function(){
 		CKEDITOR.replace('content');}, 2000); 
-				 
+				  */
 		/* CKEDITOR.replace(content);  */
 
 		var m = new Date().getMonth()+1;

@@ -40,8 +40,8 @@ $(document).ready(() => {
 	draftForm.actions[1].handler.href = '<%=list%>';
 	var jetform=JetForm({"id":"draftForm", "parentId":"draftFormContainer", "form":draftForm});
 	jetform.render();
-	setTimeout(function(){
+/* 	setTimeout(function(){
 		CKEDITOR.replace('content');
-	}, 2000); 
+	}, 2000);  */
 });
 </script>
